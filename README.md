@@ -25,7 +25,7 @@ The C# code files in Cairo project is orginally Taken from Mono/[GTK#](https://g
 
 The [Native project files](https://github.com/zwcloud/ZWCloud.Cairo/tree/master/Native/projects) is generated according to a VS2015 Solution from [Cairo-VS](https://github.com/DomAmato/Cairo-VS).
 
-**About other native library:**
+**About other native libraries:**
 
 * [cairo](http://www.cairographics.org/)
   Version 1.14.2
