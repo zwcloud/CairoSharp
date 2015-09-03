@@ -5,7 +5,7 @@ A C# wrapper of cairo. All its dependcies included.
 Project Cairo(not the native cairo lib but the C# one) is licensed under the LGPL license.
 
     ZWCloud.Cairo
-    Copyright (C) 2015  Zou Wei
+    Copyright (C) 2015  Zou Wei, zwcloud@yeah.net, http://zwcloud.net
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
