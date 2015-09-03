@@ -45,12 +45,14 @@
     <LibraryPath>$(SolutionDir)\Native\Output\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\Native\Output\bin\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
+    <IntDir>$(TEMP)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)src;$(ProjectDir)..\..\pixman\pixman;$(ProjectDir)..\..\libpng;$(ProjectDir)..\..\zlib;$(ProjectDir)..\..\freetype\include;$(ProjectDir)..\..\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Native\Output\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\Native\Output\bin\</OutDir>
+    <IntDir>$(TEMP)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -1,3 +1,5 @@
+﻿extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
 // Copyright (C) 2015  Zou Wei, zwcloud@yeah.net, http://zwcloud.net
 // 
 // This library is free software; you can redistribute it and/or
@@ -14,16 +16,13 @@
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA 02110-1335, USA
 //
-using System;
-
-namespace Cairo
-{
-	[Serializable]
-	public enum Extend
-	{
-		None,
-		Repeat,
-		Reflect,
-		Pad,
-	}
-}
+extensions: .aspx .ascx
+<%-- 
+Sample license text.
+--%>
+extensions: .vb
+'Sample license text.
+extensions:  .xml .config .xsd
+<!--
+Sample license text.
+-->
