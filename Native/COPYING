@@ -1,0 +1,16 @@
+Cairo Solution for Visual Studio 2012 is free software.
+
+Every file of the solution, including the only header file
+cairo-features.h is available under the terms of either the GNU Lesser
+General Public License (LGPL) version 2.1 or the Mozilla Public
+License (MPL) version 1.1. 
+
+See the following files in this directory for the precise terms and
+conditions of either license:
+
+	COPYING-LGPL-2.1
+	COPYING-MPL-1.1
+
+I could also distribute this solution as public domain but cairo itself
+is distributed under the terms of the LGPL and MPL so nobody would gain
+anything with it.

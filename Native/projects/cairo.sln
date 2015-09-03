@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cairo", "cairo\cairo.vcxproj", "{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C9B5D82C-9367-44EA-881E-65AB29969616} = {C9B5D82C-9367-44EA-881E-65AB29969616}
+		{C0E161AA-D628-419A-9B78-E1CE2B596FAB} = {C0E161AA-D628-419A-9B78-E1CE2B596FAB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "libpng\libpng.vcxproj", "{C9B5D82C-9367-44EA-881E-65AB29969616}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB} = {E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixman", "pixman\pixman.vcxproj", "{C0E161AA-D628-419A-9B78-E1CE2B596FAB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "zlib\zlib.vcxproj", "{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}.Debug|Win32.Build.0 = Debug|Win32
+		{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}.Release|Win32.ActiveCfg = Release|Win32
+		{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}.Release|Win32.Build.0 = Release|Win32
+		{C9B5D82C-9367-44EA-881E-65AB29969616}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C9B5D82C-9367-44EA-881E-65AB29969616}.Debug|Win32.Build.0 = Debug|Win32
+		{C9B5D82C-9367-44EA-881E-65AB29969616}.Release|Win32.ActiveCfg = Release|Win32
+		{C9B5D82C-9367-44EA-881E-65AB29969616}.Release|Win32.Build.0 = Release|Win32
+		{C0E161AA-D628-419A-9B78-E1CE2B596FAB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C0E161AA-D628-419A-9B78-E1CE2B596FAB}.Debug|Win32.Build.0 = Debug|Win32
+		{C0E161AA-D628-419A-9B78-E1CE2B596FAB}.Release|Win32.ActiveCfg = Release|Win32
+		{C0E161AA-D628-419A-9B78-E1CE2B596FAB}.Release|Win32.Build.0 = Release|Win32
+		{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}.Debug|Win32.Build.0 = Debug|Win32
+		{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}.Release|Win32.ActiveCfg = Release|Win32
+		{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
