@@ -21,7 +21,7 @@ Project Cairo(not the native cairo lib but the C# one) is licensed under the LGP
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA 02110-1335, USA
 
-The C# code files in Cairo project is Taken from Mono/GTK#, licensed under the GNU LGPL.
+The C# code files in Cairo project is orginally Taken from Mono/GTK#(Version 3.0.0), licensed under the GNU LGPL.
 
 **About other native library:**
 
