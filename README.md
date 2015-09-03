@@ -20,7 +20,7 @@ Project Cairo(not the native cairo lib but the C# one) is licensed under the LGP
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-The C# code files in Cairo project is orginally Taken from Mono/GTK#(Version 3.0.0), licensed under the GNU LGPL.
+The C# code files in Cairo project is orginally Taken from Mono/[GTK#](https://github.com/mono/gtk-sharp/tree/master/cairo)(Version 3.0.0), licensed under the GNU LGPL.
 
 The [Native project files](https://github.com/zwcloud/ZWCloud.Cairo/tree/master/Native/projects) is generated according to a VS2015 Solution from [Cairo-VS](https://github.com/DomAmato/Cairo-VS).
 
