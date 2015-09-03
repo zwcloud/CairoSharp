@@ -1,0 +1,1 @@
+Projects will out put static libraries into *Output/lib* and dll(as well as its import lib and pdb file) into *Output/bin*.
