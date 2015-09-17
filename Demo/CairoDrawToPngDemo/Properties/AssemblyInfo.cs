@@ -1,33 +1,16 @@
-﻿// Copyright (C) 2015  Zou Wei, zwcloud@yeah.net, http://zwcloud.net
-// 
-// This library is free software; you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public
-// License as published by the Free Software Foundation; either
-// version 3 of the License, or (at your option) any later version.
-// 
-// This library is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// Lesser General Public License for more details.
-// 
-// You should have received a copy of the GNU Lesser General Public
-// License along with this library; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA 02110-1335, USA
-//
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cairo")]
+[assembly: AssemblyTitle("CairoDrawToPngDemo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("zwcloud")]
-[assembly: AssemblyProduct("Cairo")]
-[assembly: AssemblyCopyright("Copyright © Zou Wei 2015")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("CairoDrawToPngDemo")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -37,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f3757103-cc2e-4a9d-a0d1-366eb533ef32")]
+[assembly: Guid("338d99de-6019-4cbf-b694-e97d3c2f3cec")]
 
 // Version information for an assembly consists of the following four values:
 //

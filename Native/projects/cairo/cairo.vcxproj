@@ -44,7 +44,7 @@
     <IncludePath>$(ProjectDir)src;$(ProjectDir)..\..\pixman\pixman;$(ProjectDir)..\..\libpng;$(ProjectDir)..\..\zlib;$(ProjectDir)..\..\freetype\include;$(ProjectDir)..\..\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Native\Output\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\Native\Output\bin\</OutDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>NativeCairo</TargetName>
     <IntDir>$(TEMP)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -53,7 +53,7 @@
     <LibraryPath>$(SolutionDir)\Native\Output\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\Native\Output\bin\</OutDir>
     <IntDir>$(TEMP)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>NativeCairo</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

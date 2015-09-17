@@ -24,11 +24,7 @@ namespace Cairo
 
 	internal static class NativeMethods
 	{
-#if DEBUG
-		const string cairo = "cairod.dll";
-#else
-		const string cairo = "cairo.dll";
-#endif
+		const string cairo = "NativeCairo.dll";
         [DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern void cairo_append_path (IntPtr cr, IntPtr path);
 		
