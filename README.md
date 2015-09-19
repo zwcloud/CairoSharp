@@ -3,7 +3,7 @@ A C# wrapper of cairo. All its dependcies included.
 
 # Copying/License
 __GPLv3__  
-Project Cairo(not the native cairo lib but the C# one) is licensed under the LGPL v3 license.
+Project Cairo(not the native cairo lib but the C# one) is licensed under the GPL v3 license.
 
     ZWCloud.Cairo, A C# wrapper of cairo which is a 2D vector rendering library
     Copyright (C) 2015  Zou Wei, zwcloud@yeah.net, http://zwcloud.net
