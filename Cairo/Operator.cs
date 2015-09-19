@@ -22,6 +22,7 @@ namespace Cairo
 	public enum Operator
 	{
 		Clear,
+
 		Source,
 		Over,
 		In,
@@ -36,6 +37,22 @@ namespace Cairo
 		
 		Xor,
 		Add,
-		Saturate,
+        Saturate,
+
+        Multiply,
+        Screen,
+        Overlay,
+        Darken,
+        Lighten,
+        Color_dodge,
+        Color_burn,
+        Hard_light,
+        Soft_light,
+        Difference,
+        Exclusion,
+        HslHue,
+        HslSaturation,
+        HslColor,
+        HslLuminosity
 	}
 }

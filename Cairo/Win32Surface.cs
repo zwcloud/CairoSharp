@@ -18,6 +18,10 @@ using System;
 
 namespace Cairo {
 	
+    /// <summary>
+    /// Creates a new Win32Surface from a valid hdc
+    /// </summary>
+    /// <remarks>the format of this surface is Format.Rgb24</remarks>
 	public class Win32Surface : Surface
 	{
 		internal Win32Surface (IntPtr handle, bool owns) : base (handle, owns)
