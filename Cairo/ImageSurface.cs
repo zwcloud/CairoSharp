@@ -51,6 +51,25 @@ namespace Cairo {
 		{
 		}
 
+        public ImageSurface(byte[] pngData)
+            : base(ConstructImageSurfaceFromPngData(pngData), true)
+        {
+            offset = 0;
+        }
+
+	    private static int offset;
+
+        private static IntPtr ConstructImageSurfaceFromPngData(byte[] pngData)
+        {
+            NativeMethods.cairo_read_func_t func = delegate(IntPtr closure, IntPtr out_data, int length)
+            {
+                Marshal.Copy(pngData, offset, out_data, length);
+                offset += length;
+                return Status.Success;
+            };
+            return NativeMethods.cairo_image_surface_create_from_png_stream(func, IntPtr.Zero);
+        }
+
 		public int Width {
 			get {
 				CheckDisposed ();

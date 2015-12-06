@@ -313,9 +313,47 @@ namespace Cairo
 		
 		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern IntPtr cairo_image_surface_create_from_png  (string filename);
-		
-		//[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		//internal static extern IntPtr cairo_image_surface_create_from_png_stream  (string filename);
+
+        /// <summary>
+        /// cairo_read_func_t is the type of function which is called when a backend needs to read data from an input stream.
+        /// </summary>
+        /// <param name="closure">the input closure</param>
+        /// <param name="data">the buffer into which to read the data</param>
+        /// <param name="length">the amount of data to read</param>
+        /// <returns>the status code of the read operation</returns>
+        /// <remarks>
+        /// <code>
+        /// cairo_status_t (*cairo_read_func_t)(
+        ///     void *closure,
+        ///     unsigned char *data,
+        ///     unsigned int length);
+        /// </code>
+        /// It is passed the closure which was specified by the user at the time the read
+        ///  function was registered, the buffer to read the data into and the length of
+        ///  the data in bytes. The read function should return CAIRO_STATUS_SUCCESS
+        ///  if all the data was successfully read, CAIRO_STATUS_READ_ERROR otherwise.
+        /// </remarks>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        internal delegate Status cairo_read_func_t(IntPtr closure, IntPtr data, int length);
+
+	    /// <summary>
+        /// Creates a new image surface from PNG data read incrementally via the read_func function.
+	    /// </summary>
+        /// <param name="read_func">function called to read the data of the file</param>
+        /// <param name="closure">data to pass to read_func</param>
+        /// <returns>new cairo_surface_t or nil</returns>
+        /// <remarks>
+        /// <code>
+	    /// cairo_surface_t * cairo_image_surface_create_from_png_stream(
+	    ///     cairo_read_func_t read_func,
+        ///     void *closure);
+        /// </code>
+	    /// a new cairo_surface_t initialized with the contents of the PNG file or a "nil" surface if the data read is not a valid PNG image or memory could not be allocated for the operation. A nil surface can be checked for with cairo_surface_status(surface) which may return one of the following values:
+	    /// CAIRO_STATUS_NO_MEMORY CAIRO_STATUS_READ_ERROR
+	    /// Alternatively, you can allow errors to propagate through the drawing operations and check the status on the context upon completion using cairo_status().
+	    /// </remarks>
+	    [DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+		internal static extern IntPtr cairo_image_surface_create_from_png_stream ([MarshalAs(UnmanagedType.FunctionPtr)]cairo_read_func_t read_func, IntPtr closure);
 
 		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern IntPtr cairo_image_surface_get_data (IntPtr surface);

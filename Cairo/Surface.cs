@@ -25,17 +25,7 @@ namespace Cairo {
 		protected static Hashtable surfaces = new Hashtable ();
 
 		IntPtr handle = IntPtr.Zero;
-
-		[Obsolete]
-		protected Surface()
-		{
-		}
-
-		[Obsolete]
-		protected Surface (IntPtr handle) : this (handle, true)
-		{
-		}
-
+        
 		protected Surface (IntPtr handle, bool owner)
 		{
 			if (handle == IntPtr.Zero)
