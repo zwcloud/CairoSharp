@@ -51,5 +51,33 @@ namespace Cairo {
 			get { return a; }
 			set { a = value; }
 		}
+
+        public static bool operator==(Color a, Color b)
+        {
+            return a.Equals(b);
+        }
+
+	    public static bool operator!=(Color a, Color b)
+	    {
+	        return !(a == b);
+	    }
+
+	    #region Overrides of ValueType
+
+	    public override bool Equals(object obj)
+	    {
+	        Color other = (Color) obj;
+	        return System.Math.Abs(this.r - other.r) < double.Epsilon
+	               && System.Math.Abs(this.g - other.g) < double.Epsilon
+	               && System.Math.Abs(this.b - other.b) < double.Epsilon
+	               && System.Math.Abs(this.a - other.a) < double.Epsilon;
+	    }
+
+	    public override int GetHashCode()
+	    {
+	        return base.GetHashCode();
+	    }
+
+	    #endregion
 	}
 }
