@@ -51,6 +51,13 @@ namespace Cairo {
 			NativeMethods.cairo_pattern_add_color_stop_rgb (Handle, offset, c.R, c.G, c.B);
 			return Status;
 		}
+
+		public Status AddColorStopRgba(double offset, double r, double g, double b, double a)
+		{
+			CheckDisposed();
+			NativeMethods.cairo_pattern_add_color_stop_rgba(Handle, offset, r, g, b, a);
+			return Status;
+		}
 	}
 }
 
