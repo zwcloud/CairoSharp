@@ -69,15 +69,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cairo\Cairo.csproj">
-      <Project>{3c49a7e8-1708-4930-b741-8648848ec084}</Project>
-      <Name>Cairo</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Binding\CairoSharp.Desktop\CairoSharp.Desktop.csproj">
+      <Project>{3c49a7e8-1708-4930-b741-8648848ec084}</Project>
+      <Name>CairoSharp.Desktop</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
