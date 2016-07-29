@@ -1,6 +1,6 @@
 ﻿using Cairo;
 
-namespace CairoDrawToPngDemo
+namespace DrawToPngDemo
 {
     class Program
     {

@@ -23,17 +23,19 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "Native\freetype
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{879DB88B-9FA2-40AE-864E-95DD38A04C03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoDrawToPngDemo", "Demo\CairoDrawToPngDemo\CairoDrawToPngDemo.csproj", "{82D0904D-490E-4E5F-9F60-2F0D1B49B060}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawToPngDemo", "Demo\Windows\DrawToPngDemo\DrawToPngDemo.csproj", "{82D0904D-490E-4E5F-9F60-2F0D1B49B060}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormDemo", "Demo\CairoDrawOnWinFormWindowDemo\WinFormDemo.csproj", "{3BBEC1E6-4ACE-41BC-B095-9319F2EA979D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormDemo", "Demo\Windows\WinFormDemo\WinFormDemo.csproj", "{3BBEC1E6-4ACE-41BC-B095-9319F2EA979D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoSamples", "Demo\CairoSamples\CairoSamples.csproj", "{3E1AA382-34CE-4525-8362-09DF80DD807B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoSamples", "Demo\Windows\CairoSamples\CairoSamples.csproj", "{3E1AA382-34CE-4525-8362-09DF80DD807B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoSharp.Desktop", "Binding\CairoSharp.Desktop\CairoSharp.Desktop.csproj", "{3C49A7E8-1708-4930-B741-8648848EC084}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Binding", "Binding\Binding\Binding.shproj", "{004DEFD6-E4F8-483D-86F0-9561F3EACFF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDemo", "Demo\Windows\WpfDemo\WpfDemo.csproj", "{158DB6D4-7ED6-4024-A669-13354AA47A65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawPngInMemory", "Demo\Windows\DrawPngInMemory\DrawPngInMemory.csproj", "{B3BD257F-4B1F-4BC1-AE18-6736248482F6}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -207,6 +209,20 @@ Global
 		{158DB6D4-7ED6-4024-A669-13354AA47A65}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{158DB6D4-7ED6-4024-A669-13354AA47A65}.Release|x64.ActiveCfg = Release|Any CPU
 		{158DB6D4-7ED6-4024-A669-13354AA47A65}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -221,5 +237,6 @@ Global
 		{3BBEC1E6-4ACE-41BC-B095-9319F2EA979D} = {879DB88B-9FA2-40AE-864E-95DD38A04C03}
 		{3E1AA382-34CE-4525-8362-09DF80DD807B} = {879DB88B-9FA2-40AE-864E-95DD38A04C03}
 		{158DB6D4-7ED6-4024-A669-13354AA47A65} = {879DB88B-9FA2-40AE-864E-95DD38A04C03}
+		{B3BD257F-4B1F-4BC1-AE18-6736248482F6} = {879DB88B-9FA2-40AE-864E-95DD38A04C03}
 	EndGlobalSection
 EndGlobal

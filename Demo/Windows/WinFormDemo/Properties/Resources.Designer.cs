@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CairoDrawOnWinFormWindowDemo.Properties
+namespace WinFormDemo.Properties
 {
 
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{82D0904D-490E-4E5F-9F60-2F0D1B49B060}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CairoDrawToPngDemo</RootNamespace>
-    <AssemblyName>CairoDrawToPngDemo</AssemblyName>
+    <RootNamespace>DrawToPngDemo</RootNamespace>
+    <AssemblyName>DrawToPngDemo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,7 +44,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Binding\CairoSharp.Desktop\CairoSharp.Desktop.csproj">
+    <ProjectReference Include="..\..\..\Binding\CairoSharp.Desktop\CairoSharp.Desktop.csproj">
       <Project>{3c49a7e8-1708-4930-b741-8648848ec084}</Project>
       <Name>CairoSharp.Desktop</Name>
     </ProjectReference>

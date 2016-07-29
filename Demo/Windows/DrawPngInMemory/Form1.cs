@@ -3,7 +3,7 @@ using Cairo;
 using Color = Cairo.Color;
 using Graphics = System.Drawing.Graphics;
 
-namespace CairoDrawPngFromMemory
+namespace DrawPngInMemory
 {
     public partial class Form1 : Form
     {

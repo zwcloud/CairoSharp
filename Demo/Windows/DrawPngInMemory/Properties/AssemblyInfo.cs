@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CairoDrawToPngDemo")]
+[assembly: AssemblyTitle("DrawPngInMemory")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("CairoDrawToPngDemo")]
+[assembly: AssemblyProduct("DrawPngInMemory")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("338d99de-6019-4cbf-b694-e97d3c2f3cec")]
+[assembly: Guid("96bd95ca-6a18-4166-ba49-5674b784da28")]
 
 // Version information for an assembly consists of the following four values:
 //

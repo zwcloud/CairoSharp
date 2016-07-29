@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CairoDrawOnWinFormWindowDemo
+namespace WinFormDemo
 {
     static class Program
     {

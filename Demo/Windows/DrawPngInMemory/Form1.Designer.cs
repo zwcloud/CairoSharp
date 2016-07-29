@@ -1,6 +1,4 @@
-﻿using Cairo;
-
-namespace CairoDrawOnWinFormWindowDemo
+﻿namespace DrawPngInMemory
 {
     partial class Form1
     {
@@ -30,17 +28,9 @@ namespace CairoDrawOnWinFormWindowDemo
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 262);
-            this.Name = "Form1";
-            this.Text = "CairoDemo cairo version: 1.14.2";
-            this.ResumeLayout(false);
-
+            this.Text = "Form1";
         }
 
         #endregion
