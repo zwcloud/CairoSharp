@@ -36,24 +36,24 @@ The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Nat
 **About other native libraries:**
 
 * [cairo](http://www.cairographics.org/)
-  Version 1.14.2
-  [COPYING Info](https://github.com/zwcloud/CairoSharp/Native/cairo/COPYING)
+  Version 1.15.2
+  [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/cairo/COPYING)
 
 * [libpng](http://libmng.com/pub/png/libpng.html)
   Version 1.6.18
-  [COPYING Info](https://github.com/zwcloud/CairoSharp/Native/libpng/LICENSE)
+  [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/libpng/LICENSE)
 
 * [pixman](http://www.pixman.org/) 
   Version 0.32.6
-  [COPYING Info](https://github.com/zwcloud/CairoSharp/Native/pixman/COPYING)
+  [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/pixman/COPYING)
 
 * [zlib](http://www.zlib.net/)
   Version 1.2.8
-  [COPYING Info](https://github.com/zwcloud/CairoSharp/Native/zlib/README)
+  [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/zlib/README)
 
 * [freetype](http://www.freetype.org/)
   Version 2.6
-  [COPYING Info](https://github.com/zwcloud/CairoSharp/Native/freetype/docs/LICENSE.TXT)
+  [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/freetype/docs/LICENSE.TXT)
 
 I will keep this libraries updated if new verison are released.<br/>
-Last update time of these Native libraries: 2015/8/22
+Last update time of these Native libraries: 2016/10/17
