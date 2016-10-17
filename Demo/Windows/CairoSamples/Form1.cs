@@ -13,6 +13,7 @@ namespace CairoSamples
         public Win32Surface Surface1 { get; private set; }
 
         private readonly byte[] romedalenPngData;
+        private string lastSelected = "none";
 
         public Form1()
         {
@@ -40,6 +41,7 @@ namespace CairoSamples
 
         private void arcToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "arc";
             OnPaintAction = cr =>
             {
                 double xc = 128.0;
@@ -71,6 +73,7 @@ namespace CairoSamples
 
         private void arcNegativeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "arcNegative";
             OnPaintAction = cr =>
             {
                 double xc = 128.0;
@@ -102,6 +105,7 @@ namespace CairoSamples
 
         private void clipToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "clip";
             OnPaintAction = cr =>
             {
                 cr.Arc(128.0, 128.0, 76.8, 0, 2 * Math.PI);
@@ -124,6 +128,7 @@ namespace CairoSamples
 
         private void clipImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "clipImage";
             OnPaintAction = cr =>
             {
                 int w, h;
@@ -150,6 +155,7 @@ namespace CairoSamples
 
         private void curveRectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "curveRectangle";
             OnPaintAction = cr =>
             {
                 /* a custom shape that could be wrapped in a function */
@@ -222,6 +228,7 @@ namespace CairoSamples
 
         private void curveToToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "curveTo";
             OnPaintAction = cr =>
             {
                 double x = 25.6, y = 128.0;
@@ -247,6 +254,7 @@ namespace CairoSamples
 
         private void dashToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "dash";
             OnPaintAction = cr =>
             {
                 double[] dashes =
@@ -274,6 +282,7 @@ namespace CairoSamples
 
         private void fillAndStroke2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "fillAndStroke2";
             OnPaintAction = cr =>
             {
                 cr.MoveTo(128.0, 25.6);
@@ -300,6 +309,7 @@ namespace CairoSamples
 
         private void fillStyleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "fillStyle";
             OnPaintAction = cr =>
             {
                 cr.LineWidth = 6;
@@ -327,6 +337,7 @@ namespace CairoSamples
 
         private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "gradient";
             OnPaintAction = cr =>
             {
                 Gradient pat = new LinearGradient(0.0, 0.0, 0.0, 256.0);
@@ -352,6 +363,7 @@ namespace CairoSamples
 
         private void imageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "image";
             OnPaintAction = cr =>
             {
                 int w, h;
@@ -376,6 +388,7 @@ namespace CairoSamples
 
         private void imagepatternToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "imagepattern";
             OnPaintAction = cr =>
             {
                 int w, h;
@@ -413,6 +426,7 @@ namespace CairoSamples
 
         private void multiSegmentCapsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "multiSegmentCaps";
             OnPaintAction = cr =>
             {
                 cr.MoveTo(50.0, 75.0);
@@ -434,6 +448,7 @@ namespace CairoSamples
 
         private void roundedRectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "roundedRectangle";
             OnPaintAction = cr =>
             {
                 /* a custom shape that could be wrapped in a function */
@@ -466,6 +481,7 @@ namespace CairoSamples
 
         private void setLineCapToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "setLineCap";
             OnPaintAction = cr =>
             {
                 cr.LineWidth = 30.0;
@@ -493,6 +509,7 @@ namespace CairoSamples
 
         private void setLineJoinToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "setLineJoin";
             OnPaintAction = cr =>
             {
                 cr.LineWidth = 40.96;
@@ -520,6 +537,7 @@ namespace CairoSamples
 
         private void textToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "text";
             OnPaintAction = cr =>
             {
                 cr.SelectFontFace("Microsoft Sans Serif", FontSlant.Normal, FontWeight.Bold);
@@ -549,6 +567,7 @@ namespace CairoSamples
 
         private void textAlignCenterToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "textAlignCenter";
             OnPaintAction = cr =>
             {
                 string text = "cairo";
@@ -582,6 +601,7 @@ namespace CairoSamples
 
         private void textExtentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastSelected = "textExtents";
             OnPaintAction = cr =>
             {
                 string text = "cairo";
@@ -612,6 +632,22 @@ namespace CairoSamples
             };
 
             Invalidate();
+        }
+
+        private void saveAsPngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "PNG|*.png";
+            dialog.FileName = lastSelected;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                using (this.Graphics1 = this.CreateGraphics())
+                using (Surface1 = new Win32Surface(Graphics1.GetHdc()))
+                using (Context1 = new Context(Surface1))
+                {
+                    Surface1.WriteToPng(dialog.FileName);
+                }
+            }
         }
     }
 }
