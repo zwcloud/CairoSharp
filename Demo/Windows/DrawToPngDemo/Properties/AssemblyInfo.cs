@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DrawPngInMemory")]
+[assembly: AssemblyTitle("DrawToPngDemo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("DrawPngInMemory")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("DrawToPngDemo")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("96bd95ca-6a18-4166-ba49-5674b784da28")]
+[assembly: Guid("5f95d5cf-34ae-46a4-aa4a-574616e11fcc")]
 
 // Version information for an assembly consists of the following four values:
 //
