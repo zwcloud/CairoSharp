@@ -32,9 +32,10 @@
  *	Chris Wilson <chris@chris-wilson.co.uk>
  */
 
-#include <cairo.h>
+#include "config.h"
 
 #include "cairo-script-private.h"
+#include "cairo.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -52,7 +52,7 @@ draw (cairo_t *cr, int width, int height)
     return CAIRO_TEST_SUCCESS;
 }
 
-CAIRO_TEST (clip_complex_bug61492,
+CAIRO_TEST (clip_complex_bug61592,
 	    "Exercise a bug found in 1.12",
 	    "clip", /* keywords */
 	    NULL, /* requirements */

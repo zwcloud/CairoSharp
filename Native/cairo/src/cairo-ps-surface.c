@@ -1017,7 +1017,8 @@ _cairo_ps_surface_create_for_stream_internal (cairo_output_stream_t *stream,
     _cairo_surface_init (&surface->base,
 			 &cairo_ps_surface_backend,
 			 NULL, /* device */
-			 CAIRO_CONTENT_COLOR_ALPHA);
+			 CAIRO_CONTENT_COLOR_ALPHA,
+			 TRUE); /* is_vector */
 
     surface->final_stream = stream;
 
@@ -1739,32 +1740,33 @@ _cairo_ps_surface_acquire_source_surface_from_pattern (cairo_ps_surface_t       
     cairo_image_surface_t  *image;
 
     *x_offset = *y_offset = 0;
+    *image_extra = NULL;
     switch (pattern->type) {
     case CAIRO_PATTERN_TYPE_SURFACE: {
 	cairo_surface_t *surf = ((cairo_surface_pattern_t *) pattern)->surface;
 
 	if (surf->type == CAIRO_SURFACE_TYPE_RECORDING) {
+	    if (_cairo_surface_is_snapshot (surf)) {
+		surf = _cairo_surface_snapshot_get_target (surf);
+		*image_extra = surf;
+	    }
 	    if (surf->backend->type == CAIRO_SURFACE_TYPE_SUBSURFACE) {
 		cairo_surface_subsurface_t *sub = (cairo_surface_subsurface_t *) surf;
 
 		*width  = sub->extents.width;
 		*height = sub->extents.height;
 	    } else {
-		cairo_surface_t *free_me = NULL;
 		cairo_recording_surface_t *recording_surface;
 		cairo_box_t bbox;
 		cairo_rectangle_int_t extents;
 
 		recording_surface = (cairo_recording_surface_t *) surf;
-		if (_cairo_surface_is_snapshot (&recording_surface->base)) {
-		    free_me = _cairo_surface_snapshot_get_target (&recording_surface->base);
-		    recording_surface = (cairo_recording_surface_t *) free_me;
-		}
 
 		status = _cairo_recording_surface_get_bbox (recording_surface, &bbox, NULL);
-		cairo_surface_destroy (free_me);
-		if (unlikely (status))
+		if (unlikely (status)) {
+		    cairo_surface_destroy (*image_extra);
 		    return status;
+		}
 
 		_cairo_box_round_to_rectangle (&bbox, &extents);
 		*width  = extents.width;
@@ -1775,8 +1777,10 @@ _cairo_ps_surface_acquire_source_surface_from_pattern (cairo_ps_surface_t       
 	    return CAIRO_STATUS_SUCCESS;
 	} else {
 	    status =  _cairo_surface_acquire_source_image (surf, &image, image_extra);
-	    if (unlikely (status))
+	    if (unlikely (status)) {
+		cairo_surface_destroy (*image_extra);
 		return status;
+	    }
 	}
     } break;
 
@@ -1794,6 +1798,7 @@ _cairo_ps_surface_acquire_source_surface_from_pattern (cairo_ps_surface_t       
 	    return CAIRO_INT_STATUS_UNSUPPORTED;
 	assert (_cairo_surface_is_image (surf));
 	image = (cairo_image_surface_t *) surf;
+	cairo_surface_get_device_offset (surf, x_offset, y_offset);
     } break;
 
     case CAIRO_PATTERN_TYPE_SOLID:
@@ -1820,7 +1825,9 @@ _cairo_ps_surface_release_source_surface_from_pattern (cairo_ps_surface_t       
     switch (pattern->type) {
     case CAIRO_PATTERN_TYPE_SURFACE: {
 	cairo_surface_pattern_t *surf_pat = (cairo_surface_pattern_t *) pattern;
-	if (surf_pat->surface->type != CAIRO_SURFACE_TYPE_RECORDING) {
+	if (surf_pat->surface->type == CAIRO_SURFACE_TYPE_RECORDING) {
+	    cairo_surface_destroy (image_extra);
+	} else {
 	    cairo_image_surface_t *image  = (cairo_image_surface_t *) source;
 	    _cairo_surface_release_source_image (surf_pat->surface, image, image_extra);
 	}
@@ -2914,14 +2921,15 @@ _cairo_ps_surface_emit_jpeg_image (cairo_ps_surface_t    *surface,
 }
 
 static cairo_status_t
-_cairo_ps_surface_emit_recording_surface (cairo_ps_surface_t *surface,
-					  cairo_surface_t    *recording_surface)
+_cairo_ps_surface_emit_recording_surface (cairo_ps_surface_t          *surface,
+					  cairo_surface_t             *recording_surface,
+					  cairo_bool_t                 subsurface,
+					  const cairo_rectangle_int_t *extents)
 {
     double old_width, old_height;
     cairo_matrix_t old_cairo_to_ps;
     cairo_content_t old_content;
     cairo_rectangle_int_t old_page_bbox;
-    cairo_surface_t *free_me = NULL;
     cairo_surface_clipper_t old_clipper;
     cairo_box_t bbox;
     cairo_int_status_t status;
@@ -2935,15 +2943,30 @@ _cairo_ps_surface_emit_recording_surface (cairo_ps_surface_t *surface,
     _cairo_surface_clipper_init (&surface->clipper,
 				 _cairo_ps_surface_clipper_intersect_clip_path);
 
-    if (_cairo_surface_is_snapshot (recording_surface))
-	free_me = recording_surface = _cairo_surface_snapshot_get_target (recording_surface);
+    if (subsurface) {
+	surface->page_bbox.x = surface->page_bbox.y = 0;
+	surface->page_bbox.width = surface->width  = extents->width;
+	surface->page_bbox.height = surface->height = extents->height;
 
-    status =
-	_cairo_recording_surface_get_bbox ((cairo_recording_surface_t *) recording_surface,
-					   &bbox,
-					   NULL);
-    if (unlikely (status))
-	goto err;
+#if DEBUG_PS
+	_cairo_output_stream_printf (surface->stream,
+				     "%% _cairo_ps_surface_emit_recording_subsurface"
+				     " (%d, %d), (%d, %d)\n",
+				     extents->x, extents->y,
+				     extents->width, extents->height);
+#endif
+
+    } else {
+	status =
+	    _cairo_recording_surface_get_bbox ((cairo_recording_surface_t *) recording_surface,
+					       &bbox,
+					       NULL);
+	if (unlikely (status))
+	    return status;
+
+	surface->width = _cairo_fixed_to_double (bbox.p2.x - bbox.p1.x);
+	surface->height = _cairo_fixed_to_double (bbox.p2.y - bbox.p1.y);
+	_cairo_box_round_to_rectangle (&bbox, &surface->page_bbox);
 
 #if DEBUG_PS
     _cairo_output_stream_printf (surface->stream,
@@ -2953,10 +2976,7 @@ _cairo_ps_surface_emit_recording_surface (cairo_ps_surface_t *surface,
 				 _cairo_fixed_to_double (bbox.p2.x),
 				 _cairo_fixed_to_double (bbox.p2.y));
 #endif
-
-    surface->width = _cairo_fixed_to_double (bbox.p2.x - bbox.p1.x);
-    surface->height = _cairo_fixed_to_double (bbox.p2.y - bbox.p1.y);
-    _cairo_box_round_to_rectangle (&bbox, &surface->page_bbox);
+    }
 
     surface->current_pattern_is_solid_color = FALSE;
     _cairo_pdf_operators_reset (&surface->pdf_operators);
@@ -2976,16 +2996,16 @@ _cairo_ps_surface_emit_recording_surface (cairo_ps_surface_t *surface,
     }
 
     status = _cairo_recording_surface_replay_region (recording_surface,
-						     NULL,
+						     subsurface ? extents : NULL,
 						     &surface->base,
 						     CAIRO_RECORDING_REGION_NATIVE);
     assert (status != CAIRO_INT_STATUS_UNSUPPORTED);
     if (unlikely (status))
-	goto err;
+	return status;
 
     status = _cairo_pdf_operators_flush (&surface->pdf_operators);
     if (unlikely (status))
-	goto err;
+	return status;
 
     _cairo_output_stream_printf (surface->stream, "  Q\n");
 
@@ -3002,93 +3022,6 @@ _cairo_ps_surface_emit_recording_surface (cairo_ps_surface_t *surface,
     _cairo_pdf_operators_set_cairo_to_pdf_matrix (&surface->pdf_operators,
 						  &surface->cairo_to_ps);
 
-err:
-    cairo_surface_destroy (free_me);
-    return status;
-}
-
-static cairo_int_status_t
-_cairo_ps_surface_emit_recording_subsurface (cairo_ps_surface_t *surface,
-					     cairo_surface_t    *recording_surface,
-					     const cairo_rectangle_int_t *extents)
-{
-    double old_width, old_height;
-    cairo_matrix_t old_cairo_to_ps;
-    cairo_content_t old_content;
-    cairo_rectangle_int_t old_page_bbox;
-    cairo_surface_clipper_t old_clipper;
-    cairo_surface_t *free_me = NULL;
-    cairo_int_status_t status;
-
-    old_content = surface->content;
-    old_width = surface->width;
-    old_height = surface->height;
-    old_page_bbox = surface->page_bbox;
-    old_cairo_to_ps = surface->cairo_to_ps;
-    old_clipper = surface->clipper;
-    _cairo_surface_clipper_init (&surface->clipper,
-				 _cairo_ps_surface_clipper_intersect_clip_path);
-
-#if DEBUG_PS
-    _cairo_output_stream_printf (surface->stream,
-				 "%% _cairo_ps_surface_emit_recording_subsurface (%d, %d), (%d, %d)\n",
-				 extents->x, extents->y,
-				 extents->width, extents->height);
-#endif
-
-    surface->page_bbox.x = surface->page_bbox.y = 0;
-    surface->page_bbox.width = surface->width  = extents->width;
-    surface->page_bbox.height = surface->height = extents->height;
-
-    surface->current_pattern_is_solid_color = FALSE;
-    _cairo_pdf_operators_reset (&surface->pdf_operators);
-    cairo_matrix_init (&surface->cairo_to_ps, 1, 0, 0, -1, 0, surface->height);
-    _cairo_pdf_operators_set_cairo_to_pdf_matrix (&surface->pdf_operators,
-						  &surface->cairo_to_ps);
-    _cairo_output_stream_printf (surface->stream, "  q\n");
-
-    if (_cairo_surface_is_snapshot (recording_surface))
-	free_me = recording_surface = _cairo_surface_snapshot_get_target (recording_surface);
-
-    if (recording_surface->content == CAIRO_CONTENT_COLOR) {
-	surface->content = CAIRO_CONTENT_COLOR;
-	_cairo_output_stream_printf (surface->stream,
-				     "  0 g %d %d %d %d rectfill\n",
-				     surface->page_bbox.x,
-				     surface->page_bbox.y,
-				     surface->page_bbox.width,
-				     surface->page_bbox.height);
-    }
-
-    status = _cairo_recording_surface_replay_region (recording_surface,
-						     extents,
-						     &surface->base,
-						     CAIRO_RECORDING_REGION_NATIVE);
-    assert (status != CAIRO_INT_STATUS_UNSUPPORTED);
-    if (unlikely (status))
-	goto err;
-
-    status = _cairo_pdf_operators_flush (&surface->pdf_operators);
-    if (unlikely (status))
-	goto err;
-
-    _cairo_output_stream_printf (surface->stream, "  Q\n");
-
-    _cairo_surface_clipper_reset (&surface->clipper);
-    surface->clipper = old_clipper;
-    surface->content = old_content;
-    surface->width = old_width;
-    surface->height = old_height;
-    surface->page_bbox = old_page_bbox;
-    surface->current_pattern_is_solid_color = FALSE;
-    _cairo_pdf_operators_reset (&surface->pdf_operators);
-    surface->cairo_to_ps = old_cairo_to_ps;
-
-    _cairo_pdf_operators_set_cairo_to_pdf_matrix (&surface->pdf_operators,
-						  &surface->cairo_to_ps);
-
-err:
-    cairo_surface_destroy (free_me);
     return status;
 }
 
@@ -3158,9 +3091,9 @@ _cairo_ps_surface_emit_surface (cairo_ps_surface_t      *surface,
     if (source_surface->type == CAIRO_SURFACE_TYPE_RECORDING) {
 	if (source_surface->backend->type == CAIRO_SURFACE_TYPE_SUBSURFACE) {
 	    cairo_surface_subsurface_t *sub = (cairo_surface_subsurface_t *) source_surface;
-	    status = _cairo_ps_surface_emit_recording_subsurface (surface, sub->target, &sub->extents);
+	    status = _cairo_ps_surface_emit_recording_surface (surface, sub->target, TRUE, &sub->extents);
 	} else {
-	    status = _cairo_ps_surface_emit_recording_surface (surface, source_surface);
+	    status = _cairo_ps_surface_emit_recording_surface (surface, source_surface, FALSE, NULL);
 	}
     } else {
 	cairo_image_surface_t *image = (cairo_image_surface_t *) source_surface;

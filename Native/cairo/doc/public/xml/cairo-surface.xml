@@ -432,12 +432,12 @@ associated with the surface.</para>
 <indexterm zone="cairo-surface-flush" role="1.0"><primary sortas="surface_flush">cairo_surface_flush</primary></indexterm>
 <programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
 cairo_surface_flush (<parameter><link linkend="cairo-surface-t"><type>cairo_surface_t</type></link> *surface</parameter>);</programlisting>
-<para>Do any pending drawing for the surface and also restore any
-temporary modifications cairo has made to the surface's
-state. This function must be called before switching from
-drawing on the surface with cairo to drawing on it directly
-with native APIs. If the surface doesn't support direct access,
-then this function does nothing.</para>
+<para>Do any pending drawing for the surface and also restore any temporary
+modifications cairo has made to the surface's state. This function
+must be called before switching from drawing on the surface with
+cairo to drawing on it directly with native APIs, or accessing its
+memory outside of Cairo. If the surface doesn't support direct
+access, then this function does nothing.</para>
 <refsect3 role="parameters">
 <title>Parameters</title>
 <informaltable role="parameters_table" pgwide="1" frame="none">

@@ -1081,7 +1081,7 @@ attach_proxy (cairo_surface_t *source,
     if (unlikely (proxy == NULL))
 	return _cairo_surface_create_in_error (CAIRO_STATUS_NO_MEMORY);
 
-    _cairo_surface_init (&proxy->base, &proxy_backend, NULL, image->content);
+    _cairo_surface_init (&proxy->base, &proxy_backend, NULL, image->content, FALSE);
 
     proxy->image = image;
     _cairo_surface_attach_snapshot (source, &proxy->base, NULL);
@@ -1592,7 +1592,8 @@ _cairo_image_source_create_for_pattern (cairo_surface_t *dst,
     _cairo_surface_init (&source->base,
 			 &_cairo_image_source_backend,
 			 NULL, /* device */
-			 CAIRO_CONTENT_COLOR_ALPHA);
+			 CAIRO_CONTENT_COLOR_ALPHA,
+			 FALSE); /* is_vector */
 
     source->is_opaque_solid =
 	pattern == NULL || _cairo_pattern_is_opaque_solid (pattern);

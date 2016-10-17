@@ -188,7 +188,8 @@ _cairo_image_surface_create_for_pixman_image (pixman_image_t		*pixman_image,
     _cairo_surface_init (&surface->base,
 			 &_cairo_image_surface_backend,
 			 NULL, /* device */
-			 _cairo_content_from_pixman_format (pixman_format));
+			 _cairo_content_from_pixman_format (pixman_format),
+			 FALSE); /* is_vector */
 
     _cairo_image_surface_init (surface, pixman_image, pixman_format);
 

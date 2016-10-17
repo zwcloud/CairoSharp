@@ -107,7 +107,6 @@ check (tt_hhea_t,	36);
 check (tt_maxp_t,	32);
 check (tt_name_record_t, 12);
 check (tt_name_t,	18);
-check (tt_name_t,	18);
 check (tt_composite_glyph_t, 16);
 check (tt_glyph_data_t,	26);
 #undef check

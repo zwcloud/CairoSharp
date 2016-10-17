@@ -122,7 +122,7 @@ attach_proxy (cairo_surface_t *source,
     if (unlikely (proxy == NULL))
 	return _cairo_surface_create_in_error (CAIRO_STATUS_NO_MEMORY);
 
-    _cairo_surface_init (&proxy->base, &proxy_backend, NULL, target->content);
+    _cairo_surface_init (&proxy->base, &proxy_backend, NULL, target->content, target->is_vector);
 
     proxy->target = target;
     _cairo_surface_attach_snapshot (source, &proxy->base, NULL);
@@ -740,7 +740,8 @@ _cairo_analysis_surface_create (cairo_surface_t		*target)
     _cairo_surface_init (&surface->base,
 			 &cairo_analysis_surface_backend,
 			 NULL, /* device */
-			 CAIRO_CONTENT_COLOR_ALPHA);
+			 CAIRO_CONTENT_COLOR_ALPHA,
+			 target->is_vector);
 
     cairo_matrix_init_identity (&surface->ctm);
     surface->has_ctm = FALSE;
@@ -928,7 +929,8 @@ _cairo_null_surface_create (cairo_content_t content)
     _cairo_surface_init (surface,
 			 &cairo_null_surface_backend,
 			 NULL, /* device */
-			 content);
+			 content,
+			 TRUE); /* is_vector */
 
     return surface;
 }

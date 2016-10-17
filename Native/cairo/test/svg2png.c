@@ -44,7 +44,9 @@ int main (int argc, char *argv[])
     if (argc != 3)
 	FAIL ("usage: svg2png input_file.svg output_file.png");
 
+    #if GLIB_MAJOR_VERSION <= 2 && GLIB_MINOR_VERSION <= 34
     g_type_init ();
+    #endif
 
     error = NULL;
 

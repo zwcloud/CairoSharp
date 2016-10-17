@@ -1,5 +1,4 @@
-/* cairo - a vector graphics library with display and print output
- *
+/* 
  * Copyright © 2004 Red Hat, Inc.
  * Copyright © 2005 Red Hat, Inc.
  *
@@ -36,6 +35,8 @@
  *	Carl Worth <cworth@cworth.org>
  *	Karl Tomlinson <karlt+@karlt.net>, Mozilla Corporation
  */
+
+#include "config.h"
 
 #include "cairo-script-private.h"
 

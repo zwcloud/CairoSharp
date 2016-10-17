@@ -353,7 +353,7 @@ _cairo_composite_rectangles_init_for_stroke (cairo_composite_rectangles_t *exten
 	return CAIRO_INT_STATUS_NOTHING_TO_DO;
     }
 
-    _cairo_path_fixed_approximate_stroke_extents (path, style, ctm, &extents->mask);
+    _cairo_path_fixed_approximate_stroke_extents (path, style, ctm, surface->is_vector, &extents->mask);
 
     return _cairo_composite_rectangles_intersect (extents, clip);
 }

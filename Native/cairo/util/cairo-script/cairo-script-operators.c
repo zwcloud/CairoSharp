@@ -32,6 +32,8 @@
  *	Chris Wilson <chris@chris-wilson.co.uk>
  */
 
+#include "config.h"
+
 /* TODO real path type */
 
 #include "cairo-script-private.h"

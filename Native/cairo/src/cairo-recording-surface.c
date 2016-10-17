@@ -393,7 +393,8 @@ cairo_recording_surface_create (cairo_content_t		 content,
     _cairo_surface_init (&surface->base,
 			 &cairo_recording_surface_backend,
 			 NULL, /* device */
-			 content);
+			 content,
+			 TRUE); /* is_vector */
 
 
     surface->unbounded = TRUE;
@@ -556,7 +557,7 @@ attach_proxy (cairo_surface_t *source,
     if (unlikely (proxy == NULL))
 	return _cairo_surface_create_in_error (CAIRO_STATUS_NO_MEMORY);
 
-    _cairo_surface_init (&proxy->base, &proxy_backend, NULL, image->content);
+    _cairo_surface_init (&proxy->base, &proxy_backend, NULL, image->content, FALSE);
 
     proxy->image = image;
     _cairo_surface_attach_snapshot (source, &proxy->base, NULL);
@@ -1165,7 +1166,7 @@ _cairo_recording_surface_copy__mask (cairo_recording_surface_t *surface,
 	goto err_command;
 
     status = _cairo_pattern_init_copy (&command->mask.base,
-				       &src->mask.source.base);
+				       &src->mask.mask.base);
     if (unlikely (status))
 	goto err_source;
 
@@ -1431,7 +1432,8 @@ _cairo_recording_surface_snapshot (void *abstract_other)
     _cairo_surface_init (&surface->base,
 			 &cairo_recording_surface_backend,
 			 NULL, /* device */
-			 other->base.content);
+			 other->base.content,
+			 other->base.is_vector);
 
     surface->extents_pixels = other->extents_pixels;
     surface->extents = other->extents;

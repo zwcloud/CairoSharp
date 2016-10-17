@@ -464,19 +464,19 @@ _cairo_pattern_fini (cairo_pattern_t *pattern)
 #if HAVE_VALGRIND
     switch (pattern->type) {
     case CAIRO_PATTERN_TYPE_SOLID:
-	VALGRIND_MAKE_MEM_NOACCESS (pattern, sizeof (cairo_solid_pattern_t));
+	VALGRIND_MAKE_MEM_UNDEFINED (pattern, sizeof (cairo_solid_pattern_t));
 	break;
     case CAIRO_PATTERN_TYPE_SURFACE:
-	VALGRIND_MAKE_MEM_NOACCESS (pattern, sizeof (cairo_surface_pattern_t));
+	VALGRIND_MAKE_MEM_UNDEFINED (pattern, sizeof (cairo_surface_pattern_t));
 	break;
     case CAIRO_PATTERN_TYPE_LINEAR:
-	VALGRIND_MAKE_MEM_NOACCESS (pattern, sizeof (cairo_linear_pattern_t));
+	VALGRIND_MAKE_MEM_UNDEFINED (pattern, sizeof (cairo_linear_pattern_t));
 	break;
     case CAIRO_PATTERN_TYPE_RADIAL:
-	VALGRIND_MAKE_MEM_NOACCESS (pattern, sizeof (cairo_radial_pattern_t));
+	VALGRIND_MAKE_MEM_UNDEFINED (pattern, sizeof (cairo_radial_pattern_t));
 	break;
     case CAIRO_PATTERN_TYPE_MESH:
-	VALGRIND_MAKE_MEM_NOACCESS (pattern, sizeof (cairo_mesh_pattern_t));
+	VALGRIND_MAKE_MEM_UNDEFINED (pattern, sizeof (cairo_mesh_pattern_t));
 	break;
     case CAIRO_PATTERN_TYPE_RASTER_SOURCE:
 	break;

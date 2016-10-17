@@ -385,7 +385,8 @@ _cairo_surface_create_observer_internal (cairo_device_t *device,
 
     _cairo_surface_init (&surface->base,
 			 &_cairo_surface_observer_backend, device,
-			 target->content);
+			 target->content,
+			 target->is_vector);
 
     status = log_init (&surface->log,
 		       ((cairo_device_observer_t *)device)->log.record != NULL);

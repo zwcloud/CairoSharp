@@ -136,7 +136,7 @@
  * %CAIRO_MIME_TYPE_JBIG2, %CAIRO_MIME_TYPE_JBIG2_GLOBAL,
  * %CAIRO_MIME_TYPE_JBIG2_GLOBAL_ID.
  *
- * JBIG2 data in PDF must be in the embedded format as descibed in
+ * JBIG2 data in PDF must be in the embedded format as described in
  * ISO/IEC 11544. Image specific JBIG2 data must be in
  * %CAIRO_MIME_TYPE_JBIG2.  Any global segments in the JBIG2 data
  * (segments with page association field set to 0) must be in
@@ -367,7 +367,8 @@ _cairo_pdf_surface_create_for_stream_internal (cairo_output_stream_t	*output,
     _cairo_surface_init (&surface->base,
 			 &cairo_pdf_surface_backend,
 			 NULL, /* device */
-			 CAIRO_CONTENT_COLOR_ALPHA);
+			 CAIRO_CONTENT_COLOR_ALPHA,
+			 TRUE); /* is_vector */
 
     surface->output = output;
     surface->width = width;
@@ -1249,20 +1250,21 @@ _get_source_surface_size (cairo_surface_t         *source,
     unsigned long mime_data_length;
 
     if (source->type == CAIRO_SURFACE_TYPE_RECORDING) {
-	if (source->backend->type == CAIRO_SURFACE_TYPE_SUBSURFACE) {
-	     cairo_surface_subsurface_t *sub = (cairo_surface_subsurface_t *) source;
+	cairo_surface_t *free_me = NULL;
 
-	     *extents = sub->extents;
-	     *width  = extents->width;
-	     *height = extents->height;
+	if (_cairo_surface_is_snapshot (source))
+	    free_me = source = _cairo_surface_snapshot_get_target (source);
+
+	if (source->backend->type == CAIRO_SURFACE_TYPE_SUBSURFACE) {
+	    cairo_surface_subsurface_t *sub = (cairo_surface_subsurface_t *) source;
+
+	    *extents = sub->extents;
+	    *width  = extents->width;
+	    *height = extents->height;
 	} else {
-	    cairo_surface_t *free_me = NULL;
 	    cairo_rectangle_int_t surf_extents;
 	    cairo_box_t box;
 	    cairo_bool_t bounded;
-
-	    if (_cairo_surface_is_snapshot (source))
-		free_me = source = _cairo_surface_snapshot_get_target (source);
 
 	    status = _cairo_recording_surface_get_ink_bbox ((cairo_recording_surface_t *)source,
 							    &box, NULL);
@@ -1272,13 +1274,13 @@ _get_source_surface_size (cairo_surface_t         *source,
 	    }
 
 	    bounded = _cairo_surface_get_extents (source, &surf_extents);
-	    cairo_surface_destroy (free_me);
 
 	    *width = surf_extents.width;
 	    *height = surf_extents.height;
 
 	    _cairo_box_round_to_rectangle (&box, extents);
 	}
+	cairo_surface_destroy (free_me);
 
 	return CAIRO_STATUS_SUCCESS;
     }
@@ -3010,9 +3012,10 @@ _cairo_pdf_surface_emit_recording_surface (cairo_pdf_surface_t        *surface,
     height = pdf_source->hash_entry->height;
     is_subsurface = FALSE;
     source = pdf_source->surface;
-    if (_cairo_surface_is_snapshot (source)) {
+    if (_cairo_surface_is_snapshot (source))
 	free_me = source = _cairo_surface_snapshot_get_target (source);
-    } else if (source->backend->type == CAIRO_SURFACE_TYPE_SUBSURFACE) {
+
+    if (source->backend->type == CAIRO_SURFACE_TYPE_SUBSURFACE) {
 	cairo_surface_subsurface_t *sub = (cairo_surface_subsurface_t *) source;
 
 	source = sub->target;
@@ -3040,7 +3043,14 @@ _cairo_pdf_surface_emit_recording_surface (cairo_pdf_surface_t        *surface,
      */
     surface->paginated_mode = CAIRO_PAGINATED_MODE_RENDER;
     _cairo_pdf_group_resources_clear (&surface->resources);
-    _get_bbox_from_extents (height, extents, &bbox);
+    if (is_subsurface) {
+	bbox.p1.x = 0;
+	bbox.p1.y = 0;
+	bbox.p2.x = extents->width;
+	bbox.p2.y = extents->height;
+    } else {
+	_get_bbox_from_extents (height, extents, &bbox);
+    }
 
     /* We can optimize away the transparency group allowing the viewer
      * to replay the group in place when all operators are OVER and the

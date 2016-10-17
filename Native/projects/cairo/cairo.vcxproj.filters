@@ -186,9 +186,6 @@
     <ClInclude Include="..\..\cairo\src\cairo-error-private.h">
       <Filter>Header Files\Private</Filter>
     </ClInclude>
-    <ClInclude Include="cairo-features.h">
-      <Filter>Header Files\Private</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\cairo\src\cairo-fixed-private.h">
       <Filter>Header Files\Private</Filter>
     </ClInclude>
@@ -447,9 +444,19 @@
     <ClInclude Include="..\..\cairo\src\win32\cairo-win32-private.h">
       <Filter>Win32\Header Files\Private</Filter>
     </ClInclude>
-    <ClInclude Include="src\cairo-features.h">
+    <ClInclude Include="..\..\cairo\src\cairo-drm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\cairo\src\cairo-line-inline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cairo\src\cairo-line-private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cairo\src\cairo-version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cairo-features.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\cairo\src\cairo.c">

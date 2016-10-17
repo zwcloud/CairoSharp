@@ -81,7 +81,7 @@ noinst_SCRIPTS = check-refs.sh
 TESTS += cairo-test-suite$(EXEEXT)
 
 cairo-test-constructors.c: Makefile $(test_sources) make-cairo-test-constructors.sh
-	(cd $(srcdir) && sh ./make-cairo-test-constructors.sh $(test_sources)) > $@
+	(cd $(srcdir) && sh ./make-cairo-test-constructors.sh $(test_sources)) > $@ || (rm $@ ; exit 1)
 
 cairo_test_suite_SOURCES = 		\
 	$(cairo_test_suite_sources)	\

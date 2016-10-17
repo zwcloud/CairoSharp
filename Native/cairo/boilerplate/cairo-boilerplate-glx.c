@@ -82,13 +82,13 @@ _cairo_boilerplate_gl_create_surface (const char		*name,
 			   GLX_BLUE_SIZE, 1,
 			   GLX_ALPHA_SIZE, 1,
 			   GLX_DOUBLEBUFFER,
-			   GLX_NONE };
+			   None };
     int rgb_attribs[] = { GLX_RGBA,
 			  GLX_RED_SIZE, 1,
 			  GLX_GREEN_SIZE, 1,
 			  GLX_BLUE_SIZE, 1,
 			  GLX_DOUBLEBUFFER,
-			  GLX_NONE };
+			  None };
     XVisualInfo *visinfo;
     GLXContext ctx;
     gl_target_closure_t *gltc;

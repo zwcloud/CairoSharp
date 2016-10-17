@@ -889,7 +889,7 @@ _cairo_win32_scaled_font_set_metrics (cairo_win32_scaled_font_t *scaled_font)
     cairo_status_t status;
     cairo_font_extents_t extents;
 
-    TEXTMETRIC metrics;
+    TEXTMETRIC metrics = {0};
     HDC hdc;
 
     hdc = _get_global_font_dc ();
@@ -902,8 +902,14 @@ _cairo_win32_scaled_font_set_metrics (cairo_win32_scaled_font_t *scaled_font)
 	status = cairo_win32_scaled_font_select_font (&scaled_font->base, hdc);
 	if (status)
 	    return status;
-	GetTextMetrics (hdc, &metrics);
+
+	if (!GetTextMetrics (hdc, &metrics)) {
+	    status = _cairo_win32_print_gdi_error ("_cairo_win32_scaled_font_set_metrics:GetTextMetrics");
+	}
+
 	cairo_win32_scaled_font_done_font (&scaled_font->base);
+	if (status)
+	    return status;
 
 	extents.ascent = metrics.tmAscent / scaled_font->logical_scale;
 	extents.descent = metrics.tmDescent / scaled_font->logical_scale;

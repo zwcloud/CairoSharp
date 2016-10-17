@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zwcloud")]
 [assembly: AssemblyProduct("Cairo")]
-[assembly: AssemblyCopyright("Copyright © Zou Wei 2015")]
+[assembly: AssemblyCopyright("Copyright © Zou Wei 2015-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -90,7 +90,8 @@ _cairo_type3_glyph_surface_create (cairo_scaled_font_t			 *scaled_font,
     _cairo_surface_init (&surface->base,
 			 &cairo_type3_glyph_surface_backend,
 			 NULL, /* device */
-			 CAIRO_CONTENT_COLOR_ALPHA);
+			 CAIRO_CONTENT_COLOR_ALPHA,
+			 TRUE); /* is_vector */
 
     surface->scaled_font = scaled_font;
     surface->stream = stream;

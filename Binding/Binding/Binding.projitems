@@ -11,10 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Antialias.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cairo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CairoDebug.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Content.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Context.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DirectFBSurface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Distance.cs" />

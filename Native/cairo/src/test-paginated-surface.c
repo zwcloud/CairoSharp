@@ -81,7 +81,8 @@ _cairo_test_paginated_surface_create (cairo_surface_t *target)
     _cairo_surface_init (&surface->base,
 			 &test_paginated_surface_backend,
 			 NULL, /* device */
-			 target->content);
+			 target->content,
+			 TRUE); /* is_vector */
 
     surface->target = cairo_surface_reference (target);
 

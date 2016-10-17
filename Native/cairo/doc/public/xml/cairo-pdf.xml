@@ -69,7 +69,7 @@ PDF files and is a multi-page vector surface backend.</para>
 <link linkend="CAIRO-MIME-TYPE-JP2:CAPS"><literal>CAIRO_MIME_TYPE_JP2</literal></link>, <link linkend="CAIRO-MIME-TYPE-UNIQUE-ID:CAPS"><literal>CAIRO_MIME_TYPE_UNIQUE_ID</literal></link>,
 <link linkend="CAIRO-MIME-TYPE-JBIG2:CAPS"><literal>CAIRO_MIME_TYPE_JBIG2</literal></link>, <link linkend="CAIRO-MIME-TYPE-JBIG2-GLOBAL:CAPS"><literal>CAIRO_MIME_TYPE_JBIG2_GLOBAL</literal></link>,
 <link linkend="CAIRO-MIME-TYPE-JBIG2-GLOBAL-ID:CAPS"><literal>CAIRO_MIME_TYPE_JBIG2_GLOBAL_ID</literal></link>.</para>
-<para>JBIG2 data in PDF must be in the embedded format as descibed in
+<para>JBIG2 data in PDF must be in the embedded format as described in
 ISO/IEC 11544. Image specific JBIG2 data must be in
 <link linkend="CAIRO-MIME-TYPE-JBIG2:CAPS"><literal>CAIRO_MIME_TYPE_JBIG2</literal></link>.  Any global segments in the JBIG2 data
 (segments with page association field set to 0) must be in

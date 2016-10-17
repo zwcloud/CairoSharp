@@ -74,6 +74,9 @@
 /* Define to 1 if you have the `ctime_r' function. */
 #undef HAVE_CTIME_R
 
+/* Enable if your compiler supports the GCC __atomic_* atomic primitives */
+#undef HAVE_CXX11_ATOMIC_PRIMITIVES
+
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 

@@ -225,7 +225,7 @@ _cairo_gstate_fini (cairo_gstate_t *gstate)
     cairo_pattern_destroy (gstate->source);
     gstate->source = NULL;
 
-    VG (VALGRIND_MAKE_MEM_NOACCESS (gstate, sizeof (cairo_gstate_t)));
+    VG (VALGRIND_MAKE_MEM_UNDEFINED (gstate, sizeof (cairo_gstate_t)));
 }
 
 /**
@@ -1228,6 +1228,7 @@ _cairo_gstate_in_stroke (cairo_gstate_t	    *gstate,
     _cairo_path_fixed_approximate_stroke_extents (path,
 						  &gstate->stroke_style,
 						  &gstate->ctm,
+						  gstate->target->is_vector,
 						  &extents);
     if (x < extents.x || x > extents.x + extents.width ||
 	y < extents.y || y > extents.y + extents.height)

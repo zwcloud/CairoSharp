@@ -814,6 +814,7 @@ _cairo_color_get_content (const cairo_color_t *color) cairo_pure;
 /* cairo-font-face.c */
 
 extern const cairo_private cairo_font_face_t _cairo_font_face_nil;
+extern const cairo_private cairo_font_face_t _cairo_font_face_nil_file_not_found;
 
 cairo_private void
 _cairo_font_face_init (cairo_font_face_t               *font_face,
@@ -1020,6 +1021,7 @@ cairo_private void
 _cairo_path_fixed_approximate_stroke_extents (const cairo_path_fixed_t *path,
 					      const cairo_stroke_style_t *style,
 					      const cairo_matrix_t *ctm,
+					      cairo_bool_t vector,
 					      cairo_rectangle_int_t *extents);
 
 cairo_private cairo_status_t
@@ -1334,7 +1336,8 @@ cairo_private void
 _cairo_surface_init (cairo_surface_t			*surface,
 		     const cairo_surface_backend_t	*backend,
 		     cairo_device_t			*device,
-		     cairo_content_t			 content);
+		     cairo_content_t			 content,
+		     cairo_bool_t                        is_vector);
 
 cairo_private void
 _cairo_surface_set_font_options (cairo_surface_t       *surface,

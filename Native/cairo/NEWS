@@ -1,4 +1,183 @@
-Release 1.14.2 (2014-03-09 Bryce Harrington <bryce@osg.samsung.com>)
+Release 1.15.2     (2015-12-10 Bryce Harrington <bryce@osg.samsung.com>)
+========================================================================
+This release is largely a rollup to include a variety of fixes that
+didn't make the cut for the stable 1.14.2 and 1.14.4 releases, as well
+as all the fixes from those releases.  Notably this includes a highly
+requested new API for Win32 surfaces.
+
+For a complete log of changes since the last release, please see:
+
+    http://cairographics.org/releases/ChangeLog.1.15.2
+
+Features
+--------
+None
+
+API Changes
+-----------
+
+  cairo_win32_surface_create_with_format
+
+    Added a cairo API to set up Win32 surfaces for HDC with alpha channels.
+
+Dependency Changes
+------------------
+None
+
+Performance Optimizations
+-------------------------
+None
+
+Bug Fixes
+---------
+* All the bug fixes from 1.14.2, 1.14.4, and 14.6
+
+* Fix xcb/xlib compilation and calls.  Make image boxes behave when SHM
+  is not available.
+
+* Fix various issues with printing and transparent images on Win32.
+
+* Fix thin lines that don't show up when printing in Inkscape due to
+  overly aggressive culling.
+  (Bug #77298)
+
+* Fix broken printing via pdf when glyph 0 is used for rendering,
+  resulting in missing spaces and letters.
+  (Bug #89082)
+
+* Fix crash for certain glyphs in opentype fonts.
+  (Bug #91902)
+
+* Fix incorrect rendering of SVG paths with more than one subpath.  If
+  more than one trap is passed in then it's guaranteed that the returned
+  traps will have their left edge to the left of their right edge, but
+  if only one trap is passed in then the function always returns without
+  doing anything.
+  (Bug #90984)
+
+* Improve rendering with Quarts to better match pixman's blending and
+  filtering behavior.
+
+
+Release 1.14.6    (2015-12-09  Bryce Harrington <bryce@osg.samsung.com>)
+========================================================================
+Simple bugfix release to fix one Windows issue.
+
+For a complete log of changes since 1.14.4, please see:
+
+    http://cairographics.org/releases/ChangeLog.1.14.6
+
+Features
+--------
+None
+
+API Changes
+-----------
+None
+
+Dependency Changes
+------------------
+None
+
+Performance Optimizations
+-------------------------
+None
+
+Bug Fixes
+---------
+* Fix failure on Windows due to reference of the function
+  cairo_win32_surface_create_with_format(), which isn't included in the
+  1.14.4 release. (Bug #92771)
+
+
+Release 1.14.4    (2015-10-28  Bryce Harrington <bryce@osg.samsung.com>)
+========================================================================
+Just in time for Halloween we see another bug-fix release for Cairo.
+This brings a few dozen straightforward bug fixes with no API changes.
+
+In addition, this includes a typical assortment of fixes to tests,
+cleanup of warnings and memory leaks, correction of misspellings,
+updates to documentation, etc.
+
+For a complete log of changes since 1.14.2, please see:
+ 
+    http://cairographics.org/releases/ChangeLog.cairo-1.14.4
+
+Features
+--------
+None
+
+API Changes
+-----------
+None
+
+Dependency Changes
+------------------
+None
+
+Performance Optimizations
+-------------------------
+None
+
+Bug Fixes
+---------
+* Avoid appending empty slots to user data arrays.  Fixes a memory
+  consumption regression since commit 9341c254a.
+
+* Return a better error (file-not-found) when setting up pango on
+  devices where the font files don't have read permissions.
+
+* Fix regression in the font size of canvas text in Inkscape when
+  compiled with the Quartz backend.  (Bug #84324)
+
+* Fix _cairo_gl_shader_bind_matrix() to maintain compatibility with
+  OpenGL ES 2.0.  Manually transpose the matrix.
+
+* Fix incorrect font descriptor conversion when the font matrix yy is
+  negative. (Bug #90538)
+
+* Fix crash when using a complex path for clip and stroke due to
+  discarding the intersection exactly at the top edge.
+  (Bug #74779)
+
+* Fix cairo_get_locale_decimal_point() on Android
+
+* Fix compilation problem on AIX due to conflicting usage of symbol
+  'jmpbuf'.  (Bug #89339)
+
+* Fix broken rendering with XCB due to snapshotting of uploaded part of
+  surfaces.  (Bug #67505)
+
+* Fix loss of alpha when copying a mask for a cairo recording surface,
+  resulting in a double copy.  (Bugs #73038, #73901)
+
+* Fix incorrect recording of certain paths with script surfaces.
+  (Bug #91054)
+
+* Fix typo in definition of MAYBE_WARN in configure script.
+  (Bug #89750)
+
+* Fix use of filename variable after it's been freed.
+  (Bug #91206)
+
+* Fix out of bounds access when printing pattern.
+  (Bug #91266)
+
+* Fix incorrect size calculation in glyph cache unlocking for Cairo GL
+  compositor.
+  (Bug #91321)
+
+* Fix memory leak in _cairo_gl_pattern_texture_setup()
+  (Bug #91537)
+
+* Fix transparent images in win32-print.
+  (Bug #91835)
+
+* Fix _put_shm_image_boxes and _put_image_boxes when no SHM available
+  with XCB.
+
+
+Release 1.14.2 (2015-03-09 Bryce Harrington <bryce@osg.samsung.com>)
 ====================================================================
 This release provides collected bug fixes, along with one feature
 enhancement for the xcb backend, and a small performance improvement for
@@ -72,6 +251,7 @@ Bug Fixes
  * Fix several build issues on AIX
    (fdo bugs #89338, #89340, #89356, #89354)
  * Fix various documentation warnings and errors
+
 
 Release 1.14.0 (2014-10-13 Bryce Harrington <bryce@osg.samsung.com>)
 ====================================================================
@@ -520,7 +700,7 @@ Release 1.12.4 (2012-10-05 Chris Wilson <chris@chris-wilson.co.uk>)
 ===================================================================
 More bugs, and more importantly, more fixes. On the cairo-gl side, we
 have refinements to the MSAA compositor which enables hardware
-acceleration of comparitively low-quality antialiasing - which is useful
+acceleration of comparatively low-quality antialiasing - which is useful
 in animations and on very high density screens. For cairo-xlib, we have
 finally enabled SHM transport for image transfers to and from the X
 server. A long standing required feature, SHM transport offers a notable
@@ -574,7 +754,7 @@ Bug fixes
  and then back again to user coordinates (cairo_copy_path,
  cairo_append_path)
  https://bugs.freedesktop.org/show_bug.cgi?id=54732
- 
+
  Fix extents computations for a degenerate path consisting only of a
  move-to
  https://bugs.freedesktop.org/show_bug.cgi?id=54549
@@ -582,7 +762,7 @@ Bug fixes
  Prevent crashing on a degenerate project edge after polygon
  intersection
  https://bugs.freedesktop.org/show_bug.cgi?id=54822
- 
+
 
 
 Release 1.12.2 (2012-04-29 Chris Wilson <chris@chris-wilson.co.uk>)
@@ -602,7 +782,7 @@ Bug fixes
 
  Allow applications to create 0x0 xlib surfaces, such as used by LibreOffice.
  https://bugs.freedesktop.org/show_bug.cgi?id=49118
- 
+
  Trim composite extents for SOURCE/CLEAR operators to the mask.
 
  Use fallback fonts in PDF for unhandled computed glyph widths
@@ -916,7 +1096,7 @@ drawing commands made by an application. This can be used to inspecting
 applications to understand issues and as a means for profiling
 real-world usage of cairo.
 
-The traces generated by cairo-trace have been collected in 
+The traces generated by cairo-trace have been collected in
 
   git://git.cairographics.org/git/cairo-traces
 
@@ -1132,7 +1312,7 @@ API additions
     The Cairo region API was actually added a couple of snapshots ago, but we
     forgot to mention it at the time. A simple API for the handling of
     rectangular pixel-aligned regions by Soeren Sandmann.
-  
+
 
 Backend-specific improvements
 -----------------------------
@@ -1337,10 +1517,10 @@ New experimental backends:
    QT
 
    OpenVG - The initial work was done by Øyvind Kolås, and made ready for
-            inclusion by Pierre Tardy.
+	    inclusion by Pierre Tardy.
 
    OpenGL - An advanced OpenGL compositor. The aim is to write a integrate
-            directed rendering using OpenGL at a high-level into Cairo. In
+	    directed rendering using OpenGL at a high-level into Cairo. In
 	    contrast to the previous attempt using Glitz which tried to
 	    implement the RENDER protocol on top of OpenGL, using the
 	    high-level interface should permit greater flexibility and
@@ -1457,7 +1637,7 @@ Optimisations:
   image in the final output. This is unlike previous versions of cairo
   which would generate very large PDF files with multiple copies of
   the same image. Adrian says that the PDF is not quite working as
-  well as it should yet, so we hope for futher improvements before
+  well as it should yet, so we hope for further improvements before
   cairo 1.10.
 
 Bug fixes:
@@ -2209,7 +2389,7 @@ cairo_font_options_set_lcd_filter
 cairo_font_options_get_lcd_filter
 
   These add the possibility to choose between various available LCD subpixel
-  filters.  The available filter values are modeled after what FreeType
+  filters.  The available filter values are modelled after what FreeType
   provides.
 
 
@@ -2779,7 +2959,7 @@ Rename ATSUI font backend to Quartz font backend. This affects the
 following usage:
 
 	--enable-atsui		-> --enable-quartz-font
-	CAIRO_HAS_ATSUI_FONT 	-> CAIRO_HAS_QUARTZ_FONT
+	CAIRO_HAS_ATSUI_FONT	-> CAIRO_HAS_QUARTZ_FONT
 	CAIRO_FONT_TYPE_ATSUI	-> CAIRO_FONT_TYPE_QUARTZ
 
 	cairo_atsui_font_face_create_for_atsu_font_id ->
@@ -3592,8 +3772,8 @@ complain that some cleanup work is already done, but there you have
 it.) This fixes the bug causing OpenOffice.org to crash as described
 here:
 
-        XError on right click menus in OOo.
-        https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=243811
+	XError on right click menus in OOo.
+	https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=243811
 
 Use IncludeInferiors when using xlib surface as a source (Ryan Lortie)
 ----------------------------------------------------------------------
@@ -3773,16 +3953,16 @@ notes on using it:
 
     To build, do:
 
-        make malloc-stats.so
+	make malloc-stats.so
 
     inside util/, and to use, run:
 
-        LD_PRELOAD=malloc-stats.so some-program
+	LD_PRELOAD=malloc-stats.so some-program
 
     For binaries managed by libtool, eg, cairo-perf, do:
 
-        ../libtool --mode=execute /bin/true ./cairo-perf
-        LD_PRELOAD="../util/malloc-stats.so" .libs/lt-cairo-perf
+	../libtool --mode=execute /bin/true ./cairo-perf
+	LD_PRELOAD="../util/malloc-stats.so" .libs/lt-cairo-perf
 
 Finally, the cairo-perf-diff-files utility was enhanced to allow for
 generating performance reports from several runs of the same backend
@@ -5625,9 +5805,9 @@ support this use case, we have added 4 new function calls that are
 specific to the PostScript backend:
 
 	cairo_ps_surface_set_size
-        cairo_ps_surface_dsc_comment
-        cairo_ps_surface_dsc_begin_setup
-        cairo_ps_surface_dsc_begin_page_setup
+	cairo_ps_surface_dsc_comment
+	cairo_ps_surface_dsc_begin_setup
+	cairo_ps_surface_dsc_begin_page_setup
 
 These functions allow variation of the page size/orientation from one
 page to the next in the PostScript output. They also allow the toolkit
@@ -5834,7 +6014,7 @@ General bug fixes
 	  (Richard Stellingwerff, Owen Taylor)
 
  * 4231
- * 4298 - Accomodate gentoo and Mandriva versions in X server vendor string check
+ * 4298 - Accommodate gentoo and Mandriva versions in X server vendor string check
 	  (Billy Biggs, Frederic Crozat, Owen Taylor)
 
 win32-specific fixes
@@ -6913,23 +7093,23 @@ Major API changes
 	cc `pkg-config --cflags --libs cairo` -o foo foo.c
 
    IMPORTANT: Users with old versions of cairo installed will need to
-              manually remove cairo.h and cairo-features.h from the
-              system include directories in order to prevent the old
-              headers from being used in preference to the new ones.
+	      manually remove cairo.h and cairo-features.h from the
+	      system include directories in order to prevent the old
+	      headers from being used in preference to the new ones.
 
 2) The backend-specific portions of the old monolithic cairo.h have
    been split out into individual public header files. The new files
    are:
 
 	cairo-atsui.h
-        cairo-ft.h
-        cairo-glitz.h
-        cairo-pdf.h
-        cairo-png.h
-        cairo-ps.h
+	cairo-ft.h
+	cairo-glitz.h
+	cairo-pdf.h
+	cairo-png.h
+	cairo-ps.h
 	cairo-quartz.h
-        cairo-xcb.h
-        cairo-xlib.h
+	cairo-xcb.h
+	cairo-xlib.h
 
    Applications will need to be modified to explicitly include the new
    header files where appropriate.
@@ -7293,10 +7473,10 @@ Better text support
 This snapshot provides much better text support by implementing the
 following four functions:
 
-        cairo_text_extents
-        cairo_glyph_extents
-        cairo_text_path
-        cairo_glyph_path
+	cairo_text_extents
+	cairo_glyph_extents
+	cairo_text_path
+	cairo_glyph_path
 
 The text/glyph_extents functions can be used to determine the bounding
 box (and advance) for text as if drawn by show_text/glyphs.

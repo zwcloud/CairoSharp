@@ -435,7 +435,7 @@ union _csi_union_object {
 };
 
 struct _csi_scanner {
-    jmp_buf jmpbuf;
+    jmp_buf jump_buffer;
     int depth;
 
     int bind;

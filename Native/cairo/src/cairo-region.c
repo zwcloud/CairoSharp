@@ -175,7 +175,7 @@ _cairo_region_fini (cairo_region_t *region)
 {
     assert (! CAIRO_REFERENCE_COUNT_HAS_REFERENCE (&region->ref_count));
     pixman_region32_fini (&region->rgn);
-    VG (VALGRIND_MAKE_MEM_NOACCESS (region, sizeof (cairo_region_t)));
+    VG (VALGRIND_MAKE_MEM_UNDEFINED (region, sizeof (cairo_region_t)));
 }
 
 /**

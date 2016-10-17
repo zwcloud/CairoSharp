@@ -291,8 +291,8 @@ am__cairo_test_suite_SOURCES_DIST = buffer-diff.c cairo-test.c \
 	surface-pattern-scale-down-extend.c surface-pattern-scale-up.c \
 	text-antialias.c text-antialias-subpixel.c text-cache-crash.c \
 	text-glyph-range.c text-pattern.c text-rotate.c \
-	text-transform.c text-zero-len.c tighten-bounds.c tiger.c \
-	toy-font-face.c transforms.c translate-show-surface.c \
+	text-transform.c text-zero-len.c thin-lines.c tighten-bounds.c \
+	tiger.c toy-font-face.c transforms.c translate-show-surface.c \
 	trap-clip.c twin.c twin-antialias-gray.c \
 	twin-antialias-mixed.c twin-antialias-none.c \
 	twin-antialias-subpixel.c unaligned-box.c \
@@ -720,6 +720,7 @@ am__objects_29 = cairo_test_suite-a1-bug.$(OBJEXT) \
 	cairo_test_suite-text-rotate.$(OBJEXT) \
 	cairo_test_suite-text-transform.$(OBJEXT) \
 	cairo_test_suite-text-zero-len.$(OBJEXT) \
+	cairo_test_suite-thin-lines.$(OBJEXT) \
 	cairo_test_suite-tighten-bounds.$(OBJEXT) \
 	cairo_test_suite-tiger.$(OBJEXT) \
 	cairo_test_suite-toy-font-face.$(OBJEXT) \
@@ -1472,8 +1473,8 @@ test_sources = a1-bug.c a1-clip.c a1-fill.c a1-image-sample.c \
 	surface-pattern-scale-down-extend.c surface-pattern-scale-up.c \
 	text-antialias.c text-antialias-subpixel.c text-cache-crash.c \
 	text-glyph-range.c text-pattern.c text-rotate.c \
-	text-transform.c text-zero-len.c tighten-bounds.c tiger.c \
-	toy-font-face.c transforms.c translate-show-surface.c \
+	text-transform.c text-zero-len.c thin-lines.c tighten-bounds.c \
+	tiger.c toy-font-face.c transforms.c translate-show-surface.c \
 	trap-clip.c twin.c twin-antialias-gray.c \
 	twin-antialias-mixed.c twin-antialias-none.c \
 	twin-antialias-subpixel.c unaligned-box.c \
@@ -2180,6 +2181,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-text-rotate.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-text-transform.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-text-zero-len.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-thin-lines.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-tiger.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-tighten-bounds.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-toy-font-face.Po@am__quote@
@@ -7240,6 +7242,20 @@ cairo_test_suite-text-zero-len.obj: text-zero-len.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-text-zero-len.obj `if test -f 'text-zero-len.c'; then $(CYGPATH_W) 'text-zero-len.c'; else $(CYGPATH_W) '$(srcdir)/text-zero-len.c'; fi`
 
+cairo_test_suite-thin-lines.o: thin-lines.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-thin-lines.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-thin-lines.Tpo -c -o cairo_test_suite-thin-lines.o `test -f 'thin-lines.c' || echo '$(srcdir)/'`thin-lines.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-thin-lines.Tpo $(DEPDIR)/cairo_test_suite-thin-lines.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='thin-lines.c' object='cairo_test_suite-thin-lines.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-thin-lines.o `test -f 'thin-lines.c' || echo '$(srcdir)/'`thin-lines.c
+
+cairo_test_suite-thin-lines.obj: thin-lines.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-thin-lines.obj -MD -MP -MF $(DEPDIR)/cairo_test_suite-thin-lines.Tpo -c -o cairo_test_suite-thin-lines.obj `if test -f 'thin-lines.c'; then $(CYGPATH_W) 'thin-lines.c'; else $(CYGPATH_W) '$(srcdir)/thin-lines.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-thin-lines.Tpo $(DEPDIR)/cairo_test_suite-thin-lines.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='thin-lines.c' object='cairo_test_suite-thin-lines.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-thin-lines.obj `if test -f 'thin-lines.c'; then $(CYGPATH_W) 'thin-lines.c'; else $(CYGPATH_W) '$(srcdir)/thin-lines.c'; fi`
+
 cairo_test_suite-tighten-bounds.o: tighten-bounds.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-tighten-bounds.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-tighten-bounds.Tpo -c -o cairo_test_suite-tighten-bounds.o `test -f 'tighten-bounds.c' || echo '$(srcdir)/'`tighten-bounds.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-tighten-bounds.Tpo $(DEPDIR)/cairo_test_suite-tighten-bounds.Po
@@ -8627,7 +8643,7 @@ uninstall-am:
 
 
 cairo-test-constructors.c: Makefile $(test_sources) make-cairo-test-constructors.sh
-	(cd $(srcdir) && sh ./make-cairo-test-constructors.sh $(test_sources)) > $@
+	(cd $(srcdir) && sh ./make-cairo-test-constructors.sh $(test_sources)) > $@ || (rm $@ ; exit 1)
 
 # A target to summarise the failures
 check-summary:

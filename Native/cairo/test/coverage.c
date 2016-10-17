@@ -203,7 +203,7 @@ intersecting_triangles (cairo_t *cr, int width, int height)
 
 #if GENERATE_REFERENCE
     for (x = 0; x < WIDTH; x++) {
-	cairo_set_source_rgba (cr, 1, 1, 1, x * 0.75 / WIDTH);
+	cairo_set_source_rgba (cr, 1, 1, 1, x * x * 0.75 / (WIDTH * WIDTH));
 	cairo_rectangle (cr, x, 0, 1, HEIGHT);
 	cairo_fill (cr);
     }

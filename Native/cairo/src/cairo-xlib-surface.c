@@ -1796,7 +1796,8 @@ found:
     _cairo_surface_init (&surface->base,
 			 &cairo_xlib_surface_backend,
 			 screen->device,
-			 _xrender_format_to_content (xrender_format));
+			 _xrender_format_to_content (xrender_format),
+			 FALSE); /* is_vector */
 
     surface->screen = screen;
     surface->compositor = display->compositor;

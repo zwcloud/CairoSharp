@@ -483,7 +483,8 @@ _cairo_svg_surface_create_for_document (cairo_svg_document_t	*document,
     _cairo_surface_init (&surface->base,
 			 &cairo_svg_surface_backend,
 			 NULL, /* device */
-			 content);
+			 content,
+			 TRUE); /* is_vector */
 
     surface->width = width;
     surface->height = height;

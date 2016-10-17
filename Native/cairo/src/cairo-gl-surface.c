@@ -389,7 +389,8 @@ _cairo_gl_surface_init (cairo_device_t *device,
     _cairo_surface_init (&surface->base,
 			 &_cairo_gl_surface_backend,
 			 device,
-			 content);
+			 content,
+			 FALSE); /* is_vector */
 
     surface->width = width;
     surface->height = height;

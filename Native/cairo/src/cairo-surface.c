@@ -113,7 +113,8 @@ const cairo_surface_t name = {					\
     FALSE,				/* finished */		\
     TRUE,				/* is_clear */		\
     FALSE,				/* has_font_options */	\
-    FALSE,				/* owns_device */	\
+    FALSE,				/* owns_device */ \
+    FALSE,                              /* is_vector */ \
     { 0, 0, 0, NULL, },			/* user_data */		\
     { 0, 0, 0, NULL, },			/* mime_data */         \
     { 1.0, 0.0, 0.0, 1.0, 0.0, 0.0 },   /* device_transform */	\
@@ -400,7 +401,8 @@ void
 _cairo_surface_init (cairo_surface_t			*surface,
 		     const cairo_surface_backend_t	*backend,
 		     cairo_device_t			*device,
-		     cairo_content_t			 content)
+		     cairo_content_t			 content,
+		     cairo_bool_t                        is_vector)
 {
     CAIRO_MUTEX_INITIALIZE ();
 
@@ -408,6 +410,7 @@ _cairo_surface_init (cairo_surface_t			*surface,
     surface->device = cairo_device_reference (device);
     surface->content = content;
     surface->type = backend->type;
+    surface->is_vector = is_vector;
 
     CAIRO_REFERENCE_COUNT_INIT (&surface->ref_count, 1);
     surface->status = CAIRO_STATUS_SUCCESS;
@@ -1554,12 +1557,12 @@ _cairo_surface_flush (cairo_surface_t *surface, unsigned flags)
  * cairo_surface_flush:
  * @surface: a #cairo_surface_t
  *
- * Do any pending drawing for the surface and also restore any
- * temporary modifications cairo has made to the surface's
- * state. This function must be called before switching from
- * drawing on the surface with cairo to drawing on it directly
- * with native APIs. If the surface doesn't support direct access,
- * then this function does nothing.
+ * Do any pending drawing for the surface and also restore any temporary
+ * modifications cairo has made to the surface's state. This function
+ * must be called before switching from drawing on the surface with
+ * cairo to drawing on it directly with native APIs, or accessing its
+ * memory outside of Cairo. If the surface doesn't support direct
+ * access, then this function does nothing.
  *
  * Since: 1.0
  **/

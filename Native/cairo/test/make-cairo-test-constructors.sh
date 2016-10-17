@@ -1,8 +1,10 @@
 #! /bin/sh
 
+set -e
+
 if test $# -eq 0; then
     echo "$0: no input files." >&2
-    exit 0
+    exit 1
 fi
 
 cat <<HERE

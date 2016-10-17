@@ -30,7 +30,7 @@
 
 /* History:
  *
- * 2006-06-13 Paul Giblock reports a "Stange alpha channel problem" on
+ * 2006-06-13 Paul Giblock reports a "Strange alpha channel problem" on
  * the cairo mailing list.
  *
  * 2006-06-13 Carl Worth writes this test in an attempt to reproduce

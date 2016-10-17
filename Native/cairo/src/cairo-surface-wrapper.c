@@ -119,14 +119,14 @@ _cairo_surface_wrapper_get_clip (cairo_surface_wrapper_t *wrapper,
 				 const cairo_clip_t *clip)
 {
     cairo_clip_t *copy;
+    cairo_matrix_t m;
 
     copy = _cairo_clip_copy (clip);
     if (wrapper->has_extents) {
 	copy = _cairo_clip_intersect_rectangle (copy, &wrapper->extents);
     }
-    copy = _cairo_clip_transform (copy, &wrapper->transform);
-    if (! _cairo_matrix_is_identity (&wrapper->target->device_transform))
-	copy = _cairo_clip_transform (copy, &wrapper->target->device_transform);
+    _cairo_surface_wrapper_get_transform (wrapper, &m);
+    copy = _cairo_clip_transform (copy, &m);
     if (wrapper->clip)
 	copy = _cairo_clip_intersect_clip (copy, wrapper->clip);
 

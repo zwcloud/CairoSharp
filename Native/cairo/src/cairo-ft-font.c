@@ -216,6 +216,17 @@ _cairo_ft_resolve_pattern (FcPattern		      *pattern,
 
 #endif
 
+static cairo_status_t
+_ft_to_cairo_error (FT_Error error)
+{
+  /* Currently we don't get many (any?) useful statuses here.
+   * Populate as needed. */
+  switch (error)
+  {
+  default:		return CAIRO_STATUS_NO_MEMORY;
+  }
+}
+
 /*
  * We maintain a hash table to map file/id => #cairo_ft_unscaled_font_t.
  * The hash table itself isn't limited in size. However, we limit the
@@ -645,6 +656,7 @@ _cairo_ft_unscaled_font_lock_face (cairo_ft_unscaled_font_t *unscaled)
 {
     cairo_ft_unscaled_font_map_t *font_map;
     FT_Face face = NULL;
+    FT_Error error;
 
     CAIRO_MUTEX_LOCK (unscaled->mutex);
     unscaled->lock_count++;
@@ -674,14 +686,15 @@ _cairo_ft_unscaled_font_lock_face (cairo_ft_unscaled_font_t *unscaled)
     }
     _cairo_ft_unscaled_font_map_unlock ();
 
-    if (FT_New_Face (font_map->ft_library,
-		     unscaled->filename,
-		     unscaled->id,
-		     &face) != FT_Err_Ok)
+    error = FT_New_Face (font_map->ft_library,
+			 unscaled->filename,
+			 unscaled->id,
+			 &face);
+    if (error)
     {
 	unscaled->lock_count--;
 	CAIRO_MUTEX_UNLOCK (unscaled->mutex);
-	_cairo_error_throw (CAIRO_STATUS_NO_MEMORY);
+	_cairo_error_throw (_ft_to_cairo_error (error));
 	return NULL;
     }
 
@@ -835,7 +848,7 @@ _cairo_ft_unscaled_font_set_scale (cairo_ft_unscaled_font_t *unscaled,
 			      sf.y_scale * 64.0 + .5,
 			      0, 0);
     if (error)
-      return _cairo_error (CAIRO_STATUS_NO_MEMORY);
+      return _cairo_error (_ft_to_cairo_error (error));
 
     return CAIRO_STATUS_SUCCESS;
 }
@@ -1240,6 +1253,7 @@ _get_bitmap_surface (FT_Bitmap		     *bitmap,
 
 	    FT_Bitmap  tmp;
 	    FT_Int     align;
+	    FT_Error   error;
 
 	    format = CAIRO_FORMAT_A8;
 
@@ -1247,8 +1261,9 @@ _get_bitmap_surface (FT_Bitmap		     *bitmap,
 
 	    FT_Bitmap_New( &tmp );
 
-	    if (FT_Bitmap_Convert( library, bitmap, &tmp, align ))
-		return _cairo_error (CAIRO_STATUS_NO_MEMORY);
+	    error = FT_Bitmap_Convert( library, bitmap, &tmp, align );
+	    if (error)
+		return _cairo_error (_ft_to_cairo_error (error));
 
 	    FT_Bitmap_Done( library, bitmap );
 	    *bitmap = tmp;
@@ -1277,7 +1292,7 @@ _get_bitmap_surface (FT_Bitmap		     *bitmap,
     default:
 	if (own_buffer)
 	    free (bitmap->buffer);
-	return _cairo_error (CAIRO_STATUS_NO_MEMORY);
+	return _cairo_error (CAIRO_STATUS_INVALID_FORMAT);
     }
 
     /* XXX */
@@ -1328,7 +1343,7 @@ _render_glyph_outline (FT_Face                    face,
     FT_BBox cbox;
     unsigned int width, height;
     cairo_status_t status;
-    FT_Error fterror;
+    FT_Error error;
     FT_Library library = glyphslot->library;
     FT_Render_Mode render_mode = FT_RENDER_MODE_NORMAL;
 
@@ -1441,20 +1456,20 @@ _render_glyph_outline (FT_Face                    face,
 	FT_Library_SetLcdFilter (library, lcd_filter);
 #endif
 
-	fterror = FT_Render_Glyph (face->glyph, render_mode);
+	error = FT_Render_Glyph (face->glyph, render_mode);
 
 #if HAVE_FT_LIBRARY_SETLCDFILTER
 	FT_Library_SetLcdFilter (library, FT_LCD_FILTER_NONE);
 #endif
 
-	if (fterror != 0)
-		return _cairo_error (CAIRO_STATUS_NO_MEMORY);
+	if (error)
+	    return _cairo_error (_ft_to_cairo_error (error));
 
 	bitmap_size = _compute_xrender_bitmap_size (&bitmap,
 						    face->glyph,
 						    render_mode);
 	if (bitmap_size < 0)
-	    return _cairo_error (CAIRO_STATUS_NO_MEMORY);
+	    return _cairo_error (CAIRO_STATUS_INVALID_FORMAT);
 
 	bitmap.buffer = calloc (1, bitmap_size);
 	if (bitmap.buffer == NULL)
@@ -3284,8 +3299,12 @@ cairo_ft_font_face_create_for_pattern (FcPattern *pattern)
     cairo_status_t status;
 
     status = _cairo_ft_unscaled_font_create_for_pattern (pattern, &unscaled);
-    if (unlikely (status))
+    if (unlikely (status)) {
+      if (status == CAIRO_STATUS_FILE_NOT_FOUND)
+	return (cairo_font_face_t *) &_cairo_font_face_nil_file_not_found;
+      else
 	return (cairo_font_face_t *) &_cairo_font_face_nil;
+    }
     if (unlikely (unscaled == NULL)) {
 	/* Store the pattern.  We will resolve it and create unscaled
 	 * font when creating scaled fonts */

@@ -107,7 +107,8 @@ _cairo_paginated_surface_create (cairo_surface_t				*target,
     _cairo_surface_init (&surface->base,
 			 &cairo_paginated_surface_backend,
 			 NULL, /* device */
-			 content);
+			 content,
+			 target->is_vector);
 
     /* Override surface->base.type with target's type so we don't leak
      * evidence of the paginated wrapper out to the user. */

@@ -582,6 +582,7 @@ _prevent_overlapping_strokes (cairo_gl_context_t 		*ctx,
 	scissor_was_enabled = glIsEnabled (GL_SCISSOR_TEST);
 	if (! scissor_was_enabled) {
 	    _cairo_path_fixed_approximate_stroke_extents (path, style, ctm,
+							  FALSE, /* is_vector */
 							  &stroke_extents);
 	    _cairo_gl_scissor_to_rectangle (setup->dst, &stroke_extents);
 	}
