@@ -78,14 +78,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)d</TargetName>
     <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)\Native\Output\lib\</OutDir>
+    <OutDir>$(SolutionDir)Native\Output\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\Native\Output\lib\</OutDir>
     <IntDir>$(TEMP)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)\Native\Output\lib\</OutDir>
+    <OutDir>$(SolutionDir)Native\Output\lib\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
