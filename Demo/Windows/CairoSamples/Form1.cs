@@ -144,7 +144,7 @@ namespace CairoSamples
 
                 cr.Scale(256.0 / w, 256.0 / h);
 
-                cr.SetSourceSurface(image, 0, 0);
+                cr.SetSource(image, 0, 0);
                 cr.Paint();
 
                 image.Dispose();
@@ -378,7 +378,7 @@ namespace CairoSamples
                 cr.Scale(256.0 / w, 256.0 / h);
                 cr.Translate(-0.5 * w, -0.5 * h);
 
-                cr.SetSourceSurface(image, 0, 0);
+                cr.SetSource(image, 0, 0);
                 cr.Paint();
                 image.Dispose();
             };
