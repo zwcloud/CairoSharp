@@ -1,50 +1,13 @@
 # CairoSharp
 A C# wrapper of cairo. All its dependcies included.
 
-Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Win32, image buffers.
+Cairo is a 2D graphics library with support for multiple output devices.
 
 # Platforms
-Cairo only works on desktop platforms, and so does CarioSharp.
 
-* Desktop
-  - Windows
-  
-    Platform                        | Supported 
-    --------------------------------|-----------
-    Console Application             | Yes       
-    Winform                         | Yes       
-    WPF                             | Yes       
-    Universal Windows Platform (UWP)| No        
+[A former release](https://github.com/zwcloud/CairoSharp/releases/tag/dotnet_4.5) works on Windows desktop (Winform/WPF/Console Application) on .NET 4.5 and linux (tested on Ubuntu 12.04) on mono 4.2. CairoSharp was ported to .NET Core (.NET Standard 1.6) after that release.
 
-  - Linux
-  
-    Yes (tested for an older version).
-
-  - macOS
-  
-    Unknown, not tested. The former Mono.Cairo should work on macOS, so it is very likely that CairoSharp also works.
-  
-* Mobile
-  - Windows
-  
-    Platform                        | Supported 
-    --------------------------------|-----------
-    Windows Phone 8.1               | No         
-    Universal Windows Platform (UWP)| No        
-
-  - iOS
-  
-    Unknown, not tested.
-  
-  - Android
-  
-    Unknown, not tested.
-
-  __Note__
-  Cairo won't compile on UWP or Windows Phone platforms. Because cairo(native) and its dependencies use some c runtime functions and Win32 APIs that are incompatible with the Windows Runtime apps, such as [GradientFill](https://msdn.microsoft.com/en-us/library/dd144957.aspx), which is desktop apps only.
-
-  __Note__
-  The cairo-gl backend won't compile on all windows platforms: [`wglGetProcAddress` issue (2016 October)](https://lists.cairographics.org/archives/cairo/2016-October/027774.html), [`wglGetProcAddress` issue (2013 April)](https://lists.cairographics.org/archives/cairo/2013-April/024201.html)
+Only Windows destop is supported now. Maybe CairoSharp works on linux and macOS, but that hasn't been tested yet.
 
 # [Documentation](https://github.com/zwcloud/CairoSharp/wiki)
 
@@ -54,6 +17,11 @@ Project Cairo(not the native cairo lib but the C# one) is licensed under the LGP
 
     CairoSharp, A C# wrapper of cairo which is a 2D vector rendering library
     Copyright (C) 2015-2016  Zou Wei, zwcloud@yeah.net, http://zwcloud.net
+    Copyright (C) 2007-2015  Xamarin, Inc.
+    Copyright (C) 2006 Alp Toker
+    Copyright (C) 2005 John Luke
+    Copyright (C) 2004 Novell, Inc (http://www.novell.com)
+    Copyright (C) Ximian, Inc. 2003
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -68,13 +36,7 @@ Project Cairo(not the native cairo lib but the C# one) is licensed under the LGP
     You should have received a copy of the GNU Lesser General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-The C# code files in Cairo project was taken from Mono/[GTK#](https://github.com/mono/gtk-sharp/tree/master/cairo)(Version 3.0.0), licensed under the GNU LGPL. Copying info:
-    
-    Copyright (C) 2007-2015  Xamarin, Inc.
-    Copyright (C) 2006 Alp Toker
-    Copyright (C) 2005 John Luke
-    Copyright (C) 2004 Novell, Inc (http://www.novell.com)
-    Copyright (C) Ximian, Inc. 2003
+The C# code files in Cairo project was taken from Mono/[GTK#](https://github.com/mono/gtk-sharp/tree/master/cairo)(Version 3.0.0), licensed under the GNU LGPL. And because of that, CairoSharp need to be LGPL also.
 
 ## Native libraries
 
