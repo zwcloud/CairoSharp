@@ -342,11 +342,17 @@ namespace Cairo {
 			NativeMethods.cairo_line_to (handle, x, y);
 		}
 
-		public void CurveTo (PointD p1, PointD p2, PointD p3)
+        /// <summary>
+        /// Adds a cubic B¨¦zier spline to the path
+        /// </summary>
+        public void CurveTo (PointD p1, PointD p2, PointD p3)
 		{
 			CurveTo (p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
 		}
 
+        /// <summary>
+        /// Adds a cubic B¨¦zier spline to the path
+        /// </summary>
 		public void CurveTo (double x1, double y1, double x2, double y2, double x3, double y3)
 		{
 			CheckDisposed ();
