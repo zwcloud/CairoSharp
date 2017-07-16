@@ -28,6 +28,9 @@
 
 #include <cairo-win32.h>
 
+#include <errno.h>
+#include <limits.h>
+
 static const cairo_user_data_key_t win32_closure_key;
 
 typedef struct _win32_target_closure {

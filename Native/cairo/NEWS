@@ -1,3 +1,190 @@
+Release 1.15.6     (2017-06-13 Bryce Harrington <bryce@osg.samsung.com>)
+========================================================================
+This new snapshot incorporates changes over the past half-year since the
+1.15.4 snapshot, including all the fixes from the 1.14 release series.
+
+The PDF code continues to be enhanced, and we're restored MacOSX 10.4
+support.  Font-related fixes and improved error handling for X round out
+the release.
+
+For a complete log of changes, please see
+
+    http://cairographics.org/releases/ChangeLog.1.15.6
+
+
+Features and Enhancements
+-------------------------
+* Detect if variable fonts have	synthesized bold/italic	or non-default
+  variants, and	     use a fallback font where needed.
+
+* Restore MacOSX 10.4 support.	    Cairo had dropped 10.4 support when
+  moving to the CoreText API.  Now we automatically detect which API to
+  use via dynamic linking, so can resume supporting this older version
+  of MacOSX.
+
+
+API Changes
+-----------
+None
+
+Dependency Changes
+------------------
+None
+
+Performance Optimizations
+-------------------------
+None
+
+Bug Fixes
+---------
+* Fix error reporting in the xcb backend if fallback fails.  Instead of
+  returning NULL when the X11 server can't do some operation, return a
+  surface in an error state.
+
+* Call XSync in the xlib backend before setting the error handler to
+  ignore errors for certain requests, to make sure all pending errors
+  are handled first.
+
+* Fix text-glyph-range for quartz-font.	 Use 0xFFFF instead of 0 for
+  invalid index	       tracking.
+
+* Fix handling of Supplementary Multilingual Plane (SMP) Unicode
+  characters in quartz-font.
+
+* Fix various issues in the drm backend	including updating API usage and
+  general code cleanup.
+
+* Clarify documentation	regarding device scale inheritance and the units
+  used in cairo_surface_create_similar_image.
+  Bug #99094.
+
+
+Release 1.15.4     (2016-12-9 Bryce Harrington <bryce@osg.samsung.com>)
+=======================================================================
+This new snapshot incorporates changes over the past year since the
+1.15.2 snapshot, including all the fixes from the 1.14 release series.
+
+Of particular note in this snapshot is a wealth of work by Adrian
+Johnson to enhance PDF support, as well as numerous bug fixes provided
+by him and other contributors.
+
+For a complete log of changes since the last release, please see:
+
+    http://cairographics.org/releases/ChangeLog.1.15.4
+
+Features
+--------
+* The PDF backend has gained support for a range of widely used
+  features, including thumbnails, page labels, metadata, document
+  outlines, structured text, hyperlinks, and tags.  Tags permit adding
+  logical info such as headings, tables, figures, etc. that facilitates
+  indexing, accessibility, text reflow, searching, and extraction of the
+  tagged items to other software.  For details on this new PDF
+  functionality, see:
+
+    https://lists.cairographics.org/archives/cairo/2016-June/027427.html
+
+
+API Changes
+-----------
+
+  cairo_win32_surface_create_with_format
+
+    Added a cairo API to set up Win32 surfaces for HDC with alpha channels.
+
+  cairo_pdf_surface_add_outline
+  cairo_pdf_surface_set_metadata
+  cairo_pdf_surface_set_page_label
+  cairo_pdf_surface_set_thumbnail_size
+  cairo_tag_begin
+  cairo_tag_end
+  CAIRO_STATUS_TAG_ERROR
+
+    New API for added PDF functionality (see above), and new error
+    status item for problems relating to PDF tagging.
+
+  CAIRO_STATUS_WIN32_GDI_ERROR
+  CAIRO_STATUS_FREETYPE_ERROR
+  CAIRO_STATUS_PNG_ERROR
+
+    New error status items for handling of GDI, libfreetype, and libpng
+    errors, respectively.
+
+Dependency Changes
+------------------
+None
+
+Performance Optimizations
+-------------------------
+None
+
+Bug Fixes
+---------
+* Bug fixes from 1.15.2 (see the 1.15.2 NEWS for details)
+
+* Fix playback of recording surfaces into PDF surfaces, where objects
+  with negative coordinates were not getting drawn.  To address this,
+  the coordinate systems for PDF and PS have been changed to match
+  cairo's coordinate system.  This allows recording surfaces to be
+  emitted in cairo coordinates, and results in the same origin being
+  used for all operations when using the recording surface XObject.
+  Test cases for PDF and PS have also been updated accordingly.
+  (Bug #89232)
+
+* Fix "invalidfont" error on some printers when printing PDFs with
+  embedded fonts that have glyphs (such as spaces) with
+  num_contours == 0.  (Bug #79897)
+
+* Fix missing glyphs such as thin dashes, which get scaled to 0 in
+  userspace and thus have their drawing operations culled.  (Bug #94615)
+
+* Fix other oddities caused by variously idiosyncratic fonts.
+
+* Fix deadlock when destruction of a scaled font indirectly triggers
+  destruction of a second scaled font, causing the global cache to be
+  locked twice.  (Bug #93891)
+
+* Fix X errors reported to applications when shmdt() is called before
+  the Attach request is processed, due to missing xcb and xlib calls.
+
+* Fix random failure in record-paint-alpha-clip-mast test case, caused
+  by an incorrect assumption that a deferred clear can be skipped.
+  (Bug #84330)
+
+* Fix crash when dealing with an XShmGetImage() failure, caused by a
+  double free in _get_image_surface().  (Bug #91967)
+
+* Fix invalid execution of ASCII85 data by the PS interpreter that the
+  image operator didn't use, by flushing the extraneous data after
+  drawing the image.  (Bug #84811)
+
+* Fix decoding of Adobe Photoshop's inverted CMYK JPEG files in PDF
+  export.
+
+* Fix unbounded surface assertion in win32-print code.
+
+* Fix a data race in freed_pool discovered by Firefox's cairo usage.
+  The patch adads atomic int load and store functions, with relaxed
+  memory ordering.  (Bug #90318)
+
+* Cleanup debugging text sent to stdout instead of log.  (Bug #95227)
+
+* Fix build issue when using non-GNU strings utility.  (Bug #88639)
+
+* Fix build of cairo modules as regular modules, not as versioned shared
+  libaries.  (Bug #29319)
+
+* Fix build on win32 using gcc 5.4.
+
+* Fix build of script backend to require zlib.
+
+* Update test suite reference images using Debian Jessie 64-bit and
+  poppler current as of June, 2016.
+
+* Various improvements to documentation and tests, compiler warning
+  fixes, and an assortment of code refactoring and cleanup.
+
+
 Release 1.15.2     (2015-12-10 Bryce Harrington <bryce@osg.samsung.com>)
 ========================================================================
 This release is largely a rollup to include a variety of fixes that
@@ -30,7 +217,7 @@ None
 
 Bug Fixes
 ---------
-* All the bug fixes from 1.14.2, 1.14.4, and 14.6
+* All the bug fixes from 1.14.2, 1.14.4, and 1.14.6
 
 * Fix xcb/xlib compilation and calls.  Make image boxes behave when SHM
   is not available.
@@ -55,7 +242,7 @@ Bug Fixes
   doing anything.
   (Bug #90984)
 
-* Improve rendering with Quarts to better match pixman's blending and
+* Improve rendering with Quartz to better match pixman's blending and
   filtering behavior.
 
 

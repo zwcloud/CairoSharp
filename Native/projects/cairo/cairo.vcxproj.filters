@@ -133,6 +133,9 @@
     <Filter Include="Win32\Font\Source Files">
       <UniqueIdentifier>{34a3d2a4-dd9b-40c3-b91b-71c9913f8e44}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PDF Interchange">
+      <UniqueIdentifier>{670c1cc5-2e2d-402a-8e7c-013329c25c3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\cairo\src\cairo-analysis-surface-private.h">
@@ -738,6 +741,13 @@
     <ClCompile Include="..\..\cairo\src\cairo-surface-wrapper.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\cairo\src\cairo-tag-attributes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cairo\src\cairo-tag-stack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+
     <ClCompile Include="..\..\cairo\src\cairo-time.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -795,6 +805,7 @@
     <ClCompile Include="..\..\cairo\src\cairo-pdf-shading.c">
       <Filter>PDF Operators\Source Files</Filter>
     </ClCompile>
+
     <ClCompile Include="..\..\cairo\src\cairo-png.c">
       <Filter>PNG\Source Files</Filter>
     </ClCompile>
@@ -805,6 +816,9 @@
       <Filter>Deflate Stream\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cairo\src\cairo-pdf-surface.c">
+      <Filter>PDF\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cairo\src\cairo-pdf-interchange.c">
       <Filter>PDF\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cairo\src\cairo-svg-surface.c">

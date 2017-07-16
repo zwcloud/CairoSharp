@@ -16,7 +16,7 @@ __LGPLv3__
 Project Cairo(not the native cairo lib but the C# one) is licensed under the LGPL v3 license.
 
     CairoSharp, A C# wrapper of cairo which is a 2D vector rendering library
-    Copyright (C) 2015-2016  Zou Wei, zwcloud@yeah.net, http://zwcloud.net
+    Copyright (C) 2015-2017  Zou Wei, zwcloud@hotmail.com, https://zwcloud.net
     Copyright (C) 2007-2015  Xamarin, Inc.
     Copyright (C) 2006 Alp Toker
     Copyright (C) 2005 John Luke
@@ -36,14 +36,15 @@ Project Cairo(not the native cairo lib but the C# one) is licensed under the LGP
     You should have received a copy of the GNU Lesser General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-The C# code files in Cairo project was taken from Mono/[GTK#](https://github.com/mono/gtk-sharp/tree/master/cairo)(Version 3.0.0), licensed under the GNU LGPL. And because of that, CairoSharp needs to be LGPL also.
+The C# code files in Cairo project was taken from Mono/[GTK#](https://github.com/mono/gtk-sharp/tree/master/cairo)(Version 3.0.0), licensed under the GNU LGPL. So CairoSharp uses LGPL as well.
+
 
 ## Native libraries
 
 The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Native/projects) is generated according to a VS2015 Solution from [Cairo-VS](https://github.com/DomAmato/Cairo-VS).
 
 * [cairo](http://www.cairographics.org/)
-  Version 1.15.2
+  Version 1.15.6
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/cairo/COPYING)
 
 * [libpng](http://libmng.com/pub/png/libpng.html)
@@ -62,5 +63,5 @@ The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Nat
   Version 2.6
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/freetype/docs/LICENSE.TXT)
 
-I will keep this libraries updated if new verison are released.<br/>
-Last update time of these Native libraries: 2016/10/17
+This libraries will be updated if new verison are released.<br/>
+Last update date of these Native libraries: 2017-07-16

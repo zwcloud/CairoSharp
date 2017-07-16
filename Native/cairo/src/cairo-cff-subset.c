@@ -2788,13 +2788,20 @@ _cairo_cff_font_create (cairo_scaled_font_subset_t  *scaled_font_subset,
 {
     const cairo_scaled_font_backend_t *backend;
     cairo_int_status_t status;
+    cairo_bool_t is_synthetic;
     cairo_cff_font_t *font;
 
     backend = scaled_font_subset->scaled_font->backend;
 
-    /* We need to use a fallback font generated from the synthesized outlines. */
-    if (backend->is_synthetic && backend->is_synthetic (scaled_font_subset->scaled_font))
-	return CAIRO_INT_STATUS_UNSUPPORTED;
+    /* We need to use a fallback font if this font differs from the CFF outlines. */
+    if (backend->is_synthetic) {
+	status = backend->is_synthetic (scaled_font_subset->scaled_font, &is_synthetic);
+	if (unlikely (status))
+	    return status;
+
+	if (is_synthetic)
+	    return CAIRO_INT_STATUS_UNSUPPORTED;
+    }
 
     font = calloc (1, sizeof (cairo_cff_font_t));
     if (unlikely (font == NULL))

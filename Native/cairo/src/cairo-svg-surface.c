@@ -2852,13 +2852,15 @@ _cairo_svg_document_finish (cairo_svg_document_t *document)
     return status;
 }
 
-static void
+static cairo_int_status_t
 _cairo_svg_surface_set_paginated_mode (void			*abstract_surface,
 				       cairo_paginated_mode_t	 paginated_mode)
 {
     cairo_svg_surface_t *surface = abstract_surface;
 
     surface->paginated_mode = paginated_mode;
+
+    return CAIRO_STATUS_SUCCESS;
 }
 
 static cairo_bool_t

@@ -3400,8 +3400,6 @@ _composite_mask_clip (void				*closure,
 	}
     }
 
-    dst->deferred_clear = FALSE; /* assert(trap extents == extents); */
-
     status = _composite_traps (&info,
 			       dst, CAIRO_OPERATOR_SOURCE, mask_pattern,
 			       dst_x, dst_y,

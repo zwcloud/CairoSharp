@@ -1281,8 +1281,12 @@ _cairo_scaled_font_subset_create_glyph_names (cairo_scaled_font_subset_t *subset
 	utf16_len = 0;
 	if (utf8 && *utf8) {
 	    status = _cairo_utf8_to_utf16 (utf8, -1, &utf16, &utf16_len);
-	    if (unlikely (status))
+	    if (status == CAIRO_STATUS_INVALID_STRING) {
+		utf16 = NULL;
+		utf16_len = 0;
+	    } else if (unlikely (status)) {
 		goto CLEANUP_HASH;
+	    }
 	}
 
 	if (utf16_len == 1) {

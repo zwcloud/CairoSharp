@@ -22,6 +22,7 @@
     <ProjectGuid>{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>cairo</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -352,6 +353,7 @@
     <ClCompile Include="..\..\cairo\src\cairo-pdf-operators.c" />
     <ClCompile Include="..\..\cairo\src\cairo-pdf-shading.c" />
     <ClCompile Include="..\..\cairo\src\cairo-pdf-surface.c" />
+    <ClCompile Include="..\..\cairo\src\cairo-pdf-interchange.c" />
     <ClCompile Include="..\..\cairo\src\cairo-pen.c" />
     <ClCompile Include="..\..\cairo\src\cairo-png.c" />
     <ClCompile Include="..\..\cairo\src\cairo-polygon-intersect.c" />
@@ -390,6 +392,8 @@
     <ClCompile Include="..\..\cairo\src\cairo-surface-wrapper.c" />
     <ClCompile Include="..\..\cairo\src\cairo-surface.c" />
     <ClCompile Include="..\..\cairo\src\cairo-svg-surface.c" />
+    <ClCompile Include="..\..\cairo\src\cairo-tag-attributes.c" />
+    <ClCompile Include="..\..\cairo\src\cairo-tag-stack.c" />
     <ClCompile Include="..\..\cairo\src\cairo-time.c" />
     <ClCompile Include="..\..\cairo\src\cairo-tor-scan-converter.c" />
     <ClCompile Include="..\..\cairo\src\cairo-tor22-scan-converter.c" />
