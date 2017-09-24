@@ -11,7 +11,6 @@ using System;
 
 namespace Cairo
 {
-	[Serializable]
 	public enum Operator
 	{
 		Clear,

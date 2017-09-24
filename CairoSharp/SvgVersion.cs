@@ -11,7 +11,6 @@ using System;
 
 namespace Cairo {
 
-	[Serializable]
 	public enum SvgVersion
 	{
 		// FIXME: yuck
