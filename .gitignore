@@ -198,5 +198,5 @@ FakesAssemblies/
 project.lock.json
 *.opendb
 *.db
-/Native/Output/lib
+/source/Native/Output/lib
 /NuGet-Packed

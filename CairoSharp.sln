@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "native", "native", "{5D290B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{44C3FE0B-59BA-4941-95DB-68037305C4B1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cairo", "Native\projects\cairo\cairo.vcxproj", "{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cairo", "source\Native\projects\cairo\cairo.vcxproj", "{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C9B5D82C-9367-44EA-881E-65AB29969616} = {C9B5D82C-9367-44EA-881E-65AB29969616}
 		{C0E161AA-D628-419A-9B78-E1CE2B596FAB} = {C0E161AA-D628-419A-9B78-E1CE2B596FAB}
@@ -15,17 +15,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cairo", "Native\projects\ca
 		{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB} = {E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "Native\projects\libpng\libpng.vcxproj", "{C9B5D82C-9367-44EA-881E-65AB29969616}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "source\Native\projects\libpng\libpng.vcxproj", "{C9B5D82C-9367-44EA-881E-65AB29969616}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixman", "Native\projects\pixman\pixman.vcxproj", "{C0E161AA-D628-419A-9B78-E1CE2B596FAB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pixman", "source\Native\projects\pixman\pixman.vcxproj", "{C0E161AA-D628-419A-9B78-E1CE2B596FAB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "Native\projects\zlib\zlib.vcxproj", "{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "source\Native\projects\zlib\zlib.vcxproj", "{E987F1F8-5AD6-4893-8672-DF2B8A2CA9DB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "Native\freetype\builds\windows\vc2013\freetype.vcxproj", "{78B079BD-9FC7-4B9E-B4A6-96DA0F00248B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "source\Native\freetype\builds\windows\vc2013\freetype.vcxproj", "{78B079BD-9FC7-4B9E-B4A6-96DA0F00248B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawToPngDemo", "Demo\DrawToPngDemo\DrawToPngDemo.csproj", "{741995C8-4C24-4829-A51D-96921B73B257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawToPngDemo", "demos\DrawToPngDemo\DrawToPngDemo.csproj", "{741995C8-4C24-4829-A51D-96921B73B257}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CairoSharp", "CairoSharp\CairoSharp.csproj", "{85035815-F858-484C-BBBF-BAD2DB2BEB93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CairoSharp", "source\CairoSharp\CairoSharp.csproj", "{85035815-F858-484C-BBBF-BAD2DB2BEB93}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD} = {4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}
 	EndProjectSection
@@ -41,7 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawToPngDemo.netFull", "Demo\DrawToPngDemo.netFull\DrawToPngDemo.netFull.csproj", "{1DA43266-055F-42F9-8C54-E319C5ACA7A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawToPngDemo.netFull", "demos\DrawToPngDemo.netFull\DrawToPngDemo.netFull.csproj", "{1DA43266-055F-42F9-8C54-E319C5ACA7A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

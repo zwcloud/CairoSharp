@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C9B5D82C-9367-44EA-881E-65AB29969616}</ProjectGuid>
+    <ProjectGuid>{C0E161AA-D628-419A-9B78-E1CE2B596FAB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>libpng</RootNamespace>
+    <RootNamespace>pixman</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -54,79 +54,76 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="pixman_defines.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="pixman_defines.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="pixman_defines.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="pixman_defines.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)Native\Output\lib\win-x86\</OutDir>
+    <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)source\Native\Output\lib\win-x86\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
     <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)d</TargetName>
-    <OutDir>$(SolutionDir)Native\Output\lib\win-x64\</OutDir>
+    <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)source\Native\Output\lib\win-x64\</OutDir>
     <IntDir>$(TEMP)$(ProjectName)\win-x64\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)Native\Output\lib\win-x86\</OutDir>
+    <OutDir>$(SolutionDir)source\Native\Output\lib\win-x86\</OutDir>
     <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)Native\Output\lib\win-x64\</OutDir>
+    <OutDir>$(SolutionDir)source\Native\Output\lib\win-x64\</OutDir>
     <IntDir>$(TEMP)$(ProjectName)\win-x64\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PNG_DEBUG=1;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\libpng;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>pngpriv.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <OutputFile>$(OutDir)libpngd.lib</OutputFile>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PNG_DEBUG=1;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\libpng;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>pngpriv.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <OutputFile>$(OutDir)libpngd.lib</OutputFile>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\libpng;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>pngpriv.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -138,13 +135,12 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\libpng;..\..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>pngpriv.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,56 +150,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libpng\png.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeader>
+    <ClCompile Include="..\..\pixman\pixman\pixman-access-accessors.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-access.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-arm.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-bits-image.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-combine-float.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-combine32.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-conical-gradient.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-edge-accessors.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-edge.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-fast-path.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-filter.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-general.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-glyph.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-gradient-walker.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-image.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-implementation.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-linear-gradient.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-matrix.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-mips.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-mmx.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\libpng\pngerror.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\libpng\pngget.c" />
-    <ClCompile Include="..\..\libpng\pngmem.c" />
-    <ClCompile Include="..\..\libpng\pngpread.c" />
-    <ClCompile Include="..\..\libpng\pngread.c" />
-    <ClCompile Include="..\..\libpng\pngrio.c" />
-    <ClCompile Include="..\..\libpng\pngrtran.c" />
-    <ClCompile Include="..\..\libpng\pngrutil.c" />
-    <ClCompile Include="..\..\libpng\pngset.c" />
-    <ClCompile Include="..\..\libpng\pngtrans.c" />
-    <ClCompile Include="..\..\libpng\pngwio.c" />
-    <ClCompile Include="..\..\libpng\pngwrite.c" />
-    <ClCompile Include="..\..\libpng\pngwtran.c" />
-    <ClCompile Include="..\..\libpng\pngwutil.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-noop.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-ppc.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-radial-gradient.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-region16.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-region32.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-solid-fill.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-sse2.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-ssse3.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-timer.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-trap.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-utils.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman-x86.c" />
+    <ClCompile Include="..\..\pixman\pixman\pixman.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libpng\png.h" />
-    <ClInclude Include="..\..\libpng\pngconf.h" />
-    <ClInclude Include="..\..\libpng\pngpriv.h" />
+    <ClInclude Include="..\..\pixman\pixman\pixman-accessor.h" />
+    <ClInclude Include="..\..\pixman\pixman\pixman-combine32.h" />
+    <ClInclude Include="..\..\pixman\pixman\pixman-compiler.h" />
+    <ClInclude Include="..\..\pixman\pixman\pixman-edge-imp.h" />
+    <ClInclude Include="..\..\pixman\pixman\pixman-inlines.h" />
+    <ClInclude Include="..\..\pixman\pixman\pixman-private.h" />
+    <ClInclude Include="..\..\pixman\pixman\pixman.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\libpng\scripts\pngwin.rc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ResourceCompile>
+    <None Include="pixman_defines.props" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

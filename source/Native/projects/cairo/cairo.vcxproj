@@ -74,8 +74,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(ProjectDir)src;$(SolutionDir)Native\pixman\pixman;$(SolutionDir)Native\libpng;$(SolutionDir)Native\zlib;$(SolutionDir)Native\freetype\include;$(SolutionDir)Native\cairo\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Native\Output\bin\win-x86\</OutDir>
+    <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)source\Native\Output\bin\win-x86\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
     <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
   </PropertyGroup>
@@ -83,15 +83,15 @@
     <TargetName>$(ProjectName)d</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(ProjectDir)src;$(SolutionDir)Native\pixman\pixman;$(SolutionDir)Native\libpng;$(SolutionDir)Native\zlib;$(SolutionDir)Native\freetype\include;$(SolutionDir)Native\cairo\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
     <IntDir>$(TEMP)$(ProjectName)\win-x64\</IntDir>
-    <OutDir>$(SolutionDir)Native\Output\bin\win-x64\</OutDir>
+    <OutDir>$(SolutionDir)source\Native\Output\bin\win-x64\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)src;$(ProjectDir)..\..\pixman\pixman;$(ProjectDir)..\..\libpng;$(ProjectDir)..\..\zlib;$(ProjectDir)..\..\freetype\include;$(ProjectDir)..\..\cairo\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Native\Output\bin\win-x86\</OutDir>
+    <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)source\Native\Output\bin\win-x86\</OutDir>
     <TargetName>$(ProjectName)</TargetName>
     <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
   </PropertyGroup>
@@ -99,9 +99,9 @@
     <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)src;$(ProjectDir)..\..\pixman\pixman;$(ProjectDir)..\..\libpng;$(ProjectDir)..\..\zlib;$(ProjectDir)..\..\freetype\include;$(ProjectDir)..\..\cairo\src;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
     <IntDir>$(TEMP)$(ProjectName)\win-x64\</IntDir>
-    <OutDir>$(SolutionDir)Native\Output\bin\win-x64\</OutDir>
+    <OutDir>$(SolutionDir)source\Native\Output\bin\win-x64\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
