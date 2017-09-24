@@ -76,11 +76,11 @@
     <IncludePath>$(ProjectDir)src;$(SolutionDir)Native\pixman\pixman;$(SolutionDir)Native\libpng;$(SolutionDir)Native\zlib;$(SolutionDir)Native\freetype\include;$(SolutionDir)Native\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Native\Output\bin\win-x86\</OutDir>
-    <TargetName>NativeCairod</TargetName>
+    <TargetName>$(ProjectName)d</TargetName>
     <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>NativeCairod</TargetName>
+    <TargetName>$(ProjectName)d</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(ProjectDir)src;$(SolutionDir)Native\pixman\pixman;$(SolutionDir)Native\libpng;$(SolutionDir)Native\zlib;$(SolutionDir)Native\freetype\include;$(SolutionDir)Native\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
@@ -92,11 +92,11 @@
     <IncludePath>$(ProjectDir)src;$(ProjectDir)..\..\pixman\pixman;$(ProjectDir)..\..\libpng;$(ProjectDir)..\..\zlib;$(ProjectDir)..\..\freetype\include;$(ProjectDir)..\..\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Native\Output\bin\win-x86\</OutDir>
-    <TargetName>NativeCairo</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetName>NativeCairo</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)src;$(ProjectDir)..\..\pixman\pixman;$(ProjectDir)..\..\libpng;$(ProjectDir)..\..\zlib;$(ProjectDir)..\..\freetype\include;$(ProjectDir)..\..\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
