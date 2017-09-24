@@ -1,14 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <AssemblyName>Cairo</AssemblyName>
-    <PackageId>Cairo</PackageId>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.0.0-rc3-24212-01" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard1.6</TargetFramework>
+        <AssemblyName>CairoSharp</AssemblyName>
+        <PackageId>CairoSharp</PackageId>
+        <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <Version>1.15.6</Version>
+        <AssemblyVersion>1.15.65.6</AssemblyVersion>
+        <Description>Cairo Graphics Library -- .net standard 1.6 wrapper
+
+Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available.
+The cairo API provides operations similar to the drawing operators of PostScript and PDF.
+Operations in cairo including stroking and filling cubic Bézier splines, transforming and compositing translucent images, and antialiased text rendering.
+All drawing operations can be transformed by any affine transformation (scale, rotation, shear, etc.).</Description>
+        <PackageIconUrl>http://cairographics.org/cairo-banner.png</PackageIconUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/gfoidl/CairoSharp</RepositoryUrl>
+        <PackageProjectUrl>http://cairographics.org</PackageProjectUrl>
+        <PackageLicenseUrl>https://opensource.org/licenses/LGPL-3.0</PackageLicenseUrl>
+        <PackageTags>cairo graphics svg png vector-graphics vector</PackageTags>
+        <PackageReleaseNotes>Release of Cairo Graphics version 1.15.6
+Code is compiled to a dll for win-x86 and win-x64
+On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt-get install libcairo2`</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.0.0-rc3-24212-01" />
+    </ItemGroup>
 </Project>

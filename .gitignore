@@ -199,3 +199,4 @@ project.lock.json
 *.opendb
 *.db
 /Native/Output/lib
+/NuGet-Packed
