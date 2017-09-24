@@ -10,11 +10,6 @@ namespace WinFormDemo
 	{
 		private Cairo.Color bugColor = new Cairo.Color(0.95294117647058818, 0.6, 0.0784313725490196, 1.0);
 
-		public Form1()
-		{
-			this.InitializeComponent();
-		}
-
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
