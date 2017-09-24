@@ -27,6 +27,12 @@ On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.0.0-rc3-24212-01" />
+        <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\Native\Output\bin\win-x64\cairo.dll" PackagePath="runtimes\win-x64\native" Visible="false" />
+        <Content Include="..\Native\Output\bin\win-x86\cairo.dll" PackagePath="runtimes\win-x86\native" Visible="false" />
+        <Content Include="CairoSharp.props" PackagePath="build\net45" />
     </ItemGroup>
 </Project>

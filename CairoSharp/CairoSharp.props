@@ -1,0 +1,15 @@
+﻿<Project>
+    <ItemGroup>
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x86\native\cairo.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>runtimes\win-x86\native\cairo.dll</Link>
+            <Visible>false</Visible>
+        </Content>
+
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\cairo.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>runtimes\win-x64\native\cairo.dll</Link>
+            <Visible>false</Visible>
+        </Content>
+    </ItemGroup>
+</Project>
