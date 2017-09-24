@@ -22,7 +22,7 @@
     <ProjectGuid>{C0E161AA-D628-419A-9B78-E1CE2B596FAB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>pixman</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,21 +71,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)\Native\Output\lib\</OutDir>
+    <OutDir>$(SolutionDir)Native\Output\lib\win-x86\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
-    <IntDir>$(TEMP)\$(ProjectName)\</IntDir>
+    <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)d</TargetName>
     <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)Native\Output\lib\</OutDir>
+    <OutDir>$(SolutionDir)Native\Output\lib\win-x64\</OutDir>
+    <IntDir>$(TEMP)$(ProjectName)\win-x64\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)\Native\Output\lib\</OutDir>
-    <IntDir>$(TEMP)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Native\Output\lib\win-x86\</OutDir>
+    <IntDir>$(TEMP)$(ProjectName)\win-x86\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)Native\Output\lib\</OutDir>
+    <OutDir>$(SolutionDir)Native\Output\lib\win-x64\</OutDir>
+    <IntDir>$(TEMP)$(ProjectName)\win-x64\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
