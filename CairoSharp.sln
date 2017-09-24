@@ -25,7 +25,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "Native\freetype
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawToPngDemo", "Demo\DrawToPngDemo\DrawToPngDemo.csproj", "{741995C8-4C24-4829-A51D-96921B73B257}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cairo", "Cairo\Cairo.csproj", "{85035815-F858-484C-BBBF-BAD2DB2BEB93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CairoSharp", "CairoSharp\CairoSharp.csproj", "{85035815-F858-484C-BBBF-BAD2DB2BEB93}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD} = {4AA3435B-C3E8-4231-8CFA-17FB0C20BBBD}
 	EndProjectSection
