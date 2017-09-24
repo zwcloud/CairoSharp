@@ -31,16 +31,31 @@ namespace Cairo {
 			// except in the case of Win64 where sizeof(long)
 			// is 32 bits
 			//
+#if NET45
+			int ptr_size = Marshal.SizeOf(typeof(IntPtr));
+
+			if (ptr_size == 4)
+			{
+				c_compiler_long_size = 4;
+				native_glyph_size = Marshal.SizeOf(typeof(NativeGlyph_4byte_longs));
+			}
+			else
+			{
+				c_compiler_long_size = 8;
+				native_glyph_size = Marshal.SizeOf(typeof(Glyph));
+			}
+#else
 			int ptr_size = Marshal.SizeOf<IntPtr>();
 
 			var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            if (isWindows || ptr_size == 4){
+			if (isWindows || ptr_size == 4){
 				c_compiler_long_size = 4;
 				native_glyph_size = Marshal.SizeOf<NativeGlyph_4byte_longs>();
 			} else {
 				c_compiler_long_size = 8;
 				native_glyph_size = Marshal.SizeOf<Glyph>();
 			}
+#endif
 		}
 
 		public Context (Surface surface) : this (NativeMethods.cairo_create (surface.Handle), true)

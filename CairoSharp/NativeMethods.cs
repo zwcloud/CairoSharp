@@ -1,4 +1,5 @@
 #region copyright
+// Copyright (C) 2017 gfoidl
 // Copyright (C) 2015-2016  Zou Wei, zwcloud@hotmail.com, http://zwcloud.net
 // Copyright (C) 2007-2015  Xamarin, Inc.
 // Copyright (C) 2006 Alp Toker
@@ -17,7 +18,23 @@ namespace Cairo
 
 	internal static class NativeMethods
 	{
-	    private const string cairo = "cairo";
+		private const string cairo = "cairo";
+#if NET45
+		static NativeMethods()
+		{
+			string path = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
+			string dllDir = System.IO.Path.GetDirectoryName(typeof(NativeMethods).Assembly.Location);
+
+			if (Environment.Is64BitProcess)
+				dllDir = System.IO.Path.Combine(dllDir, "runtimes", "win-x64", "native");
+			else
+				dllDir = System.IO.Path.Combine(dllDir, "runtimes", "win-x86", "native");
+
+			path += ";" + dllDir;
+
+			Environment.SetEnvironmentVariable("PATH", path);
+		}
+#endif
         [DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern void cairo_append_path (IntPtr cr, IntPtr path);
 		
