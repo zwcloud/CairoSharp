@@ -23,6 +23,7 @@ namespace CairoDemo
                 Demo02();
                 Arrow();
                 Hexagon();
+                Gradient();
             }
             catch (Exception ex) when (!Debugger.IsAttached)
             {
@@ -393,6 +394,50 @@ namespace CairoDemo
             {
                 draw(surface);
                 surface.WriteToPng("hexagon2.png");
+            }
+        }
+        //---------------------------------------------------------------------
+        private static void Gradient()
+        {
+            Action<Surface> draw = surface =>
+            {
+                using (var c = new Context(surface))
+                {
+                    Gradient pat = new LinearGradient(0.0, 0.0, 0.0, 256.0);
+                    pat.AddColorStopRgba(1, 0, 0, 0, 1);
+                    pat.AddColorStopRgba(0, 1, 1, 1, 1);
+                    c.Rectangle(0, 0, 256, 256);
+                    c.SetSource(pat);
+                    c.Fill();
+                    pat.Dispose();
+
+                    pat = new RadialGradient(115.2, 102.4, 25.6,
+                                             102.4, 102.4, 128.0);
+                    pat.AddColorStopRgba(0, 1, 1, 1, 1);
+                    pat.AddColorStopRgba(1, 0, 0, 0, 1);
+                    c.SetSource(pat);
+                    c.Arc(128.0, 128.0, 76.8, 0, 2 * Math.PI);
+                    c.Fill();
+                    pat.Dispose();
+                }
+            };
+
+            using (Surface surface = new ImageSurface(Format.Argb32, 500, 500))
+            {
+                draw(surface);
+                surface.WriteToPng("gradient.png");
+            }
+
+            using (Surface surface = new PdfSurface("gradient.pdf", 500, 500))
+            {
+                draw(surface);
+                surface.WriteToPng("gradient1.png");
+            }
+
+            using (Surface surface = new SvgSurface("gradient.svg", 500, 500))
+            {
+                draw(surface);
+                surface.WriteToPng("gradient2.png");
             }
         }
     }
