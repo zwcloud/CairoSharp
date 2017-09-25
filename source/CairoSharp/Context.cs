@@ -152,15 +152,13 @@ namespace Cairo {
 			}
 		}
 
-		[Obsolete ("Use SetSourceColor method")]
 		public Color Color {
 			set {
 				SetSourceColor (value);
 			}
 		}
 
-		[Obsolete ("Use SetSourceRGBA method")]
-		public Cairo.Color ColorRgb {
+		public Color ColorRgb {
 			set {
 				SetSourceRGBA (value.R, value.G, value.B, value.A);
 			}
@@ -232,7 +230,6 @@ namespace Cairo {
 			NativeMethods.cairo_set_dash (handle, dashes, dashes.Length, offset);
 		}
 
-		[Obsolete("Use GetSource/SetSource")]
 		public Pattern Pattern {
 			set {
 				SetSource (value);
@@ -243,7 +240,7 @@ namespace Cairo {
 		}
 
 		//This is obsolete because it wasn't obvious it needed to be disposed
-		[Obsolete("Use GetSource/SetSource")]
+		//[Obsolete("Use GetSource/SetSource")]
 		public Pattern Source {
 			set {
 				SetSource (value);
@@ -294,8 +291,7 @@ namespace Cairo {
 			}
 		}
 
-		[Obsolete ("Use GetTarget/SetTarget")]
-		public Cairo.Surface Target {
+		public Surface Target {
 			set {
 				SetTarget (value);
 			}
@@ -319,7 +315,6 @@ namespace Cairo {
 			handle = NativeMethods.cairo_create (target.Handle);
 		}
 
-		[Obsolete("Use GetScaledFont/SetScaledFont")]
 		public ScaledFont ScaledFont {
 			set {
 				SetScaledFont (value);
@@ -653,7 +648,6 @@ namespace Cairo {
 			NativeMethods.cairo_push_group_with_content (handle, content);
 		}
 
-		[Obsolete ("Use GetGroupTarget()")]
 		public Surface GroupTarget {
 			get {
 				return GetGroupTarget ();
@@ -771,7 +765,6 @@ namespace Cairo {
 			SetFontSize (scale);
 		}
 
-		[Obsolete ("Use SetFontSize() instead.")]
 		public double FontSize {
 			set { SetFontSize (value); }
 		}
@@ -897,7 +890,6 @@ namespace Cairo {
 			SelectFontFace (family, slant, weight);
 		}
 
-		[Obsolete("Use GetFontFace/SetFontFace")]
 		public FontFace ContextFontFace {
 			get {
 				return GetContextFontFace ();
