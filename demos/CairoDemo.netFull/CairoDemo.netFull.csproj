@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1DA43266-055F-42F9-8C54-E319C5ACA7A5}</ProjectGuid>
+    <ProjectGuid>{A5ABB6FF-478E-4151-B67F-CBC93429EC87}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DrawToPngDemo.netFull</RootNamespace>
-    <AssemblyName>DrawToPngDemo.netFull</AssemblyName>
+    <RootNamespace>CairoDemo.netFull</RootNamespace>
+    <AssemblyName>CairoDemo.netFull</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\DrawToPngDemo\Program.cs">
+    <Compile Include="..\CairoDemo\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

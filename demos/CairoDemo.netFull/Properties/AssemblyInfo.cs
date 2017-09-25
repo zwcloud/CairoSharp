@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DrawToPngDemo.netFull")]
+[assembly: AssemblyTitle("CairoDemo.netFull")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Foidl Günther")]
-[assembly: AssemblyProduct("DrawToPngDemo.netFull")]
+[assembly: AssemblyProduct("CairoDemo.netFull")]
 [assembly: AssemblyCopyright("Copyright © Foidl Günther 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1da43266-055f-42f9-8c54-e319c5aca7a5")]
+[assembly: Guid("a5abb6ff-478e-4151-b67f-cbc93429ec87")]
 
 // Version information for an assembly consists of the following four values:
 //
