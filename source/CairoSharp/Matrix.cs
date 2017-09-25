@@ -118,7 +118,7 @@ namespace Cairo {
 			NativeMethods.cairo_matrix_transform_point (this, ref x, ref y);
 		}
 
-		public override String ToString()
+		public override String ToString ()
 		{
 			String s = String.Format ("xx:{0:##0.0#} yx:{1:##0.0#} xy:{2:##0.0#} yy:{3:##0.0#} x0:{4:##0.0#} y0:{5:##0.0#}",
 				this.Xx, this.Yx, this.Xy, this.Yy, this.X0, this.Y0);

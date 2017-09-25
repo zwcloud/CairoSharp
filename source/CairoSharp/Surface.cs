@@ -15,7 +15,7 @@ namespace Cairo {
 	public class Surface : IDisposable
 	{
 		IntPtr handle = IntPtr.Zero;
-        
+
 		protected Surface (IntPtr handle, bool owner)
 		{
 			if (handle == IntPtr.Zero)
@@ -55,6 +55,27 @@ namespace Cairo {
 			}
 		}
 
+		[Obsolete ("Use an ImageSurface constructor instead.")]
+		public static Cairo.Surface CreateForImage (
+			ref byte[] data, Cairo.Format format, int width, int height, int stride)
+		{
+			IntPtr p = NativeMethods.cairo_image_surface_create_for_data (
+				data, format, width, height, stride);
+
+			return new Cairo.Surface (p, true);
+		}
+
+		[Obsolete ("Use an ImageSurface constructor instead.")]
+		public static Cairo.Surface CreateForImage (
+			Cairo.Format format, int width, int height)
+		{
+			IntPtr p = NativeMethods.cairo_image_surface_create (
+				format, width, height);
+
+			return new Cairo.Surface (p, true);
+		}
+
+
 		public Cairo.Surface CreateSimilar (
 			Cairo.Content content, int width, int height)
 		{
@@ -67,6 +88,13 @@ namespace Cairo {
 		~Surface ()
 		{
 			Dispose (false);
+		}
+
+		//[Obsolete ("Use Context.SetSource() followed by Context.Paint()")]
+		public void Show (Context gr, double x, double y)
+		{
+			NativeMethods.cairo_set_source_surface (gr.Handle, handle, x, y);
+			NativeMethods.cairo_paint (gr.Handle);
 		}
 
 		public void Dispose ()
@@ -137,7 +165,13 @@ namespace Cairo {
 				NativeMethods.cairo_surface_set_device_offset (handle, value.X, value.Y);
 			}
 		}
-        
+
+		[Obsolete ("Use Dispose()")]
+		public void Destroy()
+		{
+			Dispose ();
+		}
+
 		public void SetFallbackResolution (double x, double y)
 		{
 			CheckDisposed ();
@@ -149,7 +183,14 @@ namespace Cairo {
 			CheckDisposed ();
 			NativeMethods.cairo_surface_write_to_png (handle, filename);
 		}
-        
+
+		[Obsolete ("Use Handle instead.")]
+		public IntPtr Pointer {
+			get {
+				return handle;
+			}
+		}
+
 		public Status Status {
 			get {
 				CheckDisposed ();

@@ -39,7 +39,13 @@ namespace Cairo
 			CheckDisposed ();
 			return new FontOptions (NativeMethods.cairo_font_options_copy (handle));
 		}
-        
+
+		[Obsolete ("Use Dispose()")]
+		public void Destroy ()
+		{
+			Dispose ();
+		}
+
 		public void Dispose ()
 		{
 			Dispose (true);

@@ -1,4 +1,5 @@
 #region copyright
+// Copyright (C) 2017 gfoidl
 // Copyright (C) 2015-2016  Zou Wei, zwcloud@hotmail.com, http://zwcloud.net
 // Copyright (C) 2007-2015  Xamarin, Inc.
 // Copyright (C) 2006 Alp Toker
@@ -32,17 +33,17 @@ namespace Cairo {
 			// is 32 bits
 			//
 #if NET45
-			int ptr_size = Marshal.SizeOf(typeof(IntPtr));
+			int ptr_size = Marshal.SizeOf (typeof (IntPtr));
 
 			if (ptr_size == 4)
 			{
 				c_compiler_long_size = 4;
-				native_glyph_size = Marshal.SizeOf(typeof(NativeGlyph_4byte_longs));
+				native_glyph_size = Marshal.SizeOf (typeof (NativeGlyph_4byte_longs));
 			}
 			else
 			{
 				c_compiler_long_size = 8;
-				native_glyph_size = Marshal.SizeOf(typeof(Glyph));
+				native_glyph_size = Marshal.SizeOf (typeof (Glyph));
 			}
 #else
 			int ptr_size = Marshal.SizeOf<IntPtr>();
@@ -54,7 +55,7 @@ namespace Cairo {
 			} else {
 				c_compiler_long_size = 8;
 				native_glyph_size = Marshal.SizeOf<Glyph>();
-			}
+		}
 #endif
 		}
 
@@ -151,6 +152,20 @@ namespace Cairo {
 			}
 		}
 
+		[Obsolete ("Use SetSourceColor method")]
+		public Color Color {
+			set {
+				SetSourceColor (value);
+			}
+		}
+
+		[Obsolete ("Use SetSourceRGBA method")]
+		public Cairo.Color ColorRgb {
+			set {
+				SetSourceRGBA (value.R, value.G, value.B, value.A);
+			}
+		}
+
 		public double Tolerance {
 			get {
 				CheckDisposed ();
@@ -217,6 +232,27 @@ namespace Cairo {
 			NativeMethods.cairo_set_dash (handle, dashes, dashes.Length, offset);
 		}
 
+		[Obsolete("Use GetSource/SetSource")]
+		public Pattern Pattern {
+			set {
+				SetSource (value);
+			}
+			get {
+				return GetSource ();
+			}
+		}
+
+		//This is obsolete because it wasn't obvious it needed to be disposed
+		[Obsolete("Use GetSource/SetSource")]
+		public Pattern Source {
+			set {
+				SetSource (value);
+			}
+			get {
+				return GetSource ();
+			}
+		}
+
 		public void SetSource (Pattern source)
 		{
 			CheckDisposed ();
@@ -258,6 +294,17 @@ namespace Cairo {
 			}
 		}
 
+		[Obsolete ("Use GetTarget/SetTarget")]
+		public Cairo.Surface Target {
+			set {
+				SetTarget (value);
+			}
+
+			get {
+				return GetTarget ();
+			}
+		}
+
 		public Surface GetTarget ()
 		{
 			CheckDisposed ();
@@ -270,6 +317,17 @@ namespace Cairo {
 			if (handle != IntPtr.Zero)
 				NativeMethods.cairo_destroy (handle);
 			handle = NativeMethods.cairo_create (target.Handle);
+		}
+
+		[Obsolete("Use GetScaledFont/SetScaledFont")]
+		public ScaledFont ScaledFont {
+			set {
+				SetScaledFont (value);
+			}
+
+			get {
+				return GetScaledFont ();
+			}
 		}
 
 		public ScaledFont GetScaledFont ()
@@ -307,6 +365,13 @@ namespace Cairo {
 		{
 			CheckDisposed ();
 			NativeMethods.cairo_set_source_rgba (handle, r, g, b, a);
+		}
+
+		//[Obsolete ("Use SetSource method (with double parameters)")]
+		public void SetSourceSurface (Surface source, int x, int y)
+		{
+			CheckDisposed ();
+			NativeMethods.cairo_set_source_surface (handle, source.Handle, x, y);
 		}
 
 		public void SetSource (Surface source, double x, double y)
@@ -360,7 +425,7 @@ namespace Cairo {
         /// <summary>
         /// Adds a cubic B¨¦zier spline to the path
         /// </summary>
-        public void CurveTo (PointD p1, PointD p2, PointD p3)
+		public void CurveTo (PointD p1, PointD p2, PointD p3)
 		{
 			CurveTo (p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
 		}
@@ -588,6 +653,13 @@ namespace Cairo {
 			NativeMethods.cairo_push_group_with_content (handle, content);
 		}
 
+		[Obsolete ("Use GetGroupTarget()")]
+		public Surface GroupTarget {
+			get {
+				return GetGroupTarget ();
+			}
+		}
+
 		public Surface GetGroupTarget ()
 		{
 			CheckDisposed ();
@@ -617,6 +689,30 @@ namespace Cairo {
 		{
 			CheckDisposed ();
 			NativeMethods.cairo_transform (handle, m);
+		}
+
+		[Obsolete("Use UserToDevice instead")]
+		public void TransformPoint (ref double x, ref double y)
+		{
+			UserToDevice (ref x, ref y);
+		}
+
+		[Obsolete("Use UserToDeviceDistance instead")]
+		public void TransformDistance (ref double dx, ref double dy)
+		{
+			UserToDevice (ref dx, ref dy);
+		}
+
+		[Obsolete("Use DeviceToUser instead")]
+		public void InverseTransformPoint (ref double x, ref double y)
+		{
+			UserToDevice (ref x, ref y);
+		}
+
+		[Obsolete("Use DeviceToUserDistance instead")]
+		public void InverseTransformDistance (ref double dx, ref double dy)
+		{
+			DeviceToUserDistance (ref dx, ref dy);
 		}
 
 		public void UserToDevice (ref double x, ref double y)
@@ -667,6 +763,17 @@ namespace Cairo {
 		{
 			CheckDisposed ();
 			NativeMethods.cairo_identity_matrix (handle);
+		}
+
+		[Obsolete ("Use SetFontSize() instead.")]
+		public void FontSetSize (double scale)
+		{
+			SetFontSize (scale);
+		}
+
+		[Obsolete ("Use SetFontSize() instead.")]
+		public double FontSize {
+			set { SetFontSize (value); }
 		}
 
 		public Matrix FontMatrix {
@@ -744,6 +851,18 @@ namespace Cairo {
 			Marshal.FreeHGlobal (ptr);
 		}
 
+		[Obsolete("The matrix argument was never used, use ShowGlyphs(Glyphs []) instead")]
+		public void ShowGlyphs (Matrix matrix, Glyph[] glyphs)
+		{
+			ShowGlyphs (glyphs);
+		}
+
+		[Obsolete("The matrix argument was never used, use GlyphPath(Glyphs []) instead")]
+		public void GlyphPath (Matrix matrix, Glyph[] glyphs)
+		{
+			GlyphPath (glyphs);
+		}
+
 		public void GlyphPath (Glyph[] glyphs)
 		{
 			CheckDisposed ();
@@ -770,6 +889,22 @@ namespace Cairo {
 		{
 			CheckDisposed ();
 			NativeMethods.cairo_copy_page (handle);
+		}
+
+		[Obsolete ("Use SelectFontFace() instead.")]
+		public void FontFace (string family, FontSlant slant, FontWeight weight)
+		{
+			SelectFontFace (family, slant, weight);
+		}
+
+		[Obsolete("Use GetFontFace/SetFontFace")]
+		public FontFace ContextFontFace {
+			get {
+				return GetContextFontFace ();
+			}
+			set {
+				SetContextFontFace (value);
+			}
 		}
 
 		public FontFace GetContextFontFace ()

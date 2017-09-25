@@ -14,6 +14,9 @@ namespace Cairo {
    
 	public class Pattern : IDisposable
 	{
+		[Obsolete]
+		protected IntPtr pattern = IntPtr.Zero;
+
 		public static Pattern Lookup (IntPtr pattern, bool owner)
 		{
 			if (pattern == IntPtr.Zero)
@@ -33,6 +36,11 @@ namespace Cairo {
 				return new Pattern (pattern, owner);
 			}
 		}
+
+		[Obsolete]
+		protected Pattern ()
+		{
+		}
 		
 		internal Pattern (IntPtr handle, bool owned)
 		{
@@ -49,6 +57,19 @@ namespace Cairo {
 		~Pattern ()
 		{
 			Dispose (false);
+		}
+		
+		[Obsolete ("Use the SurfacePattern constructor")]
+		public Pattern (Surface surface)
+			: this ( NativeMethods.cairo_pattern_create_for_surface (surface.Handle), true)
+		{
+		}
+		
+		[Obsolete]
+		protected void Reference ()
+		{
+			CheckDisposed ();
+			NativeMethods.cairo_pattern_reference (pattern);
 		}
 
 		public void Dispose ()
@@ -73,6 +94,12 @@ namespace Cairo {
 		{
 			if (Handle == IntPtr.Zero)
 				throw new ObjectDisposedException ("Object has already been disposed");
+		}
+
+		[Obsolete ("Use Dispose()")]
+		public void Destroy ()
+		{
+			Dispose ();
 		}
 
 		public Status Status
@@ -108,10 +135,17 @@ namespace Cairo {
 				return m;
 			}
 		}
-        
+
+#pragma warning disable 612
 		public IntPtr Handle {
-            get;
-            private set;
+			get { return pattern; }
+			private set { pattern = value; }
+		}
+#pragma warning restore 612
+
+		[Obsolete]
+		public IntPtr Pointer {
+			get { return pattern; }
 		}
 
 		public PatternType PatternType {
