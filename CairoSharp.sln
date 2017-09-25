@@ -51,6 +51,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoSamples", "demos\Windo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{796EFCFC-D2B8-4D3E-A4C6-24C5FAEA0C28}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stubs", "stubs", "{12F028EE-B05E-4E8A-8BCA-3B3A8667974C}"
+	ProjectSection(SolutionItems) = preProject
+		source\Native\stubs\ReadMe.md = source\Native\stubs\ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{14490FDB-3D83-4528-AA5A-D4A0E15AF88E}"
+	ProjectSection(SolutionItems) = preProject
+		source\Native\stubs\linux-x64\create.sh = source\Native\stubs\linux-x64\create.sh
+		source\Native\stubs\linux-x64\libcairo.so = source\Native\stubs\linux-x64\libcairo.so
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -186,6 +197,8 @@ Global
 		{C2752B01-3DCA-41E0-8695-D036649D93D0} = {796EFCFC-D2B8-4D3E-A4C6-24C5FAEA0C28}
 		{3E1AA382-34CE-4525-8362-09DF80DD807B} = {796EFCFC-D2B8-4D3E-A4C6-24C5FAEA0C28}
 		{796EFCFC-D2B8-4D3E-A4C6-24C5FAEA0C28} = {44C3FE0B-59BA-4941-95DB-68037305C4B1}
+		{12F028EE-B05E-4E8A-8BCA-3B3A8667974C} = {5D290B69-83E1-4FF5-9218-61864989B879}
+		{14490FDB-3D83-4528-AA5A-D4A0E15AF88E} = {12F028EE-B05E-4E8A-8BCA-3B3A8667974C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC48780D-A7F3-406F-83B9-9A4DB2A5DE76}
