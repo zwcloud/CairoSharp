@@ -62,7 +62,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-x64", "linux-x64", "{
 		source\Native\stubs\linux-x64\libcairo.so = source\Native\stubs\linux-x64\libcairo.so
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoDemo", "demos\CairoDemo\CairoDemo.csproj", "{48DDFBF9-782E-4DE7-B47F-D4587B863819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CairoDemo", "demos\CairoDemo\CairoDemo.csproj", "{48DDFBF9-782E-4DE7-B47F-D4587B863819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoDemo.netFull", "demos\CairoDemo.netFull\CairoDemo.netFull.csproj", "{A5ABB6FF-478E-4151-B67F-CBC93429EC87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,6 +187,14 @@ Global
 		{48DDFBF9-782E-4DE7-B47F-D4587B863819}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48DDFBF9-782E-4DE7-B47F-D4587B863819}.Release|x64.ActiveCfg = Release|Any CPU
 		{48DDFBF9-782E-4DE7-B47F-D4587B863819}.Release|x86.ActiveCfg = Release|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Release|x64.ActiveCfg = Release|Any CPU
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -206,6 +216,7 @@ Global
 		{12F028EE-B05E-4E8A-8BCA-3B3A8667974C} = {5D290B69-83E1-4FF5-9218-61864989B879}
 		{14490FDB-3D83-4528-AA5A-D4A0E15AF88E} = {12F028EE-B05E-4E8A-8BCA-3B3A8667974C}
 		{48DDFBF9-782E-4DE7-B47F-D4587B863819} = {44C3FE0B-59BA-4941-95DB-68037305C4B1}
+		{A5ABB6FF-478E-4151-B67F-CBC93429EC87} = {44C3FE0B-59BA-4941-95DB-68037305C4B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC48780D-A7F3-406F-83B9-9A4DB2A5DE76}
