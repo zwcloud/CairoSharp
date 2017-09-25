@@ -200,3 +200,4 @@ project.lock.json
 *.db
 /source/Native/Output/lib
 /NuGet-Packed
+/demos/CairoDemo/output
