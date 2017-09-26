@@ -62,6 +62,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CairoDemo", "demos\CairoDem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CairoDemo.netFull", "demos\CairoDemo.netFull\CairoDemo.netFull.csproj", "{A5ABB6FF-478E-4151-B67F-CBC93429EC87}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm", "linux-arm", "{86EC6648-74C4-48F4-9F67-56C8BF066F76}"
+	ProjectSection(SolutionItems) = preProject
+		source\Native\stubs\linux-arm\create.sh = source\Native\stubs\linux-arm\create.sh
+		source\Native\stubs\linux-arm\libcairo.so = source\Native\stubs\linux-arm\libcairo.so
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +201,7 @@ Global
 		{14490FDB-3D83-4528-AA5A-D4A0E15AF88E} = {12F028EE-B05E-4E8A-8BCA-3B3A8667974C}
 		{48DDFBF9-782E-4DE7-B47F-D4587B863819} = {44C3FE0B-59BA-4941-95DB-68037305C4B1}
 		{A5ABB6FF-478E-4151-B67F-CBC93429EC87} = {44C3FE0B-59BA-4941-95DB-68037305C4B1}
+		{86EC6648-74C4-48F4-9F67-56C8BF066F76} = {12F028EE-B05E-4E8A-8BCA-3B3A8667974C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC48780D-A7F3-406F-83B9-9A4DB2A5DE76}

@@ -7,7 +7,7 @@
         <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
         <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
         <Version>1.15.6</Version>
-        <AssemblyVersion>1.15.75.6</AssemblyVersion>
+        <AssemblyVersion>1.15.84.6</AssemblyVersion>
         <Description>Cairo Graphics Library -- .net standard 1.6 wrapper
 
 Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available.
@@ -29,6 +29,7 @@ On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt
         <Content Include="..\Native\Output\bin\win-x64\cairo.dll" PackagePath="runtimes\win-x64\native" Visible="false" />
         <Content Include="..\Native\Output\bin\win-x86\cairo.dll" PackagePath="runtimes\win-x86\native" Visible="false" />
         <Content Include="..\Native\stubs\linux-x64\libcairo.so" PackagePath="runtimes\linux-x64\native" Visible="false" />
+        <Content Include="..\Native\stubs\linux-arm\libcairo.so" PackagePath="runtimes\linux-arm\native" Visible="false" />
         <Content Include="CairoSharp.props" PackagePath="build\net45" />
     </ItemGroup>
 </Project>
