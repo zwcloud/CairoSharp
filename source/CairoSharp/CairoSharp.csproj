@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net45;netstandard1.6</TargetFrameworks>
+        <AssemblyName>CairoSharp</AssemblyName>
+        <PackageId>CairoSharp</PackageId>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <Version>1.15.6</Version>
+        <AssemblyVersion>1.15.84.6</AssemblyVersion>
+        <Description>Cairo Graphics Library -- .net standard 1.6 wrapper
+
+Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available.
+The cairo API provides operations similar to the drawing operators of PostScript and PDF.
+Operations in cairo including stroking and filling cubic Bézier splines, transforming and compositing translucent images, and antialiased text rendering.
+All drawing operations can be transformed by any affine transformation (scale, rotation, shear, etc.).</Description>
+        <PackageIconUrl>http://cairographics.org/cairo-banner.png</PackageIconUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/gfoidl/CairoSharp</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/gfoidl/CairoSharp</PackageProjectUrl>
+        <PackageLicenseUrl>https://opensource.org/licenses/LGPL-3.0</PackageLicenseUrl>
+        <PackageTags>cairo graphics svg png vector-graphics vector</PackageTags>
+        <PackageReleaseNotes>Release of Cairo Graphics version 1.15.6
+Code is compiled to a dll for win-x86 and win-x64
+On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt-get install libcairo2`</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="..\Native\Output\bin\win-x64\cairo.dll" PackagePath="runtimes\win-x64\native" Visible="false" />
+        <Content Include="..\Native\Output\bin\win-x86\cairo.dll" PackagePath="runtimes\win-x86\native" Visible="false" />
+        <Content Include="..\Native\stubs\linux-x64\libcairo.so" PackagePath="runtimes\linux-x64\native" Visible="false" />
+        <Content Include="..\Native\stubs\linux-arm\libcairo.so" PackagePath="runtimes\linux-arm\native" Visible="false" />
+        <Content Include="CairoSharp.props" PackagePath="build\net45" />
+    </ItemGroup>
+</Project>

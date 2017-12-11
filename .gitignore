@@ -198,3 +198,6 @@ FakesAssemblies/
 project.lock.json
 *.opendb
 *.db
+/source/Native/Output/lib
+/NuGet-Packed
+/demos/CairoDemo/output
