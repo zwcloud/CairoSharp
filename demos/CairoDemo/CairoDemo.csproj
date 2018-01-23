@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CairoSharp" Version="1.15.6" />
+    <ProjectReference Include="..\..\source\CairoSharp\CairoSharp.csproj" />
   </ItemGroup>
 
 </Project>
