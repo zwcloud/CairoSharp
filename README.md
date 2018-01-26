@@ -7,7 +7,7 @@ Cairo is a 2D graphics library with support for multiple output devices.
 
 Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available.
 The cairo API provides operations similar to the drawing operators of PostScript and PDF.
-Operations in cairo including stroking and filling cubic Bézier splines, transforming and compositing translucent images, and antialiased text rendering.
+Operations in cairo including stroking and filling cubic B¨¦zier splines, transforming and compositing translucent images, and antialiased text rendering.
 All drawing operations can be transformed by any affine transformation (scale, rotation, shear, etc.).
 
 # Platforms
@@ -24,6 +24,28 @@ Other platforms that support .net core may work, but have not been tested.
 On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get install -y libcairo2`
 
 # [Documentation](https://github.com/zwcloud/CairoSharp/wiki)
+
+# Build
+
+## Native assets
+
+## Windows
+
+### Build native dlls
+ We use VS2017 to build native libraries as dll files.
+
+* Preparation:
+
+	1. Open Visual Studio Installer, click `More/Modify`;
+	2. Check Desktop development with C++;
+	3. In the Summary section on the right, open Desktop development with C++, then check Windows 8.1 SDK and UCRT SDK.
+	4. Click `Modify` button.
+
+* Build
+	
+	1. Open CarioSharp.sln with VS2017.
+	2. Find the project `source/native/cairo`, right click and select `Build`.
+	3. Built native dll files will be output to `source/native/cairo/bin/`.
 
 # Copying/License
 __LGPLv3__  
@@ -52,7 +74,6 @@ Project CairoSharp (not the native cairo lib but the C# one) is licensed under t
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 The C# code files in CairoSharp project was taken from Mono/[GTK#](https://github.com/mono/gtk-sharp/tree/master/cairo)(Version 3.0.0), licensed under the GNU LGPL. So CairoSharp uses LGPL as well.
-
 
 ## Native libraries
 
