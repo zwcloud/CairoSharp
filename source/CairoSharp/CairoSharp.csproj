@@ -32,4 +32,8 @@ On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt
         <Content Include="..\Native\stubs\linux-arm\libcairo.so" PackagePath="runtimes\linux-arm\native" Visible="false" />
         <Content Include="CairoSharp.props" PackagePath="build\net45" />
     </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="&quot;$(SolutionDir)source\Native\Output\NativeLibraryCopier.exe&quot; &quot;$(SolutionDir)&quot; $(ConfigurationName) $(PlatformName) &quot;$(TargetDir)&quot;" />
+    </Target>
 </Project>

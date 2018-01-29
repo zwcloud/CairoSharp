@@ -36,16 +36,23 @@ On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get inst
 
 * Preparation:
 
-	1. Open Visual Studio Installer, click `More/Modify`;
-	2. Check Desktop development with C++;
-	3. In the Summary section on the right, open Desktop development with C++, then check Windows 8.1 SDK and UCRT SDK.
+	1. Open Visual Studio Installer, click `Modify` or `More/Modify`;
+	2. Check __Desktop development with C++__;
+	3. In the __Summary__ section on the right, open __Desktop development with C++__, then check __Windows 8.1 SDK and UCRT SDK__.
 	4. Click `Modify` button.
 
 * Build
 	
 	1. Open CarioSharp.sln with VS2017.
-	2. Find the project `source/native/cairo`, right click and select `Build`.
-	3. Built native dll files will be output to `source/native/cairo/bin/`.
+	2. Select a configuration: `Debug` or `Release`, and a platform: `x86` or `x64`.
+	3. Find the project `source/native/cairo`, right click and select `Build`.
+	4. Built native dll files will be output to `source/native/cairo/bin/`.
+
+**Common Errors:**
+
+> Error C1083 Cannot open include file: 'assert.h': No such file or directory
+
+Make sure `Windows 8.1 SDK and UCRT SDK` is checked (See _Preparation 3_ abouve). See also [this post](https://stackoverflow.com/a/48483877/3427520).
 
 # Copying/License
 __LGPLv3__  
