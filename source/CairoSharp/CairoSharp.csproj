@@ -23,6 +23,7 @@ All drawing operations can be transformed by any affine transformation (scale, r
         <PackageReleaseNotes>Release of Cairo Graphics version 1.15.6
 Code is compiled to a dll for win-x86 and win-x64
 On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt-get install libcairo2`</PackageReleaseNotes>
+        <RunPostBuildEvent>Always</RunPostBuildEvent>
     </PropertyGroup>
 
     <ItemGroup>
@@ -34,6 +35,6 @@ On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt
     </ItemGroup>
 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-      <Exec Command="&quot;$(SolutionDir)source\Native\Output\NativeLibraryCopier.exe&quot; &quot;$(SolutionDir)&quot; $(ConfigurationName) $(PlatformName) &quot;$(TargetDir)&quot;" />
+      <Exec Command="&quot;$(SolutionDir)source\Native\Output\NativeLibraryCopier.exe&quot; #$(SolutionDir),$(ConfigurationName),$(PlatformName),$(TargetDir)#" />
     </Target>
 </Project>

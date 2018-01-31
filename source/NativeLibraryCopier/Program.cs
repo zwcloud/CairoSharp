@@ -8,11 +8,22 @@ namespace NativeLibraryCopier
         {
             Success = 0,
             InvalidArguments = 1,
-            NativeProjectNotBuilt = 2,
+            DllNotFound = 2,
+            PdbNotFound = 3,
         }
 
-        static int Main(string[] args)
+        static int Main()
         {
+            string cmdLine = Environment.CommandLine;
+            cmdLine = cmdLine.Substring(cmdLine.IndexOf('#'));
+            cmdLine = cmdLine.Trim(new char[] { '#' });
+            var args = cmdLine.Split(new char[] { ',' });
+
+            for (var i=0; i< args.Length; ++i)
+            {
+                Console.WriteLine($"args[{i}] = {args[i]}");
+            }
+
             if (args.Length != 4)
             {
                 PrintUsage();
@@ -44,11 +55,16 @@ namespace NativeLibraryCopier
             if (!System.IO.File.Exists(DllFilePath))
             {
                 Console.WriteLine($"ERROR: Native Cairo dll built for {ConfigurationName}/{PlatformName} not found. Please build source/native/cairo first.");
-                return (int)ExitCode.NativeProjectNotBuilt;
+                return (int)ExitCode.DllNotFound;
             }
-            else
+            System.IO.File.Copy(DllFilePath, $"{TargetDir}{CairoDllFileName}", true);
+            if(ConfigurationName == "Debug")
             {
-                System.IO.File.Copy(DllFilePath, $"{TargetDir}{CairoDllFileName}", true);
+                if (!System.IO.File.Exists(PdbFilePath))
+                {
+                    Console.WriteLine($"ERROR: Native Cairo pdb built for {ConfigurationName}/{PlatformName} not found. Please build source/native/cairo first.");
+                    return (int)ExitCode.PdbNotFound;
+                }
                 System.IO.File.Copy(PdbFilePath, $"{TargetDir}{CairoPdbFileName}", true);
             }
 
