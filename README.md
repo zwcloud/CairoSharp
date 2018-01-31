@@ -60,7 +60,7 @@ On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get inst
 
 > Error C1083 Cannot open include file: 'assert.h': No such file or directory
 
-Make sure `Windows 8.1 SDK and UCRT SDK` is checked (See _Preparation 3_ abouve). See also [this post](https://stackoverflow.com/a/48483877/3427520).
+Make sure `Windows 8.1 SDK and UCRT SDK` is checked (See _Preparation 3_ above). See also [this post](https://stackoverflow.com/a/48483877/3427520).
 
 # Copying/License
 __LGPLv3__  
