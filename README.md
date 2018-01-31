@@ -27,8 +27,6 @@ On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get inst
 
 # Build
 
-## Native assets
-
 ## Windows
 
 ### Build native dlls
@@ -47,6 +45,16 @@ On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get inst
 	2. Select a configuration: `Debug` or `Release`, and a platform: `x86` or `x64`.
 	3. Find the project `source/native/cairo`, right click and select `Build`.
 	4. Built native dll files will be output to `source/native/cairo/bin/`.
+
+#### Build C# projects
+
+* Build CairoSharp
+
+	In VS2017, right click the CairoSharp project then select `Build`. CairoSharp.dll and its native dependencies will be placed in the output dir such as `source\CairoSharp\bin\Debug\netstandard1.6`.
+
+* Build C# demos
+
+	In VS2017, right click a C# demo project then select `Build`. The built demo app, CairoSharp.dll and native dependencies will be placed in the output dir such as `demos\CairoDemo\bin\Debug\netcoreapp2.0`.
 
 **Common Errors:**
 
