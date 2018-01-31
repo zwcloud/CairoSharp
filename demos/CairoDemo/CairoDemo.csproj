@@ -9,4 +9,8 @@
     <ProjectReference Include="..\..\source\CairoSharp\CairoSharp.csproj" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&quot;$(SolutionDir)source\Native\Output\NativeLibraryCopier.exe&quot; #$(SolutionDir),$(ConfigurationName),$(PlatformName),$(TargetDir)#" />
+  </Target>
+
 </Project>

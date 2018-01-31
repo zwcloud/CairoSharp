@@ -19,10 +19,13 @@ namespace NativeLibraryCopier
             cmdLine = cmdLine.Trim(new char[] { '#' });
             var args = cmdLine.Split(new char[] { ',' });
 
+            //print args
+            /*
             for (var i=0; i< args.Length; ++i)
             {
                 Console.WriteLine($"args[{i}] = {args[i]}");
             }
+            */
 
             if (args.Length != 4)
             {

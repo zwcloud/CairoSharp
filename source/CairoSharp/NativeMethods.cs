@@ -18,9 +18,13 @@ namespace Cairo
 
 	internal static class NativeMethods
 	{
-		private const string cairo = "cairo";
+#if DEBUG
+        private const string cairo = "cairod.dll";
+#else
+        private const string cairo = "cairo.dll";
+#endif
 #if NET45
-		static NativeMethods()
+        static NativeMethods()
 		{
 			string path = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
 			string dllDir = System.IO.Path.GetDirectoryName(typeof(NativeMethods).Assembly.Location);
