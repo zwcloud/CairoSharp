@@ -77,6 +77,7 @@
     <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)source\Native\Output\bin\win-x86\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)d</TargetName>
@@ -84,7 +85,6 @@
     <IncludePath>$(ProjectDir)src;$(SolutionDir)source\Native\pixman\pixman;$(SolutionDir)source\Native\libpng;$(SolutionDir)source\Native\zlib;$(SolutionDir)source\Native\freetype\include;$(SolutionDir)source\Native\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)source\Native\Output\bin\win-x64\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -92,7 +92,7 @@
     <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x86\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)source\Native\Output\bin\win-x86\</OutDir>
     <TargetName>$(ProjectName)</TargetName>
-    <IntDir>$(Configuration)\</IntDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>$(ProjectName)</TargetName>
@@ -100,7 +100,6 @@
     <IncludePath>$(ProjectDir)src;$(SolutionDir)source\Native\pixman\pixman;$(SolutionDir)source\Native\libpng;$(SolutionDir)source\Native\zlib;$(SolutionDir)source\Native\freetype\include;$(SolutionDir)source\Native\cairo\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)source\Native\Output\lib\win-x64\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)source\Native\Output\bin\win-x64\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,7 +145,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>freetype.lib;pixman.lib;libpng.lib;zlibd.lib;Msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;pixman.lib;libpng.lib;zlib.lib;Msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -164,7 +163,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>freetype.lib;pixman.lib;libpng.lib;zlibd.lib;Msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;pixman.lib;libpng.lib;zlib.lib;Msimg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

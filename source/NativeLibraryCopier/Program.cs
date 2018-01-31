@@ -58,15 +58,12 @@ namespace NativeLibraryCopier
                 return (int)ExitCode.DllNotFound;
             }
             System.IO.File.Copy(DllFilePath, $"{TargetDir}{CairoDllFileName}", true);
-            if(ConfigurationName == "Debug")
+            if (!System.IO.File.Exists(PdbFilePath))
             {
-                if (!System.IO.File.Exists(PdbFilePath))
-                {
-                    Console.WriteLine($"ERROR: Native Cairo pdb built for {ConfigurationName}/{PlatformName} not found. Please build source/native/cairo first.");
-                    return (int)ExitCode.PdbNotFound;
-                }
-                System.IO.File.Copy(PdbFilePath, $"{TargetDir}{CairoPdbFileName}", true);
+                Console.WriteLine($"ERROR: Native Cairo pdb built for {ConfigurationName}/{PlatformName} not found. Please build source/native/cairo first.");
+                return (int)ExitCode.PdbNotFound;
             }
+            System.IO.File.Copy(PdbFilePath, $"{TargetDir}{CairoPdbFileName}", true);
 
             return (int)ExitCode.Success;
         }

@@ -73,6 +73,7 @@
     <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)source\Native\Output\lib\win-x86\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)d</TargetName>
@@ -82,6 +83,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)source\Native\Output\lib\win-x86\</OutDir>
     <IncludePath>$(ProjectDir)..\..\pixman\pixman;$(IncludePath)</IncludePath>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)source\Native\Output\lib\win-x64\</OutDir>

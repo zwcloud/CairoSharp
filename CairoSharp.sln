@@ -70,6 +70,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux-arm", "linux-arm", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeLibraryCopier", "source\NativeLibraryCopier\NativeLibraryCopier.csproj", "{6A96AEF1-1ED8-4324-9B02-587CDD331077}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "output", "output", "{CC9769D5-9C4A-4656-930D-23B0299F0A79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{51E01912-BB8A-4AA7-9463-60F86C36CBA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "win-x64", "win-x64", "{0487F8DA-72B1-45F3-A915-3DFE3E7352F2}"
+	ProjectSection(SolutionItems) = preProject
+		source\Native\Output\bin\win-x64\cairo.dll = source\Native\Output\bin\win-x64\cairo.dll
+		source\Native\Output\bin\win-x64\cairo.ipdb = source\Native\Output\bin\win-x64\cairo.ipdb
+		source\Native\Output\bin\win-x64\cairod.dll = source\Native\Output\bin\win-x64\cairod.dll
+		source\Native\Output\bin\win-x64\cairod.pdb = source\Native\Output\bin\win-x64\cairod.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "win-x86", "win-x86", "{0FFC239A-6CCC-4A3B-B490-7D6D53EFF92B}"
+	ProjectSection(SolutionItems) = preProject
+		source\Native\Output\bin\win-x86\cairo.dll = source\Native\Output\bin\win-x86\cairo.dll
+		source\Native\Output\bin\win-x86\cairo.pdb = source\Native\Output\bin\win-x86\cairo.pdb
+		source\Native\Output\bin\win-x86\cairod.dll = source\Native\Output\bin\win-x86\cairod.dll
+		source\Native\Output\bin\win-x86\cairod.pdb = source\Native\Output\bin\win-x86\cairod.pdb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -217,6 +237,10 @@ Global
 		{A5ABB6FF-478E-4151-B67F-CBC93429EC87} = {44C3FE0B-59BA-4941-95DB-68037305C4B1}
 		{86EC6648-74C4-48F4-9F67-56C8BF066F76} = {12F028EE-B05E-4E8A-8BCA-3B3A8667974C}
 		{6A96AEF1-1ED8-4324-9B02-587CDD331077} = {3147D408-B279-4D93-8BC3-860A82593092}
+		{CC9769D5-9C4A-4656-930D-23B0299F0A79} = {5D290B69-83E1-4FF5-9218-61864989B879}
+		{51E01912-BB8A-4AA7-9463-60F86C36CBA3} = {CC9769D5-9C4A-4656-930D-23B0299F0A79}
+		{0487F8DA-72B1-45F3-A915-3DFE3E7352F2} = {51E01912-BB8A-4AA7-9463-60F86C36CBA3}
+		{0FFC239A-6CCC-4A3B-B490-7D6D53EFF92B} = {51E01912-BB8A-4AA7-9463-60F86C36CBA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC48780D-A7F3-406F-83B9-9A4DB2A5DE76}
