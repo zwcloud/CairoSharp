@@ -7,7 +7,7 @@ Cairo is a 2D graphics library with support for multiple output devices.
 
 Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available.
 The cairo API provides operations similar to the drawing operators of PostScript and PDF.
-Operations in cairo including stroking and filling cubic B¨¦zier splines, transforming and compositing translucent images, and antialiased text rendering.
+Operations in cairo including stroking and filling cubic BÃ©zier splines, transforming and compositing translucent images, and antialiased text rendering.
 All drawing operations can be transformed by any affine transformation (scale, rotation, shear, etc.).
 
 # Platforms
