@@ -2,11 +2,11 @@
     <PropertyGroup>
         <TargetFrameworks>net45;netstandard1.6</TargetFrameworks>
         <AssemblyName>CairoSharp</AssemblyName>
-        <PackageId>CairoSharp</PackageId>
+        <PackageId>SharpCairo</PackageId>
         <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
         <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
         <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-        <Version>1.15.6</Version>
+        <Version>1.15.6-alpha</Version>
         <AssemblyVersion>1.15.84.6</AssemblyVersion>
         <Description>Cairo Graphics Library -- .net standard 1.6 wrapper
 
@@ -16,14 +16,21 @@ Operations in cairo including stroking and filling cubic Bézier splines, transf
 All drawing operations can be transformed by any affine transformation (scale, rotation, shear, etc.).</Description>
         <PackageIconUrl>http://cairographics.org/cairo-banner.png</PackageIconUrl>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/gfoidl/CairoSharp</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/gfoidl/CairoSharp</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/zwcloud/CairoSharp</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/zwcloud/CairoSharp</PackageProjectUrl>
         <PackageLicenseUrl>https://opensource.org/licenses/LGPL-3.0</PackageLicenseUrl>
         <PackageTags>cairo graphics svg png vector-graphics vector</PackageTags>
-        <PackageReleaseNotes>Release of Cairo Graphics version 1.15.6
-Code is compiled to a dll for win-x86 and win-x64
-On Linux it is assumed that cairo is intalled via a paket manager like `sudo apt-get install libcairo2`</PackageReleaseNotes>
+        <PackageReleaseNotes>This is a test-only release of CairoSharp for cairo v1.15.6.
+Package renamed to SharpCairo differ from CairoSharp provided by GTK#.</PackageReleaseNotes>
         <RunPostBuildEvent>Always</RunPostBuildEvent>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Authors>CairoSharp's contributors</Authors>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+      <DefineConstants>TRACE;DEBUG</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+      <DefineConstants>TRACE</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
