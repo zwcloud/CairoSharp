@@ -1,4 +1,4 @@
-[![NuGet](https://img.shields.io/nuget/v/CairoSharp.svg?style=flat-square)](https://www.nuget.org/packages/CairoSharp)
+[![NuGet](https://img.shields.io/nuget/v/SharpCairo.svg?style=flat-square)](https://www.nuget.org/packages/SharpCairo/)
 
 # CairoSharp
 A C# wrapper (.net standard 1.6, and .net 4.5) of [cairo](https://www.cairographics.org/). All its dependcies included.
