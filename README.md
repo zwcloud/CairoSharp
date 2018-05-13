@@ -12,7 +12,7 @@ All drawing operations can be transformed by any affine transformation (scale, r
 
 # Platforms
 
-[A former release](https://github.com/zwcloud/CairoSharp/releases/tag/dotnet_4.5) works on Windows desktop (Winform/WPF/Console Application) on .NET 4.5 and linux (tested on Ubuntu 12.04) on mono 4.2. CairoSharp was ported to .NET Core (.NET Standard 1.6) after that release.
+[A former release](https://github.com/zwcloud/CairoSharp/releases/tag/dotnet45_v1) works on Windows desktop (Winform/WPF/Console Application) on .NET 4.5 and linux (tested on Ubuntu 12.04) on mono 4.2. CairoSharp was ported to .NET Core (.NET Standard 1.6) after that release.
 
 Supported platforms:  
 
@@ -68,8 +68,8 @@ Project CairoSharp (not the native cairo lib but the C# one) is licensed under t
 
     CairoSharp, A C# wrapper of cairo which is a 2D vector rendering library
     Copyright (C) 2017 gfoidl
-    Copyright (C) 2015-2017  Zou Wei, zwcloud@hotmail.com, https://zwcloud.net
-    Copyright (C) 2007-2015  Xamarin, Inc.
+    Copyright (C) 2015-2018 Zou Wei, zwcloud@hotmail.com, https://zwcloud.net
+    Copyright (C) 2007-2015 Xamarin, Inc.
     Copyright (C) 2006 Alp Toker
     Copyright (C) 2005 John Luke
     Copyright (C) 2004 Novell, Inc (http://www.novell.com)
