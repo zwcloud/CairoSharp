@@ -137,7 +137,7 @@ layout_paragraph (cairo_t *cr)
 	    int len = prev_end - begin;
 	    char *s = malloc (len);
 	    memcpy (s, begin, len);
-	    s[0] = 0;
+	    s[len-1] = 0;
 	    paragraph_text[paragraph_num_lines++] = s;
 	    begin = prev_end + 1;
 	}
@@ -229,9 +229,11 @@ draw_section (cairo_surface_t *surface, cairo_t *cr, const struct section *secti
 {
     int flags, i;
     char buf[100];
+    char buf2[100];
 
     cairo_tag_begin (cr, "Sect", NULL);
     sprintf(buf, "name='%s'", section->heading);
+    sprintf(buf2, "dest='%s'", section->heading);
     cairo_select_font_face (cr, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
     if (section->level == 0) {
 	cairo_show_page (cr);
@@ -248,7 +250,7 @@ draw_section (cairo_surface_t *surface, cairo_t *cr, const struct section *secti
 	outline_parents[0] = cairo_pdf_surface_add_outline (surface,
 							    CAIRO_PDF_OUTLINE_ROOT,
 							    section->heading,
-							    section->heading,
+							    buf2,
 							    flags);
     } else {
 	if (section->level == 1) {
@@ -280,7 +282,7 @@ draw_section (cairo_surface_t *surface, cairo_t *cr, const struct section *secti
 	outline_parents[section->level] = cairo_pdf_surface_add_outline (surface,
 									 outline_parents[section->level - 1],
 									 section->heading,
-									 section->heading,
+									 buf2,
 									 flags);
     }
 
@@ -327,6 +329,10 @@ create_document (cairo_surface_t *surface, cairo_t *cr)
     cairo_tag_begin (cr, "Document", NULL);
 
     draw_cover (surface, cr);
+    cairo_pdf_surface_add_outline (surface,
+				   CAIRO_PDF_OUTLINE_ROOT,
+				   "Cover", "page=1",
+                                   CAIRO_PDF_OUTLINE_FLAG_BOLD);
     cairo_show_page (cr);
 
     page_num = 0;
@@ -335,10 +341,10 @@ create_document (cairo_surface_t *surface, cairo_t *cr)
 
     cairo_pdf_surface_add_outline (surface,
 				   CAIRO_PDF_OUTLINE_ROOT,
-				   "Contents", "TOC",
+				   "Contents", "dest='TOC'",
                                    CAIRO_PDF_OUTLINE_FLAG_BOLD);
 
-    cairo_tag_begin (cr, CAIRO_TAG_DEST, "name='TOC'");
+    cairo_tag_begin (cr, CAIRO_TAG_DEST, "name='TOC' internal");
     cairo_tag_begin (cr, "TOC", NULL);
     const struct section *sect = contents;
     while (sect->heading) {

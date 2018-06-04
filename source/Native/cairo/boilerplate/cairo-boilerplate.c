@@ -42,6 +42,7 @@
 #undef CAIRO_VERSION_H
 #include "../cairo-version.h"
 
+#include <stddef.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <assert.h>
@@ -976,7 +977,8 @@ cairo_surface_t *
 cairo_boilerplate_image_surface_create_from_ppm_stream (FILE *file)
 {
     char format;
-    int width, height, stride;
+    int width, height;
+    ptrdiff_t stride;
     int x, y;
     unsigned char *data;
     cairo_surface_t *image = NULL;

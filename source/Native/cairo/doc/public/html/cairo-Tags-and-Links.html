@@ -158,7 +158,7 @@ to. Destinations are created with the <a class="link" href="cairo-Tags-and-Links
 : An integer specifying the page number in the PDF file to link to.</p>
 <p><em class="parameter"><code>pos</code></em>
 : [optional] An array of two floats specifying the x,y position
-on the page. Default is 0,0.</p>
+on the page.</p>
 <p>An example of the link attributes to link to a page and x,y position:</p>
 <pre class="programlisting">
 "page=3 pos=[3.1 6.2]"
@@ -188,8 +188,9 @@ on the page. Default is 0,0.</p>
 <p> <em class="parameter"><code>page</code></em>
 : An integer specifying the page number in the PDF file.</p>
 <p> <em class="parameter"><code>pos</code></em>
-: [optional] An array of two floats specifying the x,y position
- on the page. Default is 0,0.</p>
+: [optional] An array of two floats specifying the x,y
+ position on the page. Position coordinates in external files are in PDF
+ coordinates (0,0 at bottom left).</p>
 <p>An example of the link attributes to PDF file:</p>
 <pre class="programlisting">
 "file='document.pdf' page=16 pos=[25 40]"
@@ -217,7 +218,7 @@ operations with the <a class="link" href="cairo-Tags-and-Links.html#CAIRO-TAG-DE
                 no operations are enclosed, the y coordidate is 0.</p>
 <p><em class="parameter"><code>internal</code></em>
 : A boolean that if true, the destination name may be
-           ommitted from PDF where possible. In this case, links
+           omitted from PDF where possible. In this case, links
            refer directly to the page and position instead of via
            the named destination table. Note that if this
            destination is referenced by another PDF (see <a class="link" href="cairo-Tags-and-Links.html#file-link" title="File Links">File Links</a>),
@@ -240,11 +241,11 @@ cairo_tag_end (cr, CAIRO_TAG_DEST);
 <div class="refsect2">
 <a name="doc-struct"></a><h3>Document Structure (PDF)</h3>
 <p>The document structure tags provide a means of specifying structural information
-such as headers, paragraphs, tables, and figures. The inclusion of structural information faciliates:</p>
+such as headers, paragraphs, tables, and figures. The inclusion of structural information facilitates:</p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem"><p>Extraction of text and graphics for copy and paste</p></li>
 <li class="listitem"><p>Reflow of text and graphics in the viewer</p></li>
-<li class="listitem"><p>Proccessing text eg searching and indexing</p></li>
+<li class="listitem"><p>Processing text eg searching and indexing</p></li>
 <li class="listitem"><p>Conversion to other formats</p></li>
 <li class="listitem"><p>Accessability support</p></li>
 </ul></div>

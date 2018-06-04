@@ -29,7 +29,7 @@
 /* This test case is designed to illustrate a performance bug in
  * drawing very long lines, where most of the line is out of bounds of
  * the destination surface, (but some portion of the line is
- * visibile). These results are in the "long-lines-uncropped" report.
+ * visible). These results are in the "long-lines-uncropped" report.
  *
  * For comparison, this test also renders the visible portions of the
  * same lines, (this is the "long-lines-cropped" report).

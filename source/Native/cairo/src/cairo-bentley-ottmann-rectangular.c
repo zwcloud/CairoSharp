@@ -603,7 +603,7 @@ _cairo_bentley_ottmann_tessellate_rectangular (rectangle_t	**rectangles,
     sweep_line_t sweep_line;
     rectangle_t *rectangle;
     cairo_status_t status;
-    cairo_bool_t update = FALSE;
+    cairo_bool_t update;
 
     sweep_line_init (&sweep_line,
 		     rectangles, num_rectangles,
@@ -611,6 +611,8 @@ _cairo_bentley_ottmann_tessellate_rectangular (rectangle_t	**rectangles,
 		     do_traps, container);
     if ((status = setjmp (sweep_line.unwind)))
 	return status;
+
+    update = FALSE;
 
     rectangle = rectangle_pop_start (&sweep_line);
     do {

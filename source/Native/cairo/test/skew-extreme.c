@@ -43,7 +43,7 @@
  *      d\_\c
  *
  * and the bug is that _cairo_traps_tessellate_convex_quad is
- * comparing b.x as less then d.x and therfore determining that the bc
+ * comparing b.x as less then d.x and therefore determining that the bc
  * edge is left of the ad edge. The fix is simply to compare c.x to
  * d.x instead of b.x to d.x .
  */

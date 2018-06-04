@@ -24,6 +24,8 @@
  * Author: Chris Wilson <chris@chris-wilson.co.uk>
  */
 
+#include <stdlib.h>
+#include <string.h>
 #include <gtk/gtk.h>
 #include <cairo.h>
 

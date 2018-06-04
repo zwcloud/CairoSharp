@@ -207,6 +207,56 @@ paint_jbig2_file (cairo_t *cr, int x, int y)
 }
 
 static cairo_test_status_t
+paint_ccitt_file (cairo_t *cr, int x, int y)
+{
+    const cairo_test_context_t *ctx = cairo_test_get_context (cr);
+    cairo_surface_t *image;
+    unsigned char *mime_data;
+    unsigned int mime_length;
+    cairo_status_t status;
+    const char *ccitt_image_filename = "ccitt.g3";
+    const char *ccitt_image_params = "Columns=200 Rows=50 K=-1";
+
+    /* Deliberately use a non-matching MIME images, so that we can identify
+     * when the MIME representation is used in preference to the plain image
+     * surface.
+     */
+
+    status = read_file (ctx, ccitt_image_filename, &mime_data, &mime_length);
+    if (status)
+	return cairo_test_status_from_status (ctx, status);
+
+    image = cairo_image_surface_create (CAIRO_FORMAT_RGB24, 200, 50);
+
+    /* Set the CCITT image data */
+    status = cairo_surface_set_mime_data (image, CAIRO_MIME_TYPE_CCITT_FAX,
+					  mime_data, mime_length,
+					  free, mime_data);
+    if (status) {
+	cairo_surface_destroy (image);
+	free (mime_data);
+	return cairo_test_status_from_status (ctx, status);
+    }
+
+    /* Set the CCITT image parameters */
+    status = cairo_surface_set_mime_data (image, CAIRO_MIME_TYPE_CCITT_FAX_PARAMS,
+					  (unsigned char *)ccitt_image_params,
+					  strlen (ccitt_image_params),
+					  NULL, NULL);
+    if (status) {
+	cairo_surface_destroy (image);
+	return cairo_test_status_from_status (ctx, status);
+    }
+
+    cairo_set_source_surface (cr, image, x, y);
+    cairo_surface_destroy (image);
+
+    cairo_paint (cr);
+
+    return CAIRO_TEST_SUCCESS;
+}
+
+static cairo_test_status_t
 draw (cairo_t *cr, int width, int height)
 {
     const char jpg_filename[] = "jpeg.jpg";
@@ -230,6 +280,10 @@ draw (cairo_t *cr, int width, int height)
     if (status)
 	return status;
 
+    status = paint_ccitt_file (cr, 0, 250);
+    if (status)
+	return status;
+
     return CAIRO_TEST_SUCCESS;
 }
 
@@ -237,5 +291,5 @@ CAIRO_TEST (mime_data,
 	    "Check that the mime-data embedding works",
 	    "jpeg, api", /* keywords */
 	    NULL, /* requirements */
-	    200, 250,
+	    200, 300,
 	    NULL, draw)

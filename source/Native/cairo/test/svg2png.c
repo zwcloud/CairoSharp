@@ -27,8 +27,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <gdk/gdk.h>
-#include <gdk/gdkpixbuf.h>
 #include <librsvg/rsvg.h>
 
 #define FAIL(msg)							\

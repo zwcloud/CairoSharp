@@ -46,6 +46,8 @@ static uint32_t data[16] = {
     0xff00ff00, 0xff00ff00,		0xff0000ff, 0xff0000ff
 };
 
+static const char *unique_id = "data";
+
 static const char *png_filename = "romedalen.png";
 
 static cairo_t *
@@ -70,6 +72,9 @@ paint_alpha (cairo_t *cr)
 
     surface = cairo_image_surface_create_for_data ((unsigned char *) data,
 						   CAIRO_FORMAT_RGB24, 4, 4, 16);
+    cairo_surface_set_mime_data (surface, CAIRO_MIME_TYPE_UNIQUE_ID,
+				 (unsigned char *)unique_id, strlen(unique_id),
+				 NULL, NULL);
 
     cairo_test_paint_checkered (cr);
 
@@ -106,6 +111,9 @@ paint_alpha_clip (cairo_t *cr)
 
     surface = cairo_image_surface_create_for_data ((unsigned char *) data,
 						   CAIRO_FORMAT_RGB24, 4, 4, 16);
+    cairo_surface_set_mime_data (surface, CAIRO_MIME_TYPE_UNIQUE_ID,
+				 (unsigned char *)unique_id, strlen(unique_id),
+				 NULL, NULL);
 
     cairo_test_paint_checkered (cr);
 
@@ -131,6 +139,9 @@ paint_alpha_clip_mask (cairo_t *cr)
 
     surface = cairo_image_surface_create_for_data ((unsigned char *) data,
 						   CAIRO_FORMAT_RGB24, 4, 4, 16);
+    cairo_surface_set_mime_data (surface, CAIRO_MIME_TYPE_UNIQUE_ID,
+				 (unsigned char *)unique_id, strlen(unique_id),
+				 NULL, NULL);
 
     cairo_test_paint_checkered (cr);
 

@@ -64,10 +64,10 @@ main (int argc, char **argv)
     csi = cairo_script_interpreter_create ();
 
     for (i = 1; i < argc; i++) {
-        if (strcmp (argv[i], "--version")) {
+        if (strcmp (argv[i], "--version") == 0) {
             printf ("%s: version %s\n", argv[0], __DATE__);
 	    exit (0);
-        } else if (strcmp (argv[i], "--help")) {
+        } else if (strcmp (argv[i], "--help") == 0) {
 	    printf ("usage: %s < in > out\n", argv[0]);
 	    exit (0);
         }

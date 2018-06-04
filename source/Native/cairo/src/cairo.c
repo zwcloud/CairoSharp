@@ -193,7 +193,7 @@
  * @page: An integer specifying the page number in the PDF file to link to.
  *
  * @pos: [optional] An array of two floats specifying the x,y position
- * on the page. Default is 0,0.
+ * on the page.
  *
  * An example of the link attributes to link to a page and x,y position:
  * <programlisting>
@@ -227,8 +227,9 @@
  *
  *  @page: An integer specifying the page number in the PDF file.
  *
- *  @pos: [optional] An array of two floats specifying the x,y position
- *  on the page. Default is 0,0.
+ *  @pos: [optional] An array of two floats specifying the x,y
+ *  position on the page. Position coordinates in external files are in PDF
+ *  coordinates (0,0 at bottom left).
  *
  * An example of the link attributes to PDF file:
  * <programlisting>
@@ -236,7 +237,7 @@
  * </programlisting>
  *
  * # Destination Tags # {#dest}
-
+ *
  * A destination is specified by enclosing the destination drawing
  * operations with the %CAIRO_TAG_DEST tag.
  *
@@ -255,7 +256,7 @@
  *                 no operations are enclosed, the y coordidate is 0.
  *
  * @internal: A boolean that if true, the destination name may be
- *            ommitted from PDF where possible. In this case, links
+ *            omitted from PDF where possible. In this case, links
  *            refer directly to the page and position instead of via
  *            the named destination table. Note that if this
  *            destination is referenced by another PDF (see [File Links][file-link]),
@@ -278,10 +279,10 @@
  * # Document Structure (PDF) # {#doc-struct}
  *
  * The document structure tags provide a means of specifying structural information
- * such as headers, paragraphs, tables, and figures. The inclusion of structural information faciliates:
+ * such as headers, paragraphs, tables, and figures. The inclusion of structural information facilitates:
  * * Extraction of text and graphics for copy and paste
  * * Reflow of text and graphics in the viewer
- * * Proccessing text eg searching and indexing
+ * * Processing text eg searching and indexing
  * * Conversion to other formats
  * * Accessability support
  *
@@ -843,7 +844,7 @@ slim_hidden_def (cairo_set_operator);
 
 
 #if 0
-/**
+/*
  * cairo_set_opacity:
  * @cr: a #cairo_t
  * @opacity: the level of opacity to use when compositing
@@ -853,9 +854,7 @@ slim_hidden_def (cairo_set_operator);
  * using the alpha value.
  *
  * The default opacity is 1.
- *
- * Since: TBD
- **/
+ */
 void
 cairo_set_opacity (cairo_t *cr, double opacity)
 {

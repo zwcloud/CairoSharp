@@ -158,6 +158,7 @@ ps-features			\
 svg-clip			\
 svg-surface			\
 toy-font-face			\
+font-variations			\
 user-data
 
 # A target to summarise the failures

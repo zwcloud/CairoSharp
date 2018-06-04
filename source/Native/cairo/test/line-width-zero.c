@@ -28,7 +28,7 @@
 
 /* This is a test case for the following bug:
  *
- *	Crash in cairo_stroke_extents whe line width is 0 and line cap is ROUND
+ *	Crash in cairo_stroke_extents when line width is 0 and line cap is ROUND
  *	(_cairo_pen_find_active_cw_vertex_index)
  *	https://bugs.freedesktop.org/show_bug.cgi?id=10231
  */

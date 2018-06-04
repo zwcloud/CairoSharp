@@ -4810,8 +4810,8 @@ _set_dash (csi_t *ctx)
 	if (_csi_likely (array->stack.len < ARRAY_LENGTH (stack_dashes))) {
 	    dashes = stack_dashes;
 	} else {
-	if (_csi_unlikely ((unsigned) array->stack.len >= INT_MAX / sizeof (double)))
-	    return _csi_error (CSI_STATUS_NO_MEMORY);
+	    if (_csi_unlikely ((unsigned) array->stack.len >= INT_MAX / sizeof (double)))
+		return _csi_error (CSI_STATUS_NO_MEMORY);
 	    dashes = _csi_alloc (ctx, sizeof (double) * array->stack.len);
 	    if (_csi_unlikely (dashes == NULL))
 		return _csi_error (CSI_STATUS_NO_MEMORY);

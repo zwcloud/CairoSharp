@@ -355,7 +355,7 @@ cairo_perf_reports_compare (cairo_perf_report_t 	*reports,
 	diff = &diffs[i];
 
 	/* Discard as uninteresting a change which is less than the
-	 * minimum change required, (default may be overriden on
+	 * minimum change required, (default may be overridden on
 	 * command-line). */
 	if (fabs (diff->change) - 1.0 < options->min_change)
 	    continue;

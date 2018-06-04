@@ -398,7 +398,7 @@ typedef enum _cairo_content {
  * @CAIRO_FORMAT_A1: each pixel is a 1-bit quantity holding
  *   an alpha value. Pixels are packed together into 32-bit
  *   quantities. The ordering of the bits matches the
- *   endianess of the platform. On a big-endian machine, the
+ *   endianness of the platform. On a big-endian machine, the
  *   first pixel is in the uppermost bit, on a little-endian
  *   machine the first pixel is in the least-significant bit. (Since 1.0)
  * @CAIRO_FORMAT_RGB16_565: each pixel is a 16-bit quantity
@@ -1430,6 +1430,13 @@ cairo_font_options_set_hint_metrics (cairo_font_options_t *options,
 cairo_public cairo_hint_metrics_t
 cairo_font_options_get_hint_metrics (const cairo_font_options_t *options);
 
+cairo_public const char *
+cairo_font_options_get_variations (cairo_font_options_t *options);
+
+cairo_public void
+cairo_font_options_set_variations (cairo_font_options_t *options,
+                                   const char           *variations);
+
 /* This interface is for dealing with text as text, not caring about the
    font object inside the the cairo_t. */
 
@@ -2453,6 +2460,10 @@ cairo_surface_set_user_data (cairo_surface_t		 *surface,
 #define CAIRO_MIME_TYPE_JBIG2 "application/x-cairo.jbig2"
 #define CAIRO_MIME_TYPE_JBIG2_GLOBAL "application/x-cairo.jbig2-global"
 #define CAIRO_MIME_TYPE_JBIG2_GLOBAL_ID "application/x-cairo.jbig2-global-id"
+#define CAIRO_MIME_TYPE_CCITT_FAX "image/g3fax"
+#define CAIRO_MIME_TYPE_CCITT_FAX_PARAMS "application/x-cairo.ccitt.params"
+#define CAIRO_MIME_TYPE_EPS "application/postscript"
+#define CAIRO_MIME_TYPE_EPS_PARAMS "application/x-cairo.eps.params"
 
 cairo_public void
 cairo_surface_get_mime_data (cairo_surface_t		*surface,

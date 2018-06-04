@@ -244,6 +244,7 @@ write_ppm (cairo_surface_t *surface, int fd)
     return NULL;
 }
 
+#if CAIRO_HAS_INTERPRETER
 static cairo_surface_t *
 _create_image (void *closure,
 	       cairo_content_t content,
@@ -268,7 +269,6 @@ _create_image (void *closure,
     return cairo_surface_reference (*out);
 }
 
-#if CAIRO_HAS_INTERPRETER
 static const char *
 _cairo_script_render_page (const char *filename,
 			   cairo_surface_t **surface_out)

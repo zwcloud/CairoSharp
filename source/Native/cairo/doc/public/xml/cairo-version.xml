@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?> 
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-                "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
 <!ENTITY version SYSTEM "version.xml">
 ]>
 <refentry id="cairo-Version-Information">
@@ -116,8 +116,8 @@ macro <link linkend="CAIRO-VERSION-ENCODE:CAPS"><function>CAIRO_VERSION_ENCODE()
 <informalexample><screen>
 Compile-time
 ------------
-CAIRO_VERSION_STRING    Human-readable
-CAIRO_VERSION           Encoded, suitable for comparison
+<link linkend="CAIRO-VERSION-STRING:CAPS"><type>CAIRO_VERSION_STRING</type></link>   Human-readable
+<link linkend="CAIRO-VERSION:CAPS"><type>CAIRO_VERSION</type></link>          Encoded, suitable for comparison
 &nbsp;
 Run-time
 --------

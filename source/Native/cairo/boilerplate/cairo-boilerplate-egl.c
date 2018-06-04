@@ -33,10 +33,13 @@
 #include "cairo-boilerplate-private.h"
 
 #include <cairo-gl.h>
-#if CAIRO_HAS_GL_SURFACE
-#include <GL/gl.h>
+#if CAIRO_HAS_GLESV3_SURFACE
+#include <GLES3/gl3.h>
+#include <EGL/eglext.h>
 #elif CAIRO_HAS_GLESV2_SURFACE
 #include <GLES2/gl2.h>
+#elif CAIRO_HAS_GL_SURFACE
+#include <GL/gl.h>
 #endif
 
 static const cairo_user_data_key_t gl_closure_key;
@@ -85,15 +88,19 @@ _cairo_boilerplate_egl_create_surface (const char		 *name,
 	EGL_BLUE_SIZE, 8,
 	EGL_ALPHA_SIZE, 8,
 	EGL_SURFACE_TYPE, EGL_PBUFFER_BIT,
-#if CAIRO_HAS_GL_SURFACE
-	EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
+#if CAIRO_HAS_GLESV3_SURFACE
+	EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT_KHR,
 #elif CAIRO_HAS_GLESV2_SURFACE
 	EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+#elif CAIRO_HAS_GL_SURFACE
+	EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
 #endif
 	EGL_NONE
     };
     const EGLint ctx_attribs[] = {
-#if CAIRO_HAS_GLESV2_SURFACE
+#if CAIRO_HAS_GLESV3_SURFACE
+	EGL_CONTEXT_CLIENT_VERSION, 3,
+#elif CAIRO_HAS_GLESV2_SURFACE
 	EGL_CONTEXT_CLIENT_VERSION, 2,
 #endif
 	EGL_NONE
@@ -110,15 +117,22 @@ _cairo_boilerplate_egl_create_surface (const char		 *name,
     }
 
     eglChooseConfig (gltc->dpy, config_attribs, &config, 1, &numConfigs);
+#if CAIRO_HAS_GLESV3_SURFACE && CAIRO_HAS_GLESV2_SURFACE
+    if (numConfigs == 0) {
+        /* retry with ES2_BIT */
+        config_attribs[11] = ES2_BIT;  /* FIXME: Ick */
+        eglChooseConfig (gltc->dpy, config_attribs, &config, 1, &numConfigs);
+    }
+#endif
     if (numConfigs == 0) {
 	free (gltc);
 	return NULL;
     }
 
-#if CAIRO_HAS_GL_SURFACE
-    eglBindAPI (EGL_OPENGL_API);
-#elif CAIRO_HAS_GLESV2_SURFACE
+#if CAIRO_HAS_GLESV3_SURFACE || CAIRO_HAS_GLESV2_SURFACE
     eglBindAPI (EGL_OPENGL_ES_API);
+#elif CAIRO_HAS_GL_SURFACE
+    eglBindAPI (EGL_OPENGL_API);
 #endif
 
     gltc->ctx = eglCreateContext (gltc->dpy, config, EGL_NO_CONTEXT,

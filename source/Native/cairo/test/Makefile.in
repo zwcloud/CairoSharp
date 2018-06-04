@@ -125,10 +125,9 @@ am__aclocal_m4_deps = $(top_srcdir)/build/aclocal.cairo.m4 \
 	$(top_srcdir)/build/aclocal.compare.m4 \
 	$(top_srcdir)/build/aclocal.enable.m4 \
 	$(top_srcdir)/build/aclocal.float.m4 \
-	$(top_srcdir)/build/aclocal.gtk-doc.m4 \
 	$(top_srcdir)/build/aclocal.makefile.m4 \
 	$(top_srcdir)/build/aclocal.pkg.m4 \
-	$(top_srcdir)/build/libtool.m4 \
+	$(top_srcdir)/build/gtk-doc.m4 $(top_srcdir)/build/libtool.m4 \
 	$(top_srcdir)/build/ltoptions.m4 \
 	$(top_srcdir)/build/ltsugar.m4 \
 	$(top_srcdir)/build/ltversion.m4 \
@@ -202,7 +201,8 @@ am__cairo_test_suite_SOURCES_DIST = buffer-diff.c cairo-test.c \
 	composite-integer-translate-source.c \
 	composite-integer-translate-over.c \
 	composite-integer-translate-over-repeat.c copy-disjoint.c \
-	copy-path.c coverage.c create-for-stream.c create-from-png.c \
+	copy-path.c coverage.c create-for-stream.c \
+	create-from-broken-png-stream.c create-from-png.c \
 	create-from-png-stream.c culled-glyphs.c curve-to-as-line-to.c \
 	dash-caps-joins.c dash-curve.c dash-infinite-loop.c \
 	dash-no-dash.c dash-offset.c dash-offset-negative.c \
@@ -223,18 +223,18 @@ am__cairo_test_suite_SOURCES_DIST = buffer-diff.c cairo-test.c \
 	filter-bilinear-extents.c filter-nearest-offset.c \
 	filter-nearest-transformed.c finer-grained-fallbacks.c \
 	font-face-get-type.c font-matrix-translation.c font-options.c \
-	glyph-cache-pressure.c get-and-set.c get-clip.c \
-	get-group-target.c get-path-extents.c gradient-alpha.c \
-	gradient-constant-alpha.c gradient-zero-stops.c \
-	gradient-zero-stops-mask.c group-clip.c group-paint.c \
-	group-state.c group-unaligned.c half-coverage.c halo.c \
-	hatchings.c horizontal-clip.c huge-linear.c huge-radial.c \
-	image-surface-source.c image-bug-710072.c implicit-close.c \
-	infinite-join.c in-fill-empty-trapezoid.c in-fill-trapezoid.c \
-	invalid-matrix.c inverse-text.c inverted-clip.c joins.c \
-	joins-loop.c joins-star.c joins-retrace.c large-clip.c \
-	large-font.c large-source.c large-source-roi.c \
-	large-twin-antialias-mixed.c leaky-dash.c \
+	font-variations.c glyph-cache-pressure.c get-and-set.c \
+	get-clip.c get-group-target.c get-path-extents.c \
+	gradient-alpha.c gradient-constant-alpha.c \
+	gradient-zero-stops.c gradient-zero-stops-mask.c group-clip.c \
+	group-paint.c group-state.c group-unaligned.c half-coverage.c \
+	halo.c hatchings.c horizontal-clip.c huge-linear.c \
+	huge-radial.c image-surface-source.c image-bug-710072.c \
+	implicit-close.c infinite-join.c in-fill-empty-trapezoid.c \
+	in-fill-trapezoid.c invalid-matrix.c inverse-text.c \
+	inverted-clip.c joins.c joins-loop.c joins-star.c \
+	joins-retrace.c large-clip.c large-font.c large-source.c \
+	large-source-roi.c large-twin-antialias-mixed.c leaky-dash.c \
 	leaky-dashed-rectangle.c leaky-dashed-stroke.c leaky-polygon.c \
 	line-width.c line-width-large-overlap.c line-width-overlap.c \
 	line-width-scale.c line-width-tolerance.c line-width-zero.c \
@@ -323,7 +323,8 @@ am__cairo_test_suite_SOURCES_DIST = buffer-diff.c cairo-test.c \
 	ps-surface-source.c svg-surface.c svg-clip.c \
 	svg-surface-source.c xcb-surface-source.c xlib-surface.c \
 	xlib-surface-source.c get-xrender-format.c multi-page.c \
-	fallback-resolution.c cairo-test-constructors.c
+	mime-unique-id.c fallback-resolution.c \
+	cairo-test-constructors.c
 am__objects_1 = cairo_test_suite-buffer-diff.$(OBJEXT) \
 	cairo_test_suite-cairo-test.$(OBJEXT) \
 	cairo_test_suite-cairo-test-runner.$(OBJEXT)
@@ -370,7 +371,8 @@ am__objects_21 = cairo_test_suite-xlib-surface.$(OBJEXT) \
 am__objects_23 = cairo_test_suite-get-xrender-format.$(OBJEXT)
 @CAIRO_HAS_XLIB_XRENDER_SURFACE_TRUE@am__objects_24 =  \
 @CAIRO_HAS_XLIB_XRENDER_SURFACE_TRUE@	$(am__objects_23)
-am__objects_25 = cairo_test_suite-multi-page.$(OBJEXT)
+am__objects_25 = cairo_test_suite-multi-page.$(OBJEXT) \
+	cairo_test_suite-mime-unique-id.$(OBJEXT)
 @CAIRO_HAS_MULTI_PAGE_SURFACES_TRUE@am__objects_26 =  \
 @CAIRO_HAS_MULTI_PAGE_SURFACES_TRUE@	$(am__objects_25)
 am__objects_27 = cairo_test_suite-fallback-resolution.$(OBJEXT)
@@ -465,6 +467,7 @@ am__objects_29 = cairo_test_suite-a1-bug.$(OBJEXT) \
 	cairo_test_suite-copy-path.$(OBJEXT) \
 	cairo_test_suite-coverage.$(OBJEXT) \
 	cairo_test_suite-create-for-stream.$(OBJEXT) \
+	cairo_test_suite-create-from-broken-png-stream.$(OBJEXT) \
 	cairo_test_suite-create-from-png.$(OBJEXT) \
 	cairo_test_suite-create-from-png-stream.$(OBJEXT) \
 	cairo_test_suite-culled-glyphs.$(OBJEXT) \
@@ -521,6 +524,7 @@ am__objects_29 = cairo_test_suite-a1-bug.$(OBJEXT) \
 	cairo_test_suite-font-face-get-type.$(OBJEXT) \
 	cairo_test_suite-font-matrix-translation.$(OBJEXT) \
 	cairo_test_suite-font-options.$(OBJEXT) \
+	cairo_test_suite-font-variations.$(OBJEXT) \
 	cairo_test_suite-glyph-cache-pressure.$(OBJEXT) \
 	cairo_test_suite-get-and-set.$(OBJEXT) \
 	cairo_test_suite-get-clip.$(OBJEXT) \
@@ -1190,6 +1194,11 @@ GOBJECT_LIBS = @GOBJECT_LIBS@
 GREP = @GREP@
 GS = @GS@
 GTKDOC_CHECK = @GTKDOC_CHECK@
+GTKDOC_CHECK_PATH = @GTKDOC_CHECK_PATH@
+GTKDOC_DEPS_CFLAGS = @GTKDOC_DEPS_CFLAGS@
+GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
+GTKDOC_MKPDF = @GTKDOC_MKPDF@
+GTKDOC_REBASE = @GTKDOC_REBASE@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -1288,6 +1297,8 @@ gl_CFLAGS = @gl_CFLAGS@
 gl_LIBS = @gl_LIBS@
 glesv2_CFLAGS = @glesv2_CFLAGS@
 glesv2_LIBS = @glesv2_LIBS@
+glesv3_CFLAGS = @glesv3_CFLAGS@
+glesv3_LIBS = @glesv3_LIBS@
 glib_CFLAGS = @glib_CFLAGS@
 glib_LIBS = @glib_LIBS@
 gtk_CFLAGS = @gtk_CFLAGS@
@@ -1329,7 +1340,6 @@ runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 shm_LIBS = @shm_LIBS@
-skia_DIR = @skia_DIR@
 srcdir = @srcdir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
@@ -1392,7 +1402,8 @@ test_sources = a1-bug.c a1-clip.c a1-fill.c a1-image-sample.c \
 	composite-integer-translate-source.c \
 	composite-integer-translate-over.c \
 	composite-integer-translate-over-repeat.c copy-disjoint.c \
-	copy-path.c coverage.c create-for-stream.c create-from-png.c \
+	copy-path.c coverage.c create-for-stream.c \
+	create-from-broken-png-stream.c create-from-png.c \
 	create-from-png-stream.c culled-glyphs.c curve-to-as-line-to.c \
 	dash-caps-joins.c dash-curve.c dash-infinite-loop.c \
 	dash-no-dash.c dash-offset.c dash-offset-negative.c \
@@ -1413,18 +1424,18 @@ test_sources = a1-bug.c a1-clip.c a1-fill.c a1-image-sample.c \
 	filter-bilinear-extents.c filter-nearest-offset.c \
 	filter-nearest-transformed.c finer-grained-fallbacks.c \
 	font-face-get-type.c font-matrix-translation.c font-options.c \
-	glyph-cache-pressure.c get-and-set.c get-clip.c \
-	get-group-target.c get-path-extents.c gradient-alpha.c \
-	gradient-constant-alpha.c gradient-zero-stops.c \
-	gradient-zero-stops-mask.c group-clip.c group-paint.c \
-	group-state.c group-unaligned.c half-coverage.c halo.c \
-	hatchings.c horizontal-clip.c huge-linear.c huge-radial.c \
-	image-surface-source.c image-bug-710072.c implicit-close.c \
-	infinite-join.c in-fill-empty-trapezoid.c in-fill-trapezoid.c \
-	invalid-matrix.c inverse-text.c inverted-clip.c joins.c \
-	joins-loop.c joins-star.c joins-retrace.c large-clip.c \
-	large-font.c large-source.c large-source-roi.c \
-	large-twin-antialias-mixed.c leaky-dash.c \
+	font-variations.c glyph-cache-pressure.c get-and-set.c \
+	get-clip.c get-group-target.c get-path-extents.c \
+	gradient-alpha.c gradient-constant-alpha.c \
+	gradient-zero-stops.c gradient-zero-stops-mask.c group-clip.c \
+	group-paint.c group-state.c group-unaligned.c half-coverage.c \
+	halo.c hatchings.c horizontal-clip.c huge-linear.c \
+	huge-radial.c image-surface-source.c image-bug-710072.c \
+	implicit-close.c infinite-join.c in-fill-empty-trapezoid.c \
+	in-fill-trapezoid.c invalid-matrix.c inverse-text.c \
+	inverted-clip.c joins.c joins-loop.c joins-star.c \
+	joins-retrace.c large-clip.c large-font.c large-source.c \
+	large-source-roi.c large-twin-antialias-mixed.c leaky-dash.c \
 	leaky-dashed-rectangle.c leaky-dashed-stroke.c leaky-polygon.c \
 	line-width.c line-width-large-overlap.c line-width-overlap.c \
 	line-width-scale.c line-width-tolerance.c line-width-zero.c \
@@ -1555,7 +1566,7 @@ xlib_surface_test_sources = \
 	xlib-surface-source.c
 
 xlib_xrender_surface_test_sources = get-xrender-format.c
-multi_page_surface_test_sources = multi-page.c
+multi_page_surface_test_sources = multi-page.c mime-unique-id.c
 fallback_resolution_test_sources = fallback-resolution.c
 cairo_test_suite_headers = \
 	buffer-diff.h \
@@ -1632,6 +1643,7 @@ ps-features			\
 svg-clip			\
 svg-surface			\
 toy-font-face			\
+font-variations			\
 user-data
 
 AM_CPPFLAGS = \
@@ -1907,6 +1919,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-copy-path.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-coverage.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-create-for-stream.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-create-from-broken-png-stream.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-create-from-png-stream.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-create-from-png.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-culled-glyphs.Po@am__quote@
@@ -1966,6 +1979,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-font-face-get-type.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-font-matrix-translation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-font-options.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-font-variations.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-ft-font-create-for-ft-face.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-ft-show-glyphs-positioning.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-ft-show-glyphs-table.Po@am__quote@
@@ -2050,6 +2064,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-mesh-pattern.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-mime-data.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-mime-surface-api.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-mime-unique-id.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-miter-precision.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-move-to-show-surface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cairo_test_suite-multi-page.Po@am__quote@
@@ -3556,6 +3571,20 @@ cairo_test_suite-create-for-stream.obj: create-for-stream.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-create-for-stream.obj `if test -f 'create-for-stream.c'; then $(CYGPATH_W) 'create-for-stream.c'; else $(CYGPATH_W) '$(srcdir)/create-for-stream.c'; fi`
 
+cairo_test_suite-create-from-broken-png-stream.o: create-from-broken-png-stream.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-create-from-broken-png-stream.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-create-from-broken-png-stream.Tpo -c -o cairo_test_suite-create-from-broken-png-stream.o `test -f 'create-from-broken-png-stream.c' || echo '$(srcdir)/'`create-from-broken-png-stream.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-create-from-broken-png-stream.Tpo $(DEPDIR)/cairo_test_suite-create-from-broken-png-stream.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='create-from-broken-png-stream.c' object='cairo_test_suite-create-from-broken-png-stream.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-create-from-broken-png-stream.o `test -f 'create-from-broken-png-stream.c' || echo '$(srcdir)/'`create-from-broken-png-stream.c
+
+cairo_test_suite-create-from-broken-png-stream.obj: create-from-broken-png-stream.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-create-from-broken-png-stream.obj -MD -MP -MF $(DEPDIR)/cairo_test_suite-create-from-broken-png-stream.Tpo -c -o cairo_test_suite-create-from-broken-png-stream.obj `if test -f 'create-from-broken-png-stream.c'; then $(CYGPATH_W) 'create-from-broken-png-stream.c'; else $(CYGPATH_W) '$(srcdir)/create-from-broken-png-stream.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-create-from-broken-png-stream.Tpo $(DEPDIR)/cairo_test_suite-create-from-broken-png-stream.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='create-from-broken-png-stream.c' object='cairo_test_suite-create-from-broken-png-stream.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-create-from-broken-png-stream.obj `if test -f 'create-from-broken-png-stream.c'; then $(CYGPATH_W) 'create-from-broken-png-stream.c'; else $(CYGPATH_W) '$(srcdir)/create-from-broken-png-stream.c'; fi`
+
 cairo_test_suite-create-from-png.o: create-from-png.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-create-from-png.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-create-from-png.Tpo -c -o cairo_test_suite-create-from-png.o `test -f 'create-from-png.c' || echo '$(srcdir)/'`create-from-png.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-create-from-png.Tpo $(DEPDIR)/cairo_test_suite-create-from-png.Po
@@ -4339,6 +4368,20 @@ cairo_test_suite-font-options.obj: font-options.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='font-options.c' object='cairo_test_suite-font-options.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-font-options.obj `if test -f 'font-options.c'; then $(CYGPATH_W) 'font-options.c'; else $(CYGPATH_W) '$(srcdir)/font-options.c'; fi`
+
+cairo_test_suite-font-variations.o: font-variations.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-font-variations.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-font-variations.Tpo -c -o cairo_test_suite-font-variations.o `test -f 'font-variations.c' || echo '$(srcdir)/'`font-variations.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-font-variations.Tpo $(DEPDIR)/cairo_test_suite-font-variations.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='font-variations.c' object='cairo_test_suite-font-variations.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-font-variations.o `test -f 'font-variations.c' || echo '$(srcdir)/'`font-variations.c
+
+cairo_test_suite-font-variations.obj: font-variations.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-font-variations.obj -MD -MP -MF $(DEPDIR)/cairo_test_suite-font-variations.Tpo -c -o cairo_test_suite-font-variations.obj `if test -f 'font-variations.c'; then $(CYGPATH_W) 'font-variations.c'; else $(CYGPATH_W) '$(srcdir)/font-variations.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-font-variations.Tpo $(DEPDIR)/cairo_test_suite-font-variations.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='font-variations.c' object='cairo_test_suite-font-variations.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-font-variations.obj `if test -f 'font-variations.c'; then $(CYGPATH_W) 'font-variations.c'; else $(CYGPATH_W) '$(srcdir)/font-variations.c'; fi`
 
 cairo_test_suite-glyph-cache-pressure.o: glyph-cache-pressure.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-glyph-cache-pressure.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-glyph-cache-pressure.Tpo -c -o cairo_test_suite-glyph-cache-pressure.o `test -f 'glyph-cache-pressure.c' || echo '$(srcdir)/'`glyph-cache-pressure.c
@@ -8203,6 +8246,20 @@ cairo_test_suite-multi-page.obj: multi-page.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='multi-page.c' object='cairo_test_suite-multi-page.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-multi-page.obj `if test -f 'multi-page.c'; then $(CYGPATH_W) 'multi-page.c'; else $(CYGPATH_W) '$(srcdir)/multi-page.c'; fi`
+
+cairo_test_suite-mime-unique-id.o: mime-unique-id.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-mime-unique-id.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-mime-unique-id.Tpo -c -o cairo_test_suite-mime-unique-id.o `test -f 'mime-unique-id.c' || echo '$(srcdir)/'`mime-unique-id.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-mime-unique-id.Tpo $(DEPDIR)/cairo_test_suite-mime-unique-id.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='mime-unique-id.c' object='cairo_test_suite-mime-unique-id.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-mime-unique-id.o `test -f 'mime-unique-id.c' || echo '$(srcdir)/'`mime-unique-id.c
+
+cairo_test_suite-mime-unique-id.obj: mime-unique-id.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-mime-unique-id.obj -MD -MP -MF $(DEPDIR)/cairo_test_suite-mime-unique-id.Tpo -c -o cairo_test_suite-mime-unique-id.obj `if test -f 'mime-unique-id.c'; then $(CYGPATH_W) 'mime-unique-id.c'; else $(CYGPATH_W) '$(srcdir)/mime-unique-id.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/cairo_test_suite-mime-unique-id.Tpo $(DEPDIR)/cairo_test_suite-mime-unique-id.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='mime-unique-id.c' object='cairo_test_suite-mime-unique-id.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -c -o cairo_test_suite-mime-unique-id.obj `if test -f 'mime-unique-id.c'; then $(CYGPATH_W) 'mime-unique-id.c'; else $(CYGPATH_W) '$(srcdir)/mime-unique-id.c'; fi`
 
 cairo_test_suite-fallback-resolution.o: fallback-resolution.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cairo_test_suite_CFLAGS) $(CFLAGS) -MT cairo_test_suite-fallback-resolution.o -MD -MP -MF $(DEPDIR)/cairo_test_suite-fallback-resolution.Tpo -c -o cairo_test_suite-fallback-resolution.o `test -f 'fallback-resolution.c' || echo '$(srcdir)/'`fallback-resolution.c

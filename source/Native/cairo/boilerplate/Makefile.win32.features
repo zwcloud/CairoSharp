@@ -151,18 +151,6 @@ enabled_cairo_boilerplate_cxx_sources += $(cairo_boilerplate_win32_font_cxx_sour
 enabled_cairo_boilerplate_sources += $(cairo_boilerplate_win32_font_sources)
 endif
 
-unsupported_cairo_boilerplate_headers += $(cairo_boilerplate_skia_headers)
-all_cairo_boilerplate_headers += $(cairo_boilerplate_skia_headers)
-all_cairo_boilerplate_private += $(cairo_boilerplate_skia_private)
-all_cairo_boilerplate_cxx_sources += $(cairo_boilerplate_skia_cxx_sources)
-all_cairo_boilerplate_sources += $(cairo_boilerplate_skia_sources)
-ifeq ($(CAIRO_HAS_SKIA_SURFACE),1)
-enabled_cairo_boilerplate_headers += $(cairo_boilerplate_skia_headers)
-enabled_cairo_boilerplate_private += $(cairo_boilerplate_skia_private)
-enabled_cairo_boilerplate_cxx_sources += $(cairo_boilerplate_skia_cxx_sources)
-enabled_cairo_boilerplate_sources += $(cairo_boilerplate_skia_sources)
-endif
-
 unsupported_cairo_boilerplate_headers += $(cairo_boilerplate_os2_headers)
 all_cairo_boilerplate_headers += $(cairo_boilerplate_os2_headers)
 all_cairo_boilerplate_private += $(cairo_boilerplate_os2_private)
@@ -245,6 +233,18 @@ enabled_cairo_boilerplate_headers += $(cairo_boilerplate_glesv2_headers)
 enabled_cairo_boilerplate_private += $(cairo_boilerplate_glesv2_private)
 enabled_cairo_boilerplate_cxx_sources += $(cairo_boilerplate_glesv2_cxx_sources)
 enabled_cairo_boilerplate_sources += $(cairo_boilerplate_glesv2_sources)
+endif
+
+unsupported_cairo_boilerplate_headers += $(cairo_boilerplate_glesv3_headers)
+all_cairo_boilerplate_headers += $(cairo_boilerplate_glesv3_headers)
+all_cairo_boilerplate_private += $(cairo_boilerplate_glesv3_private)
+all_cairo_boilerplate_cxx_sources += $(cairo_boilerplate_glesv3_cxx_sources)
+all_cairo_boilerplate_sources += $(cairo_boilerplate_glesv3_sources)
+ifeq ($(CAIRO_HAS_GLESV3_SURFACE),1)
+enabled_cairo_boilerplate_headers += $(cairo_boilerplate_glesv3_headers)
+enabled_cairo_boilerplate_private += $(cairo_boilerplate_glesv3_private)
+enabled_cairo_boilerplate_cxx_sources += $(cairo_boilerplate_glesv3_cxx_sources)
+enabled_cairo_boilerplate_sources += $(cairo_boilerplate_glesv3_sources)
 endif
 
 unsupported_cairo_boilerplate_headers += $(cairo_boilerplate_cogl_headers)
