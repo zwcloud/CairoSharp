@@ -95,7 +95,7 @@ The C# code files in CairoSharp project was taken from Mono/[GTK#](https://githu
 The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Native/projects) is generated according to a VS2015 Solution from [Cairo-VS](https://github.com/DomAmato/Cairo-VS).
 
 * [cairo](http://www.cairographics.org/)
-  Version 1.15.6
+  Version 1.15.12
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/cairo/COPYING)
 
 * [libpng](http://libmng.com/pub/png/libpng.html)
