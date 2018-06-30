@@ -67,19 +67,41 @@ namespace WinFormDemo
         }
 
         private double angle;
+        private ImageSurface frontSurface;
+        private ImageSurface backSurface;
         private void DrawAnimated(PaintEventArgs e)
         {
+            if (frontSurface == null)
+            {
+                frontSurface = new ImageSurface(Format.Rgb24,
+                    this.ClientSize.Width, this.ClientSize.Height);
+                backSurface = new ImageSurface(Format.Rgb24,
+                    this.ClientSize.Width, this.ClientSize.Height);
+            }
+
             using (System.Drawing.Graphics graphics = e.Graphics)
             using (Win32Surface surface = new Win32Surface(graphics.GetHdc()))
-            using (Context context = new Context(surface))
             {
-                context.LineWidth = 2.0;
+                {
+                    //draw to image surface
+                    Context context = new Context(frontSurface);
+                    context.LineWidth = 2.0;
+                    context.SetSourceRGB(1, 1, 1);
+                    context.Paint();
+                    context.SetSourceRGB(0, 0, 0);
+                    context.MoveTo(100, 100);
+                    context.LineTo(100 + 80 * Math.Cos(angle), 100 + 80 * Math.Sin(angle));
+                    angle = (angle + Math.PI / 180);// % (Math.PI * 2);
+                    context.Stroke();
 
-                context.MoveTo(100, 100);
-                context.LineTo(100 + 80 * Math.Cos(angle), 100 + 80 * Math.Sin(angle));
-                angle = (angle + Math.PI / 180);// % (Math.PI * 2);
+                    //paint image surface to win32 surface
+                    Context context1 = new Context(surface);
+                    context1.SetSource(frontSurface);
+                    context1.Paint();
 
-                context.Stroke();
+                    context.Dispose();
+                    context1.Dispose();
+                }
             }
         }
 
