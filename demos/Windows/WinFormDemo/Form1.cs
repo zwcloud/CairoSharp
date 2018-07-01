@@ -21,7 +21,11 @@ namespace WinFormDemo
 
         bool displayStaticExample = true;
 
-		protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
 
@@ -33,7 +37,6 @@ namespace WinFormDemo
             {
                 DrawAnimated(e);
             }
-
 		}
 
         private Cairo.Color bugColor = new Cairo.Color(0.95294117647058818, 0.6, 0.0784313725490196, 1.0);
@@ -44,6 +47,11 @@ namespace WinFormDemo
                 
             using (Context context = new Context(surface))
             {
+                //clear the background to white
+                context.SetSourceRGB(1, 1, 1);
+                context.Paint();
+
+                //stroke the bug
                 context.LineWidth = 2.0;
                 context.SetSourceColor(this.bugColor);
                 context.MoveTo(7.0, 64.0);
@@ -66,42 +74,41 @@ namespace WinFormDemo
             }
         }
 
-        private double angle;
-        private ImageSurface frontSurface;
+        private double angle = -Math.PI / 2;
         private ImageSurface backSurface;
         private void DrawAnimated(PaintEventArgs e)
         {
-            if (frontSurface == null)
+            if (backSurface == null)
             {
-                frontSurface = new ImageSurface(Format.Rgb24,
-                    this.ClientSize.Width, this.ClientSize.Height);
                 backSurface = new ImageSurface(Format.Rgb24,
                     this.ClientSize.Width, this.ClientSize.Height);
             }
 
-            using (System.Drawing.Graphics graphics = e.Graphics)
-            using (Win32Surface surface = new Win32Surface(graphics.GetHdc()))
+            using (Graphics graphics = e.Graphics)
             {
+                var hdc = graphics.GetHdc();
+                using (Win32Surface surface = new Win32Surface(hdc))
                 {
                     //draw to image surface
-                    Context context = new Context(frontSurface);
+                    Context context = new Context(backSurface);
                     context.LineWidth = 2.0;
                     context.SetSourceRGB(1, 1, 1);
-                    context.Paint();
+                    context.Paint();//clear the background to white
                     context.SetSourceRGB(0, 0, 0);
                     context.MoveTo(100, 100);
                     context.LineTo(100 + 80 * Math.Cos(angle), 100 + 80 * Math.Sin(angle));
-                    angle = (angle + Math.PI / 180);// % (Math.PI * 2);
+                    angle += Math.PI / 180;
                     context.Stroke();
 
                     //paint image surface to win32 surface
                     Context context1 = new Context(surface);
-                    context1.SetSource(frontSurface);
+                    context1.SetSource(backSurface);
                     context1.Paint();
 
                     context.Dispose();
                     context1.Dispose();
                 }
+                graphics.ReleaseHdc();
             }
         }
 
@@ -142,7 +149,7 @@ namespace WinFormDemo
             // 
             // timer1
             // 
-            this.timer1.Interval = 16;
+            this.timer1.Interval = 30;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
