@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace WinFormDemo
 {
-	public partial class Form1 : Form
+    public partial class Form1 : Form
     {
         private MenuStrip menuStrip1;
         private ToolStripMenuItem staticToolStripMenuItem;
@@ -26,8 +26,8 @@ namespace WinFormDemo
         }
 
         protected override void OnPaint(PaintEventArgs e)
-		{
-			base.OnPaint(e);
+        {
+            base.OnPaint(e);
 
             if (displayStaticExample)
             {
@@ -37,14 +37,14 @@ namespace WinFormDemo
             {
                 DrawAnimated(e);
             }
-		}
+        }
 
         private Cairo.Color bugColor = new Cairo.Color(0.95294117647058818, 0.6, 0.0784313725490196, 1.0);
         private void DrawStatic(PaintEventArgs e)
         {
-            using (System.Drawing.Graphics graphics = e.Graphics)            
+            using (System.Drawing.Graphics graphics = e.Graphics)
             using (Win32Surface surface = new Win32Surface(graphics.GetHdc()))
-                
+
             using (Context context = new Context(surface))
             {
                 //clear the background to white
