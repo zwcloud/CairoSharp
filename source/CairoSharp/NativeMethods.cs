@@ -350,26 +350,40 @@ namespace Cairo
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate Status cairo_read_func_t(IntPtr closure, IntPtr data, int length);
 
-	    /// <summary>
+
+        /// <summary>
+        /// cairo_write_func_t is the type of function which is called when a backend needs to write data to an output stream.
+        /// </summary>
+        /// <param name="closure">the output closure</param>
+        /// <param name="data">data to write to the stream</param>
+        /// <param name="length">length of data, which should be written to stream</param>
+        /// <returns></returns>
+	    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+	    internal delegate Status cairo_write_func_t(IntPtr closure, IntPtr data, int length);
+
+        /// <summary>
         /// Creates a new image surface from PNG data read incrementally via the read_func function.
-	    /// </summary>
+        /// </summary>
         /// <param name="read_func">function called to read the data of the file</param>
         /// <param name="closure">data to pass to read_func</param>
         /// <returns>new cairo_surface_t or nil</returns>
         /// <remarks>
         /// <code>
-	    /// cairo_surface_t * cairo_image_surface_create_from_png_stream(
-	    ///     cairo_read_func_t read_func,
+        /// cairo_surface_t * cairo_image_surface_create_from_png_stream(
+        ///     cairo_read_func_t read_func,
         ///     void *closure);
         /// </code>
-	    /// a new cairo_surface_t initialized with the contents of the PNG file or a "nil" surface if the data read is not a valid PNG image or memory could not be allocated for the operation. A nil surface can be checked for with cairo_surface_status(surface) which may return one of the following values:
-	    /// CAIRO_STATUS_NO_MEMORY CAIRO_STATUS_READ_ERROR
-	    /// Alternatively, you can allow errors to propagate through the drawing operations and check the status on the context upon completion using cairo_status().
-	    /// </remarks>
-	    [DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+        /// a new cairo_surface_t initialized with the contents of the PNG file or a "nil" surface if the data read is not a valid PNG image or memory could not be allocated for the operation. A nil surface can be checked for with cairo_surface_status(surface) which may return one of the following values:
+        /// CAIRO_STATUS_NO_MEMORY CAIRO_STATUS_READ_ERROR
+        /// Alternatively, you can allow errors to propagate through the drawing operations and check the status on the context upon completion using cairo_status().
+        /// </remarks>
+        [DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern IntPtr cairo_image_surface_create_from_png_stream ([MarshalAs(UnmanagedType.FunctionPtr)]cairo_read_func_t read_func, IntPtr closure);
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+	    [DllImport(cairo, CallingConvention = CallingConvention.Cdecl)]
+	    internal static extern IntPtr cairo_svg_surface_create_for_stream([MarshalAs(UnmanagedType.FunctionPtr)]cairo_write_func_t write_func, IntPtr closure, double width_in_points, double height_in_points);
+
+        [DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern IntPtr cairo_image_surface_get_data (IntPtr surface);
 
 		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
@@ -961,9 +975,6 @@ namespace Cairo
 		
 		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern IntPtr cairo_svg_surface_create (string fileName, double width, double height);
-		
-		//[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		//internal static extern IntPtr cairo_svg_surface_create_for_stream (double width, double height);
 		
 		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern IntPtr cairo_svg_surface_restrict_to_version (IntPtr surface, SvgVersion version);

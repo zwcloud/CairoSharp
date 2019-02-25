@@ -8,6 +8,8 @@
 // Licensed under the GNU LGPL v3, see LICENSE for more infomation.
 #endregion
 using System;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Cairo {
 
@@ -22,11 +24,32 @@ namespace Cairo {
 		{
 		}
 
-		public void RestrictToVersion (SvgVersion version)
+	    public SvgSurface(Stream stream, double width, double height) :
+	        base (NativeMethods.cairo_svg_surface_create_for_stream (CreateWriteFunc(stream), IntPtr.Zero, width, height), true)
+	    {
+	    }
+
+        public void RestrictToVersion (SvgVersion version)
 		{
 			CheckDisposed ();
 			NativeMethods.cairo_svg_surface_restrict_to_version (Handle, version);
 		}
-	}
+
+	    private static NativeMethods.cairo_write_func_t CreateWriteFunc(Stream stream)
+	    {
+            if(stream == null || !stream.CanWrite)
+                throw new ArgumentException();
+
+	        return (closure, in_data, length) =>
+	        {
+	            byte[] tempBuff = new byte[length];
+	            Marshal.Copy(in_data, tempBuff, 0, length);
+
+	            stream.Write(tempBuff, 0, tempBuff.Length);
+
+	            return Status.Success;
+	        };
+	    }
+    }
 }
 
