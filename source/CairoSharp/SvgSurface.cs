@@ -24,24 +24,32 @@ namespace Cairo {
 		{
 		}
 
-	    public SvgSurface(Stream stream, double width, double height) :
-	        base (NativeMethods.cairo_svg_surface_create_for_stream (CreateWriteFunc(stream), IntPtr.Zero, width, height), true)
-	    {
-	    }
-
         public void RestrictToVersion (SvgVersion version)
 		{
 			CheckDisposed ();
 			NativeMethods.cairo_svg_surface_restrict_to_version (Handle, version);
 		}
 
-	    private static NativeMethods.cairo_write_func_t CreateWriteFunc(Stream stream)
+        #region Streaming surface
+        private NativeMethods.cairo_write_func_t write_func { get; set; }
+        public static SvgSurface CreateForStream(Stream stream, double width, double height)
+	    {
+	        var write_func = CreateWriteFunc(stream);
+	        // keep a reference to write_func in a property, otherwise it may be garbage-collected
+	        // before it is called from native side.
+            return new SvgSurface(NativeMethods.cairo_svg_surface_create_for_stream(
+	            write_func, IntPtr.Zero, width, height), true) {write_func = write_func};
+	    }
+        private static NativeMethods.cairo_write_func_t CreateWriteFunc(Stream stream)
 	    {
             if(stream == null || !stream.CanWrite)
                 throw new ArgumentException();
 
 	        return (closure, in_data, length) =>
 	        {
+	            if (length == 0)
+	                return Status.Success;
+
 	            byte[] tempBuff = new byte[length];
 	            Marshal.Copy(in_data, tempBuff, 0, length);
 
@@ -50,6 +58,7 @@ namespace Cairo {
 	            return Status.Success;
 	        };
 	    }
+        #endregion
     }
 }
 

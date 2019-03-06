@@ -57,7 +57,7 @@ namespace WinFormDemo
         {
             MemoryStream outpStream = new MemoryStream();
             // create a SvgSurface, which output is bound to a stream.
-            var svgStreamSurface = new SvgSurface(outpStream, 1024, 1024);
+            var svgStreamSurface = SvgSurface.CreateForStream(outpStream, 1024, 1024);
             using (Context context = new Context(svgStreamSurface))
             {
                 //clear the background to white
