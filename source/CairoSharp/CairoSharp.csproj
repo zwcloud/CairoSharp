@@ -21,7 +21,7 @@ All drawing operations can be transformed by any affine transformation (scale, r
         <PackageProjectUrl>https://github.com/zwcloud/CairoSharp</PackageProjectUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageTags>cairo graphics svg png vector-graphics vector</PackageTags>
-        <PackageReleaseNotes>This is a test-only release of CairoSharp for cairo v1.15.6.
+        <PackageReleaseNotes>This is a test-only release of CairoSharp for cairo v1.15.12.
 Package renamed to SharpCairo differ from CairoSharp provided by GTK#.</PackageReleaseNotes>
         <RunPostBuildEvent>Always</RunPostBuildEvent>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
