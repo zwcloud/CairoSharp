@@ -1,7 +1,7 @@
 [![NuGet](https://img.shields.io/nuget/v/SharpCairo.svg?style=flat-square)](https://www.nuget.org/packages/SharpCairo/)
 
 # CairoSharp
-A C# wrapper (.net standard 1.6, and .net 4.5) of [cairo](https://www.cairographics.org/). All its dependcies included.
+CairoSharp is a C# wrapper for .NET Standard 1.6/2.0 of [cairo](https://www.cairographics.org/). All dependencies included.
 
 Cairo is a 2D graphics library with support for multiple output devices.
 
