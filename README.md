@@ -50,11 +50,11 @@ On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get inst
 
 * Build CairoSharp
 
-	In VS2017, right click the CairoSharp project then select `Build`. CairoSharp.dll and its native dependencies will be placed in the output dir such as `source\CairoSharp\bin\Debug\netstandard1.6`.
+	In VS2019, right click the CairoSharp project then select `Build`. CairoSharp.dll and its native dependencies will be placed in the output dir such as `source\CairoSharp\bin\Debug\netstandard2.0`.
 
 * Build C# demos
 
-	In VS2017, right click a C# demo project then select `Build`. The built demo app, CairoSharp.dll and native dependencies will be placed in the output dir such as `demos\CairoDemo\bin\Debug\netcoreapp2.0`.
+	In VS2019, right click a C# demo project then select `Build`. The built demo app, CairoSharp.dll and native dependencies will be placed in the output dir such as `demos\CairoDemo\bin\Debug\netcoreapp2.0`.
 
 **Common Errors:**
 
@@ -114,5 +114,5 @@ The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Nat
   Version 2.6
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/freetype/docs/LICENSE.TXT)
 
-These libraries will be updated if new verisons are released.<br/>
-Last update date of these Native libraries: 2017-07-16
+These libraries will be updated if new verisons are released.  
+Last update date of these Native libraries: 2018-04-11
