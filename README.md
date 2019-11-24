@@ -30,7 +30,7 @@ On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get inst
 ## Windows
 
 ### Build native dlls
- We use VS2017 to build native libraries as dll files.
+ We use VS2019 to build native libraries as dll files.
 
 * Preparation:
 
@@ -41,8 +41,8 @@ On Linux _libcairo_ is a prerequisite. `sudo apt-get update && sudo apt-get inst
 
 * Build
 	
-	1. Open CarioSharp.sln with VS2017.
-	2. Select a configuration: `Debug` or `Release`, and a platform: `x86` or `x64`.
+	1. Open CarioSharp.sln with VS2019.
+	2. Select a configuration: `Debug` or `Release`, and a platform: `x86` or `x64`. For `AnyCPU`, be sure to set/unset [Prefer 32-bit](https://stackoverflow.com/questions/13149905/any-cpu-prefer-32-bit) to use the same architecture as the native dll.
 	3. Find the project `source/native/cairo`, right click and select `Build`.
 	4. Built native dll files will be output to `source/native/cairo/bin/`.
 
