@@ -33,7 +33,7 @@ draw (cairo_t *cr, int width, int height)
 "Ideally it should overflow the stack buffers, but do you really want to read "
 "a message that long. No. So we compromise with around 300 glyphs that is "
 "long enough to trigger the conditions as stated in "
-"http://lists.cairographics.org/archives/cairo/2008-December/015976.html. "
+"https://lists.cairographics.org/archives/cairo/2008-December/015976.html. "
 "Happy now?";
     cairo_text_extents_t extents;
 

@@ -262,8 +262,9 @@ _bitmap_next_id (struct _bitmap *b,
 	prev = &b->next;
 	b = b->next;
     } while (b != NULL);
+    assert (prev != NULL);
 
-    bb = malloc (sizeof (struct _bitmap));
+    bb = _cairo_malloc (sizeof (struct _bitmap));
     if (unlikely (bb == NULL))
 	return _cairo_error (CAIRO_STATUS_NO_MEMORY);
 
@@ -870,6 +871,8 @@ static const char *
 _format_to_string (cairo_format_t format)
 {
     switch (format) {
+    case CAIRO_FORMAT_RGBA128F: return "RGBA128F";
+    case CAIRO_FORMAT_RGB96F: return "RGB96F";
     case CAIRO_FORMAT_ARGB32:  return "ARGB32";
     case CAIRO_FORMAT_RGB30:   return "RGB30";
     case CAIRO_FORMAT_RGB24:   return "RGB24";
@@ -1104,7 +1107,7 @@ attach_snapshot (cairo_script_context_t *ctx,
     if (! ctx->attach_snapshots)
 	return;
 
-    surface = malloc (sizeof (*surface));
+    surface = _cairo_malloc (sizeof (*surface));
     if (unlikely (surface == NULL))
 	return;
 
@@ -1255,7 +1258,7 @@ _write_image_surface (cairo_output_stream_t *output,
     }
 #else
     if (stride > ARRAY_LENGTH (row_stack)) {
-	rowdata = malloc (stride);
+	rowdata = _cairo_malloc (stride);
 	if (unlikely (rowdata == NULL))
 	    return _cairo_error (CAIRO_STATUS_NO_MEMORY);
     } else
@@ -1311,6 +1314,18 @@ _write_image_surface (cairo_output_stream_t *output,
 	    for (col = 0; col < width; col++)
 		dst[col] = bswap_32 (src[col]);
 	    _cairo_output_stream_write (output, rowdata, 4*width);
+	    data += stride;
+	}
+	break;
+    case CAIRO_FORMAT_RGB96F:
+	for (row = image->height; row--; ) {
+	    _cairo_output_stream_write (output, data, 12*width);
+	    data += stride;
+	}
+	break;
+    case CAIRO_FORMAT_RGBA128F:
+	for (row = image->height; row--; ) {
+	    _cairo_output_stream_write (output, data, 16*width);
 	    data += stride;
 	}
 	break;
@@ -1419,6 +1434,12 @@ _emit_image_surface (cairo_script_surface_t *surface,
 	case CAIRO_FORMAT_RGB30:
 	case CAIRO_FORMAT_ARGB32:
 	    len = clone->width * 4;
+	    break;
+	case CAIRO_FORMAT_RGB96F:
+	    len = clone->width * 12;
+	    break;
+	case CAIRO_FORMAT_RGBA128F:
+	    len = clone->width * 16;
 	    break;
 	case CAIRO_FORMAT_INVALID:
 	default:
@@ -2178,7 +2199,7 @@ _cairo_script_surface_finish (void *abstract_surface)
 		}
 		cairo_list_del (&surface->operand.link);
 	    } else {
-		struct deferred_finish *link = malloc (sizeof (*link));
+		struct deferred_finish *link = _cairo_malloc (sizeof (*link));
 		if (link == NULL) {
 		    status2 = _cairo_error (CAIRO_STATUS_NO_MEMORY);
 		    if (status == CAIRO_STATUS_SUCCESS)
@@ -2857,7 +2878,7 @@ _emit_type42_font (cairo_script_surface_t *surface,
     if (unlikely (status))
 	return status;
 
-    buf = malloc (size);
+    buf = _cairo_malloc (size);
     if (unlikely (buf == NULL))
 	return _cairo_error (CAIRO_STATUS_NO_MEMORY);
 
@@ -2913,7 +2934,7 @@ _emit_scaled_font_init (cairo_script_surface_t *surface,
     cairo_script_font_t *font_private;
     cairo_int_status_t status;
 
-    font_private = malloc (sizeof (cairo_script_font_t));
+    font_private = _cairo_malloc (sizeof (cairo_script_font_t));
     if (unlikely (font_private == NULL))
 	return _cairo_error (CAIRO_STATUS_NO_MEMORY);
 
@@ -3643,7 +3664,7 @@ _cairo_script_surface_create_internal (cairo_script_context_t *ctx,
     if (unlikely (ctx == NULL))
 	return (cairo_script_surface_t *) _cairo_surface_create_in_error (_cairo_error (CAIRO_STATUS_NULL_POINTER));
 
-    surface = malloc (sizeof (cairo_script_surface_t));
+    surface = _cairo_malloc (sizeof (cairo_script_surface_t));
     if (unlikely (surface == NULL))
 	return (cairo_script_surface_t *) _cairo_surface_create_in_error (_cairo_error (CAIRO_STATUS_NO_MEMORY));
 
@@ -3692,7 +3713,7 @@ _cairo_script_context_create_internal (cairo_output_stream_t *stream)
 {
     cairo_script_context_t *ctx;
 
-    ctx = malloc (sizeof (cairo_script_context_t));
+    ctx = _cairo_malloc (sizeof (cairo_script_context_t));
     if (unlikely (ctx == NULL))
 	return _cairo_device_create_in_error (_cairo_error (CAIRO_STATUS_NO_MEMORY));
 
@@ -3804,7 +3825,7 @@ cairo_script_create_for_stream (cairo_write_func_t	 write_func,
  * cairo_script_write_comment:
  * @script: the script (output device)
  * @comment: the string to emit
- * @len:the length of the sting to write, or -1 to use strlen()
+ * @len:the length of the string to write, or -1 to use strlen()
  *
  * Emit a string verbatim into the script.
  *

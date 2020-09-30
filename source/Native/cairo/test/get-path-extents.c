@@ -220,7 +220,7 @@ draw (cairo_t *cr, int width, int height)
 
     cairo_restore (cr2);
 
-    /* http://bugs.freedesktop.org/show_bug.cgi?id=7965 */
+    /* https://bugs.freedesktop.org/show_bug.cgi?id=7965 */
     phase = "A horizontal, open path";
     cairo_save (cr2);
     cairo_set_line_cap (cr2, CAIRO_LINE_CAP_ROUND);
@@ -337,7 +337,7 @@ draw (cairo_t *cr, int width, int height)
 
     cairo_restore (cr2);
 
-    /* http://bugs.freedesktop.org/show_bug.cgi?id=7245 */
+    /* https://bugs.freedesktop.org/show_bug.cgi?id=7245 */
     phase = "Arc";
     cairo_save (cr2);
     cairo_arc (cr2, 250.0, 250.0, 157.0, 5.147, 3.432);
@@ -375,7 +375,7 @@ draw (cairo_t *cr, int width, int height)
     cairo_set_line_width (cr2, 2.0);
     /* XXX: We'd like to be able to use EQUALS here, but currently
      * when hinting is enabled freetype returns integer extents. See
-     * http://cairographics.org/todo */
+     * https://cairographics.org/todo */
     errors += !check_extents (ctx, phase, cr2, FILL, APPROX_EQUALS,
 			      0, 0, extents.width, extents.height);
     errors += !check_extents (ctx, phase, cr2, STROKE, APPROX_EQUALS,

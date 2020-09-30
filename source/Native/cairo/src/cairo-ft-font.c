@@ -300,7 +300,7 @@ _cairo_ft_unscaled_font_map_create (void)
      * detect some other call path. */
     assert (cairo_ft_unscaled_font_map == NULL);
 
-    font_map = malloc (sizeof (cairo_ft_unscaled_font_map_t));
+    font_map = _cairo_malloc (sizeof (cairo_ft_unscaled_font_map_t));
     if (unlikely (font_map == NULL))
 	return _cairo_error (CAIRO_STATUS_NO_MEMORY);
 
@@ -445,7 +445,7 @@ _cairo_ft_unscaled_font_init (cairo_ft_unscaled_font_t *unscaled,
 
     if (from_face) {
 	unscaled->from_face = TRUE;
-	_cairo_ft_unscaled_font_init_key (unscaled, TRUE, NULL, face->face_index, face);
+	_cairo_ft_unscaled_font_init_key (unscaled, TRUE, NULL, id, face);
 
 
         unscaled->have_color = FT_HAS_COLOR (face) != 0;
@@ -563,7 +563,7 @@ _cairo_ft_unscaled_font_create_internal (cairo_bool_t from_face,
     }
 
     /* Otherwise create it and insert into hash table. */
-    unscaled = malloc (sizeof (cairo_ft_unscaled_font_t));
+    unscaled = _cairo_malloc (sizeof (cairo_ft_unscaled_font_t));
     if (unlikely (unscaled == NULL)) {
 	status = _cairo_error (CAIRO_STATUS_NO_MEMORY);
 	goto UNWIND_FONT_MAP_LOCK;
@@ -640,7 +640,7 @@ static cairo_status_t
 _cairo_ft_unscaled_font_create_from_face (FT_Face face,
 					  cairo_ft_unscaled_font_t **out)
 {
-    return _cairo_ft_unscaled_font_create_internal (TRUE, NULL, 0, face, out);
+    return _cairo_ft_unscaled_font_create_internal (TRUE, NULL, face->face_index, face, out);
 }
 
 static cairo_bool_t
@@ -976,6 +976,13 @@ _compute_xrender_bitmap_size(FT_Bitmap      *target,
 	pitch = width * 4;
 	break;
 
+#ifdef FT_PIXEL_MODE_BGRA
+    case FT_PIXEL_MODE_BGRA:
+	/* each pixel is replicated into a 32-bit ARGB value */
+	pitch = width * 4;
+	break;
+#endif
+
     default:  /* unsupported source format */
 	return -1;
     }
@@ -1133,7 +1140,7 @@ _fill_xrender_bitmap(FT_Bitmap      *target,
 	}
 	break;
 
-    default:  /* FT_PIXEL_MODE_LCD_V */
+    case FT_PIXEL_MODE_LCD_V:
 	/* convert vertical RGB into ARGB32 */
 	if (!bgr) {
 
@@ -1170,6 +1177,17 @@ _fill_xrender_bitmap(FT_Bitmap      *target,
 		}
 	    }
 	}
+	break;
+
+#ifdef FT_PIXEL_MODE_BGRA
+    case FT_PIXEL_MODE_BGRA:
+	for (h = height; h > 0; h--, srcLine += src_pitch, dstLine += pitch)
+	    memcpy (dstLine, srcLine, width * 4);
+	break;
+#endif
+
+    default:
+	assert (0);
     }
 }
 
@@ -1275,7 +1293,7 @@ _get_bitmap_surface (FT_Bitmap		     *bitmap,
 	    component_alpha = TRUE;
 	}
 	break;
-#ifdef FT_LOAD_COLOR
+#ifdef FT_PIXEL_MODE_BGRA
     case FT_PIXEL_MODE_BGRA:
 	stride = width * 4;
 	if (own_buffer) {
@@ -2015,7 +2033,7 @@ _cairo_ft_font_face_scaled_font_create (void		    *abstract_font_face,
     if (unlikely (face == NULL)) /* backend error */
 	return _cairo_error (CAIRO_STATUS_NO_MEMORY);
 
-    scaled_font = malloc (sizeof (cairo_ft_scaled_font_t));
+    scaled_font = _cairo_malloc (sizeof (cairo_ft_scaled_font_t));
     if (unlikely (scaled_font == NULL)) {
 	status = _cairo_error (CAIRO_STATUS_NO_MEMORY);
 	goto FAIL;
@@ -2381,7 +2399,11 @@ skip:
 done:
         free (coords);
         free (current_coords);
+#if HAVE_FT_DONE_MM_VAR
+        FT_Done_MM_Var (face->glyph->library, ft_mm_var);
+#else
         free (ft_mm_var);
+#endif
     }
 }
 
@@ -2638,7 +2660,6 @@ LOAD:
         }
     }
 
-#ifdef FT_LOAD_COLOR
     if (((info & (CAIRO_SCALED_GLYPH_INFO_SURFACE | CAIRO_SCALED_GLYPH_INFO_COLOR_SURFACE)) != 0) &&
         ((scaled_glyph->has_info & CAIRO_SCALED_GLYPH_INFO_SURFACE) == 0)) {
         /*
@@ -2647,10 +2668,11 @@ LOAD:
          */
 	scaled_glyph_loaded = FALSE;
         info &= ~CAIRO_SCALED_GLYPH_INFO_METRICS;
+#ifdef FT_LOAD_COLOR
         load_flags &= ~FT_LOAD_COLOR;
+#endif
         goto LOAD;
     }
-#endif
 
     if (info & CAIRO_SCALED_GLYPH_INFO_PATH) {
 	cairo_path_fixed_t *path = NULL; /* hide compiler warning */
@@ -2873,7 +2895,7 @@ _cairo_index_to_glyph_name (void	         *abstract_font,
     cairo_ft_scaled_font_t *scaled_font = abstract_font;
     cairo_ft_unscaled_font_t *unscaled = scaled_font->unscaled;
     FT_Face face;
-    char buffer[256]; /* PLRM spcifies max name length of 127 */
+    char buffer[256]; /* PLRM specifies max name length of 127 */
     FT_Error error;
     int i;
 
@@ -3247,7 +3269,7 @@ _cairo_ft_font_face_create_for_pattern (FcPattern *pattern)
 {
     cairo_ft_font_face_t *font_face;
 
-    font_face = malloc (sizeof (cairo_ft_font_face_t));
+    font_face = _cairo_malloc (sizeof (cairo_ft_font_face_t));
     if (unlikely (font_face == NULL)) {
 	_cairo_error_throw (CAIRO_STATUS_NO_MEMORY);
 	return (cairo_font_face_t *) &_cairo_font_face_nil;
@@ -3309,7 +3331,7 @@ _cairo_ft_font_face_create (cairo_ft_unscaled_font_t *unscaled,
     }
 
     /* No match found, create a new one */
-    font_face = malloc (sizeof (cairo_ft_font_face_t));
+    font_face = _cairo_malloc (sizeof (cairo_ft_font_face_t));
     if (unlikely (!font_face)) {
 	_cairo_error_throw (CAIRO_STATUS_NO_MEMORY);
 	return (cairo_font_face_t *)&_cairo_font_face_nil;

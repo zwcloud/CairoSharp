@@ -34,7 +34,7 @@
  * The original bug was reported by Owen Taylor here:
  *
  *	bad clipping with EXTEND_NONE
- *	http://bugs.freedesktop.org/show_bug.cgi?id=15349
+ *	https://bugs.freedesktop.org/show_bug.cgi?id=15349
  */
 
 #define SCALE	10

@@ -405,6 +405,8 @@ typedef enum _cairo_content {
  *   with red in the upper 5 bits, then green in the middle
  *   6 bits, and blue in the lower 5 bits. (Since 1.2)
  * @CAIRO_FORMAT_RGB30: like RGB24 but with 10bpc. (Since 1.12)
+ * @CAIRO_FORMAT_RGB96F: 3 floats, R, G, B. (Since 1.16)
+ * @CAIRO_FORMAT_RGBA128F: 4 floats, R, G, B, A. (Since 1.16)
  *
  * #cairo_format_t is used to identify the memory format of
  * image data.
@@ -420,7 +422,9 @@ typedef enum _cairo_format {
     CAIRO_FORMAT_A8        = 2,
     CAIRO_FORMAT_A1        = 3,
     CAIRO_FORMAT_RGB16_565 = 4,
-    CAIRO_FORMAT_RGB30     = 5
+    CAIRO_FORMAT_RGB30     = 5,
+    CAIRO_FORMAT_RGB96F    = 6,
+    CAIRO_FORMAT_RGBA128F  = 7
 } cairo_format_t;
 
 
@@ -606,7 +610,7 @@ cairo_pop_group_to_source (cairo_t *cr);
  * translucent layers too.
  * For a more detailed explanation of the effects of each operator, including
  * the mathematical definitions, see
- * <ulink url="http://cairographics.org/operators/">http://cairographics.org/operators/</ulink>.
+ * <ulink url="https://cairographics.org/operators/">https://cairographics.org/operators/</ulink>.
  *
  * Since: 1.0
  **/
@@ -1063,7 +1067,7 @@ typedef struct _cairo_scaled_font cairo_scaled_font_t;
  *
  * A #cairo_font_face_t specifies all aspects of a font other
  * than the size or font matrix (a font matrix is used to distort
- * a font by sheering it or scaling it unequally in the two
+ * a font by shearing it or scaling it unequally in the two
  * directions) . A font face can be set on a #cairo_t by using
  * cairo_set_font_face(); the size and font matrix are set with
  * cairo_set_font_size() and cairo_set_font_matrix().
@@ -2366,7 +2370,6 @@ cairo_surface_status (cairo_surface_t *surface);
  * @CAIRO_SURFACE_TYPE_DRM: The surface is of type Direct Render Manager, since 1.10
  * @CAIRO_SURFACE_TYPE_TEE: The surface is of type 'tee' (a multiplexing surface), since 1.10
  * @CAIRO_SURFACE_TYPE_XML: The surface is of type XML (for debugging), since 1.10
- * @CAIRO_SURFACE_TYPE_SKIA: The surface is of type Skia, since 1.10
  * @CAIRO_SURFACE_TYPE_SUBSURFACE: The surface is a subsurface created with
  *   cairo_surface_create_for_rectangle(), since 1.10
  * @CAIRO_SURFACE_TYPE_COGL: This surface is of type Cogl, since 1.12

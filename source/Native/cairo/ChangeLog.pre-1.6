@@ -50,9 +50,8 @@ CommitDate: Tue Apr 8 02:29:05 2008 -0700
 
     Fix distcheck by renaming large-source-ref.c to large-source-ref.png (oops!)
 
- test/large-source-ref.c   | Bin 137 -> 0 bytes
- test/large-source-ref.png | Bin 0 -> 137 bytes
- 2 files changed, 0 insertions(+), 0 deletions(-)
+ test/{large-source-ref.c => large-source-ref.png} | Bin
+ 1 file changed, 0 insertions(+), 0 deletions(-)
 
 commit c26a7de9707e26d0552b0fedcd4bf2e0ba6542b2
 Author:     Carl Worth <cworth@cworth.org>
@@ -69,7 +68,7 @@ CommitDate: Tue Apr 8 01:54:27 2008 -0700
     
     Thanks to Jonathan Watt for noticing this problem:
     
-    	https://bugzilla.mozilla.org/show_bug.cgi?id=306649#c21
+            https://bugzilla.mozilla.org/show_bug.cgi?id=306649#c21
 
  src/cairo-hull.c | 7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
@@ -302,7 +301,7 @@ CommitDate: Mon Apr 7 16:09:08 2008 -0700
     to fix the bug, but we want to wait until after the 1.6 release
     before we fix it. See:
     
-    	http://bugs.freedesktop.org/show_bug.cgi?id=15349
+            http://bugs.freedesktop.org/show_bug.cgi?id=15349
 
  test/Makefile.am | 1 +
  1 file changed, 1 insertion(+)
@@ -322,7 +321,7 @@ CommitDate: Mon Apr 7 16:09:06 2008 -0700
     the latest comments in the original bug report leading to the
     fix now being reverted:
     
-    	http://bugs.freedesktop.org/show_bug.cgi?id=15349
+            http://bugs.freedesktop.org/show_bug.cgi?id=15349
 
  src/cairo-pattern.c | 22 ----------------------
  1 file changed, 22 deletions(-)
@@ -763,8 +762,8 @@ CommitDate: Fri Apr 4 19:00:28 2008 -0700
     This fixes the filter-bilinear-extents test case and the
     related bug entry:
     
-    	bad clipping with EXTEND_NONE
-    	http://bugs.freedesktop.org/show_bug.cgi?id=15349
+            bad clipping with EXTEND_NONE
+            http://bugs.freedesktop.org/show_bug.cgi?id=15349
     
     Though there are still differences in the PDF and PostScript
     backends, (primarily because we can't capture cairo's filter
@@ -2342,11 +2341,11 @@ CommitDate: Thu Mar 20 11:51:57 2008 -0700
     This change in reference image was triggered by the following commit
     in the pixman library:
     
-    	commit f2d8a5caa63596739b4dc47c00daaaafd9f522e2
-    	Author: Søren Sandmann <sandmann@redhat.com>
-    	Date:   Mon Mar 10 23:41:52 2008 -0400
+            commit f2d8a5caa63596739b4dc47c00daaaafd9f522e2
+            Author: Søren Sandmann <sandmann@redhat.com>
+            Date:   Mon Mar 10 23:41:52 2008 -0400
     
-    	Add rounding epsilon for NEAREST filter after transformation, not before.
+            Add rounding epsilon for NEAREST filter after transformation, not before.
     
     This hasn't appeared in a pixman release yet. So for now, getting
     correct results is a matter of "use latest pixman". Soon we'll
@@ -2395,11 +2394,11 @@ CommitDate: Thu Mar 20 11:51:57 2008 -0700
     
     This fixes the following bugs:
     
-    	cairo doesn't support 8-bit truecolor visuals
-    	https://bugs.freedesktop.org/show_bug.cgi?id=7735
+            cairo doesn't support 8-bit truecolor visuals
+            https://bugs.freedesktop.org/show_bug.cgi?id=7735
     
-    	cairo doesn't support 655 xlib format
-    	https://bugs.freedesktop.org/show_bug.cgi?id=9719
+            cairo doesn't support 655 xlib format
+            https://bugs.freedesktop.org/show_bug.cgi?id=9719
 
  src/cairo-xlib-surface-private.h |   5 +
  src/cairo-xlib-surface.c         | 342 +++++++++++++++++++++++++++++++--------
@@ -3582,7 +3581,7 @@ CommitDate: Thu Feb 28 16:32:55 2008 -0800
  1 file changed, 1 deletion(-)
 
 commit 4a73471087f42baf07988e0f2de323ed3b18dac9
-Merge: 54a6191 523c7db
+Merge: 54a61911f 523c7dbf6
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Thu Feb 28 16:21:11 2008 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -3784,7 +3783,7 @@ CommitDate: Thu Feb 28 12:56:31 2008 -0800
  1 file changed, 22 insertions(+), 6 deletions(-)
 
 commit a95b22858fa5d65600faf5163966e18760a3cf35
-Merge: c84ec58 67d5437
+Merge: c84ec5851 67d543716
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Thu Feb 28 12:30:13 2008 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -4359,8 +4358,8 @@ CommitDate: Wed Feb 20 17:35:48 2008 -0800
     gradients. Note that this test only passes with a patch
     to fix a bug in poppler (not yet upstream). Here it is:
     
-    	PATCH: Keep 'cairo_shape' and 'cairo' consistent
-    	https://bugs.freedesktop.org/show_bug.cgi?id=14593
+            PATCH: Keep 'cairo_shape' and 'cairo' consistent
+            https://bugs.freedesktop.org/show_bug.cgi?id=14593
 
  test/Makefile.am                 |   1 +
  test/README                      |   1 +
@@ -4600,8 +4599,8 @@ CommitDate: Wed Feb 20 04:04:05 2008 -0800
     
     This is justified by the following new bug report:
     
-    	Incorrect clipping of group object (regression?)
-    	https://bugs.freedesktop.org/show_bug.cgi?id=14580
+            Incorrect clipping of group object (regression?)
+            https://bugs.freedesktop.org/show_bug.cgi?id=14580
 
  test/README                       |   5 +++++
  test/push-group-pdf-ref.png       | Bin 0 -> 2694 bytes
@@ -4618,15 +4617,15 @@ CommitDate: Wed Feb 20 04:04:05 2008 -0800
     
     This is justified by the following new bug report:
     
-    	Poppler should paint images with CAIRO_EXTEND_PAD
-    	https://bugs.freedesktop.org/show_bug.cgi?id=14578
+            Poppler should paint images with CAIRO_EXTEND_PAD
+            https://bugs.freedesktop.org/show_bug.cgi?id=14578
     
     The four affected tests are:
     
-    	paint-source-alpha
-    	paint-with-alpha
-    	rotate-image-surface-paint
-    	scale-source-surface-paint
+            paint-source-alpha
+            paint-with-alpha
+            rotate-image-surface-paint
+            scale-source-surface-paint
 
  test/README                                       |   9 +++++++--
  test/paint-source-alpha-pdf-ref.png               | Bin 0 -> 473 bytes
@@ -4645,8 +4644,8 @@ CommitDate: Wed Feb 20 04:04:04 2008 -0800
     
     This is justified with the following new bug report:
     
-    	Poppler renders patterned text as black
-    	https://bugs.freedesktop.org/show_bug.cgi?id=14577
+            Poppler renders patterned text as black
+            https://bugs.freedesktop.org/show_bug.cgi?id=14577
 
  test/README                          |   6 ++++++
  test/text-pattern-pdf-argb32-ref.png | Bin 0 -> 1823 bytes
@@ -4689,28 +4688,28 @@ CommitDate: Wed Feb 20 04:04:04 2008 -0800
     
     We had several pdf tests disabled waiting for this bug fix:
     
-    	Poppler does not correctly handle knockout groups
-    	https://bugs.freedesktop.org/show_bug.cgi?id=12185
+            Poppler does not correctly handle knockout groups
+            https://bugs.freedesktop.org/show_bug.cgi?id=12185
     
     That's in place for poppler now, so we're turning the tests
     back on. Some of the affected tests now pass perfectly:
     
-    	over-above-source
-    	over-around-source
-    	over-below-source
-    	over-between-source
+            over-above-source
+            over-around-source
+            over-below-source
+            over-between-source
     
     Some just needed new reference images:
     
-    	operator-clear
-    	clip-operator-pdf-argb32
+            operator-clear
+            clip-operator-pdf-argb32
     
     The remaining tests still fail, but none of the failures can
     obviously be ascribed to just poppler problems:
     
-    	clip-operator-pdf-rgb24
-    	operator-source
-    	unbounded-operator
+            clip-operator-pdf-rgb24
+            operator-source
+            unbounded-operator
     
     The first two have some serious problems, while in the case
     of unbounded-operator the problem is extremely minor (a white
@@ -4736,11 +4735,11 @@ CommitDate: Wed Feb 20 04:04:04 2008 -0800
     it eliminates test-suite failures for the -similar cases where we
     have svg-specific reference images. Namely:
     
-    	font-matrix-translation, ft-text-vertical-layout-type1,
-    	ft-text-vertical-layout-type3, mask, meta-surface-pattern,
-    	paint-source-alpha, paint-with-alpha, rotate-image-surface-paint,
-    	scale-source-surface-paint, source-clip-scale, text-pattern,
-    	text-rotate
+            font-matrix-translation, ft-text-vertical-layout-type1,
+            ft-text-vertical-layout-type3, mask, meta-surface-pattern,
+            paint-source-alpha, paint-with-alpha, rotate-image-surface-paint,
+            scale-source-surface-paint, source-clip-scale, text-pattern,
+            text-rotate
     
     In all of these cases the test suite was kindly noticing that we
     weren't getting the same 'native' SVG output that was desired.
@@ -4823,8 +4822,8 @@ CommitDate: Wed Feb 20 04:04:04 2008 -0800
     Sometimes > rather than >= can make a bug difference. The infinite loop
     was noticed here:
     
-    	Infinite loop when scaling very small values using 24.8
-    	http://bugs.freedesktop.org/show_bug.cgi?id=14280
+            Infinite loop when scaling very small values using 24.8
+            http://bugs.freedesktop.org/show_bug.cgi?id=14280
     
     Note that that particular test case only exposes the infinite
     loop when using 24.8 instead of 16.16 fixed-point values by
@@ -4864,8 +4863,8 @@ CommitDate: Wed Feb 20 04:04:03 2008 -0800
     This was an initial attempt to fix the infinite loop bug
     described here:
     
-    	Infinite loop when scaling very small values using 24.8
-    	http://bugs.freedesktop.org/show_bug.cgi?id=14280
+            Infinite loop when scaling very small values using 24.8
+            http://bugs.freedesktop.org/show_bug.cgi?id=14280
     
     This doesn't actually fix that bug, but having a more robust
     comparison function can only be a good thing.
@@ -5907,7 +5906,7 @@ CommitDate: Wed Feb 6 17:01:21 2008 -0800
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 commit cb9f9086a1c8ad312cfc5314fc8e352a6046d75e
-Merge: c11b036 a9b0e54
+Merge: c11b036b7 a9b0e54d3
 Author:     Peter Weilbacher <mozilla@weilbacher.org>
 AuthorDate: Thu Feb 7 00:07:20 2008 +0100
 Commit:     Peter Weilbacher <mozilla@weilbacher.org>
@@ -5991,7 +5990,7 @@ CommitDate: Wed Feb 6 01:06:00 2008 -0500
     
     Conflicts:
     
-    	src/cairo.c
+            src/cairo.c
 
  src/cairo.c | 22 ++++------------------
  src/cairo.h |  2 +-
@@ -6411,11 +6410,11 @@ CommitDate: Tue Jan 29 05:40:39 2008 -0800
     
     The fixed functions include:
     
-    	cairo_path_extents
-    	cairo_stroke_extents
-    	cairo_fill_extents
-    	cairo_clip_extents
-    	cairo_font_extents
+            cairo_path_extents
+            cairo_stroke_extents
+            cairo_fill_extents
+            cairo_clip_extents
+            cairo_font_extents
 
  src/cairo.c | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++----
  1 file changed, 50 insertions(+), 4 deletions(-)
@@ -6660,11 +6659,10 @@ CommitDate: Mon Jan 28 22:45:06 2008 -0500
 
     [doc] Rename cairo-font.sgml to cairo-font-face.sgml
 
- doc/public/cairo-docs.xml            |   2 +-
- doc/public/cairo-sections.txt        |   2 +-
- doc/public/tmpl/cairo-font-face.sgml | 112 +++++++++++++++++++++++++++++++++++
- doc/public/tmpl/cairo-font.sgml      | 112 -----------------------------------
- 4 files changed, 114 insertions(+), 114 deletions(-)
+ doc/public/cairo-docs.xml                                 | 2 +-
+ doc/public/cairo-sections.txt                             | 2 +-
+ doc/public/tmpl/{cairo-font.sgml => cairo-font-face.sgml} | 0
+ 3 files changed, 2 insertions(+), 2 deletions(-)
 
 commit 1d17a7f7811b15c72a4091663e01a448f538bc68
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -9075,7 +9073,7 @@ CommitDate: Fri Jan 11 21:21:34 2008 +0000
  4 files changed, 10 insertions(+), 23 deletions(-)
 
 commit bcf0c442b91b553b226c78d254906f7127013391
-Merge: ecb8958 8a6a0b4
+Merge: ecb895803 8a6a0b43d
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Fri Jan 11 12:30:15 2008 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -9093,8 +9091,8 @@ CommitDate: Fri Jan 11 12:28:49 2008 -0800
     
     This fixes the remaining image-backend problems with bug 13479:
     
-    	Ugly Courier New font with cairo 1.4.12
-    	https://bugs.freedesktop.org/show_bug.cgi?id=13479
+            Ugly Courier New font with cairo 1.4.12
+            https://bugs.freedesktop.org/show_bug.cgi?id=13479
     
     although the xlib-backend had been fixed previously.
     
@@ -10740,7 +10738,7 @@ CommitDate: Tue Dec 11 15:50:05 2007 +0100
  2 files changed, 88 insertions(+), 23 deletions(-)
 
 commit f3cec9d1c2a4d43cd734aae4bc7f8e7410a5e89a
-Merge: 08516d9 c26084a
+Merge: 08516d97a c26084a45
 Author:     Claudio Ciccani <klan@directfb.org>
 AuthorDate: Mon Dec 10 22:58:06 2007 +0100
 Commit:     Claudio Ciccani <klan@directfb.org>
@@ -11436,7 +11434,7 @@ CommitDate: Sat Nov 10 10:24:21 2007 +0100
  1 file changed, 65 insertions(+), 65 deletions(-)
 
 commit 8edc3ed4857795387007e7c4997f30d7ceec57ac
-Merge: 3bc8a8d 77e9b05
+Merge: 3bc8a8d1d 77e9b05b2
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
 AuthorDate: Sat Nov 10 10:10:50 2007 +0100
 Commit:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -12146,8 +12144,8 @@ CommitDate: Tue Oct 30 17:00:33 2007 -0700
     This demonstrates the assertion failure pointed out by
     Benjamin Otte here:
     
-    	[cairo] Assertion 'i < pen->num_vertices' failed in 1.4.10
-    	http://lists.cairographics.org/archives/cairo/2007-August/011282.html
+            [cairo] Assertion 'i < pen->num_vertices' failed in 1.4.10
+            http://lists.cairographics.org/archives/cairo/2007-August/011282.html
 
  test/.gitignore                       |   1 +
  test/Makefile.am                      |   1 +
@@ -12169,7 +12167,7 @@ CommitDate: Tue Oct 30 13:13:29 2007 -0700
  2 files changed, 5 insertions(+), 4 deletions(-)
 
 commit 6957aa27e8df55ed3ef1e0cfc62c714ad9b644ee
-Merge: 00d701f 8d8724e
+Merge: 00d701ff7 8d8724e80
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Oct 30 09:45:59 2007 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -12228,8 +12226,8 @@ CommitDate: Tue Oct 30 08:18:57 2007 -0700
     This fixes the current failure get-path-extents, which is a
     demonstration of the following bug:
     
-    	cairo_stroke_extents() gives wrong result for arcs in some cases
-    	https://bugs.freedesktop.org/show_bug.cgi?id=7245
+            cairo_stroke_extents() gives wrong result for arcs in some cases
+            https://bugs.freedesktop.org/show_bug.cgi?id=7245
     
     Many thanks to Michael Urman whose review of early versions of
     this work found a fatal mistake in my algebra.
@@ -15742,7 +15740,7 @@ CommitDate: Thu Sep 6 12:56:59 2007 -0700
  1 file changed, 22 insertions(+)
 
 commit 3c01efb0ee0c8911fba7627d056ec3b53dfab6e3
-Merge: 0682b9a 1e21220
+Merge: 0682b9a9c 1e21220f0
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Sep 5 14:38:40 2007 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -15846,7 +15844,7 @@ CommitDate: Wed Sep 5 00:26:56 2007 -0400
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 commit 1d788da5175dac34ed0298204753bf1b40dfc2b0
-Merge: 49ae376 e1819a2
+Merge: 49ae37684 e1819a24f
 Author:     Behdad Esfahbod <behdad@behdad.org>
 AuthorDate: Tue Sep 4 19:12:48 2007 -0400
 Commit:     Behdad Esfahbod <behdad@behdad.org>
@@ -16286,8 +16284,8 @@ CommitDate: Mon Aug 27 14:45:51 2007 -0700
     
     The following 7 tests currently fail with poppler due to:
     
-    	Poppler does not correctly handle knockout groups
-    	https://bugs.freedesktop.org/show_bug.cgi?id=12185
+            Poppler does not correctly handle knockout groups
+            https://bugs.freedesktop.org/show_bug.cgi?id=12185
     
     and we've verified with acroread that the cairo-pdf output
     does render as intended there. The disabled tests are
@@ -16362,8 +16360,8 @@ CommitDate: Sat Aug 25 23:39:28 2007 -0700
     A pixman bug had kept this from being correct earlier. It
     works now as long as pixman includes the following fix:
     
-    	8ff7213f39edc1b2b8b60d6b0cc5d5f14ca1928d
-    	rasterize traps that extend outside of the image bounds correctly
+            8ff7213f39edc1b2b8b60d6b0cc5d5f14ca1928d
+            rasterize traps that extend outside of the image bounds correctly
 
  test/over-between-source-ps-argb32-ref.png | Bin 0 -> 678 bytes
  1 file changed, 0 insertions(+), 0 deletions(-)
@@ -16505,7 +16503,7 @@ CommitDate: Sat Aug 25 20:45:16 2007 +0200
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit 3ceaa6e74e4bd3f5935016c3639411b26d7f576f
-Merge: e3b5a65 24075f1
+Merge: e3b5a6502 24075f1bd
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Fri Aug 24 08:03:44 2007 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -16785,8 +16783,8 @@ CommitDate: Tue Aug 21 17:10:49 2007 -0700
     
     This fixes bugzilla #9993:
     
-    	Cairo fails with 555 X server visual
-    	https://bugs.freedesktop.org/show_bug.cgi?id=9993
+            Cairo fails with 555 X server visual
+            https://bugs.freedesktop.org/show_bug.cgi?id=9993
 
  ROADMAP                   |  2 +-
  src/cairo-image-surface.c | 14 ++++++++++++++
@@ -16802,8 +16800,8 @@ CommitDate: Tue Aug 21 17:10:49 2007 -0700
     
     This fixes bugzilla #10461:
     
-    	Cairo doesn't support 565 xlib visual
-    	https://bugs.freedesktop.org/show_bug.cgi?id=1046
+            Cairo doesn't support 565 xlib visual
+            https://bugs.freedesktop.org/show_bug.cgi?id=1046
 
  ROADMAP                   |  2 +-
  src/cairo-image-surface.c | 16 ++++++++++++++++
@@ -17067,16 +17065,16 @@ CommitDate: Mon Aug 20 21:01:55 2007 -0400
     Now compare the scaled-glyph space to device-space and surface-space
     and convince yourself that:
     
-    	(x_bearing,y_bearing) = (-x,-y) = - device_offset
+            (x_bearing,y_bearing) = (-x,-y) = - device_offset
     
     That's right.  If you are not convinced yet, contrast the definition
     of the two:
     
-    	"(x_bearing,y_bearing) is the coordinates of top-left of the
-    	 glyph relative to the glyph origin."
+            "(x_bearing,y_bearing) is the coordinates of top-left of the
+             glyph relative to the glyph origin."
     
-    	"In other words: device_offset is the coordinates of the
-    	 device-space origin relative to the top-left of the surface."
+            "In other words: device_offset is the coordinates of the
+             device-space origin relative to the top-left of the surface."
     
     and note that glyph origin = device-space origin.
     
@@ -17087,9 +17085,9 @@ CommitDate: Mon Aug 20 21:01:55 2007 -0400
     rendering the glyph from meta-surface to an image-surface work I had
     to do:
     
-    	cairo_surface_set_device_offset (surface, -x_bearing, -y_bearing);
-    	_cairo_meta_surface_replay (meta_surface, surface);
-    	cairo_surface_set_device_offset (surface, x_bearing, y_bearing);
+            cairo_surface_set_device_offset (surface, -x_bearing, -y_bearing);
+            _cairo_meta_surface_replay (meta_surface, surface);
+            cairo_surface_set_device_offset (surface, x_bearing, y_bearing);
     
     This suggested that the use of device_offset for glyph origin is
     different from its use for rendering with meta-surface.  This reminded
@@ -17407,8 +17405,8 @@ CommitDate: Mon Aug 6 11:06:47 2007 -0700
     
     This fixes the bug reported here:
     
-    	Segfault with cairo_pattern_set_user_data
-    	https://bugs.freedesktop.org/show_bug.cgi?id=11855
+            Segfault with cairo_pattern_set_user_data
+            https://bugs.freedesktop.org/show_bug.cgi?id=11855
 
  src/cairo-pattern.c | 2 ++
  1 file changed, 2 insertions(+)
@@ -17783,7 +17781,7 @@ CommitDate: Thu Jul 5 19:02:11 2007 +0100
  2 files changed, 15 insertions(+), 1 deletion(-)
 
 commit ef967be630dd8d0bf81ad5889d6264bebe7631d4
-Merge: 0c42dbb 5c7d2d1
+Merge: 0c42dbb19 5c7d2d14d
 Author:     Søren Sandmann Pedersen <sandmann@annarchy.freedesktop.org>
 AuthorDate: Mon Jul 2 08:33:29 2007 -0700
 Commit:     Søren Sandmann Pedersen <sandmann@annarchy.freedesktop.org>
@@ -17793,11 +17791,11 @@ CommitDate: Mon Jul 2 08:33:29 2007 -0700
     
     Conflicts:
     
-    	pixman/src/fbcompose.c
-    	pixman/src/icimage.c
-    	pixman/src/pixmanint.h
-    	pixman/src/pixregionint.h
-    	src/cairo-clip.c
+            pixman/src/fbcompose.c
+            pixman/src/icimage.c
+            pixman/src/pixmanint.h
+            pixman/src/pixregionint.h
+            src/cairo-clip.c
 
 commit 5c7d2d14d78e4dfb1ef6d2c40f0910f177e07360
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
@@ -17941,7 +17939,7 @@ CommitDate: Wed Jun 27 11:07:07 2007 -0700
  1 file changed, 2 deletions(-)
 
 commit 6d021eb4b6e319dd2bb3e5e126de07c6844d5c07
-Merge: 9109946 0791f34
+Merge: 9109946a1 0791f342b
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Jun 27 11:01:00 2007 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -17966,8 +17964,8 @@ CommitDate: Wed Jun 27 10:53:29 2007 -0700
     This fix has been verified to fix the bug causing OpenOffice.org to
     crash as described here:
     
-    	XError on right click menus in OOo.
-    	https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=243811
+            XError on right click menus in OOo.
+            https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=243811
     
     And unlike other proposed fixes for this bug, this fix does not
     introduce any new calls to XSync, (and thereby avoids performance
@@ -20294,7 +20292,7 @@ CommitDate: Tue May 1 00:41:47 2007 -0400
     This fixes the problem reported by Dave Yeo that boilerplate wasn't building:
     
     In file included from ../src/cairo-scaled-font-private.h:44,
-    	     from cairo-boilerplate.c:65:
+                 from cairo-boilerplate.c:65:
     ../src/cairo-mutex-private.h:183: error: syntax error before "extern"
     ../src/cairo-mutex-private.h:184: error: syntax error before "void"
     ../src/cairo-mutex-private.h:185: error: syntax error before "void"
@@ -20507,7 +20505,7 @@ CommitDate: Fri Apr 27 16:41:17 2007 -0700
     
     The following four tests are disabled:
     
-    	gradient-alpha, linear-gradient, text-pattern, trap-clip
+            gradient-alpha, linear-gradient, text-pattern, trap-clip
     
     We don't use XFAIL as that would disable all backends, (but
     we can still usefully use these tests on backends other than
@@ -20898,7 +20896,7 @@ CommitDate: Tue Apr 24 17:33:37 2007 -0400
  1 file changed, 5 insertions(+)
 
 commit ac0ef0302e68ba17ec5a59c689579f1854c7386c
-Merge: d3cf214 260dcb3
+Merge: d3cf2144d 260dcb316
 Author:     Peter Weilbacher <mozilla@weilbacher.org>
 AuthorDate: Mon Apr 23 23:18:05 2007 +0200
 Commit:     Peter Weilbacher <mozilla@weilbacher.org>
@@ -21027,22 +21025,22 @@ CommitDate: Sat Apr 21 08:23:15 2007 -0400
     
     To build, do:
     
-    	make malloc-stats.so
+            make malloc-stats.so
     
     inside util/, and to use, run:
     
-    	LD_PRELOAD=malloc-stats.so some-program
+            LD_PRELOAD=malloc-stats.so some-program
     
     For binaries managed by libtool, eg, cairo-perf, do:
     
-    	../libtool --mode=execute /bin/true ./cairo-perf
-    	LD_PRELOAD="../util/malloc-stats.so" .libs/lt-cairo-perf
+            ../libtool --mode=execute /bin/true ./cairo-perf
+            LD_PRELOAD="../util/malloc-stats.so" .libs/lt-cairo-perf
     
     The code also includes Jeff Muizelaar's libbacktracesymbols that
     is a much better implementation of backtrace_symbols() than what
     is provided by glibc.  That can be built by:
     
-    	make backtrace-symbols.so
+            make backtrace-symbols.so
 
  util/.gitignore          |  17 +++
  util/Makefile.am         |  22 +++
@@ -21051,7 +21049,7 @@ CommitDate: Sat Apr 21 08:23:15 2007 -0400
  4 files changed, 701 insertions(+)
 
 commit d3cf2144dbd42737d5e2c45908fbca082dd54022
-Merge: 6c12961 abdcbf8
+Merge: 6c1296114 abdcbf896
 Author:     Peter Weilbacher <mozilla@weilbacher.org>
 AuthorDate: Sat Apr 21 13:50:30 2007 +0200
 Commit:     Peter Weilbacher <mozilla@weilbacher.org>
@@ -22042,13 +22040,12 @@ CommitDate: Fri Apr 20 00:52:01 2007 -0400
 
     [boilerplate] Rename test-directfb to boilerplate-directfb
 
- boilerplate/Makefile.am                          |   3 +-
- boilerplate/cairo-boilerplate-directfb-private.h |  23 ++++
- boilerplate/cairo-boilerplate-directfb.c         | 143 +++++++++++++++++++++++
- boilerplate/cairo-boilerplate.c                  |   6 +-
- boilerplate/cairo-test-directfb.c                | 143 -----------------------
- boilerplate/cairo-test-directfb.h                |  23 ----
- 6 files changed, 171 insertions(+), 170 deletions(-)
+ boilerplate/Makefile.am                            |  3 ++-
+ boilerplate/cairo-boilerplate-directfb-private.h   | 23 ++++++++++++++++++++++
+ ...est-directfb.c => cairo-boilerplate-directfb.c} | 10 +++++-----
+ boilerplate/cairo-boilerplate.c                    |  6 +++---
+ boilerplate/cairo-test-directfb.h                  | 23 ----------------------
+ 5 files changed, 33 insertions(+), 32 deletions(-)
 
 commit fb2c0daa09af083278024c3da6f7e9e3f851984f
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -22058,13 +22055,12 @@ CommitDate: Fri Apr 20 00:52:01 2007 -0400
 
     [boilerplate] Rename test-beos to boilerplate-beos
 
- boilerplate/Makefile.am                      |   3 +-
- boilerplate/cairo-boilerplate-beos-private.h |  34 ++++
- boilerplate/cairo-boilerplate-beos.cpp       | 258 +++++++++++++++++++++++++++
- boilerplate/cairo-boilerplate.c              |   8 +-
- boilerplate/cairo-test-beos.cpp              | 258 ---------------------------
- boilerplate/cairo-test-beos.h                |  34 ----
- 6 files changed, 298 insertions(+), 297 deletions(-)
+ boilerplate/Makefile.am                            |  3 +-
+ boilerplate/cairo-boilerplate-beos-private.h       | 34 ++++++++++++++++++++++
+ ...ro-test-beos.cpp => cairo-boilerplate-beos.cpp} | 20 ++++++-------
+ boilerplate/cairo-boilerplate.c                    |  8 ++---
+ boilerplate/cairo-test-beos.h                      | 34 ----------------------
+ 5 files changed, 50 insertions(+), 49 deletions(-)
 
 commit 01760286b388870e5bebf3851b4bef1350d89852
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -22074,13 +22070,11 @@ CommitDate: Fri Apr 20 00:52:01 2007 -0400
 
     [boilerplate] Rename quartz-boilerplate to boilerplate-quartz
 
- boilerplate/Makefile.am                        |  4 +-
- boilerplate/cairo-boilerplate-quartz-private.h | 41 ++++++++++++++++++
- boilerplate/cairo-boilerplate-quartz.c         | 60 ++++++++++++++++++++++++++
- boilerplate/cairo-boilerplate.c                | 10 ++---
- boilerplate/cairo-quartz-boilerplate-private.h | 41 ------------------
- boilerplate/cairo-quartz-boilerplate.c         | 60 --------------------------
- 6 files changed, 108 insertions(+), 108 deletions(-)
+ boilerplate/Makefile.am                                        |  4 ++--
+ ...oilerplate-private.h => cairo-boilerplate-quartz-private.h} |  8 ++++----
+ .../{cairo-quartz-boilerplate.c => cairo-boilerplate-quartz.c} |  6 +++---
+ boilerplate/cairo-boilerplate.c                                | 10 +++++-----
+ 4 files changed, 14 insertions(+), 14 deletions(-)
 
 commit d64ef355217db7a555da0029187d19c80ec12609
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -22578,12 +22572,11 @@ CommitDate: Wed Apr 18 18:24:09 2007 -0400
 
     Rename cairo-font.c to cairo-font-face.c
 
- src/Makefile.am       |   2 +-
- src/Makefile.win32    |   2 +-
- src/cairo-font-face.c | 514 ++++++++++++++++++++++++++++++++++++++++++++++++++
- src/cairo-font.c      | 514 --------------------------------------------------
- src/cairoint.h        |   2 +-
- 5 files changed, 517 insertions(+), 517 deletions(-)
+ src/Makefile.am                         | 2 +-
+ src/Makefile.win32                      | 2 +-
+ src/{cairo-font.c => cairo-font-face.c} | 0
+ src/cairoint.h                          | 2 +-
+ 4 files changed, 3 insertions(+), 3 deletions(-)
 
 commit f56582ef06bbf56edcc6ecc26698abaeba1306b0
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -22682,7 +22675,7 @@ CommitDate: Tue Apr 17 15:30:20 2007 -0400
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit f7a2787685d640dd35ef7ef1314c4e754771c512
-Merge: 2efaf3a cab4d41
+Merge: 2efaf3a7a cab4d41ca
 Author:     Mathias Hasselmann <mathias.hasselmann@gmx.de>
 AuthorDate: Mon Apr 16 23:05:10 2007 +0200
 Commit:     Mathias Hasselmann <mathias.hasselmann@gmx.de>
@@ -22880,12 +22873,11 @@ CommitDate: Fri Apr 13 12:02:11 2007 -0700
     instead of always compiling it and conditionally having the compiler
     see an empty file.
 
- boilerplate/Makefile.am                        |  6 +++-
- boilerplate/cairo-boilerplate-private.h        | 45 --------------------------
- boilerplate/cairo-boilerplate.c                |  5 ++-
- boilerplate/cairo-quartz-boilerplate-private.h | 41 +++++++++++++++++++++++
- boilerplate/cairo-quartz-boilerplate.c         |  6 +---
- 5 files changed, 51 insertions(+), 52 deletions(-)
+ boilerplate/Makefile.am                                           | 6 +++++-
+ boilerplate/cairo-boilerplate.c                                   | 5 ++++-
+ ...o-boilerplate-private.h => cairo-quartz-boilerplate-private.h} | 8 ++------
+ boilerplate/cairo-quartz-boilerplate.c                            | 6 +-----
+ 4 files changed, 12 insertions(+), 13 deletions(-)
 
 commit cea107c9800a4414f57a874dd52924efdff725ec
 Author:     Carl Worth <cworth@cworth.org>
@@ -23010,7 +23002,7 @@ CommitDate: Thu Apr 12 13:46:03 2007 -0700
     The code being reverted here was originally added with the
     following commit:
     
-    	46eab95698e101e41407778eda22089b508a8984
+            46eab95698e101e41407778eda22089b508a8984
     
     but this change reverts only the public-facing parts of it.
 
@@ -23073,12 +23065,11 @@ CommitDate: Thu Apr 12 13:22:36 2007 -0700
     Also add it (and cairo-mutex-private.h) to Makefile.am
     where they should have been.
 
- src/Makefile.am                |  2 ++
- src/cairo-mutex-list-private.h | 50 ++++++++++++++++++++++++++++++++++++++++++
- src/cairo-mutex-list.h         | 50 ------------------------------------------
- src/cairo-mutex-private.h      |  2 +-
- src/cairo-mutex.c              |  2 +-
- 5 files changed, 54 insertions(+), 52 deletions(-)
+ src/Makefile.am                                        | 2 ++
+ src/{cairo-mutex-list.h => cairo-mutex-list-private.h} | 4 ++--
+ src/cairo-mutex-private.h                              | 2 +-
+ src/cairo-mutex.c                                      | 2 +-
+ 4 files changed, 6 insertions(+), 4 deletions(-)
 
 commit 29adf591b7026092a809e9a27878b5b4e35051fb
 Author:     Carl Worth <cworth@cworth.org>
@@ -23199,7 +23190,7 @@ CommitDate: Thu Apr 12 10:51:17 2007 -0700
  2 files changed, 52 insertions(+)
 
 commit e240048a14333d5c61a0d4ae5c30acd12bcb5805
-Merge: 29a1fe1 977a898
+Merge: 29a1fe12c 977a8982a
 Author:     Michael Emmel <memmel@debian.localdomain>
 AuthorDate: Wed Apr 11 21:43:15 2007 -0700
 Commit:     Michael Emmel <memmel@debian.localdomain>
@@ -23312,7 +23303,7 @@ CommitDate: Wed Apr 11 19:43:01 2007 -0400
  1 file changed, 1 insertion(+)
 
 commit c8645c85de94b83fe2fd60a4d881cb639eb79b46
-Merge: be98123 52435e9
+Merge: be98123b2 52435e99f
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Apr 11 16:38:46 2007 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -23345,7 +23336,7 @@ CommitDate: Thu Apr 12 00:28:03 2007 +0100
  7 files changed, 202 insertions(+), 295 deletions(-)
 
 commit be98123b2c30a3102629afff74b9233c18e0535d
-Merge: efedf57 a6506c6
+Merge: efedf57f4 a6506c67f
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Apr 11 16:02:08 2007 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -23355,7 +23346,7 @@ CommitDate: Wed Apr 11 16:02:08 2007 -0700
     
     Conflicts:
     
-    	src/cairo-scaled-font.c
+            src/cairo-scaled-font.c
 
 commit a6506c67f24331c703dd56502a1bc4504b7b2311
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -23465,7 +23456,7 @@ CommitDate: Thu Apr 12 06:32:29 2007 +0930
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit e36794ad34282a4d671d7cc5527e9c650c2736fe
-Merge: b692472 b745126
+Merge: b6924722b b745126a0
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Apr 11 13:15:57 2007 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -23624,9 +23615,9 @@ CommitDate: Wed Apr 11 02:03:10 2007 -0700
     
     The function calls that get the new treatment here are:
     
-    	_cairo_meta_surface_replay
-    	_cairo_surface_show_page
-    	_cairo_array_append
+            _cairo_meta_surface_replay
+            _cairo_surface_show_page
+            _cairo_array_append
     
     all within _cairo_svg_surface_emit_meta_surface
 
@@ -24146,11 +24137,11 @@ CommitDate: Tue Apr 10 10:14:49 2007 -0700
     
     The idiom for checking the return value of malloc is:
     
-    	if (pointer == NULL) { ... }
+            if (pointer == NULL) { ... }
     
     rather than:
     
-    	if (pointer != NULL) { ... }
+            if (pointer != NULL) { ... }
 
  src/cairo-pattern.c | 7 ++++---
  1 file changed, 4 insertions(+), 3 deletions(-)
@@ -24299,10 +24290,10 @@ CommitDate: Mon Apr 9 17:09:51 2007 -0700
     And we can get rid of a lot of useless error-checking code this way.
     The corrected functions are:
     
-    	_cairo_gstate_user_to_device
-    	_cairo_gstate_user_to_device_distance
-    	_cairo_gstate_device_to_user
-    	_cairo_gstate_device_to_user_distance
+            _cairo_gstate_user_to_device
+            _cairo_gstate_user_to_device_distance
+            _cairo_gstate_device_to_user
+            _cairo_gstate_device_to_user_distance
 
  src/cairo-gstate.c | 16 ++++----------
  src/cairo.c        | 62 ++++++++++++++++--------------------------------------
@@ -25403,8 +25394,8 @@ CommitDate: Thu Apr 5 14:44:15 2007 -0700
     The double-free apparently leads to a crash in some cases, as described
     here:
     
-    	 SVG/Cairo related crash when opening specific webpage
-    	https://bugzilla.mozilla.org/show_bug.cgi?id=376498
+             SVG/Cairo related crash when opening specific webpage
+            https://bugzilla.mozilla.org/show_bug.cgi?id=376498
     
     This should eliminate the double-free, but does not address the original
     error case, (attempting to get a path from a bitmap font?).
@@ -25471,13 +25462,13 @@ CommitDate: Tue Apr 3 20:28:11 2007 -0400
     
     The inclusion idiom for cairo now is:
     
-    	#include "cairoint.h"
+            #include "cairoint.h"
     
-    	#include "cairo-something.h"
-    	#include "cairo-anotherthing-private.h"
+            #include "cairo-something.h"
+            #include "cairo-anotherthing-private.h"
     
-    	#include <some-library.h>
-    	#include <other-library/other-file.h>
+            #include <some-library.h>
+            #include <other-library/other-file.h>
     
     Moreover, some standard headers files are included from cairoint.h and need
     not be included again.
@@ -25812,7 +25803,7 @@ CommitDate: Sat Mar 24 13:25:03 2007 +0000
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 commit 2efaf3a7a47a281ca02009d371cd7a06a8a4f282
-Merge: abac4d2 25ddc08
+Merge: abac4d251 25ddc0800
 Author:     Mathias Hasselmann <mathias.hasselmann@gmx.de>
 AuthorDate: Sat Mar 24 00:29:04 2007 +0100
 Commit:     Mathias Hasselmann <mathias.hasselmann@gmx.de>
@@ -26090,7 +26081,7 @@ CommitDate: Tue Mar 20 08:50:38 2007 -0400
  2 files changed, 8 insertions(+), 6 deletions(-)
 
 commit 94c367f7d7637fc74ed6d1fbe13d73662c08246b
-Merge: c4bd7cf d3177a6
+Merge: c4bd7cf6f d3177a687
 Author:     Mathias Hasselmann <mathias.hasselmann@gmx.de>
 AuthorDate: Tue Mar 20 13:33:50 2007 +0100
 Commit:     Mathias Hasselmann <mathias.hasselmann@gmx.de>
@@ -26253,8 +26244,8 @@ CommitDate: Mon Mar 19 16:50:55 2007 -0700
     
     This should fix the problem reported (again) in this bug report:
     
-    	cairo crashes in cairo_create_simular if nil surface returned by other->backend->create_similar
-    	https://bugs.freedesktop.org/show_bug.cgi?id=9844
+            cairo crashes in cairo_create_simular if nil surface returned by other->backend->create_similar
+            https://bugs.freedesktop.org/show_bug.cgi?id=9844
     
     Though I haven't succeeded in replicating the bug yet, (perhaps a system
     difference in allowing writes to read-only memory or not, or something
@@ -26276,12 +26267,12 @@ CommitDate: Mon Mar 19 15:10:33 2007 -0700
     that the surface->visual field would be set to NULL. This assumption
     was broken years ago with the following commit:
     
-    	0c05b23b3165ec6908c28f56b3446cf43dff44a2
+            0c05b23b3165ec6908c28f56b3446cf43dff44a2
     
     This fixes the crash reported here:
     
-    	BadMatch when running gnome-terminal with the murrine-0.51 gtk engine
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10250
+            BadMatch when running gnome-terminal with the murrine-0.51 gtk engine
+            https://bugs.freedesktop.org/show_bug.cgi?id=10250
 
  src/cairo-xlib-surface.c | 27 +++++++++++++++------------
  1 file changed, 15 insertions(+), 12 deletions(-)
@@ -26413,10 +26404,10 @@ CommitDate: Fri Mar 16 20:43:29 2007 +0100
 
     [cairo-perf] Emit warning, if cairo-perf is not CPU bound
     
-    	cairo-perf and the X server should be bound to CPUs (either the same
-    	or separate) on SMP systems. Not doing so causes random results when
-    	the X server is moved to or from cairo-perf's CPU during the
-    	benchmarks.
+            cairo-perf and the X server should be bound to CPUs (either the same
+            or separate) on SMP systems. Not doing so causes random results when
+            the X server is moved to or from cairo-perf's CPU during the
+            benchmarks.
 
  configure.in      | 11 +++++++++++
  perf/cairo-perf.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -26433,8 +26424,8 @@ CommitDate: Fri Mar 16 10:35:23 2007 -0700
     Thanks to Thomas Klausner for passing the report along.
     This fixes the following bug report:
     
-    	hidden attribute does not work with Solaris ld
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10227
+            hidden attribute does not work with Solaris ld
+            https://bugs.freedesktop.org/show_bug.cgi?id=10227
     
     And as Behdad points out, an even better fix would be to
     move checks for supported visibility attribute to configure.
@@ -26459,7 +26450,7 @@ CommitDate: Fri Mar 16 10:06:51 2007 -0700
     
     This resolved the following bug:
     
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10226
+            https://bugs.freedesktop.org/show_bug.cgi?id=10226
 
  RELEASING            | 2 +-
  src/check-headers.sh | 2 +-
@@ -26493,8 +26484,8 @@ CommitDate: Thu Mar 15 23:17:19 2007 -0700
     
     This fixes the bug reported here:
     
-    	Without PDF surface backend we don't need cairo-deflate-stream
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10202
+            Without PDF surface backend we don't need cairo-deflate-stream
+            https://bugs.freedesktop.org/show_bug.cgi?id=10202
 
  src/Makefile.am | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
@@ -26517,10 +26508,10 @@ CommitDate: Thu Mar 15 22:38:42 2007 -0700
     
     Here we fix four functions to follow the same convention:
     
-    	cairo_stroke_extents
-    	cairo_fill_extents
-    	cairo_clip_extents
-    	cairo_surface_get_device_offset
+            cairo_stroke_extents
+            cairo_fill_extents
+            cairo_clip_extents
+            cairo_surface_get_device_offset
 
  src/cairo-gstate.c  | 44 +++++++++++++++++++++++++++++++++-----------
  src/cairo-surface.c |  6 ++++--
@@ -26536,9 +26527,9 @@ CommitDate: Thu Mar 15 22:09:32 2007 -0700
     
     This fixes the line-width-zero test case and the bug reported here:
     
-    	Crash in cairo_stroke_extents whe line width is 0 and line cap is ROUND
-    	(_cairo_pen_find_active_cw_vertex_index)
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10231
+            Crash in cairo_stroke_extents whe line width is 0 and line cap is ROUND
+            (_cairo_pen_find_active_cw_vertex_index)
+            https://bugs.freedesktop.org/show_bug.cgi?id=10231
 
  src/cairo-gstate.c | 10 ++++++++++
  1 file changed, 10 insertions(+)
@@ -26553,9 +26544,9 @@ CommitDate: Thu Mar 15 22:09:32 2007 -0700
     
     The crash is described in this bug report:
     
-    	Crash in cairo_stroke_extents whe line width is 0 and line cap is ROUND
-    	(_cairo_pen_find_active_cw_vertex_index)
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10231
+            Crash in cairo_stroke_extents whe line width is 0 and line cap is ROUND
+            (_cairo_pen_find_active_cw_vertex_index)
+            https://bugs.freedesktop.org/show_bug.cgi?id=10231
 
  test/.gitignore        |  1 +
  test/Makefile.am       |  1 +
@@ -26714,8 +26705,8 @@ CommitDate: Wed Mar 14 15:06:36 2007 -0700
     
     This fixes the skew-extreme test case and the bug reported here:
     
-    	Skew transforms were broken by the cairo update in December
-    	https://bugzilla.mozilla.org/show_bug.cgi?id=373632
+            Skew transforms were broken by the cairo update in December
+            https://bugzilla.mozilla.org/show_bug.cgi?id=373632
 
  src/cairo-traps.c | 101 +++++++++++++++++++++++++++++++-----------------------
  1 file changed, 59 insertions(+), 42 deletions(-)
@@ -26730,8 +26721,8 @@ CommitDate: Wed Mar 14 15:06:36 2007 -0700
     
     This test currently fails, demonstrating the bug reported here:
     
-    	Skew transforms were broken by the cairo update in December
-    	https://bugzilla.mozilla.org/show_bug.cgi?id=373632
+            Skew transforms were broken by the cairo update in December
+            https://bugzilla.mozilla.org/show_bug.cgi?id=373632
 
  test/.gitignore           |   1 +
  test/Makefile.am          |   1 +
@@ -26749,7 +26740,7 @@ CommitDate: Wed Mar 14 15:06:36 2007 -0700
     
     This test has not been failing since the fix in:
     
-    	772edc9133d41dfd667ae5915dfa6ace0bcbfd0d
+            772edc9133d41dfd667ae5915dfa6ace0bcbfd0d
     
     So get rid of the '1 unexpected passes' complaint.
 
@@ -27136,7 +27127,7 @@ CommitDate: Tue Mar 13 05:14:19 2007 -0400
     
     Part of my secrect plan to make cairo compilable with:
     
-    	#define static
+            #define static
     
     Useful for some weird debugging purposes.
 
@@ -27380,8 +27371,8 @@ CommitDate: Fri Mar 9 13:36:03 2007 -0800
     
     This fixes bug #10235:
     
-    	locking bug in cairo_ft_scaled_font_unlock_face()
-    	http://bugs.freedesktop.org/show_bug.cgi?id=10235
+            locking bug in cairo_ft_scaled_font_unlock_face()
+            http://bugs.freedesktop.org/show_bug.cgi?id=10235
 
  src/cairo-ft-font.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

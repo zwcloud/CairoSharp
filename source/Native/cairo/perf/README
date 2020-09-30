@@ -8,7 +8,7 @@ which will give a report of the speed of each individual test. See
 more details on other options for running the suite below.
 
 A macro test suite (with full traces and more intensive benchmarks) is
-also available; for this, see http://cgit.freedesktop.org/cairo-traces.
+also available; for this, see https://cgit.freedesktop.org/cairo-traces.
 The macro-benchmarks are better measures of actual real-world
 performance, and should be preferred over the micro-benchmarks (and over
 make perf) for identifying performance regressions or improvements.  If

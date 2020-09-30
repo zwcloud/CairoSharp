@@ -523,7 +523,7 @@ _cairo_default_context_get_tolerance (void *abstract_cr)
 }
 
 
-/* Current tranformation matrix */
+/* Current transformation matrix */
 
 static cairo_status_t
 _cairo_default_context_translate (void *abstract_cr,
@@ -1481,7 +1481,7 @@ _cairo_default_context_create (void *target)
 
     cr = _freed_pool_get (&context_pool);
     if (unlikely (cr == NULL)) {
-	cr = malloc (sizeof (cairo_default_context_t));
+	cr = _cairo_malloc (sizeof (cairo_default_context_t));
 	if (unlikely (cr == NULL))
 	    return _cairo_create_in_error (_cairo_error (CAIRO_STATUS_NO_MEMORY));
     }

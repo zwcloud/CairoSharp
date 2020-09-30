@@ -149,7 +149,7 @@ static attribute_spec_t _ccitt_params_spec[] =
  *          lly - lower left y xoordinate
  *          urx - upper right x xoordinate
  *          ury - upper right y xoordinate
- *        all cordinates are in PostScript coordinates.
+ *        all coordinates are in PostScript coordinates.
  */
 static attribute_spec_t _eps_params_spec[] =
 {
@@ -217,9 +217,28 @@ static const char *
 parse_float (const char *p, double *d)
 {
     int n;
+    const char *start = p;
+    cairo_bool_t has_decimal_point = FALSE;
 
-    if (sscanf(p, "%lf%n", d, &n) > 0)
-	return p + n;
+    while (*p) {
+	if (*p == '.' || *p == ']' || _cairo_isspace (*p))
+	    break;
+	p++;
+    }
+
+    if (*p == '.')
+	has_decimal_point = TRUE;
+
+    if (has_decimal_point) {
+	char *end;
+	*d = _cairo_strtod (start, &end);
+	if (end)
+	    return end;
+
+    } else {
+	if (sscanf(start, "%lf%n", d, &n) > 0)
+	    return start + n;
+    }
 
     return NULL;
 }
@@ -267,7 +286,7 @@ parse_string (const char *p, char **s)
     if (!end)
 	return NULL;
 
-    *s = malloc (len + 1);
+    *s = _cairo_malloc (len + 1);
     decode_string (p, &len, *s);
     (*s)[len] = 0;
 
@@ -341,7 +360,7 @@ parse_name (const char *p, const char **end, char **s)
 	p2++;
 
     len = p2 - p;
-    name = malloc (len + 1);
+    name = _cairo_malloc (len + 1);
     if (unlikely (name == NULL))
 	return _cairo_error (CAIRO_STATUS_NO_MEMORY);
 

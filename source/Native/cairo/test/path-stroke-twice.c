@@ -26,7 +26,7 @@
 #include "cairo-test.h"
 
 /* Exercises a bug found by alois@astro.ch:
- *   http://bugs.freedesktop.org/show_bug.cgi?id=26010
+ *   https://bugs.freedesktop.org/show_bug.cgi?id=26010
  *   cairo_line_to optimizes away path segment
  */
 

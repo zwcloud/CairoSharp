@@ -25,7 +25,7 @@
 
 /*
  * Test case derived from the bug report by Michel Iwaniec:
- * http://lists.cairographics.org/archives/cairo/2008-November/015660.html
+ * https://lists.cairographics.org/archives/cairo/2008-November/015660.html
  */
 
 #include "cairo-test.h"

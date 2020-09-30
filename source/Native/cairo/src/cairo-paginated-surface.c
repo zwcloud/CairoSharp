@@ -98,7 +98,7 @@ _cairo_paginated_surface_create (cairo_surface_t				*target,
     cairo_paginated_surface_t *surface;
     cairo_status_t status;
 
-    surface = malloc (sizeof (cairo_paginated_surface_t));
+    surface = _cairo_malloc (sizeof (cairo_paginated_surface_t));
     if (unlikely (surface == NULL)) {
 	status = _cairo_error (CAIRO_STATUS_NO_MEMORY);
 	goto FAIL;
@@ -780,7 +780,7 @@ static const cairo_surface_backend_t cairo_paginated_surface_backend = {
     _cairo_paginated_context_create,
 
     _cairo_paginated_surface_create_similar,
-    NULL, /* create simlar image */
+    NULL, /* create siimlar image */
     NULL, /* map to image */
     NULL, /* unmap image */
 

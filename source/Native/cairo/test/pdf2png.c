@@ -67,10 +67,12 @@ int main (int argc, char *argv[])
 	FAIL (error->message);
 
     document = poppler_document_new_from_file (uri, NULL, &error);
+    g_free (uri);
     if (document == NULL)
 	FAIL (error->message);
 
     page = poppler_document_get_page_by_label (document, page_label);
+    g_object_unref (document);
     if (page == NULL)
 	FAIL ("page not found");
 

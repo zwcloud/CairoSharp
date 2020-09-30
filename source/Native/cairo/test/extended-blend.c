@@ -71,7 +71,6 @@ do_blend_solid (cairo_t *cr, cairo_operator_t op, cairo_bool_t alpha)
     cairo_save (cr);
     cairo_scale (cr, SIZE, SIZE);
 
-    /* not using CAIRO_OPERATOR_SOURCE here, it triggers a librsvg bug */
     cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
     for (x = 0; x < STEPS; x++) {
 	/* draw the background using discrete steps */
@@ -126,7 +125,6 @@ do_blend (cairo_t *cr, cairo_operator_t op, cairo_bool_t alpha)
 
     create_patterns (cr, &bg, &fg, alpha);
 
-    /* not using CAIRO_OPERATOR_SOURCE here, it triggers a librsvg bug */
     cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
     cairo_set_source_surface (cr, bg, 0, 0);
     cairo_paint (cr);
@@ -146,7 +144,6 @@ do_blend_mask (cairo_t *cr, cairo_operator_t op, cairo_bool_t alpha)
 
     create_patterns (cr, &bg, &fg, alpha);
 
-    /* not using CAIRO_OPERATOR_SOURCE here, it triggers a librsvg bug */
     cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
     cairo_set_source_surface (cr, bg, 0, 0);
     cairo_paint (cr);

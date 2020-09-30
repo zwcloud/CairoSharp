@@ -312,7 +312,7 @@ _cairo_ps_surface_emit_header (cairo_ps_surface_t *surface)
 
     _cairo_output_stream_printf (surface->final_stream,
 				 "%%!PS-Adobe-3.0%s\n"
-				 "%%%%Creator: cairo %s (http://cairographics.org)\n"
+				 "%%%%Creator: cairo %s (https://cairographics.org)\n"
 				 "%%%%CreationDate: %s"
 				 "%%%%Pages: %d\n",
 				 eps_header,
@@ -1103,7 +1103,7 @@ _cairo_ps_surface_get_page_media (cairo_ps_surface_t     *surface)
 	}
     }
 
-    page = malloc (sizeof (cairo_page_media_t));
+    page = _cairo_malloc (sizeof (cairo_page_media_t));
     if (unlikely (page == NULL)) {
 	_cairo_error_throw (CAIRO_STATUS_NO_MEMORY);
 	return NULL;
@@ -1139,7 +1139,7 @@ _cairo_ps_surface_create_for_stream_internal (cairo_output_stream_t *stream,
     cairo_status_t status, status_ignored;
     cairo_ps_surface_t *surface;
 
-    surface = malloc (sizeof (cairo_ps_surface_t));
+    surface = _cairo_malloc (sizeof (cairo_ps_surface_t));
     if (unlikely (surface == NULL)) {
 	status = _cairo_error (CAIRO_STATUS_NO_MEMORY);
 	goto CLEANUP;
@@ -2378,7 +2378,7 @@ _base85_strings_stream_create (cairo_output_stream_t *output)
 {
     string_array_stream_t *stream;
 
-    stream = malloc (sizeof (string_array_stream_t));
+    stream = _cairo_malloc (sizeof (string_array_stream_t));
     if (unlikely (stream == NULL)) {
 	_cairo_error_throw (CAIRO_STATUS_NO_MEMORY);
 	return (cairo_output_stream_t *) &_cairo_output_stream_nil;
@@ -2408,7 +2408,7 @@ _base85_wrap_stream_create (cairo_output_stream_t *output)
 {
     string_array_stream_t *stream;
 
-    stream = malloc (sizeof (string_array_stream_t));
+    stream = _cairo_malloc (sizeof (string_array_stream_t));
     if (unlikely (stream == NULL)) {
 	_cairo_error_throw (CAIRO_STATUS_NO_MEMORY);
 	return (cairo_output_stream_t *) &_cairo_output_stream_nil;
@@ -2673,7 +2673,7 @@ _cairo_ps_surface_emit_image (cairo_ps_surface_t          *surface,
     if (use_mask)
 	data_size += (ps_image->width + 7)/8;
     data_size *= ps_image->height;
-    data = malloc (data_size);
+    data = _cairo_malloc (data_size);
     if (unlikely (data == NULL)) {
 	status = _cairo_error (CAIRO_STATUS_NO_MEMORY);
 	goto bail1;
@@ -3481,7 +3481,7 @@ _cairo_ps_surface_emit_solid_pattern (cairo_ps_surface_t    *surface,
  * @source: [in] the source for the form
  * @params: [in] source parameters
  * @test: [in] if TRUE, test if form will be used (excludes size check)
- * @ps_form [out] the new or exisiting entry int the hash table.
+ * @ps_form [out] the new or existing entry int the hash table.
  *                image or recording.
  */
 static cairo_int_status_t
@@ -3548,6 +3548,8 @@ _cairo_ps_surface_use_form (cairo_ps_surface_t           *surface,
     source_entry->unique_id = unique_id;
     source_entry->id = surface->num_forms++;
     source_entry->src_surface = cairo_surface_reference (params->src_surface);
+    source_entry->src_surface_extents = *params->src_surface_extents;
+    source_entry->src_surface_bounded = params->src_surface_bounded;
     source_entry->required_extents = *params->src_op_extents;
     source_entry->filter = params->filter;
     source_entry->is_image = params->is_image;
@@ -3726,11 +3728,14 @@ _cairo_ps_form_emit (void *entry, void *closure)
 
     params.src_surface = form->src_surface;
     params.op = CAIRO_OPERATOR_OVER;
+    params.src_surface_extents = &form->src_surface_extents;
+    params.src_surface_bounded = form->src_surface_bounded;
     params.src_op_extents = &form->required_extents;
     params.filter = form->filter;
     params.stencil_mask = FALSE;
     params.is_image = form->is_image;
     params.approx_size = 0;
+    params.eod_count = 0;
 
     _cairo_output_stream_printf (surface->final_stream,
 				 "%%%%BeginResource: form cairoform-%d\n",

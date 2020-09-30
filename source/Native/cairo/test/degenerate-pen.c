@@ -36,7 +36,7 @@
  * with various flash animations):
  *
  *	[cairo] Assertion `i < pen->num_vertices' failed in 1.4.10
- *	http://lists.cairographics.org/archives/cairo/2007-August/011282.html
+ *	https://lists.cairographics.org/archives/cairo/2007-August/011282.html
  *
  * The problem shows up with an extreme transformation matrix that
  * collapses the pen to a single line, (which means that

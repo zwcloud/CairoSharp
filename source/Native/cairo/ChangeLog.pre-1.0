@@ -1865,15 +1865,14 @@ CommitDate: Tue Aug 16 16:50:25 2005 +0000
     Add fbmmx and fbpict.c, remove ic.c.
     Add a check for the MMX intrinsics. gcc >= 3.4 is required.
 
- pixman/ChangeLog       |   53 +
- pixman/configure.in    |   32 +
- pixman/src/Makefile.am |   10 +-
- pixman/src/fbmmx.c     | 2503 ++++++++++++++++++++++++++++++++++++++++++++++++
- pixman/src/fbmmx.h     |  228 +++++
- pixman/src/fbpict.c    | 1904 ++++++++++++++++++++++++++++++++++++
- pixman/src/ic.c        | 1687 --------------------------------
- pixman/src/icint.h     |   30 +
- 8 files changed, 4758 insertions(+), 1689 deletions(-)
+ pixman/ChangeLog              |   53 +
+ pixman/configure.in           |   32 +
+ pixman/src/Makefile.am        |   10 +-
+ pixman/src/fbmmx.c            | 2503 +++++++++++++++++++++++++++++++++++++++++
+ pixman/src/fbmmx.h            |  228 ++++
+ pixman/src/{ic.c => fbpict.c} |  647 +++++++----
+ pixman/src/icint.h            |   30 +
+ 7 files changed, 3286 insertions(+), 217 deletions(-)
 
 commit a2a89e858af70262de276c8568baabf91e00dbb2
 Author:     Carl Worth <cworth@cworth.org>
@@ -16926,14 +16925,13 @@ CommitDate: Fri Dec 5 08:53:07 2003 +0000
     Rename cairo-config.h to cairo-features.h.
     Rename XLIB_BACKEND_DEFINE to XLIB_SURFACE_FEATURE. Rename AM_CONDITIONAL HAVE_XLIB_BACKEND to CAIRO_HAS_XLIB_SURFACE. Rename user-visibile macro CAIRO_HAS_XLIB_BACKEND to CAIRO_HAS_XLIB_SURFACE.
 
- ChangeLog               | 14 ++++++++++++++
- configure.in            | 12 ++++++------
- src/.cvsignore          |  2 +-
- src/Makefile.am         |  4 ++--
- src/cairo-config.h.in   | 33 ---------------------------------
- src/cairo-features.h.in | 33 +++++++++++++++++++++++++++++++++
- src/cairo.h             | 10 ++++++----
- 7 files changed, 62 insertions(+), 46 deletions(-)
+ ChangeLog                                      | 14 ++++++++++++++
+ configure.in                                   | 12 ++++++------
+ src/.cvsignore                                 |  2 +-
+ src/Makefile.am                                |  4 ++--
+ src/{cairo-config.h.in => cairo-features.h.in} |  2 +-
+ src/cairo.h                                    | 10 ++++++----
+ 6 files changed, 30 insertions(+), 14 deletions(-)
 
 commit aae17d3b6b15881f7bd8c4fac6a14a0c7b6729e6
 Author:     Carl Worth <cworth@cworth.org>
@@ -16948,15 +16946,14 @@ CommitDate: Wed Dec 3 12:27:44 2003 +0000
     Move xlib-specific calls in from old cairo-xlib.h, now guarded in #ifdef CAIRO_HAS_XLIB_BACKEND.
     Make compilation of cairo_xlib_surface.c conditional. (INCLUDES, libcairo_la_LIBADD): Add the new variables from splitting up the PKG_CHECK_MODULES calls.
 
- ChangeLog             | 28 +++++++++++++++++++++
- configure.in          | 19 +++++++++++++--
- src/.cvsignore        |  1 +
- src/Makefile.am       | 14 ++++++++---
- src/cairo-config.h.in | 33 +++++++++++++++++++++++++
- src/cairo-xlib.h      | 67 ---------------------------------------------------
- src/cairo.h           | 28 +++++++++++++++++++++
- src/cairoint.h        |  5 ----
- 8 files changed, 117 insertions(+), 78 deletions(-)
+ ChangeLog                               | 28 ++++++++++++++++++++++
+ configure.in                            | 19 +++++++++++++--
+ src/.cvsignore                          |  1 +
+ src/Makefile.am                         | 14 +++++++----
+ src/{cairo-xlib.h => cairo-config.h.in} | 42 ++++-----------------------------
+ src/cairo.h                             | 28 ++++++++++++++++++++++
+ src/cairoint.h                          |  5 ----
+ 7 files changed, 88 insertions(+), 49 deletions(-)
 
 commit 9cf63b0390b71693a0eb3ba2e6065f7d3f6e240c
 Author:     Carl Worth <cworth@cworth.org>
@@ -19066,41 +19063,40 @@ CommitDate: Wed Jul 30 08:30:50 2003 +0000
 
     Made all changes necessary to abandon the Xc library, (sucking the functionality up into cairo_surface_t instead). Eliminated most of the remaining X datatypes (XFixed, XPointFixed, XLineFixed, XTrapezoid). Fixed some numerical problems relating to pen initialization and intersection calculation.
 
- ChangeLog               |  71 ++++++++
- cairo.pc.in             |   2 +-
- configure.in            |   4 +-
- src/Makefile.am         |   8 +-
- src/cairo-color.c       |  38 +++--
- src/cairo-font.c        |   2 +-
- src/cairo-gstate.c      | 178 +++++++++++---------
- src/cairo-path-bounds.c |  22 +--
- src/cairo-path-fill.c   |  12 +-
- src/cairo-path-stroke.c |  68 ++++----
- src/cairo-path.c        |  34 ++--
- src/cairo-pen.c         | 134 +++++++--------
- src/cairo-polygon.c     |   9 +-
- src/cairo-slope.c       |  58 +++++++
- src/cairo-spline.c      |  40 ++---
- src/cairo-surface.c     | 439 ++++++++++++++++++++++++++++++++++++++++--------
- src/cairo-traps.c       | 122 ++++++++------
- src/cairo.c             | 160 +++++++++---------
- src/cairo.h             | 116 ++++++++-----
- src/cairo_color.c       |  38 +++--
- src/cairo_font.c        |   2 +-
- src/cairo_gstate.c      | 178 +++++++++++---------
- src/cairo_misc.c        |  36 ----
- src/cairo_path.c        |  34 ++--
- src/cairo_path_bounds.c |  22 +--
- src/cairo_path_fill.c   |  12 +-
- src/cairo_path_stroke.c |  68 ++++----
- src/cairo_pen.c         | 134 +++++++--------
- src/cairo_polygon.c     |   9 +-
- src/cairo_slope.c       |  58 +++++++
- src/cairo_spline.c      |  40 ++---
- src/cairo_surface.c     | 439 ++++++++++++++++++++++++++++++++++++++++--------
- src/cairo_traps.c       | 122 ++++++++------
- src/cairoint.h          | 245 +++++++++++++++++++--------
- 34 files changed, 1958 insertions(+), 996 deletions(-)
+ ChangeLog                           |  71 ++++++
+ cairo.pc.in                         |   2 +-
+ configure.in                        |   4 +-
+ src/Makefile.am                     |   8 +-
+ src/cairo-color.c                   |  38 ++--
+ src/cairo-font.c                    |   2 +-
+ src/cairo-gstate.c                  | 178 ++++++++-------
+ src/cairo-path-bounds.c             |  22 +-
+ src/cairo-path-fill.c               |  12 +-
+ src/cairo-path-stroke.c             |  68 +++---
+ src/cairo-path.c                    |  34 +--
+ src/cairo-pen.c                     | 134 +++++------
+ src/cairo-polygon.c                 |   9 +-
+ src/{cairo_misc.c => cairo-slope.c} |  24 +-
+ src/cairo-spline.c                  |  40 ++--
+ src/cairo-surface.c                 | 439 ++++++++++++++++++++++++++++++------
+ src/cairo-traps.c                   | 122 +++++-----
+ src/cairo.c                         | 160 +++++++------
+ src/cairo.h                         | 116 ++++++----
+ src/cairo_color.c                   |  38 ++--
+ src/cairo_font.c                    |   2 +-
+ src/cairo_gstate.c                  | 178 ++++++++-------
+ src/cairo_path.c                    |  34 +--
+ src/cairo_path_bounds.c             |  22 +-
+ src/cairo_path_fill.c               |  12 +-
+ src/cairo_path_stroke.c             |  68 +++---
+ src/cairo_pen.c                     | 134 +++++------
+ src/cairo_polygon.c                 |   9 +-
+ src/cairo_slope.c                   |  58 +++++
+ src/cairo_spline.c                  |  40 ++--
+ src/cairo_surface.c                 | 439 ++++++++++++++++++++++++++++++------
+ src/cairo_traps.c                   | 122 +++++-----
+ src/cairoint.h                      | 245 ++++++++++++++------
+ 33 files changed, 1923 insertions(+), 961 deletions(-)
 
 commit 2026b1c44aeeb09e7015efadd508aeec28d778fa
 Author:     Carl Worth <cworth@cworth.org>
@@ -19255,67 +19251,65 @@ CommitDate: Fri Jul 18 11:34:19 2003 +0000
 
     Renamed everything from Xr* to cairo_*
 
- .cvsignore              |    3 +-
- BUGS                    |    5 +-
- ChangeLog               |    7 +
- Makefile.am             |    4 +-
- README                  |   30 +-
- cairo.pc.in             |   13 +
- configure.in            |   14 +-
- src/Makefile.am         |   47 +-
- src/Xr.h                |  476 --------------------
- src/cairo-color.c       |   80 ++++
- src/cairo-font.c        |  171 ++++++++
- src/cairo-gstate.c      | 1123 +++++++++++++++++++++++++++++++++++++++++++++++
- src/cairo-matrix.c      |  380 ++++++++++++++++
- src/cairo-path-bounds.c |  168 +++++++
- src/cairo-path-fill.c   |  158 +++++++
- src/cairo-path-stroke.c |  715 ++++++++++++++++++++++++++++++
- src/cairo-path.c        |  436 ++++++++++++++++++
- src/cairo-pen.c         |  398 +++++++++++++++++
- src/cairo-polygon.c     |  175 ++++++++
- src/cairo-spline.c      |  271 ++++++++++++
- src/cairo-surface.c     |  391 +++++++++++++++++
- src/cairo-traps.c       |  593 +++++++++++++++++++++++++
- src/cairo.c             |  715 ++++++++++++++++++++++++++++++
- src/cairo.h             |  494 +++++++++++++++++++++
- src/cairo_color.c       |   80 ++++
- src/cairo_font.c        |  171 ++++++++
- src/cairo_gstate.c      | 1123 +++++++++++++++++++++++++++++++++++++++++++++++
- src/cairo_matrix.c      |  380 ++++++++++++++++
- src/cairo_misc.c        |   36 ++
- src/cairo_path.c        |  436 ++++++++++++++++++
- src/cairo_path_bounds.c |  168 +++++++
- src/cairo_path_fill.c   |  158 +++++++
- src/cairo_path_stroke.c |  715 ++++++++++++++++++++++++++++++
- src/cairo_pen.c         |  398 +++++++++++++++++
- src/cairo_polygon.c     |  175 ++++++++
- src/cairo_spline.c      |  271 ++++++++++++
- src/cairo_surface.c     |  391 +++++++++++++++++
- src/cairo_traps.c       |  593 +++++++++++++++++++++++++
- src/cairoint.h          |  710 ++++++++++++++++++++++++++++++
- src/xr.c                |  654 ---------------------------
- src/xrcolor.c           |   78 ----
- src/xrfiller.c          |  103 -----
- src/xrfont.c            |  169 -------
- src/xrgstate.c          | 1120 ----------------------------------------------
- src/xrint.h             |  708 ------------------------------
- src/xrmatrix.c          |  378 ----------------
- src/xrmisc.c            |   34 --
- src/xrpath.c            |  434 ------------------
- src/xrpathbounds.c      |  168 -------
- src/xrpathfill.c        |  156 -------
- src/xrpathstroke.c      |  713 ------------------------------
- src/xrpen.c             |  389 ----------------
- src/xrpolygon.c         |  173 --------
- src/xrspline.c          |  269 ------------
- src/xrstate.c           |  108 -----
- src/xrstroker.c         |  643 ---------------------------
- src/xrsurface.c         |  386 ----------------
- src/xrtraps.c           |  589 -------------------------
- util/xr2cairo           |   49 +++
- xr.pc.in                |   13 -
- 60 files changed, 12194 insertions(+), 7812 deletions(-)
+ .cvsignore                       |    3 +-
+ BUGS                             |    5 +-
+ ChangeLog                        |    7 +
+ Makefile.am                      |    4 +-
+ README                           |   30 +-
+ xr.pc.in => cairo.pc.in          |    6 +-
+ configure.in                     |   14 +-
+ src/Makefile.am                  |   47 +-
+ src/Xr.h                         |  476 ----------------
+ src/cairo-color.c                |   80 +++
+ src/cairo-font.c                 |  171 ++++++
+ src/cairo-gstate.c               | 1123 ++++++++++++++++++++++++++++++++++++++
+ src/cairo-matrix.c               |  380 +++++++++++++
+ src/cairo-path-bounds.c          |  168 ++++++
+ src/cairo-path-fill.c            |  158 ++++++
+ src/cairo-path-stroke.c          |  715 ++++++++++++++++++++++++
+ src/cairo-path.c                 |  436 +++++++++++++++
+ src/cairo-pen.c                  |  398 ++++++++++++++
+ src/cairo-polygon.c              |  175 ++++++
+ src/cairo-spline.c               |  271 +++++++++
+ src/cairo-surface.c              |  391 +++++++++++++
+ src/{xrtraps.c => cairo-traps.c} |  280 +++++-----
+ src/cairo.c                      |  715 ++++++++++++++++++++++++
+ src/cairo.h                      |  494 +++++++++++++++++
+ src/cairo_color.c                |   80 +++
+ src/cairo_font.c                 |  171 ++++++
+ src/cairo_gstate.c               | 1123 ++++++++++++++++++++++++++++++++++++++
+ src/cairo_matrix.c               |  380 +++++++++++++
+ src/cairo_misc.c                 |   36 ++
+ src/cairo_path.c                 |  436 +++++++++++++++
+ src/cairo_path_bounds.c          |  168 ++++++
+ src/cairo_path_fill.c            |  158 ++++++
+ src/cairo_path_stroke.c          |  715 ++++++++++++++++++++++++
+ src/cairo_pen.c                  |  398 ++++++++++++++
+ src/cairo_polygon.c              |  175 ++++++
+ src/cairo_spline.c               |  271 +++++++++
+ src/cairo_surface.c              |  391 +++++++++++++
+ src/cairo_traps.c                |  593 ++++++++++++++++++++
+ src/cairoint.h                   |  710 ++++++++++++++++++++++++
+ src/xr.c                         |  654 ----------------------
+ src/xrcolor.c                    |   78 ---
+ src/xrfiller.c                   |  103 ----
+ src/xrfont.c                     |  169 ------
+ src/xrgstate.c                   | 1120 -------------------------------------
+ src/xrint.h                      |  708 ------------------------
+ src/xrmatrix.c                   |  378 -------------
+ src/xrmisc.c                     |   34 --
+ src/xrpath.c                     |  434 ---------------
+ src/xrpathbounds.c               |  168 ------
+ src/xrpathfill.c                 |  156 ------
+ src/xrpathstroke.c               |  713 ------------------------
+ src/xrpen.c                      |  389 -------------
+ src/xrpolygon.c                  |  173 ------
+ src/xrspline.c                   |  269 ---------
+ src/xrstate.c                    |  108 ----
+ src/xrstroker.c                  |  643 ----------------------
+ src/xrsurface.c                  |  386 -------------
+ util/xr2cairo                    |   49 ++
+ 58 files changed, 11733 insertions(+), 7351 deletions(-)
 
 commit 4a57fd0881b242d98ea74abb46c8c402faeb1960
 Author:     Anders Carlsson <andersca@codefactory.se>

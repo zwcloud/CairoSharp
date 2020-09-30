@@ -959,7 +959,7 @@ _cairo_fopen (const char *filename, const char *mode, FILE **file_out)
 /* tmpfile() replacement for Windows.
  *
  * On Windows tmpfile() creates the file in the root directory. This
- * may fail due to unsufficient privileges. However, this isn't a
+ * may fail due to insufficient privileges. However, this isn't a
  * problem on Windows CE so we don't use it there.
  */
 FILE *
@@ -1069,7 +1069,7 @@ _cairo_intern_string (const char **str_inout, int len)
     istring = _cairo_hash_table_lookup (_cairo_intern_string_ht,
 					&tmpl.hash_entry);
     if (istring == NULL) {
-	istring = malloc (sizeof (cairo_intern_string_t) + len + 1);
+	istring = _cairo_malloc (sizeof (cairo_intern_string_t) + len + 1);
 	if (likely (istring != NULL)) {
 	    istring->hash_entry.hash = tmpl.hash_entry.hash;
 	    istring->len = tmpl.len;

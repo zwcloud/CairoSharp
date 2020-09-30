@@ -1470,7 +1470,7 @@ UNWIND_STRINGS:
 #include <signal.h>
 #include <setjmp.h>
 /* Used to catch crashes in a test, so that we report it as such and
- * continue testing, although one crasher may already have corrupted memory in
+ * continue testing, although one crash may already have corrupted memory in
  * an nonrecoverable fashion. */
 static jmp_buf jmpbuf;
 

@@ -736,7 +736,7 @@ See that function for limitations and other details of toy font faces.</para>
 <indexterm zone="cairo-toy-font-face-get-family" role="1.8"><primary sortas="toy_font_face_get_family">cairo_toy_font_face_get_family</primary></indexterm>
 <programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
 cairo_toy_font_face_get_family (<parameter><link linkend="cairo-font-face-t"><type>cairo_font_face_t</type></link> *font_face</parameter>);</programlisting>
-<para>Gets the familly name of a toy font.</para>
+<para>Gets the family name of a toy font.</para>
 <refsect3 id="cairo-toy-font-face-get-family.parameters" role="parameters">
 <title>Parameters</title>
 <informaltable role="parameters_table" pgwide="1" frame="none">

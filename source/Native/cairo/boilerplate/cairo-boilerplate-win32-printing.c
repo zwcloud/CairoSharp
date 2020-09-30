@@ -153,7 +153,7 @@ create_printer_dc (win32_target_closure_t *ptc)
 
     /* The printer device units on win32 are 1 unit == 1 dot and the
      * origin is the start of the printable area. We transform the
-     * cordinate space to 1 unit is 1 point as expected by the
+     * coordinate space to 1 unit is 1 point as expected by the
      * tests. As the page size is larger than the test surface, the
      * origin is translated down so that the each test is drawn at the
      * bottom left corner of the page. This is because the bottom left

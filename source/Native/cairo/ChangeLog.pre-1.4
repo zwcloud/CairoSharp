@@ -65,11 +65,11 @@ CommitDate: Mon Mar 5 22:48:27 2007 -0800
     
     The 5 additional bugs that will be shipped with 1.4 are
     
-    	ft-text-vertical-layout-type1
-    	radial-gradient
-    	surface-pattern
-    	surface-pattern-scale-down
-    	surface-pattern-scale-up
+            ft-text-vertical-layout-type1
+            radial-gradient
+            surface-pattern
+            surface-pattern-scale-down
+            surface-pattern-scale-up
     
     Most of these are non-issues, (unbundled font for
     ft-text-vertical-layout-type1), or very minor issues (radial-gradient
@@ -446,15 +446,15 @@ CommitDate: Sat Mar 3 22:50:16 2007 -0800
     for other systems. Behdad has cooked up a plan for fixing this
     properly:
     
-    	http://lists.freedesktop.org/archives/cairo/2007-February/009679.html
+            http://lists.freedesktop.org/archives/cairo/2007-February/009679.html
     
     In the meantime, we'll just kkeping breaking things, and patches
     like this will be needed to fix up our mistakes.
     
     This fix closes the following bug report:
     
-    	cairo_font_face_mutex missing from cairo-win32-surface.c
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10175
+            cairo_font_face_mutex missing from cairo-win32-surface.c
+            https://bugs.freedesktop.org/show_bug.cgi?id=10175
 
  src/cairo-win32-surface.c | 3 +++
  1 file changed, 3 insertions(+)
@@ -878,8 +878,8 @@ CommitDate: Fri Mar 2 03:49:45 2007 -0800
     
     This fixes the bug reported here:
     
-    	evolution crash to _cairo_gstate_backend_to_user()
-    	https://bugs.freedesktop.org/show_bug.cgi?id=9906
+            evolution crash to _cairo_gstate_backend_to_user()
+            https://bugs.freedesktop.org/show_bug.cgi?id=9906
     
     It also eliminates the crash that was added to the nil-surface test
     with the previous commit.
@@ -897,8 +897,8 @@ CommitDate: Fri Mar 2 03:43:46 2007 -0800
     
     This new test demonstrates a crash condition as reported here:
     
-    	evolution crash to _cairo_gstate_backend_to_user()
-    	https://bugs.freedesktop.org/show_bug.cgi?id=9906
+            evolution crash to _cairo_gstate_backend_to_user()
+            https://bugs.freedesktop.org/show_bug.cgi?id=9906
 
  test/nil-surface.c | 23 +++++++++++++++++++++++
  1 file changed, 23 insertions(+)
@@ -930,8 +930,8 @@ CommitDate: Fri Mar 2 03:12:37 2007 -0800
     
     This fixes the bug reported here:
     
-    	cairo crashes in cairo_create_simular if nil surface returned by other->backend->create_similar
-    	https://bugs.freedesktop.org/show_bug.cgi?id=9844
+            cairo crashes in cairo_create_simular if nil surface returned by other->backend->create_similar
+            https://bugs.freedesktop.org/show_bug.cgi?id=9844
 
  src/cairo-surface.c | 11 +++++++++--
  1 file changed, 9 insertions(+), 2 deletions(-)
@@ -1024,14 +1024,14 @@ CommitDate: Thu Mar 1 23:42:03 2007 -0800
     
     This should fix the bugs reported here:
     
-    	Cairo 1.3.14 deadlocks in cairo_scaled_font_glyph_extents or _cairo_ft_unscaled_font_lock_face
-    	https://bugs.freedesktop.org/show_bug.cgi?id=10035
+            Cairo 1.3.14 deadlocks in cairo_scaled_font_glyph_extents or _cairo_ft_unscaled_font_lock_face
+            https://bugs.freedesktop.org/show_bug.cgi?id=10035
 
  src/cairoint.h | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 commit df2d42ac7fb71997abd406fb5716c0bd85037c04
-Merge: ec11ca3 97dbbae
+Merge: ec11ca33a 97dbbae62
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Thu Mar 1 17:08:03 2007 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -1187,8 +1187,8 @@ CommitDate: Thu Mar 1 14:53:48 2007 -0800
     
     This is a fix for the following bug report:
     
-    	Radial Gradients with nonzero inner radius misplace stops
-    	https://bugs.freedesktop.org/show_bug.cgi?id=7685
+            Radial Gradients with nonzero inner radius misplace stops
+            https://bugs.freedesktop.org/show_bug.cgi?id=7685
 
  pixman/src/fbcompose.c | 196 +++++++++++++++++++++++++++++++++++++------------
  pixman/src/icimage.c   |  22 ++----
@@ -1301,12 +1301,12 @@ CommitDate: Wed Feb 28 14:58:57 2007 -0500
     
     This reverts the following commits:
     
-    	2715f2098127d04d2f9e304580a26cd0842c0e64
-    	67e3b3c53bdd69e4d3503eed2db66953f1ac038c
+            2715f2098127d04d2f9e304580a26cd0842c0e64
+            67e3b3c53bdd69e4d3503eed2db66953f1ac038c
     
     See this thread for an analysis of the problems it caused:
     
-    	http://lists.freedesktop.org/archives/cairo/2007-February/009825.html
+            http://lists.freedesktop.org/archives/cairo/2007-February/009825.html
     
     In short, a single cache for all backends doesn't work, as one thread
     using any backend can cause an unused xlib pattern to be evicted from
@@ -2023,61 +2023,34 @@ CommitDate: Tue Feb 20 13:22:11 2007 -0800
 
     [quartz] rename test override images from nquartz to quartz
 
- test/caps-joins-alpha-nquartz-ref.png                 | Bin 2466 -> 0 bytes
- test/caps-joins-alpha-quartz-ref.png                  | Bin 0 -> 2466 bytes
- test/clip-nesting-nquartz-ref.png                     | Bin 1067 -> 0 bytes
- test/clip-nesting-nquartz-rgb24-ref.png               | Bin 956 -> 0 bytes
- test/clip-nesting-quartz-ref.png                      | Bin 0 -> 1067 bytes
- test/clip-nesting-quartz-rgb24-ref.png                | Bin 0 -> 956 bytes
- test/clip-push-group-nquartz-ref.png                  | Bin 203 -> 0 bytes
- test/clip-push-group-quartz-ref.png                   | Bin 0 -> 203 bytes
- test/clip-twice-nquartz-ref.png                       | Bin 1171 -> 0 bytes
- test/clip-twice-nquartz-rgb24-ref.png                 | Bin 1111 -> 0 bytes
- test/clip-twice-quartz-ref.png                        | Bin 0 -> 1171 bytes
- test/clip-twice-quartz-rgb24-ref.png                  | Bin 0 -> 1111 bytes
- test/dash-caps-joins-nquartz-ref.png                  | Bin 4727 -> 0 bytes
- test/dash-caps-joins-quartz-ref.png                   | Bin 0 -> 4727 bytes
- test/degenerate-path-nquartz-rgb24-ref.png            | Bin 188 -> 0 bytes
- test/degenerate-path-quartz-rgb24-ref.png             | Bin 0 -> 188 bytes
- test/fill-and-stroke-alpha-add-nquartz-ref.png        | Bin 603 -> 0 bytes
- test/fill-and-stroke-alpha-add-quartz-ref.png         | Bin 0 -> 603 bytes
- test/fill-and-stroke-alpha-nquartz-ref.png            | Bin 550 -> 0 bytes
- test/fill-and-stroke-alpha-quartz-ref.png             | Bin 0 -> 550 bytes
- test/fill-and-stroke-nquartz-ref.png                  | Bin 286 -> 0 bytes
- test/fill-and-stroke-nquartz-rgb24-ref.png            | Bin 264 -> 0 bytes
- test/fill-and-stroke-quartz-ref.png                   | Bin 0 -> 286 bytes
- test/fill-and-stroke-quartz-rgb24-ref.png             | Bin 0 -> 264 bytes
- test/fill-degenerate-sort-order-nquartz-ref.png       | Bin 2470 -> 0 bytes
- test/fill-degenerate-sort-order-nquartz-rgb24-ref.png | Bin 2098 -> 0 bytes
- test/fill-degenerate-sort-order-quartz-ref.png        | Bin 0 -> 2470 bytes
- test/fill-degenerate-sort-order-quartz-rgb24-ref.png  | Bin 0 -> 2098 bytes
- test/fill-rule-nquartz-ref.png                        | Bin 2079 -> 0 bytes
- test/fill-rule-nquartz-rgb24-ref.png                  | Bin 1790 -> 0 bytes
- test/fill-rule-quartz-ref.png                         | Bin 0 -> 2079 bytes
- test/fill-rule-quartz-rgb24-ref.png                   | Bin 0 -> 1790 bytes
- test/new-sub-path-nquartz-ref.png                     | Bin 386 -> 0 bytes
- test/new-sub-path-nquartz-rgb24-ref.png               | Bin 357 -> 0 bytes
- test/new-sub-path-quartz-ref.png                      | Bin 0 -> 386 bytes
- test/new-sub-path-quartz-rgb24-ref.png                | Bin 0 -> 357 bytes
- test/operator-clear-nquartz-ref.png                   | Bin 1195 -> 0 bytes
- test/operator-clear-nquartz-rgb24-ref.png             | Bin 1244 -> 0 bytes
- test/operator-clear-quartz-ref.png                    | Bin 0 -> 1195 bytes
- test/operator-clear-quartz-rgb24-ref.png              | Bin 0 -> 1244 bytes
- test/random-intersections-nquartz-ref.png             | Bin 203877 -> 0 bytes
- test/random-intersections-nquartz-rgb24-ref.png       | Bin 179204 -> 0 bytes
- test/random-intersections-quartz-ref.png              | Bin 0 -> 203877 bytes
- test/random-intersections-quartz-rgb24-ref.png        | Bin 0 -> 179204 bytes
- test/rel-path-nquartz-ref.png                         | Bin 212 -> 0 bytes
- test/rel-path-nquartz-rgb24-ref.png                   | Bin 228 -> 0 bytes
- test/rel-path-quartz-ref.png                          | Bin 0 -> 212 bytes
- test/rel-path-quartz-rgb24-ref.png                    | Bin 0 -> 228 bytes
- test/source-clip-scale-nquartz-ref.png                | Bin 148 -> 0 bytes
- test/source-clip-scale-quartz-ref.png                 | Bin 0 -> 148 bytes
- test/trap-clip-nquartz-ref.png                        | Bin 5814 -> 0 bytes
- test/trap-clip-nquartz-rgb24-ref.png                  | Bin 5385 -> 0 bytes
- test/trap-clip-quartz-ref.png                         | Bin 0 -> 5814 bytes
- test/trap-clip-quartz-rgb24-ref.png                   | Bin 0 -> 5385 bytes
- 54 files changed, 0 insertions(+), 0 deletions(-)
+ ...lpha-nquartz-ref.png => caps-joins-alpha-quartz-ref.png} | Bin
+ ...-nesting-nquartz-ref.png => clip-nesting-quartz-ref.png} | Bin
+ ...artz-rgb24-ref.png => clip-nesting-quartz-rgb24-ref.png} | Bin
+ ...group-nquartz-ref.png => clip-push-group-quartz-ref.png} | Bin
+ ...clip-twice-nquartz-ref.png => clip-twice-quartz-ref.png} | Bin
+ ...quartz-rgb24-ref.png => clip-twice-quartz-rgb24-ref.png} | Bin
+ ...joins-nquartz-ref.png => dash-caps-joins-quartz-ref.png} | Bin
+ ...z-rgb24-ref.png => degenerate-path-quartz-rgb24-ref.png} | Bin
+ ...rtz-ref.png => fill-and-stroke-alpha-add-quartz-ref.png} | Bin
+ ...nquartz-ref.png => fill-and-stroke-alpha-quartz-ref.png} | Bin
+ ...troke-nquartz-ref.png => fill-and-stroke-quartz-ref.png} | Bin
+ ...z-rgb24-ref.png => fill-and-stroke-quartz-rgb24-ref.png} | Bin
+ ...tz-ref.png => fill-degenerate-sort-order-quartz-ref.png} | Bin
+ ....png => fill-degenerate-sort-order-quartz-rgb24-ref.png} | Bin
+ .../{fill-rule-nquartz-ref.png => fill-rule-quartz-ref.png} | Bin
+ ...nquartz-rgb24-ref.png => fill-rule-quartz-rgb24-ref.png} | Bin
+ ...sub-path-nquartz-ref.png => new-sub-path-quartz-ref.png} | Bin
+ ...artz-rgb24-ref.png => new-sub-path-quartz-rgb24-ref.png} | Bin
+ ...-clear-nquartz-ref.png => operator-clear-quartz-ref.png} | Bin
+ ...tz-rgb24-ref.png => operator-clear-quartz-rgb24-ref.png} | Bin
+ ...-nquartz-ref.png => random-intersections-quartz-ref.png} | Bin
+ ...24-ref.png => random-intersections-quartz-rgb24-ref.png} | Bin
+ test/{rel-path-nquartz-ref.png => rel-path-quartz-ref.png}  | Bin
+ ...-nquartz-rgb24-ref.png => rel-path-quartz-rgb24-ref.png} | Bin
+ ...ale-nquartz-ref.png => source-clip-scale-quartz-ref.png} | Bin
+ .../{trap-clip-nquartz-ref.png => trap-clip-quartz-ref.png} | Bin
+ ...nquartz-rgb24-ref.png => trap-clip-quartz-rgb24-ref.png} | Bin
+ 27 files changed, 0 insertions(+), 0 deletions(-)
 
 commit be451cd83d8178bfaf28a1c7dec59601d97cff8d
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
@@ -2514,7 +2487,7 @@ CommitDate: Tue Feb 13 22:05:57 2007 -0800
     
     This fixes a regression introduced with commit:
     
-    	25a370d7992d7f70d8cf79f1b328e40437b40ac4
+            25a370d7992d7f70d8cf79f1b328e40437b40ac4
     
     This was showing up as a failure of the bitmap-font test case
     with the ps, pdf, and svg backends.
@@ -2937,13 +2910,13 @@ CommitDate: Tue Feb 6 20:42:09 2007 -0800
     It seemed like a good idea to avoid holding the lock over the call
     into the backend. But the procedure in place was quite broken:
     
-    	LOCK
-    	Fail to find font in hash table
-    	UNLOCK
-    	Create font
-    	LOCK
-    	Insert font into hash table
-    	UNLOCK
+            LOCK
+            Fail to find font in hash table
+            UNLOCK
+            Create font
+            LOCK
+            Insert font into hash table
+            UNLOCK
     
     since while we're busy creating the font and unlocked, another thread
     can insert the font. Our paranoid hash table implementation noted
@@ -3491,7 +3464,7 @@ CommitDate: Wed Jan 24 15:51:00 2007 -0500
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit bb02b4e5ec40ac37462f487f2ad74b0123814277
-Merge: 48c2896 3b77512
+Merge: 48c2896f6 3b7751279
 Author:     Michael Emmel <memmel@debian.localdomain>
 AuthorDate: Tue Jan 23 22:22:20 2007 -0800
 Commit:     Michael Emmel <memmel@debian.localdomain>
@@ -3779,8 +3752,8 @@ CommitDate: Fri Jan 19 16:47:31 2007 -0800
     damage to some terminals, and some always forget to pipe stuff through
     a pager to make it safe. The new options for cairo-perf-diff-files are:
     
-    	--no-utf
-    	--no-bars
+            --no-utf
+            --no-bars
 
  perf/cairo-perf-diff-files.c | 135 +++++++++++++++++++++++++++++++------------
  1 file changed, 98 insertions(+), 37 deletions(-)
@@ -3806,7 +3779,7 @@ CommitDate: Fri Jan 19 16:47:31 2007 -0800
  4 files changed, 75 insertions(+)
 
 commit d08502d939b44956591f2865a73264713427194b
-Merge: eefcfbf 28d6a22
+Merge: eefcfbf5a 28d6a228f
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
 AuthorDate: Thu Jan 18 16:50:41 2007 -0800
 Commit:     Vladimir Vukicevic <vladimir@h-154.office.mozilla.org>
@@ -3902,7 +3875,7 @@ CommitDate: Wed Jan 17 16:24:00 2007 -0800
  1 file changed, 13 insertions(+), 3 deletions(-)
 
 commit d9df44d8071d038060e0cc987871c185f7733a3d
-Merge: 4e1c2b1 b02b86d
+Merge: 4e1c2b1ad b02b86da5
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
 AuthorDate: Wed Jan 17 15:08:21 2007 -0800
 Commit:     Vladimir Vukicevic <vladimir@h-154.office.mozilla.org>
@@ -4108,9 +4081,9 @@ CommitDate: Tue Jan 9 14:31:22 2007 -0800
     
     Conflicts:
     
-    	perf/Makefile.am
-    	perf/cairo-perf.c
-    	perf/cairo-perf.h
+            perf/Makefile.am
+            perf/cairo-perf.c
+            perf/cairo-perf.h
 
  perf/Makefile.am      |  9 +++----
  perf/cairo-perf.c     |  1 +
@@ -4653,13 +4626,11 @@ CommitDate: Tue Dec 19 13:10:06 2006 -0800
 
     Rename cairo-path-data.c to cairo-path.c (and similar)
 
- src/Makefile.am               |   4 +-
- src/cairo-path-data-private.h |  58 -----
- src/cairo-path-data.c         | 497 ------------------------------------------
- src/cairo-path-private.h      |  58 +++++
- src/cairo-path.c              | 497 ++++++++++++++++++++++++++++++++++++++++++
- src/cairo.c                   |   2 +-
- 6 files changed, 558 insertions(+), 558 deletions(-)
+ src/Makefile.am                                         | 4 ++--
+ src/{cairo-path-data-private.h => cairo-path-private.h} | 0
+ src/{cairo-path-data.c => cairo-path.c}                 | 2 +-
+ src/cairo.c                                             | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
 commit 13c143bb52cab62a7a857a38a8463a8fa56f4632
 Author:     Carl Worth <cworth@cworth.org>
@@ -4669,10 +4640,9 @@ CommitDate: Tue Dec 19 13:10:00 2006 -0800
 
     Rename cairo-path.c to cairo-path-fixed.c
 
- src/Makefile.am        |   2 +-
- src/cairo-path-fixed.c | 639 +++++++++++++++++++++++++++++++++++++++++++++++++
- src/cairo-path.c       | 639 -------------------------------------------------
- 3 files changed, 640 insertions(+), 640 deletions(-)
+ src/Makefile.am                          | 2 +-
+ src/{cairo-path.c => cairo-path-fixed.c} | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
 commit 267afe7be398db4ab90956660828ed25cfd19acf
 Author:     Carl Worth <cworth@cworth.org>
@@ -4915,7 +4885,7 @@ CommitDate: Sat Dec 16 13:55:21 2006 -0500
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 commit fa618df6e216f9418d4769ba01cd305f3f12a113
-Merge: 2b946cb 81a620f
+Merge: 2b946cba0 81a620fb6
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Thu Dec 14 21:10:21 2006 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -4969,7 +4939,7 @@ CommitDate: Fri Dec 15 04:52:28 2006 +0100
  2 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 15e8486ef1558b8049a4c7a5c2f50a7e4a2599da
-Merge: bf78be6 8b31038
+Merge: bf78be63f 8b31038b9
 Author:     U-JONATHAN-X60S\jonathan <jonathan@Jonathan-X60s.(none)>
 AuthorDate: Fri Dec 15 02:31:13 2006 +0100
 Commit:     U-JONATHAN-X60S\jonathan <jonathan@Jonathan-X60s.(none)>
@@ -5146,19 +5116,15 @@ CommitDate: Thu Dec 14 07:58:01 2006 -0800
     The only things we had missed were a few new/delete pairs, and some
     obvious header file fixups, (like not doing <string>).
 
- test/pdiff/CompareArgs.cpp    | 114 -------------
- test/pdiff/Makefile.am        |   6 +-
- test/pdiff/PerceptualDiff.cpp | 101 ------------
- test/pdiff/args.c             | 119 ++++++++++++++
- test/pdiff/args.cpp           | 118 --------------
- test/pdiff/args.h             |   2 +-
- test/pdiff/lpyramid.c         | 113 +++++++++++++
- test/pdiff/lpyramid.cpp       | 113 -------------
- test/pdiff/pdiff.c            | 361 ++++++++++++++++++++++++++++++++++++++++++
- test/pdiff/pdiff.cpp          | 347 ----------------------------------------
- test/pdiff/pdiff.h            |  16 +-
- test/pdiff/perceptualdiff.c   | 101 ++++++++++++
- 12 files changed, 706 insertions(+), 805 deletions(-)
+ test/pdiff/CompareArgs.cpp                         | 114 ---------------------
+ test/pdiff/Makefile.am                             |   6 +-
+ test/pdiff/{args.cpp => args.c}                    |   3 +-
+ test/pdiff/args.h                                  |   2 +-
+ test/pdiff/{lpyramid.cpp => lpyramid.c}            |   0
+ test/pdiff/{pdiff.cpp => pdiff.c}                  |  64 +++++++-----
+ test/pdiff/pdiff.h                                 |  16 +--
+ .../pdiff/{PerceptualDiff.cpp => perceptualdiff.c} |   2 +-
+ 8 files changed, 54 insertions(+), 153 deletions(-)
 
 commit 18a4fa448fcdb6a72f427e997ee2b234f96a56f7
 Author:     Carl Worth <cworth@cworth.org>
@@ -5170,13 +5136,12 @@ CommitDate: Thu Dec 14 07:58:01 2006 -0800
     
     This gets rid of nearly the last vestiges of C++ from the pdiff code.
 
- test/pdiff/CompareArgs.cpp    |   4 +-
- test/pdiff/CompareArgs.h      |  41 ---------------
- test/pdiff/Makefile.am        |   4 +-
- test/pdiff/PerceptualDiff.cpp |  39 +++++++-------
- test/pdiff/args.cpp           | 118 ++++++++++++++++++++++++++++++++++++++++++
- test/pdiff/args.h             |  46 ++++++++++++++++
- 6 files changed, 190 insertions(+), 62 deletions(-)
+ test/pdiff/CompareArgs.cpp           |   4 +-
+ test/pdiff/Makefile.am               |   4 +-
+ test/pdiff/PerceptualDiff.cpp        |  39 ++++++------
+ test/pdiff/args.cpp                  | 118 +++++++++++++++++++++++++++++++++++
+ test/pdiff/{CompareArgs.h => args.h} |  27 ++++----
+ 5 files changed, 160 insertions(+), 32 deletions(-)
 
 commit 871aba6c80b8f3101eac51cc055ad9ca26770a95
 Author:     Carl Worth <cworth@cworth.org>
@@ -5261,10 +5226,9 @@ CommitDate: Thu Dec 14 07:58:01 2006 -0800
 
     pdiff: Remove old, unused Yee_Compare interface
 
- test/pdiff/Makefile.am |   2 +-
- test/pdiff/Metric.cpp  | 295 -------------------------------------------------
- test/pdiff/pdiff.cpp   | 281 ++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 282 insertions(+), 296 deletions(-)
+ test/pdiff/Makefile.am               |  2 +-
+ test/pdiff/{Metric.cpp => pdiff.cpp} | 56 ++++++++++++++----------------------
+ 2 files changed, 22 insertions(+), 36 deletions(-)
 
 commit 53c3a2f75b7f065b4c769ad087bbc9aaaaf6d7ee
 Author:     Carl Worth <cworth@cworth.org>
@@ -5319,14 +5283,13 @@ CommitDate: Thu Dec 14 07:58:00 2006 -0800
 
     pdiff: Rewrite Laplacian pyramid code from C++ to C
 
- test/pdiff/LPyramid.cpp       |  87 --------------------------------
- test/pdiff/LPyramid.h         |  38 --------------
- test/pdiff/Makefile.am        |   4 +-
- test/pdiff/Metric.cpp         |  22 ++++----
- test/pdiff/PerceptualDiff.cpp |   2 +-
- test/pdiff/lpyramid.cpp       | 113 ++++++++++++++++++++++++++++++++++++++++++
- test/pdiff/lpyramid.h         |  32 ++++++++++++
- 7 files changed, 159 insertions(+), 139 deletions(-)
+ test/pdiff/LPyramid.cpp               |  87 --------------------------
+ test/pdiff/Makefile.am                |   4 +-
+ test/pdiff/Metric.cpp                 |  22 +++----
+ test/pdiff/PerceptualDiff.cpp         |   2 +-
+ test/pdiff/lpyramid.cpp               | 113 ++++++++++++++++++++++++++++++++++
+ test/pdiff/{LPyramid.h => lpyramid.h} |  26 +++-----
+ 6 files changed, 137 insertions(+), 117 deletions(-)
 
 commit 29456d38658b8ba7267fadeac9820a68227df787
 Author:     Carl Worth <cworth@cworth.org>
@@ -6305,8 +6268,8 @@ CommitDate: Thu Nov 30 08:43:27 2006 -0800
     
     Thanks to Mathieu Lacage for the recommendation of:
     
-    	"Computational Geometry, Algorithms and Applications", M. de
-    	Berg, M. van Kreveld, M. Overmars, M. Schwarzkopf
+            "Computational Geometry, Algorithms and Applications", M. de
+            Berg, M. van Kreveld, M. Overmars, M. Schwarzkopf
 
  BIBLIOGRAPHY | 21 +++++++++++++++++----
  1 file changed, 17 insertions(+), 4 deletions(-)
@@ -6374,7 +6337,7 @@ CommitDate: Wed Nov 29 22:40:28 2006 -0800
     from Scott Corley and Mick Weiss. It is hosted at http://pdiff.sourceforge.net
     The source code added here was obtained by:
     
-    	svn co https://svn.sourceforge.net/svnroot/pdiff/trunk pdiff
+            svn co https://svn.sourceforge.net/svnroot/pdiff/trunk pdiff
     
     which gave revision 22 of the source code.
     
@@ -6705,7 +6668,7 @@ CommitDate: Wed Nov 22 16:56:51 2006 -0800
     This is the implementation as it cooked in the new-tessellator branch
     available from:
     
-    	git://people.freedesktop.org/~cworth/cairo
+            git://people.freedesktop.org/~cworth/cairo
     
     The file here comes from commit eee4faf79900be2c5fda1fddd49737681a9e37d6 in
     that branch. It's sitting here not hooked up to anything in cairo yet,
@@ -6725,12 +6688,12 @@ CommitDate: Wed Nov 22 16:56:50 2006 -0800
     The files here are copied directly from the standalone skiplist module
     available from:
     
-    	git clone git://cworth.org/~cworth/skiplist
+            git clone git://cworth.org/~cworth/skiplist
     
     In particular the files come from the double branch and the following
     commit on that branch:
     
-    	8b5a439c68e220cf1514d9b3141a1dbdce8af585
+            8b5a439c68e220cf1514d9b3141a1dbdce8af585
     
     Also of interest is the original skiplist module hosted by Keith Packard
     that is the original implementation on which these files were based.
@@ -6738,7 +6701,7 @@ CommitDate: Wed Nov 22 16:56:50 2006 -0800
     now implemented a doubly-linked variant which might be interesting for
     further simplification of the code. See:
     
-    	git clone git://keithp.com/git/skiplist
+            git clone git://keithp.com/git/skiplist
     
     and the double-link branch there.
 
@@ -7023,7 +6986,7 @@ CommitDate: Mon Nov 20 09:36:10 2006 -0800
  4 files changed, 8 insertions(+), 8 deletions(-)
 
 commit 10920c1326362b4fadfa01019223647c23351127
-Merge: 1ed3811 2928f6e
+Merge: 1ed381133 2928f6eb5
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
 AuthorDate: Sat Nov 18 12:59:12 2006 +0100
 Commit:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -7388,8 +7351,8 @@ CommitDate: Wed Nov 8 06:07:01 2006 -0800
     The map for this test case was originally demonstrated as a
     performance problem in this mozilla bug report:
     
-    	A very slow SVG file with <path>s
-    	https://bugzilla.mozilla.org/show_bug.cgi?id=332413
+            A very slow SVG file with <path>s
+            https://bugzilla.mozilla.org/show_bug.cgi?id=332413
     
     I obtained permission from the creator of the original file to
     include the data here, (see comments in world-map.h for details).
@@ -7596,7 +7559,7 @@ CommitDate: Mon Nov 6 23:56:19 2006 -0800
     This new test case is the 0th polygon polygon from Zack Rusin's
     recent cairorender program as made avaialable here:
     
-    	http://ktown.kde.org/~zrusin/examples/cairorender.tar.bz2
+            http://ktown.kde.org/~zrusin/examples/cairorender.tar.bz2
     
     This polygon contains about 1000 coordinates and looks like a
     hand-drawn version of the word another.
@@ -7640,7 +7603,7 @@ CommitDate: Mon Nov 6 09:39:02 2006 -0800
     This allows the cairo-perf stuff to build on older checkouts,
     (such as 1.2.4), so that we can usefully do things like:
     
-    	cairo-perf-diff 1.2.4 HEAD
+            cairo-perf-diff 1.2.4 HEAD
 
  perf/cairo-perf.c | 2 ++
  1 file changed, 2 insertions(+)
@@ -8037,11 +8000,11 @@ CommitDate: Wed Oct 25 17:15:22 2006 -0700
     The new cairo-perf-diff can also be used to see what the performance
     impact of a single commit is like so:
     
-    	cairo-perf-diff HEAD
+            cairo-perf-diff HEAD
     
     or between two commits:
     
-    	cairo-perf-diff 1.2.4 HEAD
+            cairo-perf-diff 1.2.4 HEAD
     
     The script is careful to always run the latest cairo-perf program
     even when testing old versions of the library. Also, the output
@@ -8053,12 +8016,11 @@ CommitDate: Wed Oct 25 17:15:22 2006 -0700
     on cairo-perf being built in advance but doesn't do anythin to ensure
     that happens.
 
- perf/.gitignore              |   2 +-
- perf/Makefile.am             |   7 +-
- perf/cairo-perf-diff         | 106 ++++++++++
- perf/cairo-perf-diff-files.c | 482 +++++++++++++++++++++++++++++++++++++++++++
- perf/cairo-perf-diff.c       | 482 -------------------------------------------
- 5 files changed, 594 insertions(+), 485 deletions(-)
+ perf/.gitignore                                    |   2 +-
+ perf/Makefile.am                                   |   7 +-
+ perf/cairo-perf-diff                               | 106 +++++++++++++++++++++
+ .../{cairo-perf-diff.c => cairo-perf-diff-files.c} |   0
+ 4 files changed, 112 insertions(+), 3 deletions(-)
 
 commit c7b9f84744cd3fe4a6c9dead1e128d91f9cfc3cb
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -8237,7 +8199,7 @@ CommitDate: Mon Oct 23 20:46:43 2006 -0700
     8711: Fix transformed source surface patterns with xlib backend.
     
     This broke with the clone_similar optimization in
-    	 8d7a02ed58e06584eb09575e6ca11d0a81094ab6
+             8d7a02ed58e06584eb09575e6ca11d0a81094ab6
     The optimization added an interest rectangle to clone_similar,
     but the acquire_surface path was neglecting to transform its
     rectangle by the pattern matrix.
@@ -8478,7 +8440,7 @@ CommitDate: Thu Oct 19 15:43:02 2006 -0700
     The crash happens anytime mask-based clipping is in effect
     at the time of cairo_push_group. The crash was first reported
     here:
-    	http://lists.freedesktop.org/archives/cairo/2006-August/007698.html
+            http://lists.freedesktop.org/archives/cairo/2006-August/007698.html
 
  test/Makefile.am             |   2 ++
  test/clip-push-group-ref.png | Bin 0 -> 200 bytes
@@ -8568,7 +8530,7 @@ CommitDate: Wed Oct 18 15:18:11 2006 -0700
  4 files changed, 3 insertions(+)
 
 commit e21c155e73569f6533dd01bdd7ec62461e7f215f
-Merge: a53eabf 10cd23d
+Merge: a53eabf0a 10cd23d51
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Oct 18 15:03:04 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -8661,7 +8623,7 @@ CommitDate: Wed Oct 18 12:11:26 2006 -0700
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit c1f134fa13928f31c903d513920448b127749a4b
-Merge: 968ceee 157663e
+Merge: 968ceeec1 157663e1f
 Author:     Ian Osgood <iano@quirkster.com>
 AuthorDate: Wed Oct 18 08:15:47 2006 -0700
 Commit:     Ian Osgood <iano@quirkster.com>
@@ -8928,7 +8890,7 @@ CommitDate: Thu Oct 12 23:47:37 2006 -0700
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit 02e7b892bcb75a69eb28902e7f67e2e7778bfe7b
-Merge: 151e29d 648f4bc
+Merge: 151e29d80 648f4bc83
 Author:     Michael Emmel <memmel@debian.localdomain>
 AuthorDate: Thu Oct 12 20:40:11 2006 -0700
 Commit:     Michael Emmel <memmel@debian.localdomain>
@@ -9377,7 +9339,7 @@ CommitDate: Wed Oct 4 17:14:11 2006 -0700
     
     This effectively reverts the change made in:
     
-    	3c407aa80a43e1724e732482ada5ad6718fe33ae
+            3c407aa80a43e1724e732482ada5ad6718fe33ae
     
     The justification is that we want to be able to see the
     trends of increasing the image size while keeping the test
@@ -9413,11 +9375,11 @@ CommitDate: Fri Sep 29 17:47:01 2006 -0700
     
     The following documented symbols were missing this tag:
     
-    	cairo_clip_extents
-    	cairo_copy_clip_rectangles
-    	CAIRO_STATUS_INVALID_INDEX
-    	cairo_rectangle_t
-    	cairo_rectangle_list_t
+            cairo_clip_extents
+            cairo_copy_clip_rectangles
+            CAIRO_STATUS_INVALID_INDEX
+            cairo_rectangle_t
+            cairo_rectangle_list_t
 
  src/cairo.c | 4 ++++
  src/cairo.h | 6 +++++-
@@ -9592,14 +9554,11 @@ CommitDate: Tue Sep 26 15:48:06 2006 -0700
 
     Rename test from stale path-data name to copy-path
 
- test/Makefile.am                 |   6 +-
- test/copy-path-ps-argb32-ref.png | Bin 0 -> 442 bytes
- test/copy-path-ref.png           | Bin 0 -> 579 bytes
- test/copy-path.c                 | 234 +++++++++++++++++++++++++++++++++++++++
- test/path-data-ps-argb32-ref.png | Bin 442 -> 0 bytes
- test/path-data-ref.png           | Bin 579 -> 0 bytes
- test/path-data.c                 | 234 ---------------------------------------
- 7 files changed, 237 insertions(+), 237 deletions(-)
+ test/Makefile.am                                            |   6 +++---
+ ...h-data-ps-argb32-ref.png => copy-path-ps-argb32-ref.png} | Bin
+ test/{path-data-ref.png => copy-path-ref.png}               | Bin
+ test/{path-data.c => copy-path.c}                           |   2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
 commit 5f833c134bd002853b9d1458b58350cfb1d40a94
 Author:     Carl Worth <cworth@cworth.org>
@@ -10151,7 +10110,7 @@ CommitDate: Sat Sep 9 19:52:48 2006 -0700
  1 file changed, 9 insertions(+), 4 deletions(-)
 
 commit d3076a1843bc2f05bab0df913d0c27f125bea162
-Merge: dfe3e20 78b8555
+Merge: dfe3e20a4 78b8555c9
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
 AuthorDate: Sat Sep 9 18:57:57 2006 -0700
 Commit:     U-CYCLONE\Vladimir Vukicevic <vladimir@cyclone.(none)>
@@ -10235,7 +10194,7 @@ CommitDate: Sat Sep 9 17:32:50 2006 -0700
  4 files changed, 91 insertions(+), 70 deletions(-)
 
 commit 97f26c523590dcb208a7c0e4d00fd66f4ca58605
-Merge: 0e59041 416e945
+Merge: 0e5904132 416e94532
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
 AuthorDate: Sat Sep 9 17:09:03 2006 -0700
 Commit:     U-CYCLONE\Vladimir Vukicevic <vladimir@cyclone.(none)>
@@ -10828,14 +10787,12 @@ CommitDate: Tue Sep 5 22:56:00 2006 -0700
 
     perf: Fold cairo-perf-timer.h into cairo-perf.h
 
- perf/Makefile.am              |  4 +--
- perf/cairo-perf-posix.c       | 74 +++++++++++++++++++++++++++++++++++++++++++
- perf/cairo-perf-timer-posix.c | 74 -------------------------------------------
- perf/cairo-perf-timer-win32.c | 71 -----------------------------------------
- perf/cairo-perf-timer.h       | 51 -----------------------------
- perf/cairo-perf-win32.c       | 71 +++++++++++++++++++++++++++++++++++++++++
- perf/cairo-perf.h             | 18 ++++++++++-
- 7 files changed, 164 insertions(+), 199 deletions(-)
+ perf/Makefile.am                                   |  4 +-
+ ...cairo-perf-timer-posix.c => cairo-perf-posix.c} |  0
+ perf/cairo-perf-timer.h                            | 51 ----------------------
+ ...cairo-perf-timer-win32.c => cairo-perf-win32.c} |  0
+ perf/cairo-perf.h                                  | 18 +++++++-
+ 5 files changed, 19 insertions(+), 54 deletions(-)
 
 commit 499a3a7c4772bb0f446f89a9c6e9430bd31c1218
 Author:     Carl Worth <cworth@cworth.org>
@@ -11219,15 +11176,12 @@ CommitDate: Thu Aug 31 11:38:23 2006 -0700
 
     perf: Rename timer-alarm files to cairo-perf-timer
 
- perf/Makefile.am              | 12 +++----
- perf/cairo-perf-timer-posix.c | 70 +++++++++++++++++++++++++++++++++++++++
- perf/cairo-perf-timer-win32.c | 76 +++++++++++++++++++++++++++++++++++++++++++
- perf/cairo-perf-timer.h       | 54 ++++++++++++++++++++++++++++++
- perf/cairo-perf.h             |  2 +-
- perf/timer-alarm-posix.c      | 70 ---------------------------------------
- perf/timer-alarm-win32.c      | 76 -------------------------------------------
- perf/timer-alarm.h            | 54 ------------------------------
- 8 files changed, 207 insertions(+), 207 deletions(-)
+ perf/Makefile.am                                       | 12 ++++++------
+ perf/{timer-alarm-posix.c => cairo-perf-timer-posix.c} |  0
+ perf/{timer-alarm-win32.c => cairo-perf-timer-win32.c} |  0
+ perf/{timer-alarm.h => cairo-perf-timer.h}             |  0
+ perf/cairo-perf.h                                      |  2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
 commit 7ad6e941017e070bf7d93afba4de5c49cd1ff533
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -11440,18 +11394,14 @@ CommitDate: Thu Aug 31 01:39:06 2006 -0700
     so they have to have separate names now:
     libcairoboilerplate.la and libcairotest.la.
 
- boilerplate/Makefile.am   |  14 +-
- boilerplate/buffer-diff.c | 306 ---------------------
- boilerplate/buffer-diff.h |  80 ------
- boilerplate/cairo-test.c  | 683 ----------------------------------------------
- boilerplate/cairo-test.h  | 136 ---------
- boilerplate/xmalloc.c     |   6 +-
- test/Makefile.am          |  13 +-
- test/buffer-diff.c        | 306 +++++++++++++++++++++
- test/buffer-diff.h        |  80 ++++++
- test/cairo-test.c         | 683 ++++++++++++++++++++++++++++++++++++++++++++++
- test/cairo-test.h         | 136 +++++++++
- 11 files changed, 1225 insertions(+), 1218 deletions(-)
+ boilerplate/Makefile.am             | 14 +++++---------
+ boilerplate/xmalloc.c               |  6 +++---
+ test/Makefile.am                    | 13 ++++++++++++-
+ {boilerplate => test}/buffer-diff.c |  0
+ {boilerplate => test}/buffer-diff.h |  0
+ {boilerplate => test}/cairo-test.c  |  0
+ {boilerplate => test}/cairo-test.h  |  0
+ 7 files changed, 20 insertions(+), 13 deletions(-)
 
 commit 95475218858792ccb20ac6ad28db22e233c783d7
 Author:     Carl Worth <cworth@cworth.org>
@@ -11523,39 +11473,25 @@ CommitDate: Wed Aug 30 15:34:27 2006 -0700
     The idea here is to setup boilerplate to allow code sharing between
     test/ and the upcoming perf/
 
- .gitignore                        |    5 +
- boilerplate/Makefile.am           |   35 +
- boilerplate/buffer-diff.c         |  348 ++++++
- boilerplate/buffer-diff.h         |   80 ++
- boilerplate/cairo-test-beos.cpp   |  236 ++++
- boilerplate/cairo-test-beos.h     |   26 +
- boilerplate/cairo-test-directfb.c |  123 +++
- boilerplate/cairo-test-directfb.h |   23 +
- boilerplate/cairo-test.c          | 2147 +++++++++++++++++++++++++++++++++++++
- boilerplate/cairo-test.h          |  143 +++
- boilerplate/read-png.c            |  196 ++++
- boilerplate/read-png.h            |   45 +
- boilerplate/write-png.c           |   99 ++
- boilerplate/write-png.h           |   35 +
- boilerplate/xmalloc.c             |   58 +
- boilerplate/xmalloc.h             |   37 +
- configure.in                      |    1 +
- test/Makefile.am                  |   33 +-
- test/buffer-diff.c                |  348 ------
- test/buffer-diff.h                |   80 --
- test/cairo-test-beos.cpp          |  236 ----
- test/cairo-test-beos.h            |   26 -
- test/cairo-test-directfb.c        |  123 ---
- test/cairo-test-directfb.h        |   23 -
- test/cairo-test.c                 | 2147 -------------------------------------
- test/cairo-test.h                 |  143 ---
- test/read-png.c                   |  196 ----
- test/read-png.h                   |   45 -
- test/write-png.c                  |   99 --
- test/write-png.h                  |   35 -
- test/xmalloc.c                    |   58 -
- test/xmalloc.h                    |   37 -
- 32 files changed, 3642 insertions(+), 3624 deletions(-)
+ .gitignore                                  |  5 +++++
+ boilerplate/Makefile.am                     | 35 +++++++++++++++++++++++++++++
+ {test => boilerplate}/buffer-diff.c         |  0
+ {test => boilerplate}/buffer-diff.h         |  0
+ {test => boilerplate}/cairo-test-beos.cpp   |  0
+ {test => boilerplate}/cairo-test-beos.h     |  0
+ {test => boilerplate}/cairo-test-directfb.c |  0
+ {test => boilerplate}/cairo-test-directfb.h |  0
+ {test => boilerplate}/cairo-test.c          |  0
+ {test => boilerplate}/cairo-test.h          |  0
+ {test => boilerplate}/read-png.c            |  0
+ {test => boilerplate}/read-png.h            |  0
+ {test => boilerplate}/write-png.c           |  0
+ {test => boilerplate}/write-png.h           |  0
+ {test => boilerplate}/xmalloc.c             |  0
+ {test => boilerplate}/xmalloc.h             |  0
+ configure.in                                |  1 +
+ test/Makefile.am                            | 33 +++++----------------------
+ 18 files changed, 46 insertions(+), 28 deletions(-)
 
 commit a5f068e10d72c20a55d20ca9f79508361d13fb80
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -11987,14 +11923,11 @@ CommitDate: Fri Aug 18 13:08:59 2006 -0700
 
     Rename ft-text-vertical-layout-truetype to ft-text-vertical-layout-type3
 
- test/Makefile.am                                  |   8 +-
- test/ft-text-vertical-layout-truetype-ref.png     | Bin 3933 -> 0 bytes
- test/ft-text-vertical-layout-truetype-svg-ref.png | Bin 3956 -> 0 bytes
- test/ft-text-vertical-layout-truetype.c           | 154 ----------------------
- test/ft-text-vertical-layout-type3-ref.png        | Bin 0 -> 3933 bytes
- test/ft-text-vertical-layout-type3-svg-ref.png    | Bin 0 -> 3956 bytes
- test/ft-text-vertical-layout-type3.c              | 154 ++++++++++++++++++++++
- 7 files changed, 157 insertions(+), 159 deletions(-)
+ test/Makefile.am                                            |   8 +++-----
+ ...uetype-ref.png => ft-text-vertical-layout-type3-ref.png} | Bin
+ ...vg-ref.png => ft-text-vertical-layout-type3-svg-ref.png} | Bin
+ ...al-layout-truetype.c => ft-text-vertical-layout-type3.c} |   4 ++--
+ 4 files changed, 5 insertions(+), 7 deletions(-)
 
 commit aa2260cfbbf5fd5c923409962814c6795e5ecc41
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -12021,7 +11954,7 @@ CommitDate: Fri Aug 18 12:04:16 2006 -0400
  2 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 861f1cb4f70cdbd7702eaf642b999a21ad01037d
-Merge: c2d92d4 fbb1758
+Merge: c2d92d439 fbb1758ba
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Fri Aug 18 07:56:52 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -12031,9 +11964,9 @@ CommitDate: Fri Aug 18 07:59:20 2006 -0700
     
     Conflicts:
     
-    	test/dash-caps-joins-ps-argb32-ref.png
-    	test/degenerate-path-ps-argb32-ref.png
-    	test/degenerate-path.c
+            test/dash-caps-joins-ps-argb32-ref.png
+            test/degenerate-path-ps-argb32-ref.png
+            test/degenerate-path.c
 
 commit c2d92d4397f7ed7a8b7fdfa24a4e339ecb0d6d69
 Author:     Carl Worth <cworth@cworth.org>
@@ -12322,12 +12255,10 @@ CommitDate: Thu Aug 17 13:35:15 2006 -0700
 
     Rename src-clip test to source-clip-scale
 
- test/Makefile.am               |   3 +-
- test/source-clip-scale-ref.png | Bin 0 -> 243 bytes
- test/source-clip-scale.c       | 100 +++++++++++++++++++++++++++++++++++++++++
- test/src-clip-ref.png          | Bin 243 -> 0 bytes
- test/src-clip.c                | 100 -----------------------------------------
- 5 files changed, 102 insertions(+), 101 deletions(-)
+ test/Makefile.am                                     |   3 ++-
+ test/{src-clip-ref.png => source-clip-scale-ref.png} | Bin
+ test/{src-clip.c => source-clip-scale.c}             |   2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
 
 commit afb50580ce0eaefe466ff63a2e0e597f35317f6b
 Author:     Vladimir Vukicevic <vladimirv@gmail.com>
@@ -12400,17 +12331,16 @@ CommitDate: Wed Aug 16 14:27:40 2006 -0400
     Currently Type3 and Type1 font paths both show broken behavior.
     The type1 test uses "Nimbus Sans L" as the font.
 
- test/.gitignore                                 |   5 +-
- test/Makefile.am                                |  15 ++-
- test/ft-text-vertical-layout-pdf-argb32-ref.png | Bin 715 -> 0 bytes
- test/ft-text-vertical-layout-ps-argb32-ref.png  | Bin 611 -> 0 bytes
- test/ft-text-vertical-layout-ref.png            | Bin 829 -> 0 bytes
- test/ft-text-vertical-layout-svg-ref.png        | Bin 770 -> 0 bytes
- test/ft-text-vertical-layout-type1-ref.png      | Bin 0 -> 3970 bytes
- test/ft-text-vertical-layout-type1-svg-ref.png  | Bin 0 -> 3948 bytes
- test/ft-text-vertical-layout-type1.c            | 154 ++++++++++++++++++++++++
- test/ft-text-vertical-layout.c                  | 136 ---------------------
- 10 files changed, 167 insertions(+), 143 deletions(-)
+ test/.gitignore                                    |   5 +--
+ test/Makefile.am                                   |  15 +++++---
+ test/ft-text-vertical-layout-pdf-argb32-ref.png    | Bin 715 -> 0 bytes
+ test/ft-text-vertical-layout-ps-argb32-ref.png     | Bin 611 -> 0 bytes
+ test/ft-text-vertical-layout-ref.png               | Bin 829 -> 0 bytes
+ test/ft-text-vertical-layout-svg-ref.png           | Bin 770 -> 0 bytes
+ test/ft-text-vertical-layout-type1-ref.png         | Bin 0 -> 3970 bytes
+ test/ft-text-vertical-layout-type1-svg-ref.png     | Bin 0 -> 3948 bytes
+ ...al-layout.c => ft-text-vertical-layout-type1.c} |  40 +++++++++++++++------
+ 9 files changed, 42 insertions(+), 18 deletions(-)
 
 commit c385922c198012c46f0c7638ce0ac36a41b9a014
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -12734,12 +12664,12 @@ CommitDate: Thu Aug 10 20:36:16 2006 -0400
     For an imaginary cairo-3.6.4 version, we now will generate the following
     ChangeLog files:
     
-    	ChangeLog
-    	ChangeLog.pre-3.4
-    	ChangeLog.pre-3.2
-    	ChangeLog.pre-3.0
-    	ChangeLog.pre-2.0
-    	ChangeLog.pre-1.0
+            ChangeLog
+            ChangeLog.pre-3.4
+            ChangeLog.pre-3.2
+            ChangeLog.pre-3.0
+            ChangeLog.pre-2.0
+            ChangeLog.pre-1.0
 
  Makefile.am | 64 +++++++++++++++++++++++++++++++++++++++++++++++--------------
  1 file changed, 50 insertions(+), 14 deletions(-)
@@ -12801,16 +12731,12 @@ CommitDate: Thu Aug 10 13:53:24 2006 -0400
 
     [test] Rename beos_bitmap target to beos-bitmap.  Same for directfb-bitmap.
 
- test/cairo-test.c                         |   6 +++---
- test/mask-beos-bitmap-argb32-ref.png      | Bin 0 -> 87641 bytes
- test/mask-beos-bitmap-rgb24-ref.png       | Bin 0 -> 71028 bytes
- test/mask-beos_bitmap-argb32-ref.png      | Bin 87641 -> 0 bytes
- test/mask-beos_bitmap-rgb24-ref.png       | Bin 71028 -> 0 bytes
- test/set-source-beos-bitmap-rgb24-ref.png | Bin 0 -> 124 bytes
- test/set-source-beos_bitmap-rgb24-ref.png | Bin 124 -> 0 bytes
- test/trap-clip-beos-bitmap-rgb24-ref.png  | Bin 0 -> 63088 bytes
- test/trap-clip-beos_bitmap-rgb24-ref.png  | Bin 63088 -> 0 bytes
- 9 files changed, 3 insertions(+), 3 deletions(-)
+ test/cairo-test.c                                           |   6 +++---
+ ...itmap-argb32-ref.png => mask-beos-bitmap-argb32-ref.png} | Bin
+ ..._bitmap-rgb24-ref.png => mask-beos-bitmap-rgb24-ref.png} | Bin
+ ...p-rgb24-ref.png => set-source-beos-bitmap-rgb24-ref.png} | Bin
+ ...ap-rgb24-ref.png => trap-clip-beos-bitmap-rgb24-ref.png} | Bin
+ 5 files changed, 3 insertions(+), 3 deletions(-)
 
 commit c6869b741578be8d93053c8313f71e87061d0202
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -13089,11 +13015,11 @@ CommitDate: Tue Aug 8 14:04:51 2006 -0400
     subpixel on typically looks like:
     
             <match target="font">
-    		<test qual="all" name="rgba">
-    			<const>unknown</const>
-    		</test>
-    		<edit name="rgba" mode="assign"><const>rgb</const></edit>
-    	</match>
+                    <test qual="all" name="rgba">
+                            <const>unknown</const>
+                    </test>
+                    <edit name="rgba" mode="assign"><const>rgb</const></edit>
+            </match>
     
     This works good enough, and if you set to ANTIALIAS_GRAY, this will not
     override that.  Now one may forget to match on "font" target, or intentionally
@@ -13102,8 +13028,8 @@ CommitDate: Tue Aug 8 14:04:51 2006 -0400
     write:
     
             <match target="pattern">
-    		<edit name="rgba" mode="assign"><const>rgb</const></edit>
-    	</match>
+                    <edit name="rgba" mode="assign"><const>rgb</const></edit>
+            </match>
     
     You don't really need to check for current values, as FcConfigSubstitute is
     run before merging cairo_font_options_t in.  What this patch does, is to reset
@@ -13294,7 +13220,7 @@ CommitDate: Tue Aug 8 00:43:09 2006 -0700
  2 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 401f0ce3c444e263f03055174791e993e6270c39
-Merge: 77fd0ef 02b54ca
+Merge: 77fd0efa9 02b54ca62
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Aug 8 00:19:51 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -13336,14 +13262,11 @@ CommitDate: Mon Aug 7 23:47:31 2006 -0700
     Also replace some SVG ref images for rgb24 and argb32 with a single
     one where the two have been similar.
 
- test/caps-joins-alpha-svg-argb32-ref.png              | Bin 2454 -> 0 bytes
- test/caps-joins-alpha-svg-ref.png                     | Bin 0 -> 2454 bytes
+ ...vg-argb32-ref.png => caps-joins-alpha-svg-ref.png} | Bin
  test/caps-joins-alpha-svg-rgb24-ref.png               | Bin 2454 -> 0 bytes
- ...omposite-integer-translate-over-svg-argb32-ref.png | Bin 15465 -> 0 bytes
- test/composite-integer-translate-over-svg-ref.png     | Bin 0 -> 15465 bytes
+ ...g => composite-integer-translate-over-svg-ref.png} | Bin
  ...composite-integer-translate-over-svg-rgb24-ref.png | Bin 15465 -> 0 bytes
- test/fill-and-stroke-alpha-svg-argb32-ref.png         | Bin 509 -> 0 bytes
- test/fill-and-stroke-alpha-svg-ref.png                | Bin 0 -> 509 bytes
+ ...gb32-ref.png => fill-and-stroke-alpha-svg-ref.png} | Bin
  test/fill-and-stroke-alpha-svg-rgb24-ref.png          | Bin 509 -> 0 bytes
  test/font-matrix-translation-svg-ref.png              | Bin 0 -> 970 bytes
  test/ft-text-vertical-layout-pdf-argb32-ref.png       | Bin 725 -> 804 bytes
@@ -13353,16 +13276,12 @@ CommitDate: Mon Aug 7 23:47:31 2006 -0700
  test/ft-text-vertical-layout-svg-rgb24-ref.png        | Bin 808 -> 0 bytes
  test/glyph-cache-pressure-pdf-argb32-ref.png          | Bin 2879 -> 0 bytes
  test/glyph-cache-pressure-svg-argb32-ref.png          | Bin 3635 -> 0 bytes
- test/glyph-cache-pressure-svg-ref.png                 | Bin 0 -> 3165 bytes
- test/glyph-cache-pressure-svg-rgb24-ref.png           | Bin 3165 -> 0 bytes
- test/linear-gradient-svg-argb32-ref.png               | Bin 1000 -> 0 bytes
- test/linear-gradient-svg-ref.png                      | Bin 0 -> 1000 bytes
+ ...rgb24-ref.png => glyph-cache-pressure-svg-ref.png} | Bin
+ ...svg-argb32-ref.png => linear-gradient-svg-ref.png} | Bin
  test/linear-gradient-svg-rgb24-ref.png                | Bin 1000 -> 0 bytes
- test/paint-source-alpha-svg-argb32-ref.png            | Bin 505 -> 0 bytes
- test/paint-source-alpha-svg-ref.png                   | Bin 0 -> 505 bytes
+ ...-argb32-ref.png => paint-source-alpha-svg-ref.png} | Bin
  test/paint-source-alpha-svg-rgb24-ref.png             | Bin 505 -> 0 bytes
- test/paint-with-alpha-svg-argb32-ref.png              | Bin 516 -> 0 bytes
- test/paint-with-alpha-svg-ref.png                     | Bin 0 -> 516 bytes
+ ...vg-argb32-ref.png => paint-with-alpha-svg-ref.png} | Bin
  test/paint-with-alpha-svg-rgb24-ref.png               | Bin 516 -> 0 bytes
  test/pixman-rotate-svg-argb32-ref.png                 | Bin 0 -> 258 bytes
  test/pixman-rotate-svg-rgb24-ref.png                  | Bin 0 -> 358 bytes
@@ -13375,8 +13294,7 @@ CommitDate: Mon Aug 7 23:47:31 2006 -0700
  test/select-font-face-svg-rgb24-ref.png               | Bin 3064 -> 0 bytes
  test/show-text-current-point-pdf-argb32-ref.png       | Bin 2157 -> 0 bytes
  test/show-text-current-point-svg-argb32-ref.png       | Bin 4236 -> 0 bytes
- test/show-text-current-point-svg-ref.png              | Bin 0 -> 2398 bytes
- test/show-text-current-point-svg-rgb24-ref.png        | Bin 2398 -> 0 bytes
+ ...24-ref.png => show-text-current-point-svg-ref.png} | Bin
  test/text-antialias-gray-pdf-argb32-ref.png           | Bin 950 -> 0 bytes
  test/text-antialias-gray-ps-argb32-ref.png            | Bin 310 -> 0 bytes
  test/text-antialias-gray-svg-argb32-ref.png           | Bin 1077 -> 0 bytes
@@ -13395,7 +13313,7 @@ CommitDate: Mon Aug 7 23:47:31 2006 -0700
  test/unantialiased-shapes-ps-argb32-ref.png           | Bin 4076 -> 0 bytes
  test/unantialiased-shapes-svg-argb32-ref.png          | Bin 19689 -> 0 bytes
  test/unantialiased-shapes-svg-rgb24-ref.png           | Bin 19689 -> 0 bytes
- 59 files changed, 0 insertions(+), 0 deletions(-)
+ 51 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 56791ab31d484452cd1ddefd653590095d9f6191
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -13418,10 +13336,10 @@ CommitDate: Tue Aug 8 02:24:16 2006 -0400
 
     Document a few more functions
     
-    	cairo_show_page
-    	cairo_copy_page
-    	cairo_in_stroke
-    	cairo_in_fill
+            cairo_show_page
+            cairo_copy_page
+            cairo_in_stroke
+            cairo_in_fill
 
  src/cairo.c | 42 ++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 42 insertions(+)
@@ -13534,7 +13452,7 @@ CommitDate: Mon Aug 7 15:22:49 2006 -0700
  7 files changed, 17 insertions(+), 18 deletions(-)
 
 commit 959b85e98c8a0f546c9117da83f84c99ed00370f
-Merge: f1c70a0 7ee94c0
+Merge: f1c70a013 7ee94c028
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Mon Aug 7 15:06:47 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -13544,7 +13462,7 @@ CommitDate: Mon Aug 7 15:06:47 2006 -0700
     
     Conflicts:
     
-    	src/cairo-font-subset.c
+            src/cairo-font-subset.c
 
 commit f1c70a01391705a22dd882f2a88c6dffbc08f0fe
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -13664,7 +13582,7 @@ CommitDate: Mon Aug 7 11:07:08 2006 -0700
     Make truetype subsetting work on x86_64
     
     This fixes the bug reported against GTK+ here:
-    	http://bugzilla.gnome.org/show_bug.cgi?id=349826
+            http://bugzilla.gnome.org/show_bug.cgi?id=349826
 
  ROADMAP                     |   2 +-
  src/cairo-truetype-subset.c | 195 ++++++++++++++++++++++----------------------
@@ -13822,10 +13740,9 @@ CommitDate: Wed Aug 2 19:30:55 2006 -0400
 
     Renamed cairo-font-subset.c to cairo-truetype-subset.c
 
- src/Makefile.am             |   2 +-
- src/cairo-font-subset.c     | 957 --------------------------------------------
- src/cairo-truetype-subset.c | 957 ++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 958 insertions(+), 958 deletions(-)
+ src/Makefile.am                                      | 2 +-
+ src/{cairo-font-subset.c => cairo-truetype-subset.c} | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
 commit a0989f427be87c60415963dd6822b3c5c3781691
 Author:     Adrian Johnson <ajohnson@redneon.com>
@@ -13852,7 +13769,7 @@ CommitDate: Wed Aug 2 19:30:55 2006 -0400
  9 files changed, 347 insertions(+), 181 deletions(-)
 
 commit c05dd48ac1afe0e4f3ec0c24797a9fbc3f98ce85
-Merge: e0bec64 0da4b93
+Merge: e0bec64c9 0da4b9319
 Author:     Michael Emmel <memmel@debian.localdomain>
 AuthorDate: Wed Aug 2 14:32:50 2006 -0700
 Commit:     Michael Emmel <memmel@debian.localdomain>
@@ -14346,7 +14263,7 @@ CommitDate: Thu Jul 27 00:17:52 2006 -0700
  1 file changed, 22 insertions(+), 6 deletions(-)
 
 commit 8601c2c68306c956744399099a941363d446b906
-Merge: cd2f50e b719188
+Merge: cd2f50e6c b7191885c
 Author:     Michael Emmel <memmel@debian.localdomain>
 AuthorDate: Thu Jul 20 23:04:37 2006 -0700
 Commit:     Michael Emmel <memmel@debian.localdomain>
@@ -14501,7 +14418,7 @@ CommitDate: Fri Jul 14 14:40:47 2006 -0700
  2 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 5d64efdbb8fc4e17d4fa44d21068870cd2aea7ce
-Merge: 9907813 6a5d66f
+Merge: 9907813d5 6a5d66f65
 Author:     Michael Emmel <memmel@debian.localdomain>
 AuthorDate: Fri Jul 14 09:37:22 2006 -0700
 Commit:     Michael Emmel <memmel@debian.localdomain>
@@ -14604,7 +14521,7 @@ CommitDate: Thu Jul 13 15:00:16 2006 -0700
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 commit 307a17f78cd2adda8a59ef16385df3be5786d2bd
-Merge: 5ed64e3 1409b8b
+Merge: 5ed64e391 1409b8be0
 Author:     Michael Emmel <memmel@debian.localdomain>
 AuthorDate: Thu Jul 13 12:17:25 2006 -0700
 Commit:     Michael Emmel <memmel@debian.localdomain>

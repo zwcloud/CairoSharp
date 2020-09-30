@@ -455,6 +455,7 @@ static pixman_image_t *
 _pixel_to_solid (cairo_image_surface_t *image, int x, int y)
 {
     uint32_t pixel;
+    float *rgba;
     pixman_color_t color;
 
     TRACE ((stderr, "%s\n", __FUNCTION__));
@@ -522,6 +523,32 @@ _pixel_to_solid (cairo_image_surface_t *image, int x, int y)
 	color.red = (pixel >> 16 & 0xff) | (pixel >> 8 & 0xff00);
 	color.green = (pixel >> 8 & 0xff) | (pixel & 0xff00);
 	color.blue = (pixel & 0xff) | (pixel << 8 & 0xff00);
+	return pixman_image_create_solid_fill (&color);
+
+    case CAIRO_FORMAT_RGB96F:
+    case CAIRO_FORMAT_RGBA128F:
+	if (image->format == CAIRO_FORMAT_RGBA128F)
+	{
+	    rgba = (float *)&image->data[y * image->stride + 16 * x];
+	    color.alpha = 65535.f * rgba[3];
+
+	    if (color.alpha == 0)
+		return _pixman_transparent_image ();
+	}
+	else
+	{
+	    rgba = (float *)&image->data[y * image->stride + 12 * x];
+	    color.alpha = 0xffff;
+	}
+
+	if (color.alpha == 0xffff && rgba[0] == 0.f && rgba[1] == 0.f && rgba[2] == 0.f)
+	    return _pixman_black_image ();
+	if (color.alpha == 0xffff && rgba[0] == 1.f && rgba[1] == 1.f && rgba[2] == 1.f)
+	    return _pixman_white_image ();
+
+	color.red = rgba[0] * 65535.f;
+	color.green = rgba[1] * 65535.f;
+	color.blue = rgba[2] * 65535.f;
 	return pixman_image_create_solid_fill (&color);
     }
 }
@@ -872,7 +899,7 @@ create_separable_convolution (int *n_values,
     size_y = (1 << ysubsample) * ywidth;
 
     *n_values = 4 + size_x + size_y;
-    params = malloc (*n_values * sizeof (pixman_fixed_t));
+    params = _cairo_malloc (*n_values * sizeof (pixman_fixed_t));
     if (!params) return 0;
 
     params[0] = pixman_int_to_fixed (xwidth);
@@ -1077,7 +1104,7 @@ attach_proxy (cairo_surface_t *source,
 {
     struct proxy *proxy;
 
-    proxy = malloc (sizeof (*proxy));
+    proxy = _cairo_malloc (sizeof (*proxy));
     if (unlikely (proxy == NULL))
 	return _cairo_surface_create_in_error (CAIRO_STATUS_NO_MEMORY);
 
@@ -1407,7 +1434,7 @@ _pixman_image_for_surface (cairo_image_surface_t *dst,
 	    return NULL;
 	}
 
-	cleanup = malloc (sizeof (*cleanup));
+	cleanup = _cairo_malloc (sizeof (*cleanup));
 	if (unlikely (cleanup == NULL)) {
 	    _cairo_surface_release_source_image (pattern->surface, image, extra);
 	    pixman_image_unref (pixman_image);
@@ -1498,7 +1525,7 @@ _pixman_image_for_raster (cairo_image_surface_t *dst,
 	return NULL;
     }
 
-    cleanup = malloc (sizeof (*cleanup));
+    cleanup = _cairo_malloc (sizeof (*cleanup));
     if (unlikely (cleanup == NULL)) {
 	pixman_image_unref (pixman_image);
 	_cairo_surface_release_source_image (surface, image, extra);
@@ -1594,7 +1621,7 @@ _cairo_image_source_create_for_pattern (cairo_surface_t *dst,
 
     TRACE ((stderr, "%s\n", __FUNCTION__));
 
-    source = malloc (sizeof (cairo_image_source_t));
+    source = _cairo_malloc (sizeof (cairo_image_source_t));
     if (unlikely (source == NULL))
 	return _cairo_surface_create_in_error (_cairo_error (CAIRO_STATUS_NO_MEMORY));
 

@@ -2845,6 +2845,8 @@ inplace_renderer_init (cairo_image_span_renderer_t	*r,
 		case CAIRO_FORMAT_A1:
 		case CAIRO_FORMAT_RGB16_565:
 		case CAIRO_FORMAT_RGB30:
+		case CAIRO_FORMAT_RGB96F:
+		case CAIRO_FORMAT_RGBA128F:
 		case CAIRO_FORMAT_INVALID:
 		default: break;
 		}
@@ -2860,6 +2862,8 @@ inplace_renderer_init (cairo_image_span_renderer_t	*r,
 		case CAIRO_FORMAT_A1:
 		case CAIRO_FORMAT_RGB16_565:
 		case CAIRO_FORMAT_RGB30:
+		case CAIRO_FORMAT_RGB96F:
+		case CAIRO_FORMAT_RGBA128F:
 		case CAIRO_FORMAT_INVALID:
 		default: break;
 		}
@@ -2934,7 +2938,7 @@ inplace_renderer_init (cairo_image_span_renderer_t	*r,
 	/* Create an effectively unbounded mask by repeating the single line */
 	buf = r->_buf;
 	if (width > SZ_BUF) {
-	    buf = malloc (width);
+	    buf = _cairo_malloc (width);
 	    if (unlikely (buf == NULL)) {
 		pixman_image_unref (r->src);
 		return _cairo_error (CAIRO_STATUS_NO_MEMORY);

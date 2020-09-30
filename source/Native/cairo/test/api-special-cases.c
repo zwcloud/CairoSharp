@@ -1095,7 +1095,7 @@ static cairo_test_status_t
 test_cairo_surface_set_mime_data (cairo_surface_t *surface)
 {
     const char *mimetype = "text/x-uri";
-    const char *data = "http://www.cairographics.org";
+    const char *data = "https://www.cairographics.org";
     cairo_status_t status;
 
     status = cairo_surface_set_mime_data (surface,

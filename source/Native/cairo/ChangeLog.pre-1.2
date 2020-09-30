@@ -223,10 +223,10 @@ CommitDate: Fri Jun 30 16:10:54 2006 +0200
     This makes the following four tests pass, (which were previously
     failing on the ps backend).
     
-    	move-to-show-surface
-    	scale-source-surface-paint
-    	source-surface-scale-paint
-    	translate-show-surface
+            move-to-show-surface
+            scale-source-surface-paint
+            source-surface-scale-paint
+            translate-show-surface
 
  src/cairo-ps-surface.c | 63 +++++++++++++++++++++++++++++++-------------------
  1 file changed, 39 insertions(+), 24 deletions(-)
@@ -394,7 +394,7 @@ CommitDate: Thu Jun 29 21:33:34 2006 +0200
     
     This is an attempt to fix the following bug:
     
-    	http://bugzilla.gnome.org/show_bug.cgi?id=332266
+            http://bugzilla.gnome.org/show_bug.cgi?id=332266
     
     With the recent rewrite of the device-offset code, which pushed things
     from the gstate to the surface layer, the 16-bit limitations on coordinates
@@ -641,7 +641,7 @@ CommitDate: Tue Jun 27 15:38:45 2006 +0200
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit 988a28e259924e7ce50f4d3119bcef7a3b18c931
-Merge: 973c9ab ce2b9e1
+Merge: 973c9abd5 ce2b9e1b5
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Jun 27 15:37:58 2006 +0200
 Commit:     Carl Worth <cworth@cworth.org>
@@ -1601,7 +1601,7 @@ CommitDate: Fri Jun 16 21:13:21 2006 +0800
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit bf2c0e44d8c8e1e692eafba7bccddd26f1f31c1b
-Merge: b8231f8 a8b736c
+Merge: b8231f894 a8b736c16
 Author:     Behdad Esfahbod <behdad@behdad.org>
 AuthorDate: Fri Jun 16 00:13:18 2006 -0400
 Commit:     Behdad Esfahbod <behdad@behdad.org>
@@ -1731,7 +1731,7 @@ CommitDate: Wed Jun 14 21:09:16 2006 +0200
  16 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 2cea3a2710cd4c6eb68e25eadaaf96cdc921ef14
-Merge: 17ea755 4932d09
+Merge: 17ea75523 4932d09a0
 Author:     Kristian Høgsberg <krh@redhat.com>
 AuthorDate: Wed Jun 14 15:00:33 2006 -0400
 Commit:     Kristian Høgsberg <krh@redhat.com>
@@ -1845,12 +1845,11 @@ CommitDate: Wed Jun 14 05:06:10 2006 -0700
 
     Rename cairo-wideint.h to cairo-wideint-private.h.
 
- RELEASING                   |   2 +-
- src/Makefile.am             |   2 +-
- src/cairo-wideint-private.h | 313 ++++++++++++++++++++++++++++++++++++++++++++
- src/cairo-wideint.h         | 313 --------------------------------------------
- src/cairoint.h              |   2 +-
- 5 files changed, 316 insertions(+), 316 deletions(-)
+ RELEASING                                        | 2 +-
+ src/Makefile.am                                  | 2 +-
+ src/{cairo-wideint.h => cairo-wideint-private.h} | 0
+ src/cairoint.h                                   | 2 +-
+ 4 files changed, 3 insertions(+), 3 deletions(-)
 
 commit b9cfe941c8e1ae427780117fedfd47d458e29f02
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -1875,12 +1874,11 @@ CommitDate: Wed Jun 14 05:05:30 2006 -0700
 
     Move cairo.pc into src/.
 
- Makefile.am     |  8 ++------
- cairo.pc.in     | 12 ------------
- configure.in    |  2 +-
- src/Makefile.am |  3 +++
- src/cairo.pc.in | 12 ++++++++++++
- 5 files changed, 18 insertions(+), 19 deletions(-)
+ Makefile.am                    | 8 ++------
+ configure.in                   | 2 +-
+ src/Makefile.am                | 3 +++
+ cairo.pc.in => src/cairo.pc.in | 0
+ 4 files changed, 6 insertions(+), 7 deletions(-)
 
 commit e346eca1386e8ec14f9bda7d76662a16706f1e7c
 Author:     Carl Worth <cworth@cworth.org>
@@ -2038,7 +2036,7 @@ CommitDate: Tue Jun 13 16:13:23 2006 -0700
  4 files changed, 100 insertions(+), 1 deletion(-)
 
 commit 1d18af9f5adb0ce2e01bc42578fe117c4e924ce8
-Merge: c7b194c 27e9e3c
+Merge: c7b194c59 27e9e3cec
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Jun 13 15:51:57 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -2048,10 +2046,10 @@ CommitDate: Tue Jun 13 15:51:57 2006 -0700
     
     Conflicts:
     
-    	src/cairo-ps-surface.c
+            src/cairo-ps-surface.c
 
 commit c7b194c59544ff441d1e83827242667c0e86dc5a
-Merge: 4b063c6 127fab4
+Merge: 4b063c607 127fab469
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Jun 13 15:46:14 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -2061,10 +2059,10 @@ CommitDate: Tue Jun 13 15:46:14 2006 -0700
     
     Conflicts:
     
-    	src/Makefile.am
-    	src/cairo-font-subset.c
-    	src/cairo-pdf-surface.c
-    	src/cairo-ps-surface.c
+            src/Makefile.am
+            src/cairo-font-subset.c
+            src/cairo-pdf-surface.c
+            src/cairo-ps-surface.c
 
 commit cdf07a9be87515b75156a6f02f050bc5b1e6b5d1
 Author:     Kristian Høgsberg <krh@redhat.com>
@@ -2615,9 +2613,8 @@ CommitDate: Wed Jun 7 17:38:09 2006 -0700
     historical). So let's be consist and rename:
     test/ft-text-vertical-layout-argb32-ref.png -> test/ft-text-vertical-layout-ref.png
 
- test/ft-text-vertical-layout-argb32-ref.png | Bin 1145 -> 0 bytes
- test/ft-text-vertical-layout-ref.png        | Bin 0 -> 1145 bytes
- 2 files changed, 0 insertions(+), 0 deletions(-)
+ ...ayout-argb32-ref.png => ft-text-vertical-layout-ref.png} | Bin
+ 1 file changed, 0 insertions(+), 0 deletions(-)
 
 commit b7b3d05d78f22b6b45c6a54f2647dbdaeb034d37
 Author:     Carl Worth <cworth@cworth.org>
@@ -2638,11 +2635,9 @@ CommitDate: Thu Jun 8 04:06:30 2006 +0800
 
     Make image-*-ref.png image as reference image.
 
- test/ft-text-vertical-layout-argb32-ref.png       | Bin 0 -> 1145 bytes
- test/ft-text-vertical-layout-image-argb32-ref.png | Bin 1145 -> 0 bytes
- test/ft-text-vertical-layout-image-rgb24-ref.png  | Bin 1059 -> 0 bytes
- test/ft-text-vertical-layout-rgb24-ref.png        | Bin 0 -> 1059 bytes
- 4 files changed, 0 insertions(+), 0 deletions(-)
+ ...rgb32-ref.png => ft-text-vertical-layout-argb32-ref.png} | Bin
+ ...-rgb24-ref.png => ft-text-vertical-layout-rgb24-ref.png} | Bin
+ 2 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 5ae2a78a297730cd9d2f45be9f23fbf6e2bffe7d
 Author:     Jinghua Luo <sunmoon1997@gmail.com>
@@ -2679,7 +2674,7 @@ CommitDate: Thu Jun 8 03:33:38 2006 +0800
  10 files changed, 132 insertions(+)
 
 commit bb66d15a7998740b6ce2525ab5d852fb2966f8f8
-Merge: 3594fd2 b7c7d2e
+Merge: 3594fd2d2 b7c7d2e57
 Author:     Jinghua Luo <sunmoon1997@gmail.com>
 AuthorDate: Thu Jun 8 02:38:17 2006 +0800
 Commit:     Jinghua Luo <sunmoon1997@localhost.localdomain>
@@ -2963,7 +2958,7 @@ CommitDate: Tue Jun 6 15:41:31 2006 -0700
     
     This patch was produced with the following (GNU) sed script:
     
-    	sed -i -r -e 's/[ \t]+$//'
+            sed -i -r -e 's/[ \t]+$//'
     
     run on all *.[ch] files within cairo.
     
@@ -3042,7 +3037,7 @@ CommitDate: Tue Jun 6 15:38:58 2006 -0700
     
     This patch was produced with the following (GNU) sed script:
     
-    	sed -i -r -e '/^[ \t]*[{}][ \t]*/ s/[ \t]+$//'
+            sed -i -r -e '/^[ \t]*[{}][ \t]*/ s/[ \t]+$//'
     
     run on all *.[ch] files within cairo.
 
@@ -3079,7 +3074,7 @@ CommitDate: Tue Jun 6 15:35:48 2006 -0700
     
     This patch was produced with the following (GNU) sed script:
     
-    	sed -i -r -e '/^[ \t]*\/?\*/ s/[ \t]+$//'
+            sed -i -r -e '/^[ \t]*\/?\*/ s/[ \t]+$//'
     
     run on all *.[ch] files within cairo, (though I manually excluded
     src/cairo-atsui-font.c which has a code line that appears as a comment
@@ -3154,7 +3149,7 @@ CommitDate: Tue Jun 6 15:25:49 2006 -0700
     
     This patch was produced with the following (GNU) sed script:
     
-    	sed -i -r -e 's/^[ \t]+$//'
+            sed -i -r -e 's/^[ \t]+$//'
     
     run on all *.[ch] files within cairo.
 
@@ -4107,8 +4102,8 @@ CommitDate: Tue May 16 01:04:59 2006 -0700
     
     This was first broken in:
     
-    	PDF: Fold (unused) cairo_pdf_document_t into cairo_pdf_surface_t
-    	f500cef19f049a4a0ed296172618db2f26794932
+            PDF: Fold (unused) cairo_pdf_document_t into cairo_pdf_surface_t
+            f500cef19f049a4a0ed296172618db2f26794932
     
     Thanks, git bisect!
 
@@ -4116,7 +4111,7 @@ CommitDate: Tue May 16 01:04:59 2006 -0700
  1 file changed, 5 insertions(+), 12 deletions(-)
 
 commit d70ade00fb67c6f77d23653481079996ec1e1292
-Merge: 41d4354 c7ef4cb
+Merge: 41d435418 c7ef4cb3f
 Author:     Kristian Høgsberg <krh@dinky.bitplanet.net>
 AuthorDate: Mon May 15 17:53:56 2006 -0400
 Commit:     Kristian Høgsberg <krh@dinky.bitplanet.net>
@@ -4401,11 +4396,9 @@ CommitDate: Wed May 10 14:40:32 2006 -0700
 
     Rename cairo-ps-font to cairo-scaled-font-subsets (file names only)
 
- src/cairo-ps-font-private.h             | 101 ------------------
- src/cairo-ps-font.c                     | 181 --------------------------------
- src/cairo-scaled-font-subsets-private.h | 101 ++++++++++++++++++
- src/cairo-scaled-font-subsets.c         | 181 ++++++++++++++++++++++++++++++++
- 4 files changed, 282 insertions(+), 282 deletions(-)
+ src/{cairo-ps-font-private.h => cairo-scaled-font-subsets-private.h} | 0
+ src/{cairo-ps-font.c => cairo-scaled-font-subsets.c}                 | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
 
 commit f7f9bdc05bd0afc4b709ab6a83074b7e66b1cc60
 Author:     Carl Worth <cworth@cworth.org>
@@ -5023,7 +5016,7 @@ CommitDate: Thu May 4 02:52:38 2006 -0700
  6 files changed, 332 insertions(+), 109 deletions(-)
 
 commit 5e708b38e00f6b2066028c60a5526bf5d5e66356
-Merge: a6b1b01 99719bd
+Merge: a6b1b014b 99719bde9
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Thu May 4 01:46:34 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -5608,9 +5601,9 @@ CommitDate: Wed May 3 00:26:22 2006 -0700
     
     This commit adds the following new functions to the cairo-ps API:
     
-    	cairo_ps_surface_dsc_comment
-    	cairo_ps_surface_dsc_begin_setup
-    	cairo_ps_surface_dsc_begin_page_setup
+            cairo_ps_surface_dsc_comment
+            cairo_ps_surface_dsc_begin_setup
+            cairo_ps_surface_dsc_begin_page_setup
     
     Many thanks are due to Michael Sweet who provided invaluble guidance
     during the design of this API.
@@ -5671,7 +5664,7 @@ CommitDate: Tue May 2 23:35:06 2006 +0200
  1 file changed, 23 insertions(+), 2 deletions(-)
 
 commit 773692b7df9f0ccf250f259c1bc430c343765651
-Merge: bd85701 8488aae
+Merge: bd85701b4 8488aaee1
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
 AuthorDate: Tue May 2 21:52:41 2006 +0200
 Commit:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -5723,8 +5716,8 @@ CommitDate: Tue May 2 11:38:29 2006 -0700
     
     This addresses the original problem noted in mozilla's bug #336129:
     
-    	Missing out-of-memory check at gfx/cairo/cairo/src/cairo-atsui-font.c:185
-    	https://bugzilla.mozilla.org/show_bug.cgi?id=336129
+            Missing out-of-memory check at gfx/cairo/cairo/src/cairo-atsui-font.c:185
+            https://bugzilla.mozilla.org/show_bug.cgi?id=336129
     
     This also adds a comment pointing out another malloc that is not
     checked, (but does not fix it).
@@ -5820,8 +5813,8 @@ CommitDate: Mon May 1 14:50:48 2006 -0700
     
     This provides a simple fix for the crash identified in bug #4705:
     
-    	crash at XRenderAddGlyphs
-    	https://bugs.freedesktop.org/show_bug.cgi?id=4705
+            crash at XRenderAddGlyphs
+            https://bugs.freedesktop.org/show_bug.cgi?id=4705
     
     A later improvement would guarantee that the "font's format" was
     carefully chosen to be able to contain all glyphs in the font without
@@ -6028,7 +6021,7 @@ CommitDate: Mon May 1 22:12:20 2006 +0200
  1 file changed, 1 insertion(+)
 
 commit 6a33993b1510d1c0d311f4a10832ab2bc5ea8f4e
-Merge: b920dfd 3aa5d76
+Merge: b920dfd3d 3aa5d76d2
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
 AuthorDate: Mon May 1 22:01:38 2006 +0200
 Commit:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -6144,8 +6137,8 @@ CommitDate: Thu Apr 27 06:36:16 2006 -0700
     
     (This commit is the combination of the following original commits:
     
-    	6b69e8c012adb4f2fc2ee9c1579fed8214e8f510
-    	2589db92a4395f8e900dbc4eafc45982f0d985d3
+            6b69e8c012adb4f2fc2ee9c1579fed8214e8f510
+            2589db92a4395f8e900dbc4eafc45982f0d985d3
     )
 
  src/cairo-paginated-surface.c |  9 +--------
@@ -6263,8 +6256,8 @@ CommitDate: Wed Apr 26 12:51:54 2006 -0700
     
     Test case for bug #4863:
     
-    	stroking problems with wide dashed lines
-    	https://bugs.freedesktop.org/show_bug.cgi?id=4863
+            stroking problems with wide dashed lines
+            https://bugs.freedesktop.org/show_bug.cgi?id=4863
 
  test/.gitignore   |  1 +
  test/Makefile.am  |  3 +++
@@ -6432,7 +6425,7 @@ CommitDate: Tue Apr 25 07:07:48 2006 -0700
  8 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 6237437f412d9d007e1c49c33f6e81117b612d39
-Merge: 22ab0e5 f1c3754
+Merge: 22ab0e5f1 f1c375475
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Apr 25 07:02:41 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -6486,7 +6479,7 @@ CommitDate: Tue Apr 25 05:44:08 2006 -0700
  3 files changed, 24 insertions(+), 5 deletions(-)
 
 commit 6723547f0035e6c41abee165ebefb7406e40b7d8
-Merge: 8d635a3 e912512
+Merge: 8d635a3aa e912512c6
 Author:     Behdad Esfahbod <behdad@behdad.org>
 AuthorDate: Tue Apr 25 08:28:59 2006 -0400
 Commit:     Behdad Esfahbod <behdad@behdad.org>
@@ -6554,10 +6547,10 @@ CommitDate: Tue Apr 25 03:26:25 2006 -0700
     Since the switch to using paginated, we have a guarantee that the following functions
     will never be called. So we drop them now:
     
-    	_cairo_pdf_surface_composite
-    	_cairo_pdf_surface_fill_rectangles
-    	_cairo_pdf_surface_composite_trapezoids
-    	_cairo_pdf_surface_old_show_glyphs
+            _cairo_pdf_surface_composite
+            _cairo_pdf_surface_fill_rectangles
+            _cairo_pdf_surface_composite_trapezoids
+            _cairo_pdf_surface_old_show_glyphs
 
  src/cairo-pdf-surface.c | 366 +-----------------------------------------------
  1 file changed, 4 insertions(+), 362 deletions(-)
@@ -6733,12 +6726,12 @@ CommitDate: Wed Apr 19 11:07:19 2006 -0700
     With this commit, the following tests change from all-fallback to
     all-native for the PDF backend:
     
-    	show-text-current-point
-    	text-antialias-gray
-    	text-antialias-none
-    	text-antialias-subpixel
-    	text-cache-crash
-    	text-rotate
+            show-text-current-point
+            text-antialias-gray
+            text-antialias-none
+            text-antialias-subpixel
+            text-cache-crash
+            text-rotate
     
     There are rasterization differences in the output (cairo vs. freetype)
     so this commit also adds new PDF-specific reference images for some of
@@ -6766,8 +6759,8 @@ CommitDate: Tue Apr 18 23:31:53 2006 -0700
     With this commit, the two regressions that were recently introduced
     now pass again. Specifically:
     
-    	rectangle-rounding-error
-    	unantialiased-shapes
+            rectangle-rounding-error
+            unantialiased-shapes
 
  src/cairo-pdf-surface.c | 16 ++++++++++++++--
  1 file changed, 14 insertions(+), 2 deletions(-)
@@ -6785,27 +6778,27 @@ CommitDate: Tue Apr 18 23:31:52 2006 -0700
     this commit, the following tests switch from all-fallback to
     all-native and still pass the test suite with flying colors:
     
-    	caps-joins
-    	caps-sub-paths
-    	clip-fill-rule
-    	clip-fill-rule-pixel-aligned
-    	clip-nesting
-    	clip-twice
-    	dash-caps-joins
-    	dash-offset-negative
-    	leaky-polygon
-    	line-width
-    	paint
-    	path-data
-    	transforms
+            caps-joins
+            caps-sub-paths
+            clip-fill-rule
+            clip-fill-rule-pixel-aligned
+            clip-nesting
+            clip-twice
+            dash-caps-joins
+            dash-offset-negative
+            leaky-polygon
+            line-width
+            paint
+            path-data
+            transforms
     
     Meanwhile, the following two tests also switch from fallback to
     native, but cause the test suite to complain about failures. These
     both look like a mostly harmless failure to respect the ANTIALIAS_NONE
     hint in the PDF output:
     
-    	rectangle-rounding-error-pdf-argb32-out.pdf
-    	unantialiased-shapes-pdf-argb32-out.pdf
+            rectangle-rounding-error-pdf-argb32-out.pdf
+            unantialiased-shapes-pdf-argb32-out.pdf
 
  src/cairo-pdf-surface.c | 65 ++++++++++++++++++++++++++++++++++---------------
  1 file changed, 46 insertions(+), 19 deletions(-)
@@ -6854,12 +6847,12 @@ CommitDate: Tue Apr 18 16:53:23 2006 -0700
     all-fallback to all-native output while no tests report any new
     failures:
     
-    	dash-zero-legnth
-    	fill-and-stroke
-    	multi-page
-    	new-sub-path
-    	rel-path
-    	self-intersecting
+            dash-zero-legnth
+            fill-and-stroke
+            multi-page
+            new-sub-path
+            rel-path
+            self-intersecting
 
  src/cairo-pdf-surface.c | 144 +++++++++++++++++++++++++++++++++++++++++++-----
  1 file changed, 130 insertions(+), 14 deletions(-)
@@ -6889,7 +6882,7 @@ CommitDate: Tue Apr 18 15:19:36 2006 -0700
  1 file changed, 0 insertions(+), 0 deletions(-)
 
 commit 448e904b2a64769aa9cfd8ea011c2b5fb6ec883b
-Merge: cb77876 ffab259
+Merge: cb778760c ffab2592f
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Apr 18 15:18:31 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -6899,9 +6892,9 @@ CommitDate: Tue Apr 18 15:18:31 2006 -0700
     
     Conflicts:
     
-    	src/cairo-path-stroke.c
-    	src/cairo-pdf-surface.c
-    	src/cairo-ps-surface.c
+            src/cairo-path-stroke.c
+            src/cairo-pdf-surface.c
+            src/cairo-ps-surface.c
 
 commit ffab2592fc5d0ccd498aff2f4e645eefe351b61b
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -6917,7 +6910,7 @@ CommitDate: Tue Apr 18 21:52:06 2006 +0200
  1 file changed, 3 insertions(+), 5 deletions(-)
 
 commit 9c65dee86b469c1eedf2690334d5a2b4afc849c8
-Merge: 36fb36f 3f84df9
+Merge: 36fb36fe8 3f84df97d
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
 AuthorDate: Tue Apr 18 21:23:59 2006 +0200
 Commit:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -6954,9 +6947,9 @@ CommitDate: Tue Apr 18 11:33:49 2006 -0700
     
     After this patch we have three PDF tests passing with native output:
     
-    	clip-all
-    	fill-rule
-    	nil-surface
+            clip-all
+            fill-rule
+            nil-surface
 
  src/cairo-pdf-surface.c | 61 ++++++++++++++++++++++++++++++++++++++++++++-----
  1 file changed, 55 insertions(+), 6 deletions(-)
@@ -7188,8 +7181,8 @@ CommitDate: Fri Apr 14 16:21:16 2006 -0700
     
     This closes bug #5816:
     
-    	Image surfaces do not start out blank by default
-    	https://bugs.freedesktop.org/show_bug.cgi?id=5816
+            Image surfaces do not start out blank by default
+            https://bugs.freedesktop.org/show_bug.cgi?id=5816
     
     This also fixes all of the test suite failures introduced by moving
     the CLEAR on blank page optimization up to the paginated surface from
@@ -7519,7 +7512,7 @@ CommitDate: Wed Apr 12 15:48:59 2006 -0700
  1 file changed, 109 insertions(+)
 
 commit 6a5d8fc7ffb5f425ceffd313b8a875f38126b324
-Merge: b30e281 0727e3c
+Merge: b30e28162 0727e3c1a
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Apr 12 14:15:08 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -7529,8 +7522,8 @@ CommitDate: Wed Apr 12 14:15:08 2006 -0700
     
     Conflicts:
     
-    	src/cairo-hash.c
-    	src/cairo-ps-surface.c
+            src/cairo-hash.c
+            src/cairo-ps-surface.c
 
 commit b30e281627d86f3c0d0f4d5008bbbf7e77c09350
 Author:     Carl Worth <cworth@cworth.org>
@@ -7594,7 +7587,7 @@ CommitDate: Wed Apr 12 13:39:24 2006 -0700
  2 files changed, 15 insertions(+), 11 deletions(-)
 
 commit a7abf8e4513a7ca03cdb7db6f80a438a4897d208
-Merge: 0386a72 ade195c
+Merge: 0386a7289 ade195cdb
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Wed Apr 12 12:54:28 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -7660,7 +7653,7 @@ CommitDate: Tue Apr 11 12:31:57 2006 -0700
  1 file changed, 38 insertions(+), 5 deletions(-)
 
 commit 9231ab40437e70818c9525fa9648ff7a5d11e44a
-Merge: 1e5f5ae baa3436
+Merge: 1e5f5aed0 baa3436e9
 Author:     Anders Carlsson <andersca@luminoth.local>
 AuthorDate: Tue Apr 11 01:09:30 2006 +0200
 Commit:     Anders Carlsson <andersca@luminoth.local>
@@ -7790,7 +7783,7 @@ CommitDate: Mon Apr 10 10:54:24 2006 -0700
  2 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 807f64d57c616e2ce8a61202cd9b59ac7a6a26cb
-Merge: 5ee26e3 732e062
+Merge: 5ee26e3b0 732e06258
 Author:     Anders Carlsson <andersca@luminoth.local>
 AuthorDate: Mon Apr 10 19:32:47 2006 +0200
 Commit:     Anders Carlsson <andersca@luminoth.local>
@@ -8005,7 +7998,7 @@ CommitDate: Wed Apr 5 21:24:06 2006 +0200
  1 file changed, 9 insertions(+), 4 deletions(-)
 
 commit 4fd30e6f402ae031c2084c20f136b84307a128cc
-Merge: a8e5a77 66ed981
+Merge: a8e5a77ad 66ed9811c
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Apr 4 15:04:36 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -8025,7 +8018,7 @@ CommitDate: Tue Apr 4 15:04:18 2006 -0700
  1 file changed, 1 insertion(+)
 
 commit 66ed9811cc542d99cb5a6b6b792c9a9f0832fbf9
-Merge: edb83e3 45bbdf9
+Merge: edb83e306 45bbdf94c
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Apr 4 14:58:52 2006 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -8067,7 +8060,7 @@ CommitDate: Tue Apr 4 11:21:17 2006 -0700
     PostScript output. This patch is based on original work by Keith
     Packard in the following commit:
     
-    	06b83b89fc4271060c63b284d7909162b92152f1
+            06b83b89fc4271060c63b284d7909162b92152f1
     
     One problem with this approach is that it attempts to put an entire
     image into a PostScript string object. However, PostScript strings are
@@ -8388,7 +8381,7 @@ CommitDate: Fri Mar 17 21:26:27 2006 +0100
  1 file changed, 7 insertions(+), 6 deletions(-)
 
 commit 0623f8a7d1452c27892f938fe28e6e173e67e136
-Merge: 26b06b3 a7f58f8
+Merge: 26b06b363 a7f58f886
 Author:     Behdad Esfahbod <behdad@home.(none)>
 AuthorDate: Wed Mar 15 15:25:59 2006 -0500
 Commit:     Behdad Esfahbod <behdad@home.(none)>
@@ -8541,8 +8534,8 @@ CommitDate: Mon Mar 13 13:20:29 2006 -0800
     
     Fixes bug #6185:
     
-    	Strange pointer operations in fbCompositeTrans_0888xnx0888 (pixman/src/fbpict.c)
-    	https://bugs.freedesktop.org/show_bug.cgi?id=6185
+            Strange pointer operations in fbCompositeTrans_0888xnx0888 (pixman/src/fbpict.c)
+            https://bugs.freedesktop.org/show_bug.cgi?id=6185
 
  pixman/src/fbpict.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
@@ -8557,8 +8550,8 @@ CommitDate: Mon Mar 13 12:25:25 2006 -0800
     
     This closes bug #6197:
     
-    	Null pointer dereference on OOM in _clip_and_composite_trapezoids()
-    	https://bugs.freedesktop.org/show_bug.cgi?id=6197
+            Null pointer dereference on OOM in _clip_and_composite_trapezoids()
+            https://bugs.freedesktop.org/show_bug.cgi?id=6197
 
  src/cairo-surface-fallback.c | 3 +++
  1 file changed, 3 insertions(+)
@@ -8573,8 +8566,8 @@ CommitDate: Mon Mar 13 12:20:23 2006 -0800
     
     This closes bug #6196:
     
-    	Memory leak in _cairo_clip_intersect_path (src/cairo-clip.c)
-    	https://bugs.freedesktop.org/show_bug.cgi?id=6196
+            Memory leak in _cairo_clip_intersect_path (src/cairo-clip.c)
+            https://bugs.freedesktop.org/show_bug.cgi?id=6196
 
  src/cairo-clip.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
@@ -8589,14 +8582,14 @@ CommitDate: Mon Mar 13 12:14:47 2006 -0800
     
     This fixes bug #6186:
     
-    	Memory leak in emit_image_rgb_data (src/cairo-pdf-surface.c)
-    	https://bugs.freedesktop.org/show_bug.cgi?id=6186
+            Memory leak in emit_image_rgb_data (src/cairo-pdf-surface.c)
+            https://bugs.freedesktop.org/show_bug.cgi?id=6186
 
  src/cairo-pdf-surface.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 commit 25cccaaa1f6d337a1a0423a298f94456e72a820a
-Merge: c780f4a 118f71b
+Merge: c780f4a56 118f71b43
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Mon Mar 13 12:05:37 2006 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -8614,14 +8607,14 @@ CommitDate: Mon Mar 13 12:05:13 2006 -0800
     
     This close bug #6176:
     
-    	Null pointer dereference on OOM in _cairo_output_stream_create_for_file()
-    	https://bugs.freedesktop.org/show_bug.cgi?id=6176
+            Null pointer dereference on OOM in _cairo_output_stream_create_for_file()
+            https://bugs.freedesktop.org/show_bug.cgi?id=6176
 
  src/cairo-output-stream.c | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 commit 118f71b43870551db520ad56234c650aa4b61296
-Merge: 6659991 92e09ee
+Merge: 66599911e 92e09ee72
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
 AuthorDate: Sun Mar 12 19:30:29 2006 +0100
 Commit:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -8680,7 +8673,7 @@ CommitDate: Sun Mar 5 23:49:38 2006 +0100
  1 file changed, 18 insertions(+), 13 deletions(-)
 
 commit 3333bba82d26a0b11961af3cb5c29c79a1a0d07b
-Merge: 62812b2 3370cd6
+Merge: 62812b25c 3370cd631
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Fri Mar 3 15:41:14 2006 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -8699,8 +8692,8 @@ CommitDate: Fri Mar 3 15:40:58 2006 -0800
     
     This fixes bug #5528:
     
-    	_XError from XRenderCompositeText8
-    	https://bugs.freedesktop.org/show_bug.cgi?id=5528
+            _XError from XRenderCompositeText8
+            https://bugs.freedesktop.org/show_bug.cgi?id=5528
     (cherry picked from 7d498ca91279a4e793d704c5b878f070be4c878f commit)
 
  src/cairo-xlib-surface.c | 49 ++++++++++++++++++++++++++++++++++--------------
@@ -8716,8 +8709,8 @@ CommitDate: Thu Mar 2 10:32:38 2006 -0800
     
     This demonstrates an Xlib crash when rendering many glyphs. See:
     
-    	_XError from XRenderCompositeText8
-    	https://bugs.freedesktop.org/show_bug.cgi?id=5528
+            _XError from XRenderCompositeText8
+            https://bugs.freedesktop.org/show_bug.cgi?id=5528
     
     for more details.
 
@@ -8753,7 +8746,7 @@ CommitDate: Wed Mar 1 19:17:00 2006 +0100
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit 2fb016c75b950b3b1fe077dc349713f61118fd7c
-Merge: 8176c93 3490ed9
+Merge: 8176c93bc 3490ed989
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
 AuthorDate: Wed Mar 1 11:26:48 2006 +0100
 Commit:     Vladimir Vukicevic <vladimir@cyclone.vlad1.com>
@@ -8791,7 +8784,7 @@ CommitDate: Tue Feb 28 14:10:36 2006 -0800
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit e3017c3c8de2b90e1d3470866f9bd6cc2cd313fa
-Merge: ce683a2 2984f60
+Merge: ce683a240 2984f60a3
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Feb 28 12:07:14 2006 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -8800,7 +8793,7 @@ CommitDate: Tue Feb 28 12:07:14 2006 -0800
     Merge in upstream 'ps-surface' changes
 
 commit f5566c9b20edf04b44f60bba164c226f2718a935
-Merge: 49b4fe1 d985a9d
+Merge: 49b4fe10d d985a9d66
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
 AuthorDate: Tue Feb 28 16:29:45 2006 +0100
 Commit:     Vladimir Vukicevic <vladimir@cyclone.vlad1.com>
@@ -8885,7 +8878,7 @@ CommitDate: Tue Feb 28 16:23:14 2006 +0100
  3 files changed, 6 insertions(+), 26 deletions(-)
 
 commit 6fe93cbf5b368a9a6daf54370aa0e7735b411474
-Merge: f2245a7 210dd59
+Merge: f2245a793 210dd59a7
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Tue Feb 28 02:36:45 2006 -0800
 Commit:     Carl Worth <cworth@cworth.org>
@@ -9124,13 +9117,11 @@ CommitDate: Mon Feb 27 14:56:41 2006 -0800
 
     Rename cairo_analyze_surface_t to cairo_analysis_surface_t.
 
- src/Makefile.am                      |   6 +-
- src/cairo-analysis-surface-private.h |  55 ++++++++
- src/cairo-analysis-surface.c         | 246 +++++++++++++++++++++++++++++++++++
- src/cairo-analyze-surface-private.h  |  55 --------
- src/cairo-analyze-surface.c          | 246 -----------------------------------
- src/cairo-paginated-surface.c        |  18 +--
- 6 files changed, 313 insertions(+), 313 deletions(-)
+ src/Makefile.am                                    |   6 +-
+ ...-private.h => cairo-analysis-surface-private.h} |  18 ++--
+ ...-analyze-surface.c => cairo-analysis-surface.c} | 100 ++++++++++-----------
+ src/cairo-paginated-surface.c                      |  18 ++--
+ 4 files changed, 71 insertions(+), 71 deletions(-)
 
 commit f9d4482137e7f13e634cc578c64d84ffdea16bca
 Author:     Keith Packard <keithp@evo.keithp.com>
@@ -9585,27 +9576,17 @@ CommitDate: Wed Feb 15 15:00:26 2006 -0800
 
     Rename .cvsignore to .gitignore. Add *~ and *.o.
 
- .cvsignore                     |  20 -------
- .gitignore                     |  24 +++++++++
- doc/.cvsignore                 |   2 -
- doc/.gitignore                 |   3 ++
- doc/public/.cvsignore          |  16 ------
- doc/public/.gitignore          |  17 ++++++
- doc/public/tmpl/.cvsignore     |   1 -
- doc/public/tmpl/.gitignore     |   3 ++
- doc/tutorial/slides/.cvsignore |   7 ---
- doc/tutorial/slides/.gitignore |   7 +++
- doc/tutorial/src/.cvsignore    |   7 ---
- doc/tutorial/src/.gitignore    |   8 +++
- pixman/.cvsignore              |  19 -------
- pixman/.gitignore              |  20 +++++++
- pixman/src/.cvsignore          |   8 ---
- pixman/src/.gitignore          |  10 ++++
- src/.cvsignore                 |  11 ----
- src/.gitignore                 |  13 +++++
- test/.cvsignore                | 114 ----------------------------------------
- test/.gitignore                | 116 +++++++++++++++++++++++++++++++++++++++++
- 20 files changed, 221 insertions(+), 205 deletions(-)
+ .cvsignore => .gitignore                       | 6 +++++-
+ doc/{.cvsignore => .gitignore}                 | 1 +
+ doc/public/{.cvsignore => .gitignore}          | 1 +
+ doc/public/tmpl/{.cvsignore => .gitignore}     | 2 ++
+ doc/tutorial/slides/{.cvsignore => .gitignore} | 2 +-
+ doc/tutorial/src/{.cvsignore => .gitignore}    | 3 ++-
+ pixman/{.cvsignore => .gitignore}              | 1 +
+ pixman/src/{.cvsignore => .gitignore}          | 2 ++
+ src/{.cvsignore => .gitignore}                 | 2 ++
+ test/{.cvsignore => .gitignore}                | 2 ++
+ 10 files changed, 19 insertions(+), 3 deletions(-)
 
 commit f4270b3dfc5e6905c58adb2f6b5d9a049dc616fa
 Author:     Emmanuel Pacaud <emmanuel.pacaud@free.fr>
@@ -9749,23 +9730,18 @@ CommitDate: Wed Jan 25 10:22:32 2006 +0000
     Add more interesting LCA exmaple.
     Add some notes about how to use this stuff.
 
- ChangeLog                                      |  28 +++
- doc/tutorial/src/Makefile                      |  12 +-
- doc/tutorial/src/README                        |  66 +++++++
- doc/tutorial/src/cairo-tutorial-gtk.h          | 116 ------------
- doc/tutorial/src/cairo-tutorial-pdf.h          |  74 --------
- doc/tutorial/src/cairo-tutorial-png.h          |  74 --------
- doc/tutorial/src/cairo-tutorial-xlib.h         | 219 ---------------------
- doc/tutorial/src/cairo-tutorial.h              |  41 ----
- doc/tutorial/src/circle.c                      |  13 +-
- doc/tutorial/src/expander.c                    |  13 --
- doc/tutorial/src/include/cairo-tutorial-gtk.h  | 116 ++++++++++++
- doc/tutorial/src/include/cairo-tutorial-pdf.h  |  74 ++++++++
- doc/tutorial/src/include/cairo-tutorial-png.h  |  74 ++++++++
- doc/tutorial/src/include/cairo-tutorial-xlib.h | 251 +++++++++++++++++++++++++
- doc/tutorial/src/include/cairo-tutorial.h      |  41 ++++
- doc/tutorial/src/lca.c                         |  32 ++++
- 16 files changed, 696 insertions(+), 548 deletions(-)
+ ChangeLog                                          | 28 +++++++++
+ doc/tutorial/src/Makefile                          | 12 ++--
+ doc/tutorial/src/README                            | 66 ++++++++++++++++++++++
+ doc/tutorial/src/circle.c                          | 13 +++--
+ doc/tutorial/src/expander.c                        | 13 -----
+ .../src/{ => include}/cairo-tutorial-gtk.h         |  0
+ .../src/{ => include}/cairo-tutorial-pdf.h         |  0
+ .../src/{ => include}/cairo-tutorial-png.h         |  0
+ .../src/{ => include}/cairo-tutorial-xlib.h        | 44 +++++++++++++--
+ doc/tutorial/src/{ => include}/cairo-tutorial.h    |  0
+ doc/tutorial/src/lca.c                             | 32 +++++++++++
+ 11 files changed, 178 insertions(+), 30 deletions(-)
 
 commit 9abe21ac70e0d1ae75397f40455f1d55fc5b5018
 Author:     Carl Worth <cworth@cworth.org>
@@ -10181,15 +10157,14 @@ CommitDate: Thu Jan 12 16:35:12 2006 +0000
     Remove backend-specific tests (ps-surface, pdf-surface, and pdf-clip) that are now redundant with the ps and pdf support in the rest of the test suite.
     Add a new one-off test for testing show_page with both the ps and pdf backends.
 
- ChangeLog          |  17 ++++++
- configure.in       |   2 +
- test/.cvsignore    |   9 +--
- test/Makefile.am   |  21 +++----
- test/multi-page.c  | 170 +++++++++++++++++++++++++++++++++++++++++++++++++++++
- test/pdf-clip.c    | 134 -----------------------------------------
- test/pdf-surface.c | 111 ----------------------------------
- test/ps-surface.c  | 122 --------------------------------------
- 8 files changed, 199 insertions(+), 387 deletions(-)
+ ChangeLog                           |  17 +++++
+ configure.in                        |   2 +
+ test/.cvsignore                     |   9 +--
+ test/Makefile.am                    |  21 ++----
+ test/{ps-surface.c => multi-page.c} |  80 ++++++++++++++++-----
+ test/pdf-clip.c                     | 134 ------------------------------------
+ test/pdf-surface.c                  | 111 -----------------------------
+ 7 files changed, 93 insertions(+), 281 deletions(-)
 
 commit 3647ff95f968a68f938fa7cdea9d48880f1064bd
 Author:     Carl Worth <cworth@cworth.org>

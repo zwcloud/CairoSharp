@@ -558,17 +558,14 @@ CommitDate: Thu Oct 2 08:46:44 2014 +0100
  test/reference/degenerate-pen.ref.png               | Bin 0 -> 1019 bytes
  test/reference/drunkard-tails.ref.png               | Bin 6261 -> 6157 bytes
  test/reference/extend-pad-border.ref.png            | Bin 0 -> 495 bytes
- .../extended-blend-alpha-mask.argb32.ref.png        | Bin 0 -> 9221 bytes
- test/reference/extended-blend-alpha-mask.ref.png    | Bin 9221 -> 0 bytes
+ ...png => extended-blend-alpha-mask.argb32.ref.png} | Bin
  .../extended-blend-alpha-mask.rgb24.ref.png         | Bin 0 -> 4597 bytes
- test/reference/extended-blend-alpha.argb32.ref.png  | Bin 0 -> 9406 bytes
- test/reference/extended-blend-alpha.ref.png         | Bin 9406 -> 0 bytes
+ ....ref.png => extended-blend-alpha.argb32.ref.png} | Bin
  test/reference/extended-blend-alpha.rgb24.ref.png   | Bin 0 -> 5740 bytes
  test/reference/extended-blend-mask.argb32.ref.png   | Bin 0 -> 3959 bytes
  test/reference/extended-blend-mask.ref.png          | Bin 3971 -> 0 bytes
  test/reference/extended-blend-mask.rgb24.ref.png    | Bin 0 -> 3634 bytes
- .../extended-blend-solid-alpha.argb32.ref.png       | Bin 0 -> 9406 bytes
- test/reference/extended-blend-solid-alpha.ref.png   | Bin 9406 -> 0 bytes
+ ...ng => extended-blend-solid-alpha.argb32.ref.png} | Bin
  .../extended-blend-solid-alpha.rgb24.ref.png        | Bin 0 -> 5740 bytes
  test/reference/extended-blend-solid.argb32.ref.png  | Bin 0 -> 4072 bytes
  test/reference/extended-blend-solid.ref.png         | Bin 4063 -> 0 bytes
@@ -778,7 +775,7 @@ CommitDate: Thu Oct 2 08:46:44 2014 +0100
  test/reference/world-map-fill.ref.png               | Bin 0 -> 57407 bytes
  test/reference/world-map-stroke.ref.png             | Bin 0 -> 65152 bytes
  test/reference/world-map.ref.png                    | Bin 0 -> 70463 bytes
- 297 files changed, 0 insertions(+), 0 deletions(-)
+ 294 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 950f1e7103a3b4f3405fbb3ee2844ed24b902834
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -1304,8 +1301,7 @@ CommitDate: Tue Sep 30 13:57:05 2014 +0100
  test/reference/aliasing.rgb24.ref.png              | Bin 106073 -> 104193 bytes
  test/reference/arc-direction.argb32.ref.png        | Bin 6491 -> 6473 bytes
  test/reference/arc-direction.rgb24.ref.png         | Bin 6491 -> 6473 bytes
- test/reference/big-little-triangle.argb32.ref.png  | Bin 0 -> 409 bytes
- test/reference/big-little-triangle.ref.png         | Bin 409 -> 0 bytes
+ ....ref.png => big-little-triangle.argb32.ref.png} | Bin
  test/reference/big-little-triangle.rgb24.ref.png   | Bin 329 -> 331 bytes
  test/reference/bug-extents.argb32.ref.png          | Bin 9257 -> 9264 bytes
  test/reference/bug-extents.rgb24.ref.png           | Bin 9257 -> 9264 bytes
@@ -1313,8 +1309,7 @@ CommitDate: Tue Sep 30 13:57:05 2014 +0100
  test/reference/bug-spline.rgb24.ref.png            | Bin 5462 -> 5490 bytes
  test/reference/caps-joins-alpha.argb32.ref.png     | Bin 2479 -> 2482 bytes
  test/reference/caps-joins-alpha.rgb24.ref.png      | Bin 2479 -> 2482 bytes
- test/reference/clear.argb32.ref.png                | Bin 0 -> 692 bytes
- test/reference/clear.ref.png                       | Bin 692 -> 0 bytes
+ .../{clear.ref.png => clear.argb32.ref.png}        | Bin
  test/reference/clear.rgb24.ref.png                 | Bin 0 -> 621 bytes
  test/reference/clip-disjoint-quad.argb32.ref.png   | Bin 1643 -> 1642 bytes
  test/reference/clip-disjoint-quad.rgb24.ref.png    | Bin 1643 -> 1642 bytes
@@ -1322,8 +1317,7 @@ CommitDate: Tue Sep 30 13:57:05 2014 +0100
  test/reference/clip-disjoint.rgb24.ref.png         | Bin 5465 -> 5464 bytes
  test/reference/clip-fill-eo-unbounded.ref.png      | Bin 4084 -> 4076 bytes
  test/reference/clip-fill-nz-unbounded.ref.png      | Bin 4084 -> 4076 bytes
- test/reference/clip-fill-rule.argb32.ref.png       | Bin 0 -> 437 bytes
- test/reference/clip-fill-rule.ref.png              | Bin 437 -> 0 bytes
+ ...-rule.ref.png => clip-fill-rule.argb32.ref.png} | Bin
  test/reference/clip-fill-rule.rgb24.ref.png        | Bin 0 -> 388 bytes
  .../clip-group-shapes-circles.argb32.ref.png       | Bin 1526 -> 1533 bytes
  .../clip-group-shapes-circles.rgb24.ref.png        | Bin 1526 -> 1533 bytes
@@ -1344,8 +1338,7 @@ CommitDate: Tue Sep 30 13:57:05 2014 +0100
  test/reference/fill-alpha.argb32.ref.png           | Bin 2815 -> 2815 bytes
  test/reference/fill-alpha.rgb24.ref.png            | Bin 2815 -> 2815 bytes
  test/reference/fill-degenerate-sort-order.ref.png  | Bin 2410 -> 2414 bytes
- test/reference/fill-rule.argb32.ref.png            | Bin 0 -> 2086 bytes
- test/reference/fill-rule.ref.png                   | Bin 2086 -> 0 bytes
+ ...{fill-rule.ref.png => fill-rule.argb32.ref.png} | Bin
  test/reference/fill-rule.rgb24.ref.png             | Bin 0 -> 1797 bytes
  .../ft-text-vertical-layout-type1.argb32.ref.png   | Bin 3084 -> 3075 bytes
  .../ft-text-vertical-layout-type1.rgb24.ref.png    | Bin 3084 -> 3075 bytes
@@ -1372,8 +1365,7 @@ CommitDate: Tue Sep 30 13:57:05 2014 +0100
  test/reference/mask.argb32.ref.png                 | Bin 0 -> 8681 bytes
  test/reference/mask.ref.png                        | Bin 8565 -> 0 bytes
  test/reference/mask.rgb24.ref.png                  | Bin 0 -> 7215 bytes
- test/reference/operator-alpha.argb32.ref.png       | Bin 0 -> 280 bytes
- test/reference/operator-alpha.ref.png              | Bin 280 -> 0 bytes
+ ...alpha.ref.png => operator-alpha.argb32.ref.png} | Bin
  test/reference/operator-alpha.rgb24.ref.png        | Bin 0 -> 205 bytes
  test/reference/operator-clear.argb32.ref.png       | Bin 1068 -> 1067 bytes
  test/reference/operator-clear.ref.png              | Bin 1071 -> 0 bytes
@@ -1381,20 +1373,15 @@ CommitDate: Tue Sep 30 13:57:05 2014 +0100
  test/reference/operator-source.argb32.ref.png      | Bin 0 -> 5626 bytes
  test/reference/operator-source.ref.png             | Bin 5614 -> 0 bytes
  test/reference/operator-source.rgb24.ref.png       | Bin 0 -> 4026 bytes
- test/reference/operator.argb32.ref.png             | Bin 0 -> 238 bytes
- test/reference/operator.ref.png                    | Bin 238 -> 0 bytes
+ .../{operator.ref.png => operator.argb32.ref.png}  | Bin
  test/reference/operator.rgb24.ref.png              | Bin 0 -> 189 bytes
- test/reference/over-above-source.argb32.ref.png    | Bin 0 -> 557 bytes
- test/reference/over-above-source.ref.png           | Bin 557 -> 0 bytes
+ ...ce.ref.png => over-above-source.argb32.ref.png} | Bin
  test/reference/over-above-source.rgb24.ref.png     | Bin 0 -> 459 bytes
- test/reference/over-around-source.argb32.ref.png   | Bin 0 -> 633 bytes
- test/reference/over-around-source.ref.png          | Bin 633 -> 0 bytes
+ ...e.ref.png => over-around-source.argb32.ref.png} | Bin
  test/reference/over-around-source.rgb24.ref.png    | Bin 0 -> 504 bytes
- test/reference/over-below-source.argb32.ref.png    | Bin 0 -> 447 bytes
- test/reference/over-below-source.ref.png           | Bin 447 -> 0 bytes
+ ...ce.ref.png => over-below-source.argb32.ref.png} | Bin
  test/reference/over-below-source.rgb24.ref.png     | Bin 0 -> 389 bytes
- test/reference/over-between-source.argb32.ref.png  | Bin 0 -> 607 bytes
- test/reference/over-between-source.ref.png         | Bin 607 -> 0 bytes
+ ....ref.png => over-between-source.argb32.ref.png} | Bin
  test/reference/over-between-source.rgb24.ref.png   | Bin 0 -> 482 bytes
  test/reference/path-append.argb32.ref.png          | Bin 6297 -> 6309 bytes
  test/reference/path-append.rgb24.ref.png           | Bin 6297 -> 6309 bytes
@@ -1443,7 +1430,7 @@ CommitDate: Tue Sep 30 13:57:05 2014 +0100
  test/reference/user-font-proxy.rgb24.ref.png       | Bin 16971 -> 16981 bytes
  test/reference/user-font.argb32.ref.png            | Bin 5882 -> 5889 bytes
  test/reference/user-font.rgb24.ref.png             | Bin 5882 -> 5889 bytes
- 144 files changed, 34 insertions(+), 52 deletions(-)
+ 134 files changed, 34 insertions(+), 52 deletions(-)
 
 commit ff23afd5f26e46e9b3c1fbfa31b2809f4329c4f0
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -5195,12 +5182,10 @@ CommitDate: Wed Sep 11 19:32:08 2013 +0200
     Signed-off-by: Bryce Harrington <b.harrington@samsung.com>
 
  test/pixman-downscale.c                            | 146 +++++++++++++++++++--
- test/reference/pixman-downscale-24.ref.png         | Bin 191 -> 0 bytes
  test/reference/pixman-downscale-95.ref.png         | Bin 285 -> 0 bytes
- test/reference/pixman-downscale-96.ref.png         | Bin 301 -> 0 bytes
- test/reference/pixman-downscale-best-24.ref.png    | Bin 0 -> 191 bytes
+ ...24.ref.png => pixman-downscale-best-24.ref.png} | Bin
  test/reference/pixman-downscale-best-95.ref.png    | Bin 0 -> 685 bytes
- test/reference/pixman-downscale-best-96.ref.png    | Bin 0 -> 301 bytes
+ ...96.ref.png => pixman-downscale-best-96.ref.png} | Bin
  .../reference/pixman-downscale-bilinear-24.ref.png | Bin 0 -> 191 bytes
  .../reference/pixman-downscale-bilinear-95.ref.png | Bin 0 -> 685 bytes
  .../reference/pixman-downscale-bilinear-96.ref.png | Bin 0 -> 301 bytes
@@ -5213,7 +5198,7 @@ CommitDate: Wed Sep 11 19:32:08 2013 +0200
  test/reference/pixman-downscale-nearest-24.ref.png | Bin 0 -> 191 bytes
  test/reference/pixman-downscale-nearest-95.ref.png | Bin 0 -> 685 bytes
  test/reference/pixman-downscale-nearest-96.ref.png | Bin 0 -> 301 bytes
- 19 files changed, 132 insertions(+), 14 deletions(-)
+ 17 files changed, 132 insertions(+), 14 deletions(-)
 
 commit 0f554c36d3edf341a9aef8eedfde57f3be635500
 Author:     Bryce Harrington <b.harrington@samsung.com>
@@ -5231,12 +5216,11 @@ CommitDate: Wed Sep 11 19:32:08 2013 +0200
     
     Signed-off-by: Bryce Harrington <b.harrington@samsung.com>
 
- test/pixman-downscale.c                    |  21 +++++++++++++++++----
- test/reference/pixman-downscale-24.ref.png | Bin 0 -> 191 bytes
- test/reference/pixman-downscale-95.ref.png | Bin 0 -> 285 bytes
- test/reference/pixman-downscale-96.ref.png | Bin 0 -> 301 bytes
- test/reference/pixman-downscale.ref.png    | Bin 191 -> 0 bytes
- 5 files changed, 17 insertions(+), 4 deletions(-)
+ test/pixman-downscale.c                            |  21 +++++++++++++++++----
+ ...wnscale.ref.png => pixman-downscale-24.ref.png} | Bin
+ test/reference/pixman-downscale-95.ref.png         | Bin 0 -> 285 bytes
+ test/reference/pixman-downscale-96.ref.png         | Bin 0 -> 301 bytes
+ 4 files changed, 17 insertions(+), 4 deletions(-)
 
 commit 642b6d80917feeea878a11f8aaf179b7a1e5392d
 Author:     Bryce Harrington <b.harrington@samsung.com>
@@ -6314,12 +6298,10 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
 
  test/reference/a8-clear.ref.png                        | Bin 272 -> 0 bytes
  test/reference/aliasing.ref.png                        | Bin 76314 -> 0 bytes
- test/reference/alpha-similar.argb32.ref.png            | Bin 0 -> 99 bytes
- test/reference/alpha-similar.ref.png                   | Bin 99 -> 0 bytes
+ ...ha-similar.ref.png => alpha-similar.argb32.ref.png} | Bin
  test/reference/arc-direction.ref.png                   | Bin 4124 -> 0 bytes
  test/reference/big-line.ref.png                        | Bin 897 -> 0 bytes
- test/reference/bitmap-font.argb32.ref.png              | Bin 0 -> 950 bytes
- test/reference/bitmap-font.ref.png                     | Bin 950 -> 0 bytes
+ ...{bitmap-font.ref.png => bitmap-font.argb32.ref.png} | Bin
  test/reference/bug-40410.ref.png                       | Bin 428 -> 0 bytes
  test/reference/bug-bo-ricotz.ref.png                   | Bin 2108 -> 0 bytes
  test/reference/bug-extents.ref.png                     | Bin 6364 -> 0 bytes
@@ -6328,8 +6310,7 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/caps.ref.png                            | Bin 1687 -> 0 bytes
  test/reference/clear-source.ref.png                    | Bin 779 -> 0 bytes
  test/reference/clip-disjoint-hatching.ref.png          | Bin 4390 -> 0 bytes
- .../clip-fill-rule-pixel-aligned.argb32.ref.png        | Bin 0 -> 195 bytes
- test/reference/clip-fill-rule-pixel-aligned.ref.png    | Bin 195 -> 0 bytes
+ ...png => clip-fill-rule-pixel-aligned.argb32.ref.png} | Bin
  test/reference/clip-fill.ref.png                       | Bin 836 -> 0 bytes
  test/reference/clip-group-shapes-circles.ref.png       | Bin 1178 -> 0 bytes
  test/reference/clip-image.ref.png                      | Bin 2679 -> 0 bytes
@@ -6339,8 +6320,7 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/clip-push-group.ref.png                 | Bin 166 -> 0 bytes
  test/reference/clip-shape.ref.png                      | Bin 2249 -> 0 bytes
  test/reference/clip-text.ref.png                       | Bin 796 -> 0 bytes
- test/reference/clip-unbounded.argb32.ref.png           | Bin 0 -> 100 bytes
- test/reference/clip-unbounded.ref.png                  | Bin 100 -> 0 bytes
+ ...unbounded.ref.png => clip-unbounded.argb32.ref.png} | Bin
  test/reference/clipped-group.ref.png                   | Bin 289 -> 0 bytes
  test/reference/close-path.ref.png                      | Bin 271 -> 0 bytes
  test/reference/copy-path.ref.png                       | Bin 513 -> 0 bytes
@@ -6352,10 +6332,8 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/dash-zero-length.ref.png                | Bin 232 -> 0 bytes
  test/reference/degenerate-linear-gradient.ref.png      | Bin 322 -> 0 bytes
  test/reference/degenerate-pen.ref.png                  | Bin 752 -> 0 bytes
- test/reference/device-offset-positive.argb32.ref.png   | Bin 0 -> 139 bytes
- test/reference/device-offset-positive.ref.png          | Bin 139 -> 0 bytes
- test/reference/device-offset.argb32.ref.png            | Bin 0 -> 137 bytes
- test/reference/device-offset.ref.png                   | Bin 137 -> 0 bytes
+ ...e.ref.png => device-offset-positive.argb32.ref.png} | Bin
+ ...ice-offset.ref.png => device-offset.argb32.ref.png} | Bin
  test/reference/extend-pad-border.ref.png               | Bin 616 -> 0 bytes
  test/reference/fill-alpha-pattern.ref.png              | Bin 2962 -> 0 bytes
  test/reference/fill-alpha.ref.png                      | Bin 2167 -> 0 bytes
@@ -6372,8 +6350,7 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/glyph-cache-pressure.ref.png            | Bin 2863 -> 0 bytes
  test/reference/gradient-alpha.ref.png                  | Bin 147 -> 0 bytes
  test/reference/gradient-constant-alpha.ref.png         | Bin 117 -> 0 bytes
- test/reference/gradient-zero-stops.argb32.ref.png      | Bin 0 -> 105 bytes
- test/reference/gradient-zero-stops.ref.png             | Bin 105 -> 0 bytes
+ ...tops.ref.png => gradient-zero-stops.argb32.ref.png} | Bin
  test/reference/group-unaligned.ref.png                 | Bin 325 -> 0 bytes
  test/reference/halo-transform.ref.png                  | Bin 11313 -> 0 bytes
  test/reference/horizontal-clip.ref.png                 | Bin 129 -> 0 bytes
@@ -6393,19 +6370,14 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/linear-gradient-subset.ref.png          | Bin 802 -> 0 bytes
  test/reference/linear-gradient.ref.png                 | Bin 961 -> 0 bytes
  test/reference/long-dashed-lines.ref.png               | Bin 1453 -> 0 bytes
- test/reference/mask-ctm.argb32.ref.png                 | Bin 0 -> 129 bytes
- test/reference/mask-ctm.ref.png                        | Bin 129 -> 0 bytes
- test/reference/mask-surface-ctm.argb32.ref.png         | Bin 0 -> 129 bytes
- test/reference/mask-surface-ctm.ref.png                | Bin 129 -> 0 bytes
+ .../{mask-ctm.ref.png => mask-ctm.argb32.ref.png}      | Bin
+ ...ace-ctm.ref.png => mask-surface-ctm.argb32.ref.png} | Bin
  test/reference/mask-transformed-image.ref.png          | Bin 4516 -> 0 bytes
  test/reference/mask-transformed-similar.ref.png        | Bin 4516 -> 0 bytes
  test/reference/miter-precision.ref.png                 | Bin 878 -> 0 bytes
- test/reference/nil-surface.argb32.ref.png              | Bin 0 -> 107 bytes
- test/reference/nil-surface.ref.png                     | Bin 107 -> 0 bytes
- test/reference/operator-alpha.argb32.ref.png           | Bin 0 -> 280 bytes
- test/reference/operator-alpha.ref.png                  | Bin 280 -> 0 bytes
- test/reference/operator.argb32.ref.png                 | Bin 0 -> 238 bytes
- test/reference/operator.ref.png                        | Bin 238 -> 0 bytes
+ ...{nil-surface.ref.png => nil-surface.argb32.ref.png} | Bin
+ ...tor-alpha.ref.png => operator-alpha.argb32.ref.png} | Bin
+ .../{operator.ref.png => operator.argb32.ref.png}      | Bin
  test/reference/over-above-source.ref.png               | Bin 511 -> 0 bytes
  test/reference/over-around-source.ref.png              | Bin 578 -> 0 bytes
  test/reference/over-below-source.ref.png               | Bin 413 -> 0 bytes
@@ -6415,12 +6387,10 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/partial-clip-text-left.ref.png          | Bin 293 -> 0 bytes
  test/reference/partial-clip-text-right.ref.png         | Bin 155 -> 0 bytes
  test/reference/partial-clip-text-top.ref.png           | Bin 173 -> 0 bytes
- test/reference/pass-through.argb32.ref.png             | Bin 0 -> 221 bytes
- test/reference/pass-through.ref.png                    | Bin 221 -> 0 bytes
+ ...ass-through.ref.png => pass-through.argb32.ref.png} | Bin
  test/reference/path-append.ref.png                     | Bin 4424 -> 0 bytes
  test/reference/path-stroke-twice.ref.png               | Bin 209 -> 0 bytes
- test/reference/pixman-rotate.argb32.ref.png            | Bin 0 -> 260 bytes
- test/reference/pixman-rotate.ref.png                   | Bin 260 -> 0 bytes
+ ...man-rotate.ref.png => pixman-rotate.argb32.ref.png} | Bin
  test/reference/pthread-show-text.ref.png               | Bin 29759 -> 0 bytes
  test/reference/push-group-color.ref.png                | Bin 2676 -> 0 bytes
  test/reference/push-group.ref.png                      | Bin 2829 -> 0 bytes
@@ -6438,12 +6408,10 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/rounded-rectangle-fill.ref.png          | Bin 563 -> 0 bytes
  test/reference/scale-offset-image.ref.png              | Bin 7688 -> 0 bytes
  test/reference/scale-offset-similar.ref.png            | Bin 7688 -> 0 bytes
- .../scale-source-surface-paint.argb32.ref.png          | Bin 0 -> 147 bytes
- test/reference/scale-source-surface-paint.ref.png      | Bin 147 -> 0 bytes
+ ...f.png => scale-source-surface-paint.argb32.ref.png} | Bin
  test/reference/select-font-face.ref.png                | Bin 2245 -> 0 bytes
  test/reference/self-copy.ref.png                       | Bin 258 -> 0 bytes
- test/reference/set-source.argb32.ref.png               | Bin 0 -> 120 bytes
- test/reference/set-source.ref.png                      | Bin 120 -> 0 bytes
+ .../{set-source.ref.png => set-source.argb32.ref.png}  | Bin
  test/reference/shape-general-convex.ref.png            | Bin 1869 -> 0 bytes
  test/reference/shape-sierpinski.ref.png                | Bin 43504 -> 0 bytes
  test/reference/show-glyphs-advance.ref.png             | Bin 1395 -> 0 bytes
@@ -6456,8 +6424,7 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/smask-stroke.ref.png                    | Bin 1598 -> 0 bytes
  test/reference/smask-text.ref.png                      | Bin 1623 -> 0 bytes
  test/reference/smask.ref.png                           | Bin 3401 -> 0 bytes
- .../source-surface-scale-paint.argb32.ref.png          | Bin 0 -> 139 bytes
- test/reference/source-surface-scale-paint.ref.png      | Bin 139 -> 0 bytes
+ ...f.png => source-surface-scale-paint.argb32.ref.png} | Bin
  test/reference/spline-decomposition.ref.png            | Bin 10005 -> 0 bytes
  test/reference/stroke-image.ref.png                    | Bin 972 -> 0 bytes
  test/reference/stroke-pattern.ref.png                  | Bin 1417 -> 0 bytes
@@ -6485,9 +6452,8 @@ CommitDate: Thu Jul 4 10:02:46 2013 +0100
  test/reference/world-map-fill.ref.png                  | Bin 45440 -> 0 bytes
  test/reference/world-map-stroke.ref.png                | Bin 43370 -> 0 bytes
  test/reference/world-map.ref.png                       | Bin 65880 -> 0 bytes
- test/reference/zero-mask.argb32.ref.png                | Bin 0 -> 402 bytes
- test/reference/zero-mask.ref.png                       | Bin 402 -> 0 bytes
- 175 files changed, 0 insertions(+), 0 deletions(-)
+ .../{zero-mask.ref.png => zero-mask.argb32.ref.png}    | Bin
+ 157 files changed, 0 insertions(+), 0 deletions(-)
 
 commit 9eb1237e006bb19098144cc045c0a03d167a82b4
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -8331,7 +8297,7 @@ CommitDate: Thu Jun 20 14:02:14 2013 +0100
     Author: Chris Wilson <chris@chris-wilson.co.uk>
     Date:   Mon Aug 13 01:34:12 2012 +0100
     
-    	xlib: Implement SHM fallbacks and fast upload paths
+            xlib: Implement SHM fallbacks and fast upload paths
     
     introduced a path to steal the image data for a snapshot (and thereby
     avoid a redundant copy), but that path then lead to the leak of the
@@ -17519,21 +17485,20 @@ CommitDate: Thu Apr 19 12:22:07 2012 +0100
     References: https://bugs.freedesktop.org/show_bug.cgi?id=48577
     Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
 
- src/Makefile.sources                    |  2 +-
- src/cairo-bentley-ottmann-rectangular.c |  2 +-
- src/cairo-bentley-ottmann-rectilinear.c |  2 +-
- src/cairo-bentley-ottmann.c             |  2 +-
- src/cairo-botor-scan-converter.c        |  2 +-
- src/cairo-boxes-intersect.c             |  2 +-
- src/cairo-combsort-inline.h             | 94 +++++++++++++++++++++++++++++++++
- src/cairo-combsort-private.h            | 94 ---------------------------------
- src/cairo-contour.c                     |  2 +-
- src/cairo-polygon-intersect.c           |  2 +-
- src/cairo-polygon-reduce.c              |  2 +-
- src/cairo-recording-surface.c           |  2 +-
- src/cairo-rectangular-scan-converter.c  |  2 +-
- src/cairo-surface-observer.c            |  2 +-
- 14 files changed, 106 insertions(+), 106 deletions(-)
+ src/Makefile.sources                                      | 2 +-
+ src/cairo-bentley-ottmann-rectangular.c                   | 2 +-
+ src/cairo-bentley-ottmann-rectilinear.c                   | 2 +-
+ src/cairo-bentley-ottmann.c                               | 2 +-
+ src/cairo-botor-scan-converter.c                          | 2 +-
+ src/cairo-boxes-intersect.c                               | 2 +-
+ src/{cairo-combsort-private.h => cairo-combsort-inline.h} | 0
+ src/cairo-contour.c                                       | 2 +-
+ src/cairo-polygon-intersect.c                             | 2 +-
+ src/cairo-polygon-reduce.c                                | 2 +-
+ src/cairo-recording-surface.c                             | 2 +-
+ src/cairo-rectangular-scan-converter.c                    | 2 +-
+ src/cairo-surface-observer.c                              | 2 +-
+ 13 files changed, 12 insertions(+), 12 deletions(-)
 
 commit 0770dda52be9c1bf464a84cb5566ef46d7e9df5a
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -17579,23 +17544,22 @@ CommitDate: Thu Apr 19 12:16:53 2012 +0100
     References: https://bugs.freedesktop.org/show_bug.cgi?id=48577
     Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
 
- src/Makefile.sources             |   2 +-
- src/cairo-analysis-surface.c     |   2 +-
- src/cairo-box-inline.h           | 121 +++++++++++++++++++++++++++++++++++++++
- src/cairo-box-private.h          | 121 ---------------------------------------
- src/cairo-boxes.c                |   2 +-
- src/cairo-clip-boxes.c           |   2 +-
- src/cairo-cogl-surface.c         |   2 +-
- src/cairo-path-bounds.c          |   2 +-
- src/cairo-path-fixed.c           |   2 +-
- src/cairo-path-stroke-boxes.c    |   2 +-
- src/cairo-path-stroke-polygon.c  |   2 +-
- src/cairo-path-stroke-tristrip.c |   2 +-
- src/cairo-path-stroke.c          |   2 +-
- src/cairo-rectangle.c            |   2 +-
- src/cairo-spline.c               |   2 +-
- src/cairo-traps-compositor.c     |   2 +-
- 16 files changed, 135 insertions(+), 135 deletions(-)
+ src/Makefile.sources                            | 2 +-
+ src/cairo-analysis-surface.c                    | 2 +-
+ src/{cairo-box-private.h => cairo-box-inline.h} | 0
+ src/cairo-boxes.c                               | 2 +-
+ src/cairo-clip-boxes.c                          | 2 +-
+ src/cairo-cogl-surface.c                        | 2 +-
+ src/cairo-path-bounds.c                         | 2 +-
+ src/cairo-path-fixed.c                          | 2 +-
+ src/cairo-path-stroke-boxes.c                   | 2 +-
+ src/cairo-path-stroke-polygon.c                 | 2 +-
+ src/cairo-path-stroke-tristrip.c                | 2 +-
+ src/cairo-path-stroke.c                         | 2 +-
+ src/cairo-rectangle.c                           | 2 +-
+ src/cairo-spline.c                              | 2 +-
+ src/cairo-traps-compositor.c                    | 2 +-
+ 15 files changed, 14 insertions(+), 14 deletions(-)
 
 commit f830268b952ecd06bf3adf7bf62dc4b5c4139e5c
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -18110,7 +18074,7 @@ CommitDate: Sun Apr 8 18:02:05 2012 +0100
     Program received signal SIGSEGV, Segmentation fault.
     pixman_fill_sse2 (bits=<optimized out>, stride=4, bpp=8, x=0, y=0,
     width=3, height=-34811, data=0) at pixman-sse2.c:3369
-    3369		    *(uint16_t *)d = data;
+    3369                *(uint16_t *)d = data;
     
     Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
 

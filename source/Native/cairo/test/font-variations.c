@@ -27,13 +27,16 @@
 
 #include <assert.h>
 
-#if CAIRO_HAS_FC_FONT
+/* This test requires freetype2 */
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_MULTIPLE_MASTERS_H
+
+#if CAIRO_HAS_FC_FONT
 #include <fontconfig/fontconfig.h>
-#include "cairo-ft.h"
 #endif
+
+#include "cairo-ft.h"
 
 #define FloatToFixed(f) ((FT_Fixed)((f)*65536))
 

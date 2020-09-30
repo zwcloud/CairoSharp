@@ -25,7 +25,7 @@
 
 /* A test for the crash described here:
  *
- *	http://lists.freedesktop.org/archives/cairo/2006-August/007698.html
+ *	https://lists.freedesktop.org/archives/cairo/2006-August/007698.html
  *
  * The triggering condition for this bug should be setting a
  * surface-based clip and then calling cairo_push_group.

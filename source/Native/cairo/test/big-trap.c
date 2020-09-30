@@ -31,7 +31,7 @@
  * _cairo_fixed_from_double changed the details of the bogus trapezoid
  * (it overflows in a different way now), so the bug is being masked.
  *
- * According to Vladimir, (http://lists.freedesktop.org/archives/cairo/2006-November/008482.html):
+ * According to Vladimir, (https://lists.freedesktop.org/archives/cairo/2006-November/008482.html):
  *
  *	Before the change, the two trapezoids that were generated were:
  *

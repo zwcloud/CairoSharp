@@ -2343,6 +2343,8 @@ fast_fetch_bilinear_cover (pixman_iter_t *iter, const uint32_t *mask)
     int32_t dist_y;
     int i;
 
+    COMPILE_TIME_ASSERT (BILINEAR_INTERPOLATION_BITS < 8);
+
     fx = info->x;
     ux = iter->image->common.transform->matrix[0][0];
 
@@ -3256,9 +3258,9 @@ static const pixman_iter_info_t fast_iters[] =
     },
 
 #define AFFINE_FAST_PATHS(name, format, repeat)				\
-    SEPARABLE_CONVOLUTION_AFFINE_FAST_PATH(name, format, repeat)	\
+    NEAREST_AFFINE_FAST_PATH(name, format, repeat)			\
     BILINEAR_AFFINE_FAST_PATH(name, format, repeat)			\
-    NEAREST_AFFINE_FAST_PATH(name, format, repeat)
+    SEPARABLE_CONVOLUTION_AFFINE_FAST_PATH(name, format, repeat)
     
     AFFINE_FAST_PATHS (pad_a8r8g8b8, a8r8g8b8, PAD)
     AFFINE_FAST_PATHS (none_a8r8g8b8, a8r8g8b8, NONE)

@@ -32,7 +32,7 @@
  * where the dash offset is advanced in a loop.
  *
  * Reported to the cairo mailing list by Hans Breuer.
- * http://lists.cairographics.org/archives/cairo/2009-June/017506.html
+ * https://lists.cairographics.org/archives/cairo/2009-June/017506.html
  */
 
 #define EPS 1e-30

@@ -12,6 +12,9 @@
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 
+/* Whether we have FE_DIVBYZERO */
+#undef HAVE_FEDIVBYZERO
+
 /* Whether we have feenableexcept() */
 #undef HAVE_FEENABLEEXCEPT
 
@@ -84,8 +87,7 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
 
 /* Name of package */
@@ -108,6 +110,9 @@
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
+
+/* enable output that can be piped to gnuplot */
+#undef PIXMAN_GNUPLOT
 
 /* enable TIMER_BEGIN/TIMER_END macros */
 #undef PIXMAN_TIMERS

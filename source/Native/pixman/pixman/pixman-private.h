@@ -1,5 +1,3 @@
-#include <float.h>
-
 #ifndef PIXMAN_PRIVATE_H
 #define PIXMAN_PRIVATE_H
 
@@ -7,7 +5,7 @@
  * The defines which are shared between C and assembly code
  */
 
-/* bilinear interpolation precision (must be <= 8) */
+/* bilinear interpolation precision (must be < 8) */
 #define BILINEAR_INTERPOLATION_BITS 7
 #define BILINEAR_INTERPOLATION_RANGE (1 << BILINEAR_INTERPOLATION_BITS)
 
@@ -30,6 +28,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
+#include <float.h>
 
 #include "pixman-compiler.h"
 
@@ -345,8 +344,8 @@ typedef struct
     float		    r_s, r_b;
     float		    g_s, g_b;
     float		    b_s, b_b;
-    pixman_fixed_t	    left_x;
-    pixman_fixed_t          right_x;
+    pixman_fixed_48_16_t    left_x;
+    pixman_fixed_48_16_t    right_x;
 
     pixman_gradient_stop_t *stops;
     int                     num_stops;

@@ -77,8 +77,8 @@ static cairo_test_status_t
 preamble (cairo_test_context_t *ctx)
 {
     const char *mimetype = "text/x-uri";
-    const char *data1 = "http://www.cairographics.org";
-    const char *data2 = "http://cairographics.org/examples/";
+    const char *data1 = "https://www.cairographics.org";
+    const char *data2 = "https://cairographics.org/examples/";
     cairo_bool_t destroy1_called = FALSE;
     cairo_bool_t destroy2_called = FALSE;
     cairo_surface_t *surface;

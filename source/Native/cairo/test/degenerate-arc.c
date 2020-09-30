@@ -25,7 +25,7 @@
 
 /* This test case exercises a "Potential division by zero in cairo_arc"
  * reported by Luiz Americo Pereira Camara <luizmed@oi.com.br>,
- * http://lists.cairographics.org/archives/cairo/2008-May/014054.html.
+ * https://lists.cairographics.org/archives/cairo/2008-May/014054.html.
  */
 
 #include "cairo-test.h"

@@ -412,6 +412,16 @@ image data.</para>
 </entry>
 <entry role="enum_member_annotations"></entry>
 </row>
+<row role="constant"><entry role="enum_member_name"><para id="CAIRO-FORMAT-RGB96F:CAPS">CAIRO_FORMAT_RGB96F</para></entry>
+<entry role="enum_member_description"><para>3 floats, R, G, B. (Since 1.16)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="CAIRO-FORMAT-RGBA128F:CAPS">CAIRO_FORMAT_RGBA128F</para></entry>
+<entry role="enum_member_description"><para>4 floats, R, G, B, A. (Since 1.16)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
 </tbody></tgroup></informaltable>
 </refsect3><para role="since">Since: <link linkend="api-index-1.0">1.0</link></para></refsect2>
 

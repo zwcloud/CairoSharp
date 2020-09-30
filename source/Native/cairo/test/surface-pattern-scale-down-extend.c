@@ -29,7 +29,7 @@
  * pattern.  Reported by Franz Schmid to the cairo mailing list as a
  * regression in 1.9.6:
  *
- * http://lists.cairographics.org/archives/cairo/2010-February/019492.html
+ * https://lists.cairographics.org/archives/cairo/2010-February/019492.html
  */
 
 static cairo_test_status_t

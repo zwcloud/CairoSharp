@@ -473,7 +473,7 @@ CommitDate: Wed Sep 24 16:51:44 2008 -0700
     The following tests were added during the 1.7 cycle to
     demonstrate bugs:
     
-    	alpha-similar operator operator-alpha self-copy-overlap
+            alpha-similar operator operator-alpha self-copy-overlap
     
     In all cases, the identical bug existed in the last major
     release, (1.6.4), so these are not new regressions, but merely
@@ -730,24 +730,24 @@ CommitDate: Wed Sep 24 15:04:11 2008 -0400
     want to allow setting them to zero.  Then if we need to enable a feature
     if either of PS or PDF is enabled, the proper syntax is:
     
-    	#if CAIRO_HAS_PS_SURFACE || CAIRO_HAS_PDF_SURFACE
+            #if CAIRO_HAS_PS_SURFACE || CAIRO_HAS_PDF_SURFACE
     
     This works because the preprocessor replaces any unknown identifiers with
     zero.  Some versions of gcc had a bug that got them very confused with
     complex versions of the above.  As a workaround for that I have been using
     the uglier version:
     
-    	#if CAIRO_HAS_PS_SURFACE+0 || CAIRO_HAS_PDF_SURFACE+0
+            #if CAIRO_HAS_PS_SURFACE+0 || CAIRO_HAS_PDF_SURFACE+0
     
     which magically worked around that bug.  Or more recently replacing that
     with the duplicated version:
     
-    	#if CAIRO_HAS_PS_SURFACE
-    	...
-    	#endif
-    	#if CAIRO_HAS_PDF_SURFACE
-    	...
-    	#endif
+            #if CAIRO_HAS_PS_SURFACE
+            ...
+            #endif
+            #if CAIRO_HAS_PDF_SURFACE
+            ...
+            #endif
     
     Both are uglier than the original.  Since the gcc bug was very short lived
     and there's lots of software out there relying on the original form to work,
@@ -803,17 +803,13 @@ CommitDate: Wed Sep 24 18:41:24 2008 +0100
     Using mask-ctm-image as a test name was causing a naming conflict with
     mask-ctm, so rename the new tests.
 
- test/.gitignore                       |   4 +-
- test/Makefile.am                      |   8 +--
- test/mask-ctm-image-ref.png           | Bin 4516 -> 0 bytes
- test/mask-ctm-image.c                 | 100 ---------------------------------
- test/mask-ctm-similar-ref.png         | Bin 4516 -> 0 bytes
- test/mask-ctm-similar.c               | 102 ----------------------------------
- test/mask-transformed-image-ref.png   | Bin 0 -> 4516 bytes
- test/mask-transformed-image.c         | 100 +++++++++++++++++++++++++++++++++
- test/mask-transformed-similar-ref.png | Bin 0 -> 4516 bytes
- test/mask-transformed-similar.c       | 102 ++++++++++++++++++++++++++++++++++
- 10 files changed, 208 insertions(+), 208 deletions(-)
+ test/.gitignore                                             |   4 ++--
+ test/Makefile.am                                            |   8 ++++----
+ ...ask-ctm-image-ref.png => mask-transformed-image-ref.png} | Bin
+ test/{mask-ctm-image.c => mask-transformed-image.c}         |   2 +-
+ ...ctm-similar-ref.png => mask-transformed-similar-ref.png} | Bin
+ test/{mask-ctm-similar.c => mask-transformed-similar.c}     |   2 +-
+ 6 files changed, 8 insertions(+), 8 deletions(-)
 
 commit 444d44acde4ac73641c789c19ec7a3199211b594
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -1506,18 +1502,17 @@ CommitDate: Sat Sep 20 17:20:36 2008 -0400
     This is more robust to cases where people want to assign 0 to those variables.
     (win32/alternate build systems, etc)
 
- src/Makefile.am                  |  6 ++---
- src/cairo-atomic-private.h       |  4 +--
- src/cairo-atomic.c               |  2 +-
- src/cairo-directfb.h             |  2 +-
- src/cairo-mutex-list-private.h   |  2 +-
- src/cairo-quartz-private.h       | 11 ++++----
- src/cairo-quartz.h               |  4 +--
- src/cairo-win32.h                |  8 ++++++
- src/cairoint.h                   | 13 +++++++--
- src/check-includes.sh            | 58 ----------------------------------------
- src/check-preprocessor-syntax.sh | 57 +++++++++++++++++++++++++++++++++++++++
- 11 files changed, 91 insertions(+), 76 deletions(-)
+ src/Makefile.am                                         |  6 +++---
+ src/cairo-atomic-private.h                              |  4 ++--
+ src/cairo-atomic.c                                      |  2 +-
+ src/cairo-directfb.h                                    |  2 +-
+ src/cairo-mutex-list-private.h                          |  2 +-
+ src/cairo-quartz-private.h                              | 11 +++++------
+ src/cairo-quartz.h                                      |  4 ++--
+ src/cairo-win32.h                                       |  8 ++++++++
+ src/cairoint.h                                          | 13 +++++++++++--
+ src/{check-includes.sh => check-preprocessor-syntax.sh} |  9 ++++-----
+ 10 files changed, 38 insertions(+), 23 deletions(-)
 
 commit e00565fa3c9579566abb31b71af3f13f44c45139
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -2549,15 +2544,14 @@ CommitDate: Tue Sep 16 03:58:19 2008 -0400
     
     Same scheme as in src/
 
- autogen.sh                   |   6 +-
- boilerplate/Makefile.am      |  87 ++--------
- boilerplate/Makefile.sources |  56 ++++++
- build/aclocal.enable.m4      |  29 +++-
- build/aclocal.makefile.m4    | 143 +++++++++++++++
- build/configure.ac.enable    | 404 -------------------------------------------
- build/configure.ac.features  | 351 +++++++++++++++++++++++++++++++++++++
- configure.ac                 |   2 +-
- 8 files changed, 595 insertions(+), 483 deletions(-)
+ autogen.sh                                         |   6 +-
+ boilerplate/Makefile.am                            |  87 ++--------
+ boilerplate/Makefile.sources                       |  56 +++++++
+ build/aclocal.enable.m4                            |  29 +++-
+ build/aclocal.makefile.m4                          | 143 ++++++++++++++++
+ .../{configure.ac.enable => configure.ac.features} | 181 ++++++++-------------
+ configure.ac                                       |   2 +-
+ 7 files changed, 308 insertions(+), 196 deletions(-)
 
 commit 1a3863688c0c09d047e5ee5b65e87c71c6393e3f
 Author:     Chris Wilson <chris@chris-wilson.co.uk>
@@ -3027,14 +3021,13 @@ CommitDate: Thu Sep 11 16:38:12 2008 -0400
     
     We still do not call gtkdocize from autogen.sh.
 
- acinclude.m4              |   1 +
- autogen.sh                |   9 ++-
- build/Makefile.am.gtk-doc | 180 ++++++++++++++++++++++++++++++++++++++++++++++
- build/configure.ac.tools  |   4 --
- configure.ac              |   3 +
- doc/public/Makefile.am    |   6 +-
- gtk-doc.make              | 157 ----------------------------------------
- 7 files changed, 195 insertions(+), 165 deletions(-)
+ acinclude.m4                              |  1 +
+ autogen.sh                                |  9 +++-
+ gtk-doc.make => build/Makefile.am.gtk-doc | 75 ++++++++++++++++++++-----------
+ build/configure.ac.tools                  |  4 --
+ configure.ac                              |  3 ++
+ doc/public/Makefile.am                    |  6 +--
+ 6 files changed, 64 insertions(+), 34 deletions(-)
 
 commit de5b8bce37f2ddb87fca7ae6b844eec7fbbbc7e9
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -3593,10 +3586,9 @@ CommitDate: Wed Sep 10 12:18:27 2008 -0400
 
     Rename cairo-backend.pc.in to cairo-features.pc.in
 
- build/configure.ac.enable |  2 +-
- src/cairo-backend.pc.in   | 12 ------------
- src/cairo-features.pc.in  | 12 ++++++++++++
- 3 files changed, 13 insertions(+), 13 deletions(-)
+ build/configure.ac.enable                         | 2 +-
+ src/{cairo-backend.pc.in => cairo-features.pc.in} | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
 commit cf71e7c39b431b5b85aefe0249c9870d240e390b
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -4195,30 +4187,23 @@ CommitDate: Thu Sep 4 22:33:52 2008 -0400
     
     Also rename configure.in to configure.ac (finally)
     
-    	configure.in		-> configure.ac
-    	build/analysis.ac	-> build/configure.ac.analysis
-    	build/enable.ac		-> build/configure.ac.enable
-    	build/system.ac		-> build/configure.ac.system
-    	build/tools.ac		-> build/configure.ac.tools
-    	build/version.ac	-> build/configure.ac.version
-    	build/warnings.ac	-> build/configure.ac.warnings
+            configure.in            -> configure.ac
+            build/analysis.ac       -> build/configure.ac.analysis
+            build/enable.ac         -> build/configure.ac.enable
+            build/system.ac         -> build/configure.ac.system
+            build/tools.ac          -> build/configure.ac.tools
+            build/version.ac        -> build/configure.ac.version
+            build/warnings.ac       -> build/configure.ac.warnings
 
- autogen.sh                  |   9 +-
- build/analysis.ac           |  76 -------
- build/configure.ac.analysis |  76 +++++++
- build/configure.ac.enable   | 428 +++++++++++++++++++++++++++++++++++++++
- build/configure.ac.system   |  74 +++++++
- build/configure.ac.tools    |  28 +++
- build/configure.ac.version  |  43 ++++
- build/configure.ac.warnings |  65 ++++++
- build/enable.ac             | 428 ---------------------------------------
- build/system.ac             |  74 -------
- build/tools.ac              |  28 ---
- build/version.ac            |  43 ----
- build/warnings.ac           |  65 ------
- configure.ac                | 482 ++++++++++++++++++++++++++++++++++++++++++++
- configure.in                | 482 --------------------------------------------
- 15 files changed, 1200 insertions(+), 1201 deletions(-)
+ autogen.sh                                   |  9 ++++-----
+ build/{analysis.ac => configure.ac.analysis} |  0
+ build/{enable.ac => configure.ac.enable}     |  0
+ build/{system.ac => configure.ac.system}     |  0
+ build/{tools.ac => configure.ac.tools}       |  0
+ build/{version.ac => configure.ac.version}   |  0
+ build/{warnings.ac => configure.ac.warnings} |  0
+ configure.in => configure.ac                 | 12 ++++++------
+ 8 files changed, 10 insertions(+), 11 deletions(-)
 
 commit 49f060252a2f40c727909d9e55463f40dcea2cdf
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -4230,18 +4215,15 @@ CommitDate: Thu Sep 4 22:27:03 2008 -0400
     
     Namely:
     
-    	build/Analysis.mk  -> build/Makefile.am.analysis
-    	build/ChangeLog.mk -> build/Makefile.am.changelog
-    	build/Releasing.mk -> build/Makefile.am.releasing
+            build/Analysis.mk  -> build/Makefile.am.analysis
+            build/ChangeLog.mk -> build/Makefile.am.changelog
+            build/Releasing.mk -> build/Makefile.am.releasing
 
- Makefile.am                 |   6 +-
- build/Analysis.mk           |  35 ----------
- build/ChangeLog.mk          |  82 ------------------------
- build/Makefile.am.analysis  |  35 ++++++++++
- build/Makefile.am.changelog |  82 ++++++++++++++++++++++++
- build/Makefile.am.releasing | 153 ++++++++++++++++++++++++++++++++++++++++++++
- build/Releasing.mk          | 153 --------------------------------------------
- 7 files changed, 273 insertions(+), 273 deletions(-)
+ Makefile.am                                   | 6 +++---
+ build/{Analysis.mk => Makefile.am.analysis}   | 0
+ build/{ChangeLog.mk => Makefile.am.changelog} | 0
+ build/{Releasing.mk => Makefile.am.releasing} | 0
+ 4 files changed, 3 insertions(+), 3 deletions(-)
 
 commit 7ad076442d70c239c963c574849b2fb352ccd63a
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -4253,20 +4235,19 @@ CommitDate: Thu Sep 4 22:23:42 2008 -0400
     
     Namely:
     
-    	src/Sources.mk      -> src/Makefile.sources
-    	src/Config.mk       -> src/Makefile.am.config
-    	src/Config.mk.win32 -> src/Makefile.win32.config
+            src/Sources.mk      -> src/Makefile.sources
+            src/Config.mk       -> src/Makefile.am.config
+            src/Config.mk.win32 -> src/Makefile.win32.config
 
- autogen.sh             |   4 +-
- build/enable.ac        |   8 +-
- doc/public/Makefile.am |   2 +-
- src/.gitignore         |   4 +-
- src/Makefile.am        |   6 +-
- src/Makefile.sources   | 246 +++++++++++++++++++++++++++++++++++++++++++++++++
- src/Makefile.win32     |   2 +-
- src/README             |   2 +-
- src/Sources.mk         | 246 -------------------------------------------------
- 9 files changed, 260 insertions(+), 260 deletions(-)
+ autogen.sh                           |  4 ++--
+ build/enable.ac                      |  8 ++++----
+ doc/public/Makefile.am               |  2 +-
+ src/.gitignore                       |  4 ++--
+ src/Makefile.am                      |  6 +++---
+ src/{Sources.mk => Makefile.sources} | 30 +++++++++++++++---------------
+ src/Makefile.win32                   |  2 +-
+ src/README                           |  2 +-
+ 8 files changed, 29 insertions(+), 29 deletions(-)
 
 commit 8da361470fb8a4e11c7292dbfc57e3dafef7b7f0
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -4387,13 +4368,11 @@ CommitDate: Thu Sep 4 15:53:33 2008 -0400
 
     [boilerplate] Rename xmalloc.[ch] to boilerplate namespace
 
- boilerplate/Makefile.am                |   5 +-
- boilerplate/cairo-boilerplate-system.c | 147 +++++++++++++++++++++++++++++++++
- boilerplate/cairo-boilerplate-system.h |  51 ++++++++++++
- boilerplate/cairo-boilerplate.h        |   2 +-
- boilerplate/xmalloc.c                  | 147 ---------------------------------
- boilerplate/xmalloc.h                  |  51 ------------
- 6 files changed, 202 insertions(+), 201 deletions(-)
+ boilerplate/Makefile.am                               | 5 +++--
+ boilerplate/{xmalloc.c => cairo-boilerplate-system.c} | 2 +-
+ boilerplate/{xmalloc.h => cairo-boilerplate-system.h} | 0
+ boilerplate/cairo-boilerplate.h                       | 2 +-
+ 4 files changed, 5 insertions(+), 4 deletions(-)
 
 commit c16b4520ecc9114a7052c7afc54b264b764e5be6
 Author:     Behdad Esfahbod <behdad@behdad.org>
@@ -4484,17 +4463,14 @@ CommitDate: Wed Sep 3 19:09:57 2008 -0400
 
     Move some top-level build files into build/
 
- .gitignore         |   8 ---
- Analysis.mk        |  35 ------------
- ChangeLog.mk       |  82 ----------------------------
- Makefile.am        |  22 ++++----
- Releasing.mk       | 153 -----------------------------------------------------
- build/.gitignore   |   8 +++
- build/Analysis.mk  |  35 ++++++++++++
- build/ChangeLog.mk |  82 ++++++++++++++++++++++++++++
- build/Releasing.mk | 153 +++++++++++++++++++++++++++++++++++++++++++++++++++++
- configure.in       |   2 +-
- 10 files changed, 290 insertions(+), 290 deletions(-)
+ .gitignore                         |  8 --------
+ Makefile.am                        | 22 +++++++++++-----------
+ build/.gitignore                   |  8 ++++++++
+ Analysis.mk => build/Analysis.mk   |  0
+ ChangeLog.mk => build/ChangeLog.mk |  2 +-
+ Releasing.mk => build/Releasing.mk |  0
+ configure.in                       |  2 +-
+ 7 files changed, 21 insertions(+), 21 deletions(-)
 
 commit 2cf4b3161c19b9b0349bd2aa94855fd0822968be
 Author:     Vladimir Vukicevic <vladimir@pobox.com>
@@ -7528,10 +7504,10 @@ CommitDate: Fri Aug 8 03:01:14 2008 -0400
     
     New public API:
     
-    	cairo_toy_font_face_create()
-    	cairo_toy_font_face_get_family()
-    	cairo_toy_font_face_get_slant()
-    	cairo_toy_font_face_get_weight()
+            cairo_toy_font_face_create()
+            cairo_toy_font_face_get_family()
+            cairo_toy_font_face_get_slant()
+            cairo_toy_font_face_get_weight()
 
  doc/public/cairo-sections.txt     |   4 +
  doc/public/tmpl/cairo-status.sgml |   2 +
@@ -8716,9 +8692,9 @@ CommitDate: Thu Jun 26 16:20:59 2008 -0400
     
     New public API:
     
-    	cairo_text_cluster_t
-    	cairo_has_show_text_glyphs()
-    	cairo_show_text_glyphs()
+            cairo_text_cluster_t
+            cairo_has_show_text_glyphs()
+            cairo_show_text_glyphs()
     
     Add accompanying gstate and surface functions, and surface backend methods.
     No backends implement them just yet.
@@ -9566,7 +9542,7 @@ CommitDate: Fri Jun 13 21:34:41 2008 +0100
  4 files changed, 35 insertions(+), 57 deletions(-)
 
 commit c57b1eca18db12b8d56d73093d5cae28ed388298
-Merge: b9acf62 cba1543
+Merge: b9acf625d cba1543c9
 Author:     Søren Sandmann <sandmann@redhat.com>
 AuthorDate: Fri Jun 13 16:18:13 2008 -0400
 Commit:     Søren Sandmann <sandmann@redhat.com>
@@ -11261,8 +11237,8 @@ CommitDate: Fri May 23 08:05:18 2008 -0700
     
     The original bug report is here:
     
-    	corrupt glyph positions with large font
-    	https://bugzilla.redhat.com/show_bug.cgi?id=448104
+            corrupt glyph positions with large font
+            https://bugzilla.redhat.com/show_bug.cgi?id=448104
 
  test/.gitignore            |   1 +
  test/Makefile.am           |   3 ++
@@ -11383,7 +11359,7 @@ CommitDate: Thu May 15 19:27:17 2008 -0400
     
     It runs tests under a tool specified tool.  For example:
     
-    	make run TOOL=gdb TESTS=user-font TARGETS=pdf
+            make run TOOL=gdb TESTS=user-font TARGETS=pdf
 
  test/Makefile.am | 20 ++++++++++++++------
  test/README      | 19 +++++++++++++++++++
@@ -12788,7 +12764,7 @@ CommitDate: Mon Apr 14 16:52:40 2008 -0700
  1 file changed, 7 insertions(+), 6 deletions(-)
 
 commit 9db764c732ef6e3405866a60762592625aa94ca4
-Merge: d96fdd5 44e6cdd
+Merge: d96fdd58a 44e6cdd9b
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Mon Apr 14 16:39:27 2008 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -12804,7 +12780,7 @@ CommitDate: Mon Apr 14 16:42:07 2008 -0700
     
     Conflicts:
     
-    	src/cairo-xlib-screen.c
+            src/cairo-xlib-screen.c
 
 commit d96fdd58abf8d6c8692dbb08ec54cdd80accba79
 Author:     Adrian Johnson <ajohnson@redneon.com>
@@ -12949,7 +12925,7 @@ CommitDate: Fri Apr 11 14:09:15 2008 -0700
     XSetClipMask with a NULL GC, (basically a reintroduction
     of the bug originally fixed here:
     
-    	7802de6d5edaf998c98b141870dc2c6b4c0f3e91
+            7802de6d5edaf998c98b141870dc2c6b4c0f3e91
     
     Let's revert for sake of the release, and fix this correctly
     on master.
@@ -12959,7 +12935,7 @@ CommitDate: Fri Apr 11 14:09:15 2008 -0700
  2 files changed, 10 insertions(+), 22 deletions(-)
 
 commit 75001079c1c6361f116409dc13263e87081637d1
-Merge: a5770c3 f57100a
+Merge: a5770c333 f57100acd
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Fri Apr 11 10:08:14 2008 -0700
 Commit:     Carl Worth <cworth@cworth.org>
@@ -13236,7 +13212,7 @@ CommitDate: Fri Apr 11 21:42:19 2008 +0930
  1 file changed, 5 insertions(+), 4 deletions(-)
 
 commit 0ac8130ae3d74a09343f4b9a2d69f938910b4ab9
-Merge: eac9251 11299ae
+Merge: eac9251d9 11299ae5c
 Author:     Carl Worth <cworth@cworth.org>
 AuthorDate: Thu Apr 10 18:07:12 2008 -0700
 Commit:     Carl Worth <cworth@cworth.org>
