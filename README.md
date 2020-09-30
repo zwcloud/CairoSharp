@@ -68,7 +68,7 @@ Project CairoSharp (not the native cairo lib but the C# one) is licensed under t
 
     CairoSharp, A C# wrapper of cairo which is a 2D vector rendering library
     Copyright (C) 2017 gfoidl
-    Copyright (C) 2015-2018 Zou Wei, zwcloud@hotmail.com, https://zwcloud.net
+    Copyright (C) 2015-2020 Zou Wei, zwcloud@hotmail.com, https://zwcloud.net
     Copyright (C) 2007-2015 Xamarin, Inc.
     Copyright (C) 2006 Alp Toker
     Copyright (C) 2005 John Luke
@@ -95,7 +95,7 @@ The C# code files in CairoSharp project was taken from Mono/[GTK#](https://githu
 The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Native/projects) is generated according to a VS2015 Solution from [Cairo-VS](https://github.com/DomAmato/Cairo-VS).
 
 * [cairo](http://www.cairographics.org/)
-  Version 1.15.12
+  Version 1.17.2
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/cairo/COPYING)
 
 * [libpng](http://libmng.com/pub/png/libpng.html)
@@ -103,7 +103,7 @@ The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Nat
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/libpng/LICENSE)
 
 * [pixman](http://www.pixman.org/) 
-  Version 0.32.6
+  Version 0.36.0
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/pixman/COPYING)
 
 * [zlib](http://www.zlib.net/)
@@ -115,4 +115,4 @@ The [Native project files](https://github.com/zwcloud/CairoSharp/tree/master/Nat
   [COPYING Info](https://github.com/zwcloud/CairoSharp/blob/master/Native/freetype/docs/LICENSE.TXT)
 
 These libraries will be updated if new verisons are released.  
-Last update date of these Native libraries: 2018-04-11
+Last update date of these Native libraries: 2020-09-30
